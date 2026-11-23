@@ -1,0 +1,104 @@
+https://support.aircall.io/en-gb/articles/39677926959517
+
+Aircall Help Center | Using Aircall MCP with AI assistants (beta)
+
+# Using Aircall MCP with AI assistants (beta)
+
+Aircall MCP gives an AI assistant, like Claude or ChatGPT, read-only access to your company's calls and conversation intelligence data. Once connected, you can ask your assistant to search calls, pull transcripts and summaries, or check sentiment and action items, without writing any integration code.
+
+This article explains what Aircall MCP does, what it doesn't do, and how to connect it to Claude Desktop, Claude Code, or ChatGPT/Codex.
+
+> Important: Aircall MCP is currently in beta. To join the beta, contact your Account Manager.
+
+## What is MCP?
+
+MCP (Model Context Protocol) is an open standard for connecting AI assistants to external systems. Where an API is written for developers to call, MCP is written for the assistant itself: it can discover what's available and use it without anyone writing integration code.
+
+A simple way to think about it: it's the difference between handing someone the key to a filing cabinet and handing them a researcher who already knows where everything is filed.
+
+### How it works
+
+1. You connect Aircall to your AI client once, via OAuth, the same way you'd connect any other app.
+2. Aircall's MCP server publishes a catalog of tools it can use, such as "search calls," "get transcripts," and "get sentiment," each with a defined input and output.
+3. You ask your assistant a question in plain language. The assistant reads the catalog, picks the right tool, and calls it.
+4. Aircall returns structured data. The assistant reasons over it, or passes it to whatever you've built.
+
+## What Aircall MCP (beta) provides
+
+Aircall MCP gives your AI assistant access to search calls, transcripts, summaries, sentiment, topics, action items, evaluations, and predicted CSAT.
+
+Server URL: 
+
+```
+https://mcp.aircall.io/mcp
+```
+
+### Requirements
+
+- An Aircall user who can create API keys (Integrations → API keys). This is the permission checked when you log in.
+- The Aircall AI add-on, required for the conversation intelligence tools. Without it, those tools return an error naming the add-on.
+- This feature is in beta, so your account needs to be enrolled in the beta program. If you want to be part of the beta program, please contact your account manager.
+
+### Current limitations
+
+- Aircall MCP is read-only. It can retrieve data, but it can't take action, it can't make calls, send messages, tag calls, or change any data in your account. If you're looking for something to trigger an action automatically, such as sending a message after a missed call, that's not supported here.
+- It also doesn't include messaging data: SMS, MMS, and WhatsApp conversations aren't part of what Aircall MCP exposes, only calls and their related conversation intelligence.
+- Authorization is account-wide: one Admin connects Aircall MCP, and it applies to the whole account. There's no way to scope access to specific users today. If your organization requires per-user access controls, keep this in mind before connecting it.
+- Aircall MCP isn't a replacement for a data warehouse, but it's a straightforward way to feed one.
+
+## Setting up Aircall MCP
+
+### Claude Desktop
+
+1. Go to Settings → MCP servers → Add → Custom, Web → Add.
+2. Enter the URL: `https://mcp.aircall.io/mcp`
+3. Under Authentication, select Use Claude's published identity (Recommended).
+
+### Claude Code
+
+1. Run:
+
+```
+   claude mcp add --transport http aircall-mcp --scope user https://mcp.aircall.io/mcp
+```
+
+2. Run `/mcp`, select aircall-mcp, choose Authenticate, and log in with your Aircall account in the browser that opens.
+3. Verify it's working by asking Claude to "search my Aircall calls from yesterday."
+
+### ChatGPT / Codex
+
+Desktop app
+
+1. Go to Settings → MCP servers → Add server.
+2. Set the transport to Streamable HTTP.
+3. Enter the URL: `https://mcp.aircall.io/mcp`
+4. Click Save, then Authenticate.
+
+CLI
+
+1. Add the following to `~/.codex/config.toml`:
+
+```
+   [mcp_servers.aircall]
+   url = "https://mcp.aircall.io/mcp"
+```
+
+2. Run:
+
+```
+   codex mcp login aircall
+```
+
+## Troubleshooting
+
+#### I get a permission error after logging in
+
+Your account doesn't have permission to create API keys yet. Ask an Admin to grant this permission, then reconnect.
+
+#### I see an error naming the AI add-on
+
+Your company doesn't have the Aircall AI add-on, which is required for conversation intelligence tools like transcripts, sentiment, and summaries.
+
+#### One of my calls shows "No data of that kind"
+
+This is expected. Not every call has conversation intelligence data associated with it.

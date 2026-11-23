@@ -1,0 +1,341 @@
+https://www.notion.com/pricing
+
+Notion Pricing Plans: Free, Plus, Business, & Enterprise.
+
+# One tool to run your company.
+
+Price in USD
+
+## Essentials for staying organized.
+
+### Free
+
+$0 per member / month
+
+For individuals to organize personal projects and life.
+
+Includes:
+
+- Trial of Notion AI
+- Basic forms
+- Basic sites
+- Notion Calendar
+- Databases including subtasks, dependencies, custom properties and more
+
+### Plus
+
+$10 per member / month
+
+For small teams and professionals to work together.
+
+Everything in Free, and:
+
+- Trial of Notion AI
+- Custom forms
+- Custom sites
+- Charts
+- Collaborative blocks
+- File uploads
+- Basic connections
+
+## The AI workspace for work that matters.
+
+### Business Recommended
+
+$20 per member / month
+
+For growing businesses to streamline teamwork.
+
+Everything in Plus, and:
+
+- Notion Agent
+- AI Meeting Notes
+- Enterprise Search Beta
+- SAML SSO
+- Granular database permissions
+- Verify any page
+- Private teamspaces
+- Domain verification
+- Premium connections
+
+### Enterprise
+
+Custom pricing
+
+For organizations to operate with scalability, control, and security.
+
+Everything in Business, and:
+
+- Zero data retention with LLM providers
+- User provisioning (SCIM)
+- Advanced security & controls
+- Audit log
+- Customer success manager
+- Security & Compliance connections (DLP, SIEM)
+- Domain management
+- Advanced connections
+
+### Custom Agents
+
+AI agents handle repetitive tasks autonomously, so your team doesn’t have to. Free to try, then $10 per 1,000 monthly Notion credits.
+
+### Workers Beta
+
+Extend Notion with custom code to build agent tools, sync external data, and trigger Notion workflows from anywhere. Learn more→
+
+![OpenAI logo](https://www.notion.com/front-static/logos/generic/en/openai-v2.svg)
+
+> There’s power in a single platform where you can do all your work out of. Notion is that single place.
+
+Nick Erdenberger GTM, OpenAI Watch video→
+
+## Plans and features
+
+Content
+
+Blocks are pieces of content you add to a page (e.g. to-do checkboxes, paragraphs, bullet points, etc.). Teams who want to try collaborating in Notion can use the Free Plan with up to certain number of blocks before upgrading.
+
+Limited for 2+ members
+
+File uploads
+
+Up to 5 MB
+
+Up to 5 GB
+
+Up to 5 GB
+
+Up to 5 GB
+
+7 days
+
+30 days
+
+90 days
+
+Choose pages to download for offline use.
+
+Recents and Favorites auto-download for offline use.
+
+Recents and Favorites auto-download for offline use.
+
+Recents and Favorites auto-download for offline use.
+
+Sharing & collaboration
+
+10
+
+Teamspaces (private)
+
+Advanced teamspace permissions
+
+Granular database permissions
+
+Notion AI
+
+Limited Trial
+
+Limited Trial
+
+30 day retention
+
+30 day retention
+
+30 day retention
+
+Zero data retention
+
+Custom Agents
+
+Requires Notion credits
+
+Requires Notion credits
+
+Database features
+
+Subtasks and dependencies
+
+Custom properties and filtering
+
+Basic
+
+Custom
+
+Custom
+
++ conditional logic
+
+Custom
+
++ conditional logic
+
+API automations & integrations
+
+Public API
+
+Webhooks
+
+Embeds and link previews
+
+Connected properties
+
+Same as business
+
+Basic
+
+Custom
+
+database automations
+
+Same as plus
+
+Same as plus
+
+1-way database syncs
+
+Same as business
+
+Web publishing
+
+notion.site domains
+
+1
+
+5
+
+Search engine indexing (SEO)
+
+Basic
+
+Advanced
+
+Advanced
+
+Custom domains and branding
+
+Pay per domain
+
+Pay per domain
+
+Pay per domain
+
+Admin & security
+
+Advanced workspace & teamspace security controls
+
+Granular admin roles
+
+Workspace consolidation
+
+Custom
+
+Security & Compliance connections
+
+AI Meeting Notes transcript deletion
+
+Support
+
+## Questions & answers
+
+How does Notion AI use my data?
+
+We follow our standard data protection practices to keep your data encrypted and private. Notion AI will not use your data to train our models unless you opt in to a request to share your data.
+
+Any information used to power Notion AI will be shared with AI subprocessors for the sole purpose of providing you with the Notion AI features. We specifically have contractual agreements in place with our AI subprocessors that prohibit the use of customer data to train their models. Learn more about Notion AI security and privacy practices here.
+
+Where can I find my invoices?
+
+Workspace admins can access, view, and download your workspace's invoices by going to `Settings & members` → `Billing`, then scrolling to `Invoices`. There you can click on "View invoice" to see the invoice PDF.
+
+What are your accepted payment methods?
+
+We currently accept all major credit and debit card brands.
+
+What is a block?
+
+A block is any single piece of content you add to your page, like a paragraph of text, a to-do item, an image, a code block, an embedded file, etc. Think of your page as being made up of these building blocks. Learn more about blocks here →
+
+What happens when I go over the block storage limit on a Free Plan?
+
+If you’re using a Free Plan workspace, you’ll be able to add a limited number of blocks before you have to upgrade. 
+
+When you reach the limit, you can still read, edit, and organize existing content blocks as usual, but you won’t be able to add new content blocks.
+
+Do you offer student discounts?
+
+The Plus Plan (with a 1-member limit) is free for students and educators. Compared to the Free Plan, you’ll be able to add more guests, have access to more version history, and upload larger files.
+
+Just sign up with your school email address and you’ll immediately gain access to these features. Thousands of school email domains are eligible, not just .edu!
+
+For more info & FAQs, visit the Notion for Education page.
+
+What do the different analytics tiers mean?
+
+Basic page analytics (Free and Plus Plans): Includes a list of page viewers as well as a chart displaying views over time.
+
+Advanced page analytics (Business Plan): Includes everything above as well as a list of page editors.
+
+Workspace analytics (Enterprise Plan): Includes everything above as well as user level analytics, analytics on all pages in your workspace, and search analytics for content in your workspace.
+
+How is pricing calculated for the paid plans?
+
+If you upgrade your workspace to one of the paid plans, you will be charged a fee per member.
+
+Guests are free of charge – but they can only access individual pages they are invited to. In other words, guests won’t be able to see all the team pages under the `Teamspaces` section in the left sidebar.
+
+How do I get charged when I add members to my workspace?
+
+When you add a new member to your workspace, they will use an existing paid seat if you have any available in your workspace. If you do not have any existing available paid seats, your count of paid seats will increase by 1. Changes in membership that occur mid-month will create prorated charges based on the amount of time remaining in the billing cycle when the paid seat was added.
+
+For every member you delete from your workspace, you will open up 1 available paid seat. This means you have the option to exchange members in your workspace without paying any additional costs, as long as your total billable seat count remains the same.
+
+You’ll receive an invoice for any charges accrued by changes in membership on your selected payment method, on the day of the month you initially signed up for your subscription.
+
+Each time your billing period starts (monthly or annual), your count of paid seats will be synchronized so it exactly matches the amount of members present in your workspace.
+
+How does adding and removing members work?
+
+Whether you're on a monthly or yearly billing schedule, your account may be charged on a monthly basis if you make changes in membership. If you added members, your account will be charged a prorated amount based on the percentage of the billing cycle left when a user was added. If you removed members, you will not receive credit but instead will still have use of that seat for a different user for the remainder of the billing period.
+
+How are paid seats counted?
+
+A paid seat can be thought of as a license for one member to use your Notion workspace. Workspace owners can view the total paid seat count for their workspace by going to `Settings & members` > `Billing`. Once you have added a paid seat, you will keep it for the duration of your billing period.
+
+When your billing cycle renews, either monthly or annually, you will be charged for your plan amount multiplied by the number of members in your workspace, plus any prorated charges for new paid seats added in the past month. Your number of paid seats will be recalculated at each renewal to match the number of members present in the workspace.
+
+What happens when I change plans?
+
+- Upgrading your plan: Your account will be upgraded and charged immediately. The amount due will be reduced based on the percentage of the billing cycle left at the time the plan was changed.
+- Downgrading your plan: Your account will be downgraded at the end of your billing cycle. Learn about how your features may be impacted after a downgrade here →
+
+How do I cancel my paid plan?
+
+Your paid subscription renews automatically until you cancel it. If you subscribed through Notion on desktop or web, go to `Settings` → `Billing` → `Change plan` to cancel. If you subscribed through the Apple App Store or Google Play, cancel through that store. You'll keep access to your paid features until the end of your current billing period.
+
+Learn more about billing →
+
+What happens if my payment fails? Like if my credit card expires?
+
+Your account email will be notified after each failed payment. Payments may be retried up to 8 times within the next month. 
+
+After this, if the payment did not succeed, your workspace will get restricted to limited-access for a period of time before being downgraded to the Free plan.
+
+Can I change my payment method?
+
+You can change your payment method at any time in your billing settings.
+
+How do refunds work?
+
+If you believe you've made a mistake signing up for a paid Notion subscription online or in-app, you can request a refund. Message support for more help with this.
+
+We'll be happy to refund you the full amount (not pro-rated) if you downgrade your subscription within three days of signing up for monthly billing, or within 30 days of signing up for annual billing.
+
+If you have accidentally added members to your workspace, you can remove those members at any time. If you’ve been charged for members who were accidentally added, we're happy to provide a refund of the prorated charges if you reach out within three days of the invoice date (please make sure the additional members have been removed from your workspace when writing in).
+
+If for any reason you're unhappy with Notion, get in touch with Notion support. We'd love to hear your feedback, and will be happy to work with you to create the best experience possible.
+
+What if I live in a region with a mandatory refund policy?
+
+If you live in the European Union, United Kingdom, or another region with a mandatory refund policy, you may be eligible for a monthly subscription refund past 72 hours. For example, customers in the European Union can receive a full refund for a monthly subscription within 14 days of purchase, rather than 72 hours.
+
+To request a refund, please contact us inside the app or email team@makenotion.com. If you live in a region with a mandatory refund policy, please let us know and we'll be happy to assist you.

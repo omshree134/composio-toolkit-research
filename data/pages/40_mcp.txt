@@ -1,0 +1,1021 @@
+https://github.com/deyikong/sendgrid-mcp
+
+# deyikong/sendgrid-mcp
+
+Sendgrid MCP, Contacts, Templates, Campaigns, Stats, etc. more to come. With READ_ONLY option. 
+
+- Stars: 4
+- Forks: 3
+- Watchers: 4
+- Open issues: 5
+- License: ISC License
+- Default branch: master
+- Created: 2025-08-21T06:21:07Z
+
+## Languages
+
+- JavaScript
+- TypeScript
+
+## Topics
+
+- ai-agents
+- claude
+- llm
+- mcp
+- mcp-server
+- model-context-protocol
+- sendgrid
+
+## Top Contributors
+
+- deyikong (56 contributions)
+- dependabot[bot] (11 contributions)
+- haktan-suren (2 contributions)
+- github-actions[bot] (1 contributions)
+
+---
+
+## README
+
+# SendGrid MCP Server
+
+Listed on mcpservers.org
+smithery badge
+
+A Model Context Protocol (MCP) server that provides comprehensive access to SendGrid's API v3 for email marketing, transactional email operations, dynamic template management, and detailed analytics. Features 154 tools covering all aspects of email management and performance analysis.
+
+*Built and maintained by a SendGrid engineer, as an independent project — not an official SendGrid product.*
+
+> See RELEASES.md for what's changed in the latest release.
+
+## Features
+
+- **Marketing Automations**: Create and manage email automation workflows
+- **Single Send Campaigns**: Manage one-time email campaigns with detailed performance tracking
+- **Contact Management**: Complete CRUD operations for contacts with advanced search and bulk operations
+- **Email Statistics & Analytics**: Multi-dimensional performance analysis across browsers, devices, geography, and email providers with 13-month historical data
+- **Dynamic Segment Management**: Create, update, and delete contact segments with complex filtering criteria that automatically refresh
+- **Dynamic Template Management**: Create, manage, and version HTML email templates with Handlebars support for personalization
+- **Custom Fields Management**: Define and manage additional contact data fields for enhanced targeting
+- **Mail Sending**: Send transactional emails via SendGrid with full personalization support
+- **Sender Identity Management**: Manage verified sender identities with authentication tracking
+- **Suppression Lists**: Manage bounces, spam reports, and unsubscribes for deliverability optimization
+- **Account Settings**: Access account details and configuration management
+- **Browser Integration**: Quick links to SendGrid web interface for visual operations
+- **Read-Only Safety Mode**: Secure operation mode prevents accidental data modification while maintaining full analytics access
+
+## Supported MCP Clients
+
+✅ **Claude Desktop** - Official desktop app
+✅ **Claude Code** - Official CLI tool
+✅ **Claude custom connectors** - via Streamable HTTP (see Install the server)
+✅ **OpenAI Responses API / Apps SDK** - via Streamable HTTP
+✅ **MCP Market** - Hosted, one-click deploy, no install required (see Install the server)
+✅ **Cline** - VS Code extension
+✅ **Zed Editor** - Modern code editor
+✅ **Continue** - VS Code autopilot
+✅ **Codex CLI** - via Streamable HTTP
+✅ **Any MCP-compatible client**
+
+## Getting Started
+
+Follow these steps in order — by the end you'll have the server installed (or deployed), your SendGrid API key set, and your MCP client connected.
+
+This is the actual request path, whichever client you end up using — some
+launch the server locally over stdio, others reach it over the network via
+Streamable HTTP (MCP Market, self-hosted), which adds a choice of client
+auth on top:
+
+```
+                                ┌──────────┐
+                                │  Client  │
+                                └────┬─────┘
+              ┌──────────────────────┴───────────────────┐
+              │                                          │
+           stdio (local subprocess)        HTTP (network)
+              │               auth: none | token | oauth │
+              │                                          │
+              └──────────────────────┬───────────────────┘
+                                     ▼
+                           ┌────────────────────┐
+                           │     MCP Server     │
+                           │    (this repo)     │
+                           └─────────┬──────────┘
+                                     │  SENDGRID_API_KEY
+                                     │  (always required, any transport)
+                                     ▼
+                           ┌────────────────────┐
+                           │    SendGrid API    │
+                           └────────────────────┘
+```
+
+`SENDGRID_API_KEY` is required no matter which path you take. `READ_ONLY=true`
+(the default) is a further gate *inside* the MCP Server box — it blocks
+create/update/delete/send tools once a request is already in, regardless of
+which branch it arrived on. See Environment Variables
+for the full list of what you can configure.
+
+### 1. Install the server
+
+Install it **locally** if your client launches it itself, or go **remote** if it connects over the network instead.
+
+**Local (stdio)** — for Claude Desktop, Claude Code, Cline, Zed, Continue, or any client that runs the server as a subprocess:
+
+```bash
+npm install -g sendgrid-mcp
+```
+
+This installs the `sendgrid-mcp` command globally, which your MCP client will launch as a subprocess. Requires Node.js 20+.
+
+**Remote (HTTP)** — nothing to install locally; pick one:
+
+ 
+ MCP Market (hosted, no install required) 
+
+MCP Market deploys and hosts this server for you — nothing to install locally and no environment variables to manage on your machine. You still need a SendGrid API key; you'll enter it into MCP Market instead of your own shell/config.
+
+From MCP Market's **MCP Servers** page, deploy a custom MCP from either source:
+
+- **GitHub** — select the GitHub source, choose Public or Private repo, paste
+ the repo URL (`https://github.com/deyikong/sendgrid-mcp`), and pick a
+ server name.
+- **npm** — select the npm source, enter the package name (`sendgrid-mcp`),
+ and pick a server name.
+
+Deploying from a GitHub repo
+Deploying from an npm package
+
+Either way, MCP Market builds and runs it for you; it shows up under
+**MCP Servers** with a `Running` status once ready. Continue to
+Configure your MCP client to set your
+credentials and connect.
+
+---
+
+ 
+
+ 
+ Self-hosted (Streamable HTTP) 
+
+Run the server yourself and expose it over Streamable HTTP instead of letting
+a client launch it locally — for Claude custom connectors, OpenAI's Responses
+API `mcp` tool / Apps SDK, or any other remote client.
+
+The MCP endpoint is `POST /mcp`; `GET /health` returns a status document for
+load balancers. Requests are handled **statelessly** (no session id required),
+which is what hosted clients expect.
+
+`none`/`token`/`oauth` below are not alternate ways to *connect* — they're
+three different locks on the one new door (HTTP), as shown in the
+request-flow diagram above.
+
+#### Quick start (local development)
+
+```bash
+export SENDGRID_API_KEY="SG.your_api_key_here"
+export MCP_TRANSPORT=http
+export MCP_AUTH_MODE=token
+export MCP_AUTH_TOKEN="$(openssl rand -hex 32)"
+
+sendgrid-mcp
+```
+
+#### Authentication
+
+Set `MCP_AUTH_MODE` to one of:
+
+| Mode | Use for | Requires |
+|------|---------|----------|
+| `oauth` | Production / remote clients | `MCP_OAUTH_ISSUER`, `MCP_OAUTH_AUDIENCE` |
+| `token` | Local dev, simple self-hosting | `MCP_AUTH_TOKEN` (16+ chars) |
+| `none` | Loopback development only | — refuses to start on a public bind |
+
+**OAuth mode** makes this server an OAuth 2.1 **resource server**. It does not
+issue or store credentials — it verifies access tokens minted by your existing
+identity provider (Auth0, Okta, Entra ID, Google, Stytch, …) against that
+provider's published JWKS.
+
+```bash
+export MCP_AUTH_MODE=oauth
+export MCP_OAUTH_ISSUER="https://your-tenant.auth0.com"
+export MCP_OAUTH_AUDIENCE="https://mcp.example.com"
+export MCP_OAUTH_REQUIRED_SCOPES="sendgrid:read"
+export MCP_PUBLIC_URL="https://mcp.example.com"
+```
+
+`SENDGRID_API_KEY` (see the diagram in Getting Started)
+is still required alongside these — OAuth only controls who can reach the server, not what the server
+uses to talk to SendGrid.
+
+The server publishes RFC 9728
+Protected Resource Metadata at `/.well-known/oauth-protected-resource`, so
+clients discover your authorization server automatically: an unauthenticated
+request gets a `401` whose `WWW-Authenticate` header points at that document,
+the client reads it, sends the user to your IdP to log in, and retries with the
+resulting token.
+
+Tokens are rejected (`401`) if expired, wrongly signed, or issued for a
+different issuer or audience; a valid token missing a required scope gets `403`.
+
+#### Setting up your identity provider
+
+Whichever provider you use, you're configuring the same three things: an
+**issuer URL**, an **audience** (a stable identifier for this API resource),
+and a **scope** clients will request. A few concrete walkthroughs:
+
+ 
+ Auth0 
+
+1. Sign in to your Auth0 Dashboard and go to
+ **Applications → APIs → Create API**.
+2. Set an **Identifier** — this is your audience, e.g.
+ `https://mcp.example.com`. It doesn't need to resolve to anything; it just
+ needs to be unique.
+3. Under the API's **Permissions** tab, add the scopes your server should
+ require, e.g. `sendgrid:read`, `sendgrid:write`.
+4. Your **Issuer URL** is your tenant domain, shown on the API's *Settings*
+ tab: `https://YOUR_TENANT.auth0.com/`.
+
+```bash
+export MCP_OAUTH_ISSUER="https://YOUR_TENANT.auth0.com/"
+export MCP_OAUTH_AUDIENCE="https://mcp.example.com"
+export MCP_OAUTH_REQUIRED_SCOPES="sendgrid:read"
+```
+
+ 
+
+ 
+ Okta 
+
+1. Sign in to the Okta Admin Console and go to
+ **Security → API → Authorization Servers**.
+2. Use the `default` authorization server, or create a new one. Its
+ **Issuer URI**, shown at the top of the server's settings page, looks like
+ `https://{yourOktaDomain}/oauth2/{authServerId}`.
+3. On the same page, the **Audience** field (default `api://default`) is what
+ you'll use for the audience — set it to something specific to this server,
+ e.g. `api://sendgrid-mcp`.
+4. Open the **Scopes** tab and add a scope, e.g. `sendgrid:read`.
+
+```bash
+export MCP_OAUTH_ISSUER="https://YOUR_OKTA_DOMAIN/oauth2/YOUR_AUTH_SERVER_ID"
+export MCP_OAUTH_AUDIENCE="api://sendgrid-mcp"
+export MCP_OAUTH_REQUIRED_SCOPES="sendgrid:read"
+```
+
+ 
+
+ 
+ Microsoft Entra ID (Azure AD) 
+
+1. In the Azure Portal, go to
+ **Microsoft Entra ID → App registrations → New registration** to represent
+ this MCP server as a resource.
+2. Open the new app's **Expose an API** page and set the
+ **Application ID URI** — this becomes your audience, e.g.
+ `api:// `.
+3. On the same page, click **Add a scope** to define one, e.g.
+ `sendgrid.read`.
+4. Your **Issuer URL** is `https://login.microsoftonline.com/{tenant-id}/v2.0`,
+ where `{tenant-id}` is the directory (tenant) ID from the app's
+ **Overview** page.
+
+```bash
+export MCP_OAUTH_ISSUER="https://login.microsoftonline.com/YOUR_TENANT_ID/v2.0"
+export MCP_OAUTH_AUDIENCE="api://YOUR_CLIENT_ID"
+export MCP_OAUTH_REQUIRED_SCOPES="sendgrid.read"
+```
+
+ 
+
+Other providers (Google Identity Platform, Stytch, …) follow the same shape:
+find the OpenID Connect issuer (usually published at
+` /.well-known/openid-configuration`), define an audience/resource
+identifier for this server, and create a scope for it.
+
+Whichever provider you use, also set `MCP_PUBLIC_URL` to the
+externally-reachable URL of your server (e.g. `https://mcp.example.com`) —
+clients use it during OAuth discovery.
+
+#### TLS
+
+Either terminate TLS in-process:
+
+```bash
+export TLS_KEY_FILE=/etc/ssl/private/mcp.key
+export TLS_CERT_FILE=/etc/ssl/certs/mcp.crt
+export TLS_CA_FILE=/etc/ssl/certs/chain.pem   # optional intermediates
+```
+
+…or terminate it at a proxy and tell the server to trust the forwarded headers:
+
+```bash
+export TRUST_PROXY=true
+export MCP_PUBLIC_URL="https://mcp.example.com"
+```
+
+`TRUST_PROXY` is off by default because `X-Forwarded-*` headers are
+client-controlled unless a proxy you control overwrites them. TLS 1.2 is the
+enforced minimum in in-process mode.
+
+#### Connecting clients
+
+**OpenAI (Responses API):**
+```json
+{
+  "model": "gpt-5",
+  "tools": [{
+    "type": "mcp",
+    "server_label": "sendgrid",
+    "server_url": "https://mcp.example.com/mcp",
+    "authorization": "ACCESS_TOKEN"
+  }],
+  "input": "List my SendGrid automations"
+}
+```
+
+**Claude (custom connector):** add `https://mcp.example.com/mcp` as a custom
+connector. In `oauth` mode Claude walks the discovery flow and prompts the user
+to log in; in `token` mode supply the bearer token directly.
+
+#### Security
+
+The server refuses to start on misconfigurations that would quietly expose your
+SendGrid account, rather than coming up in a weaker mode than you intended:
+
+- Binding to a non-loopback address without either TLS or `TRUST_PROXY`
+- `MCP_AUTH_MODE=none` on anything but a loopback bind
+- An `http://` `MCP_PUBLIC_URL` that is not loopback
+- A missing or under-length `MCP_AUTH_TOKEN`, or `oauth` mode without an issuer
+ and audience
+- `TLS_KEY_FILE` and `TLS_CERT_FILE` set only one of the pair
+
+Beyond that:
+
+- **Keep `READ_ONLY=true`** unless you need write and send operations. This is
+ the single most effective limit on blast radius — it is the difference
+ between a leaked token exposing analytics and one sending mail from your
+ domain.
+- **Set `MCP_ALLOWED_HOSTS` / `MCP_ALLOWED_ORIGINS`** to enable DNS-rebinding
+ protection, which matters most for locally bound servers reachable from a
+ browser.
+- **Scope your SendGrid API key** to only the permissions this server needs;
+ the key is the real credential behind every request.
+
+---
+
+ 
+
+### 2. Get your SendGrid API key
+
+1. Go to SendGrid API Keys
+2. Click "Create API Key"
+3. Choose "Full Access" or select specific permissions
+4. Copy the generated key (starts with `SG.`)
+
+### 3. Configure your MCP client
+
+ 
+ MCP Market 
+
+Once your server is deployed (see Install the server),
+set your credentials and connect a client.
+
+**Set your environment variables**
+
+Open your deployed server → the **Variables** tab → **My Credentials**, and
+fill in:
+
+MCP Market Variables tab showing SENDGRID_API_KEY and other credentials
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `SENDGRID_API_KEY` | ✅ | Your SendGrid API key (starts with SG.) |
+| `MCP_SERVER_NAME` | ❌ | Server name for identification |
+| `MCP_SERVER_VERSION` | ❌ | Server version |
+| `LOG_LEVEL` | ❌ | Logging level (debug, info, warn, error) |
+| `REQUEST_TIMEOUT` | ❌ | API request timeout in milliseconds |
+| `READ_ONLY` | ❌ | Enable read-only mode (true/false) |
+
+Each field saves independently — only `SENDGRID_API_KEY` is required.
+
+**Connect a client**
+
+Click **+ Connect** on your server's page. MCP Market shows one-click
+install options for Claude Desktop, Claude Code, Codex CLI, Cursor, VS Code,
+Windsurf, Cline, JetBrains, Gemini CLI, Amazon Q, Goose, and Continue — pick
+yours and follow its prompt.
+
+MCP Market's Install server panel with one-click client options
+
+For any other client, use the **Connection URL** option instead, which gives
+you a Streamable HTTP endpoint unique to your deployment. The examples below
+use `deyikong/sendgrid-mcp` for illustration — yours will have your own
+username and server name:
+
+```
+https://link.mcpmarket.com/<your-username>/<your-server-name>/mcp
+```
+
+Wire it up the same way as any other self-hosted
+endpoint, e.g.:
+
+```bash
+# Claude Code
+claude mcp add --transport http sendgrid https://link.mcpmarket.com/<your-username>/<your-server-name>/mcp
+
+# Codex CLI
+codex mcp add sendgrid --url https://link.mcpmarket.com/<your-username>/<your-server-name>/mcp
+```
+
+MCP Market manages hosting, TLS, and availability for the deployed server; for account, billing, or deployment questions, refer to MCP Market directly rather than this repository.
+
+---
+
+ 
+
+ 
+ Claude Desktop 
+
+The official Claude desktop application with native MCP support.
+
+**Configuration File Locations:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+
+**Configuration:**
+```json
+{
+  "mcpServers": {
+    "sendgrid": {
+      "command": "sendgrid-mcp",
+      "env": {
+        "SENDGRID_API_KEY": "SG.your_api_key_here",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
+```
+
+**Optional Configuration:**
+```json
+{
+  "mcpServers": {
+    "sendgrid": {
+      "command": "sendgrid-mcp",
+      "env": {
+        "SENDGRID_API_KEY": "SG.your_api_key_here",
+        "READ_ONLY": "false",
+        "LOG_LEVEL": "info",
+        "REQUEST_TIMEOUT": "30000"
+      }
+    }
+  }
+}
+```
+
+**After configuration:**
+1. Save the file
+2. Restart Claude Desktop
+3. The SendGrid MCP server will be available in Claude
+
+---
+
+ 
+
+ 
+ Claude Code (CLI) 
+
+Claude's official command-line interface with MCP support.
+
+**Installation:**
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+**Configuration File Location:**
+- **All platforms**: `~/.claude/config.json`
+
+**Configuration:**
+```json
+{
+  "mcpServers": {
+    "sendgrid": {
+      "command": "sendgrid-mcp",
+      "env": {
+        "SENDGRID_API_KEY": "SG.your_api_key_here",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
+```
+
+**Usage:**
+```bash
+# Start Claude Code with SendGrid MCP
+claude
+
+# The SendGrid tools will be automatically available
+# Ask Claude: "List my SendGrid automations"
+```
+
+---
+
+ 
+
+ 
+ Cline (VS Code Extension) 
+
+Popular VS Code extension with MCP support.
+
+**Installation:**
+1. Install the Cline extension from VS Code marketplace
+2. Open Cline settings
+
+**Configuration File:**
+- Open VS Code Settings
+- Search for "Cline: MCP Settings"
+- Edit the MCP configuration JSON
+
+**Configuration:**
+```json
+{
+  "mcpServers": {
+    "sendgrid": {
+      "command": "sendgrid-mcp",
+      "env": {
+        "SENDGRID_API_KEY": "SG.your_api_key_here",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
+```
+
+---
+
+ 
+
+ 
+ Zed Editor 
+
+Modern code editor with built-in AI and MCP support.
+
+**Configuration File Location:**
+- **macOS/Linux**: `~/.config/zed/settings.json`
+- **Windows**: `%APPDATA%/Zed/settings.json`
+
+**Configuration:**
+```json
+{
+  "context_servers": {
+    "sendgrid-mcp": {
+      "command": "sendgrid-mcp",
+      "env": {
+        "SENDGRID_API_KEY": "SG.your_api_key_here",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
+```
+
+---
+
+ 
+
+ 
+ Continue (VS Code Extension) 
+
+Open-source autopilot for VS Code with MCP support.
+
+**Configuration File Location:**
+- **All platforms**: `~/.continue/config.json`
+
+**Configuration:**
+```json
+{
+  "experimental": {
+    "modelContextProtocolServers": [
+      {
+        "command": "sendgrid-mcp",
+        "env": {
+          "SENDGRID_API_KEY": "SG.your_api_key_here",
+          "READ_ONLY": "true"
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
+ 
+
+ 
+ Generic MCP Client 
+
+For any MCP-compatible client not listed above:
+
+**Command Line:**
+```bash
+# With environment variables
+SENDGRID_API_KEY="SG.your_api_key_here" READ_ONLY="true" sendgrid-mcp
+```
+
+**Configuration Template:**
+```json
+{
+  "command": "sendgrid-mcp",
+  "env": {
+    "SENDGRID_API_KEY": "SG.your_api_key_here",
+    "READ_ONLY": "true"
+  }
+}
+```
+
+---
+
+ 
+
+## Environment Variables
+
+The server is configured entirely through environment variables. `SENDGRID_API_KEY` is the only required one.
+
+| Variable | Required | Description | Default |
+|----------|----------|-------------|---------|
+| `SENDGRID_API_KEY` | ✅ | Your SendGrid API key (starts with SG.) | - |
+| `READ_ONLY` | ❌ | Enable read-only mode (true/false) | `true` |
+| `MCP_SERVER_NAME` | ❌ | Server name for identification | `sendgrid-mcp` |
+| `MCP_SERVER_VERSION` | ❌ | Server version | `1.0.0` |
+| `LOG_LEVEL` | ❌ | Logging level (debug, info, warn, error) | `info` |
+| `REQUEST_TIMEOUT` | ❌ | API request timeout in milliseconds | `30000` |
+
+**`READ_ONLY` defaults to `true`.** In this mode every tool is registered and visible, but operations that create, update, delete, or send are blocked at runtime with a clear error message — only list/get/search/browser-link tools actually run. This is the safest default while you're getting set up. See Read-Only Mode for the full breakdown of what's blocked, and set `READ_ONLY=false` once you're ready to allow write and send operations.
+
+These variables are set inside your MCP client's configuration (as an `env` block) — see Configure your MCP client. Self-hosted HTTP mode has its own set of variables (transport, auth, TLS) — see Install the server.
+
+## Read-Only Mode
+
+ 
+ Read-Only Mode 
+
+By default, the SendGrid MCP server runs in **read-only mode** (`READ_ONLY=true`) for safety. All tools are registered and available, but mutable operations are blocked at runtime with helpful error messages.
+
+### How Read-Only Mode Works
+
+When `READ_ONLY=true` (default):
+- **All tools are registered** and visible to the AI assistant
+- **Non-mutating operations** work normally (list, get, search, open browser links)
+- **Mutating operations** are blocked with a clear error message:
+  ```
+  ❌ Operation blocked: Server is running in READ_ONLY mode. Set READ_ONLY=false in your environment to enable write operations.
+  ```
+
+### Read-Only Safe Operations
+
+These 32 operations work normally when `READ_ONLY=true`:
+
+**Automations & Campaigns:**
+- `list_automations`, `get_automation`, `open_automation_creator`, `open_automation_editor`
+- `list_single_sends`, `get_single_send`, `open_single_send_creator`, `open_single_send_stats`
+
+**Contacts, Lists & Segments:**
+- `list_contacts`, `get_contact`, `search_contacts`, `search_contacts_by_emails`
+- `list_email_lists`
+- `list_segments`, `open_segment_creator`
+- `list_custom_fields`
+
+**Senders:**
+- `list_senders`, `open_csv_uploader`
+
+**Templates:**
+- `list_templates`, `get_template`, `get_template_version`, `open_template_editor`
+
+**Statistics (all read-only by design):**
+- `get_global_stats`, `get_stats_overview`, `get_stats_by_browser`, `get_stats_by_client_type`, `get_stats_by_device_type`, `get_stats_by_mailbox_provider`, `get_stats_by_country`, `get_category_stats`, `get_subuser_stats`
+
+**Utilities:**
+- `get_scopes`
+
+### Blocked Operations in Read-Only Mode
+
+These 26 operations are blocked when `READ_ONLY=true`:
+- `update_automation_settings`, `update_automation_step`, `delete_automation`
+- `create_contact`, `update_contact`, `delete_contact`
+- `create_contact_with_lists`, `remove_contact_from_lists`
+- `create_email_list`, `update_email_list`, `delete_email_list`
+- `create_custom_field`, `update_custom_field`, `delete_custom_field`
+- `create_sender`, `delete_sender`
+- `update_segment`, `delete_segment`
+- `create_template`, `update_template`, `delete_template`
+- `create_template_version`, `update_template_version`, `delete_template_version`
+- `create_html_template`
+- `send_mail`
+
+### Full Access Mode
+
+To enable **create, update, delete, and send operations**, set `READ_ONLY=false` in your MCP client's `env` block:
+
+```json
+{
+  "env": {
+    "SENDGRID_API_KEY": "SG.your_api_key_here",
+    "READ_ONLY": "false"
+  }
+}
+```
+
+This will allow all mutating operations to execute normally while maintaining all read operations.
+
+**⚠️ Security Note:** Only disable read-only mode if you need write access and trust the environment where the server is running.
+
+ 
+
+## Available Tools
+
+The server exposes 154 tools grouped into 22 categories. Every tool is registered regardless of `READ_ONLY` mode — see Read-Only Mode for which ones are blocked by default.
+
+📚 **For natural-language prompts you can say directly to Claude, see EXAMPLE_PROMPTS.md.** The examples below show the underlying JSON tool calls.
+
+### Tools Summary
+
+| Category | Tools | Read-Only | Mutable |
+|----------|-------|-----------|---------|
+| Marketing Automations | 7 | 4 | 3 |
+| Single Send Campaigns | 4 | 4 | 0 |
+| Contact CRUD Operations | 7 | 4 | 3 |
+| Email List Management | 6 | 1 | 5 |
+| Segments & Custom Fields | 8 | 3 | 5 |
+| Senders & Import | 4 | 2 | 2 |
+| Dynamic Templates | 11 | 4 | 7 |
+| Mail Sending | 1 | 0 | 1 |
+| Email Statistics & Analytics | 9 | 9 | 0 |
+| Utilities | 1 | 1 | 0 |
+| Suppressions | 21 | 10 | 11 |
+| Domain Authentication & Link Branding | 13 | 5 | 8 |
+| Event & Inbound Parse Webhooks | 12 | 5 | 7 |
+| Tracking Settings | 9 | 5 | 4 |
+| Mail Settings | 11 | 6 | 5 |
+| API Keys (read-only) | 2 | 2 | 0 |
+| Alerts (read-only) | 2 | 2 | 0 |
+| Teammates (read-only) | 3 | 3 | 0 |
+| Dedicated IPs (read-only) | 11 | 11 | 0 |
+| Design Library | 9 | 4 | 5 |
+| Email Address Validation | 1 | 0 | 1 |
+| Message Search | 2 | 2 | 0 |
+| **Total** | **154** | **87** | **67** |
+
+API Keys, Alerts, Teammates, and Dedicated IPs are deliberately read-only in this server, and SSO/certificate management isn't exposed at all — see Intentionally Unsupported Operations for why.
+
+### Marketing Automations
+
+- `list_automations` - List all marketing automations with metadata
+- `get_automation` - Get detailed information about a specific automation
+- `update_automation_settings` - Update automation-level settings (name, status)
+- `update_automation_step` - Update individual step settings (status, wait time)
+- `delete_automation` - Permanently delete an automation
+- `open_automation_creator` - Open automation creator in browser
+- `open_automation_editor` - Open specific automation editor
+
+ 
+ Examples 
+
+**Example — get automation details:**
+```json
+{
+  "tool": "get_automation",
+  "arguments": {
+    "automation_id": "automation_id_here"
+  }
+}
+```
+
+**Example — pause an entire automation:**
+```json
+{
+  "tool": "update_automation_settings",
+  "arguments": {
+    "automation_id": "automation_id_here",
+    "status": "paused"
+  }
+}
+```
+
+**Example — update a single step (status, wait time):**
+```json
+{
+  "tool": "update_automation_step",
+  "arguments": {
+    "automation_id": "automation_id_here",
+    "step_id": "step_id_here",
+    "step_status": "active",
+    "wait_time": 1440
+  }
+}
+```
+
+**Example — delete an automation:**
+```json
+{
+  "tool": "delete_automation",
+  "arguments": {
+    "automation_id": "automation_id_here"
+  }
+}
+```
+
+ 
+
+### Single Send Campaigns
+
+- `list_single_sends` - List all single send campaigns with metadata
+- `get_single_send` - Retrieve detailed content and settings for a single send campaign
+- `open_single_send_creator` - Open campaign creator in browser for visual design
+- `open_single_send_stats` - View detailed campaign performance statistics
+
+ 
+ Examples 
+
+**Example — get a campaign's content and settings:**
+```json
+{
+  "tool": "get_single_send",
+  "arguments": {
+    "singlesend_id": "singlesend_id_here"
+  }
+}
+```
+
+ 
+
+### Contact CRUD Operations
+
+- `list_contacts` - List all contacts with pagination and filtering
+- `get_contact` - Get detailed information about a specific contact
+- `create_contact` - Create new contacts with custom fields
+- `update_contact` - Update existing contact information and custom data
+- `delete_contact` - Delete contacts permanently with cleanup
+- `search_contacts` - Search for contacts using advanced query conditions
+- `search_contacts_by_emails` - Search for specific contacts by email addresses
+
+ 
+ Examples 
+
+**Example — create a new contact:**
+```json
+{
+  "tool": "create_contact",
+  "arguments": {
+    "contacts": [
+      {
+        "email": "newuser@example.com",
+        "first_name": "Jane",
+        "last_name": "Smith"
+      }
+    ]
+  }
+}
+```
+
+**Example — search for contacts by email:**
+```json
+{
+  "tool": "search_contacts_by_emails",
+  "arguments": {
+    "emails": ["john@example.com", "jane@example.com"]
+  }
+}
+```
+
+**Example — search contacts with a query condition:**
+```json
+{
+  "tool": "search_contacts",
+  "arguments": {
+    "query": "email LIKE '@example.com'",
+    "page_size": 10
+  }
+}
+```
+
+**Example — update a contact:**
+```json
+{
+  "tool": "update_contact",
+  "arguments": {
+    "contacts": [
+      {
+        "id": "contact_id_here",
+        "first_name": "John",
+        "last_name": "Updated"
+      }
+    ]
+  }
+}
+```
+
+**Example — delete contacts:**
+```json
+{
+  "tool": "delete_contact",
+  "arguments": {
+    "contact_ids": ["contact_id_1", "contact_id_2"]
+  }
+}
+```
+
+ 
+
+### Email List Management
+
+- `list_email_lists` - List all email lists
+- `create_email_list` - Create a new email list
+- `update_email_list` - Update email list properties
+- `delete_email_list` - Delete an email list
+- `create_contact_with_lists` - Create contacts and assign to lists
+- `remove_contact_from_lists` - Remove contacts from a specific list
+
+ 
+ Examples 
+
+**Example — list email lists:**
+```json
+{
+  "tool": "list_email_lists",
+  "arguments": {
+    "page_size": 100
+  }
+}
+```
+
+**Example — rename an email list:**
+```json
+{
+  "tool": "update_email_list",
+  "arguments": {
+    "list_id": "list_id_here",
+    "name": "Updated List Name"
+  }
+}
+```
+
+**Example — remove contacts from a list:**
+```json
+{
+  "tool": "remove_contact_from_lists",
+  "arguments": {
+    "list_id": "list_id_here",
+    "contact_ids": ["contact_id_1", "contact_id_2"]
+  }
+}
+```
+
+**Example — delete an email list:**
+```json
+{
+  "tool": "delete_email_list",
+  "arguments": {
+    "list_id": "list_id_here"
+  }
+}
+```
+
+ 
+
+### Segments & Custom Fields
+
+- `list_segments` - List dynamic segments with parent relationships and criteria
+- `open_segment_creator` - Open segment creator in browser for visual query building
+- `update_segment` - Update existing segment name or query criteria with real-time refresh
+- `delete_segment` - Delete an existing segment (contacts remain unaffected)
+- `list_custom_fields` - List custom field definitions with data types
+- `create_custom_field` - Create new custom fields (Text, Number, Date types)
+- `update_custom_field` - Update existing custom field definitions
+- `delete_custom_field` - Delete custom field definitions with data cleanup
+
+ 
+ Examples 
+
+**Example — rename a segment:**
+```json
+{
+  "tool": "update_segment",
+  "arguments": {
+    "segment_id": "segment_id_here",
+    "name": "Updated Segment Name"
+  }
+}
+```
+
+**Example — update a segment's query criteria:**
+```json
+{
+  "tool": "update_segment",
+  "arguments": {
+    "segment_id": "segment_id_here",
+    "query_dsl": "{\"and\": [{\"field\": \"email\", \"value\": \"

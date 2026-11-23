@@ -1,0 +1,110 @@
+https://www.pipedrive.com/en/features/mcp-server
+
+Pipedrive MCP Server | Connect Claude & ChatGPT to Your CRM | Pipedrive
+
+# Connect your AI assistant to Pipedrive with MCP
+
+Empower AI assistants like ChatGPT and Claude to securely and reliably work with your Pipedrive data. Find deals, update records, get insights, move opportunities through your pipeline and automate workflows, all from your AI assistant.
+
+Connect with Claude Opens in new window
+
+Pipedrive is an official connector in Claude and ChatGPT. Find it in the connector directory and connect your account. No manual server setup required.
+
+![Pipedrive MCP](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/MCP-hero.svg)
+
+Trusted by 100,000+ companies in 179 countries 
+
+## How the Pipedrive MCP server works
+
+The Model Context Protocol (MCP) is an open standard that lets AI assistants securely connect to external tools and data sources. With Pipedrive MCP, your AI assistant can securely access and act on your CRM data using natural language. 
+
+Step 1: Connect securely
+
+Connect your AI assistant to Pipedrive in minutes via a secure OAuth login. No coding, APIs, middleware or developer support required. 
+
+Step 2: Ask your AI to act
+
+Simply tell ChatGPT or Claude what you want to do, using plain language directly from its input box.
+
+Step 3: Get instant results
+
+Your AI assistant can find information, update records, create activities and automate workflows using live Pipedrive data. 
+
+## Bring Pipedrive into your AI assistant
+
+Sales work is increasingly happening inside AI assistants. Pipedrive MCP brings your CRM into that workflow, giving your AI assistant secure access to your live CRM data so it can help you move deals forward, automate busywork and surface insights instantly.
+
+##### Query your CRM
+
+Search deals, contacts, organizations and leads. Retrieve pipeline details, analyze sales activity and access customer information in seconds.
+
+##### Take action
+
+Create and update deals, contacts and activities. Convert leads, schedule follow-ups and keep your CRM up to date without manual data entry.
+
+##### Automate workflows
+
+Turn meeting notes into CRM records, generate follow-up tasks and automate repetitive sales workflows through natural conversation.
+
+## Your best day, every day. With Skills.
+
+MCP gives your AI assistant access to Pipedrive. Skills are ready-made instructions that show Claude, ChatGPT and other AI tools how to handle everyday sales tasks, using your live Pipedrive data. Skills handle the busywork behind a good sales week: where to focus, what’s slipping and whether you’re on track. Every rep starts each day knowing what matters, not digging for it.
+
+Learn more
+
+## Your AI assistant gets access. You stay in control.
+
+An official, reliable and fully supported connection built and maintained by Pipedrive.
+
+##### Secure by design
+
+Your AI assistant can only work with information Pipedrive users already have permission to see/edit.
+
+##### Fast and easy setup
+
+Connect in minutes through secure OAuth. No coding, no API development, no developer required.
+
+##### Live CRM data
+
+Your AI assistant works with real-time CRM data, not delayed syncs or outdated information.
+
+## See what your AI assistant can do
+
+##### Ask instead of click
+
+“Show me all open deals over $10K that haven’t been updated in two weeks.”
+
+##### Build from meeting notes 
+
+“Here are my notes from today’s call. Create a deal, contact and follow-up activity.”
+
+##### Move deals through the pipeline
+
+“Move the Acme Corp deal to Proposal Sent and schedule a follow-up for Friday.”
+
+## Frequently asked questions
+
+- ### What is the Pipedrive MCP server?
+
+Pipedrive MCP (Model Context Protocol) connects your AI assistant directly to Pipedrive, allowing it to securely access, update and act on your CRM data using natural language.
+- ### What can I do with it?
+
+You can query CRM data, update records and automate workflows directly from your AI assistant. Find deals, update contacts, create activities, analyze pipelines and automate repetitive tasks using natural “plain” language.
+- ### Who can use the Pipedrive MCP?
+
+All Pipedrive customers, on every plan. Usage is subject to token limits based on your plan and you can purchase additional tokens if needed.
+- ### How do I get started with the Pipedrive MCP server?
+
+Connect your AI assistant to Pipedrive in minutes through secure OAuth, no coding or developer required. See the Pipedrive MCP documentation for step-by-step instructions.
+- ### Which AI assistants are supported?
+
+Pipedrive MCP works with any AI assistant that supports custom MCP connections. We provide setup guides for ChatGPT and Claude and other assistants can connect using the Pipedrive MCP server URL.
+- ### Does it adhere to my existing Pipedrive permissions?
+
+Yes. Your AI assistant can only access and modify data your Pipedrive user already has permission to view and edit. All actions are recorded in the change log for full auditability.
+- ### Is my data safe?
+
+Yes. Pipedrive MCP is built and maintained by Pipedrive and follows our security standards. Your AI assistant can only access data within the scope of your permissions. Your AI provider's own privacy and security policies also apply.
+- ### Is there an extra cost?
+
+Pipedrive MCP is available on all Pipedrive plans. Usage is based on token limits included in your plan and additional tokens can be purchased if needed.

@@ -1,0 +1,16 @@
+https://developers.gorgias.com/docs/1-register-on-developer-portal
+
+1. Register on Developer Portal & Get Gorgias Sandbox Account
+
+# 1. Register on Developer Portal & Get Gorgias Sandbox Account
+
+- Register on our Developer Portal;
+- Once you register, feel free to create a trial account and reach out to techpartners@gorgias.com to transform it into a developer account. 
+
+- ⚠️ You will need to have a draft app to get approved for the Sandbox Account
+
+> ### 👉
+> 
+> Currently all new Sandbox accounts are Demo accounts by default. Once you get access to your account, please reach out to techpartners@gorgias.com with your account URL to switch it to a Developer plan. We appreciate your patience while we are working on automating this process!
+
+Updated about 1 year ago

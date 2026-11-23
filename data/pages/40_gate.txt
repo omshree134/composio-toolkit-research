@@ -1,0 +1,16 @@
+https://www.twilio.com/docs/sendgrid/api-reference/api-keys
+
+# API Keys
+
+Your application, mail client, or website can all use API (Application Programming Interface) keys to authenticate access to SendGrid services. You can revoke an API key at any time without having to change your username and password, and an API key can be scoped to perform a limited number of actions.
+
+There are 3 different types of API keys:
+
+- Full Access
+Allows the API key to access `GET`, `PATCH`, `PUT`, `DELETE` and `POST` endpoints for all parts of your account, excluding billing and Email Address Validation.
+- Custom Access
+Customizes levels of access for all parts of your account, excluding billing and Email Address Validation.
+- Billing Access
+Allows the API key to access billing endpoints for the account.
+
+You must create your first API key using the Twilio SendGrid App. Once you have a key with permissions to manage other keys, you can use the endpoints documented as part of this API.

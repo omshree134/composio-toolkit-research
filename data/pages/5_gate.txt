@@ -1,0 +1,660 @@
+https://twenty.com/pricing
+
+# Simple
+
+Pricing
+
+Start your free trial today without credit card.
+
+MonthlyYearly-25%
+
+Self-hosting
+
+### Pro
+
+A custom agentic CRM for one team.
+
+![Pro plan icon](https://twenty.com/_next/image?url=%2Fimages%2Fpricing%2Fplans%2Fpro.webp&w=3840&q=75&dpl=dpl-8e699d05-44349560174-1)
+
+#### $9
+
+/user/month
+
+Includes
+
+- ![Google](https://twenty.com/images/shared/companies/logos/google.webp)![Microsoft](https://twenty.com/images/shared/companies/logos/microsoft.svg) Emails and meetings log themselvesGoogle and Microsoft email and calendar sync
+- ![Call Recorder](https://twenty.com/images/pricing/plans/apps/call-recorder.svg)![People Data Labs](https://twenty.com/images/pricing/plans/apps/people-data-labs.webp)![Slack](https://twenty.com/images/shared/companies/logos/slack.webp) Calls recorded, leads enrichedAnd more apps from our marketplace
+- Shaped around how you sellCustom data model, apps and automations
+- Automate the busyworkAgentic workflows
+- Delegate the CRM chores to AILimited personal AI usage
+
+Start for free
+
+### Organization
+
+More AI and control for several teams.
+
+![Organization plan icon](https://twenty.com/_next/image?url=%2Fimages%2Fpricing%2Fplans%2Forganization.webp&w=3840&q=75&dpl=dpl-8e699d05-44349560174-1)
+
+#### $39
+
+/user/month
+
+Everything in Pro, plus
+
+- Control who does whatCustom roles, permissions and usage limits
+- Ready for your security reviewSAML/OIDC SSO and audit logs
+- Faster answers from our teamPriority support
+- Find experts to roll it outAccess to our implementation partner network
+- Delegate 5x more to AI5x more personal AI usage
+
+Start for free
+
+### Enterprise
+
+Dedicated scale for large companies.
+
+![Enterprise plan icon](https://twenty.com/_next/image?url=%2Fimages%2Fpricing%2Fplans%2Fenterprise.webp&w=3840&q=75&dpl=dpl-8e699d05-44349560174-1)
+
+from
+
+#### $50k
+
+/year
+
+Everything in Organization, plus
+
+- Room to grow, at any scaleDedicated compute and custom API rates
+- Your data, fully isolatedSingle-tenant isolation
+- Response times you can count onDedicated support & SLA
+- Security tailored to your ITVPN, your own AI providers and more
+- Enterprise procurement supportSecurity reviews and custom contracts
+
+Talk to sales
+
+![](https://twenty.com/_next/image?url=%2Fimages%2Fpricing%2Fengagement-band%2Fhalftone-on-white.webp&w=3840&q=75&dpl=dpl-8e699d05-44349560174-1)
+
+## Need help with customization?
+
+Find the right partner to implement, customize, and tailor Twenty to your team.
+
+Browse partners
+
+Name
+
+Pro
+
+Organization
+
+Enterprise
+
+Plan essentials
+
+Price
+
+$9/user/month
+
+$39/user/month
+
+From$50k/year
+
+Personal AI usageEach member's own AI allowance, renewed every Monday. An AI task is one chat request, estimated with the default model; smarter models use more. When it runs out, chat continues on workspace credits unless an admin turns that off.
+
+≈ 100AI tasks/weekper member
+
+≈ 500AI tasks/weekper member
+
+Custom
+
+Workspace creditsMonthly credits shared by the workspace for workflows, AI agents and apps. 1 credit covers 10,000 workflow steps.
+
+1credit/user/month≈ 10,000 workflow steps
+
+4credits/user/month≈ 40,000 workflow steps
+
+Custom
+
+Permissions
+
+Admin & Member
+
+Custom rolesdown to fields and rows
+
+Custom rolesdown to fields and rows
+
+SSO
+
+No
+
+SAML/OIDC
+
+SAML/OIDC + SCIM
+
+Support
+
+Email and chat
+
+Priority
+
+Dedicated, with SLA
+
+Workspace
+
+Seats limit
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Custom objects
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Custom fields
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Custom views
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+View types
+
+Table, Kanban, Calendar
+
+Table, Kanban, Calendar
+
+Table, Kanban, Calendar
+
+Custom layout
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Records
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+CSV import & export
+
+Yes
+
+Yes
+
+Yes
+
+Languages
+
+30+
+
+30+
+
+30+
+
+Reports
+
+Number of dashboards
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Emails & Calendar
+
+Internet accounts per user
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Folder/Label import
+
+Yes
+
+Yes
+
+Yes
+
+Email sharing
+
+Fully customizable
+
+Fully customizable
+
+Fully customizable
+
+AI & Automations
+
+Workflows
+
+Yes
+
+Yes
+
+Yes
+
+AI agents
+
+Yes
+
+Yes
+
+Yes
+
+Extra creditsAdd a credit pack to your monthly or yearly plan. Unused pack credits roll over, up to twice the pack.
+
+Credit packs$1 per credit, from $20/month
+
+Credit packs$1 per credit, from $20/month
+
+Custom
+
+Security
+
+Two-factor authentication
+
+Yes
+
+Yes
+
+Yes
+
+User roles
+
+Admin & Member
+
+Unlimited
+
+Unlimited
+
+Read/Edit/Delete permissions
+
+No
+
+Unlimited
+
+Unlimited
+
+Field-level permissions
+
+No
+
+Unlimited
+
+Unlimited
+
+Row-level permissions
+
+No
+
+Unlimited
+
+Unlimited
+
+Encryption key rotation
+
+No
+
+Yes
+
+Yes
+
+Record change logs
+
+Yes
+
+Yes
+
+Yes
+
+Audit logs
+
+No
+
+Yes
+
+Yes
+
+Log retention
+
+2 hours
+
+Custom, up to 3 years
+
+Custom, up to 3 years
+
+Environments
+
+Local, Production
+
+Local, Production
+
+Local, Production
+
+Impersonate users
+
+Yes
+
+Yes
+
+Yes
+
+Data Processing Agreement (DPA)
+
+Yes
+
+Yes
+
+Yes
+
+Support
+
+Community
+
+Yes
+
+Yes
+
+Yes
+
+Help center
+
+Yes
+
+Yes
+
+Yes
+
+Email and Chat
+
+Yes
+
+Yes
+
+Yes
+
+Priority support
+
+No
+
+Yes
+
+Yes
+
+Dedicated support & SLA
+
+No
+
+No
+
+Yes
+
+Implementation partners
+
+No
+
+Yes
+
+Yes
+
+Customization
+
+Custom apps
+
+Unlimited
+
+Unlimited
+
+Unlimited
+
+Subdomain (yourco.twenty.com)
+
+Yes
+
+Yes
+
+Yes
+
+Custom domain (crm.yourco.com)
+
+No
+
+Yes
+
+Yes
+
+Developers
+
+REST & GraphQL API
+
+Yes
+
+Yes
+
+Yes
+
+Webhooks
+
+Yes
+
+Yes
+
+Yes
+
+MCP server
+
+Yes
+
+Yes
+
+Yes
+
+App logs
+
+Yes
+
+Yes
+
+Yes
+
+Install shared tarball app
+
+No
+
+Yes
+
+Yes
+
+API calls
+
+50 per minute
+
+100 per minute
+
+Custom
+
+Enterprise
+
+Single-tenant isolation
+
+No
+
+No
+
+Yes
+
+IP allow-listing
+
+No
+
+No
+
+Yes
+
+SCIM provisioning
+
+No
+
+No
+
+Yes
+
+Security reviews & custom contracts
+
+No
+
+No
+
+Yes
+
+See more features
+
+## Compare the real cost
+
+Feature-by-feature price checks against the CRMs you're probably comparing us with. Sources included.
+
+- Twenty vs HubSpot
+- Twenty vs Salesforce
+- Twenty vs SAP Sales Cloud
+- Twenty vs Pipedrive
+- Twenty vs Microsoft Dynamics
+
+1‑800‑YES‑SOFTWARE
+
+Salesfarce Add-on Center
+
+?×
+
+Salesfarce Pro
+
+$100 / seat / month - billed yearly
+
+![Retro help document icon](https://twenty.com/images/pricing/salesfarce/help-icon.webp)
+
+Add-ons
+
+Select all
+
+API access+$35/user per month
+
+Webhooks (Change Data Capture)+$7000/org per month
+
+Live updatesUnavailable
+
+Unavailable
+
+Real-time is a state of mind, not a feature.
+
+✓UI themeRetro 2015
+
+Included!
+
+Better than Liquid Glass!
+
+SSO+$5/user per month
+
+11 permissions groups+$75/user per month Switch to enterprise!
+
+Maps view+$105/user per month
+
+6 workflows+$75/user per month Switch to enterprise!
+
+Lock-in3 2 years contract-33% off
+
+✓APEX tutorialsFree for you!
+
+Included!
+
+Available on YouTube!
+
+Self-hostingOut of stock
+
+Out of stock
+
+Self-hosting, now for rent!
+
+✓Salesforce ClassicExtended run!
+
+Included!
+
+Outlived every redesign since 2004.
+
+Flow orchestration$1/orchestration run/org +$ 75/user per month Switch to enterprise!
+
+Infinite scrollComing soon!
+
+Coming soon!
+
+Pagination builds character.
+
+AI (Einstein)+$75/user per month Switch to enterprise!
+
+Encrypt your data+20% of net spend +$75/user per month Switch to enterprise!
+
+More options available!
+
+Check more add-ons
+
+Any Questions?
+
+## Stop fighting custom. Start building, with Twenty
+
+Get started Talk to us
+
+### Is Twenty really open-source?
+
+Yes. Twenty is the #1 Open Source CRM on GitHub. You can self-host to fully own your infrastructure, or run it on our managed cloud for a zero-ops setup.
+
+### How long does it take to get started?
+
+Sign up for Cloud in under a minute and start your 30-day trial. For larger rollouts, our team can support you along the way. Reach out to discuss what you need.
+
+### Can I migrate from Salesforce or HubSpot?
+
+Yes. Import your data via CSV, or use our API for 50,000+ records. Our partners can handle the full migration for you.
+
+### Do I need a developer to customize Twenty?
+
+No. Build custom objects, fields, views, and no-code workflows straight from Settings. Unlimited, no extra charge.
+
+### Can developers extend Twenty with code?
+
+Yes, with our Apps framework. Scaffold an extension with `npx twenty@latest app init my-app` and ship custom objects, server-side logic functions, React components that render inside Twenty’s UI, AI skills and agents, views, and navigation, all in TypeScript, deployable to any workspace.
+
+### Does Twenty work with Claude, ChatGPT, and Cursor?
+
+Yes. Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language.
+
+### What does Twenty cost?
+
+Cloud Pro is $9/user/month and Organization is $39/user/month, billed yearly. Organization adds 5x more AI usage per member, custom roles with field and row-level permissions, and SSO. Self-hosting the open source core is free.
+
+```json
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Twenty really open-source?","acceptedAnswer":{"@type":"Answer","text":"Yes. Twenty is the #1 Open Source CRM on GitHub. You can self-host to fully own your infrastructure, or run it on our managed cloud for a zero-ops setup."}},{"@type":"Question","name":"How long does it take to get started?","acceptedAnswer":{"@type":"Answer","text":"Sign up for Cloud in under a minute and start your 30-day trial. For larger rollouts, our team can support you along the way. Reach out to discuss what you need."}},{"@type":"Question","name":"Can I migrate from Salesforce or HubSpot?","acceptedAnswer":{"@type":"Answer","text":"Yes. Import your data via CSV, or use our API for 50,000+ records. Our partners can handle the full migration for you."}},{"@type":"Question","name":"Do I need a developer to customize Twenty?","acceptedAnswer":{"@type":"Answer","text":"No. Build custom objects, fields, views, and no-code workflows straight from Settings. Unlimited, no extra charge."}},{"@type":"Question","name":"Can developers extend Twenty with code?","acceptedAnswer":{"@type":"Answer","text":"Yes, with our Apps framework. Scaffold an extension with `npx twenty@latest app init my-app` and ship custom objects, server-side logic functions, React components that render inside Twenty’s UI, AI skills and agents, views, and navigation, all in TypeScript, deployable to any workspace."}},{"@type":"Question","name":"Does Twenty work with Claude, ChatGPT, and Cursor?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every Cloud workspace ships with a native MCP server. Connect your AI assistant via OAuth and it can read and write your CRM data in natural language."}},{"@type":"Question","name":"What does Twenty cost?","acceptedAnswer":{"@type":"Answer","text":"Cloud Pro is $9/user/month and Organization is $39/user/month, billed yearly. Organization adds 5x more AI usage per member, custom roles with field and row-level permissions, and SSO. Self-hosting the open source core is free."}}]}
+
+```

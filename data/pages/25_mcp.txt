@@ -1,0 +1,79 @@
+https://pumble.com/mcp
+
+Connect AI agents with the Pumble MCP
+
+# Fully integrate AI agents in Pumble 
+
+ Bring your AI agent into your Pumble workspace and streamline collaboration, stay in the loop, and get an efficient way to interact with your workspace. 
+
+## Work smarter with your AI agent in Pumble
+
+### Automate notifications
+
+Share information to multiple channels with ease. Escape the pain of sending dozens of messages yourself.
+
+### Summarize threads
+
+Catch up with your team in seconds. Eliminate hours lost sifting through past threads and conversations.
+
+### Find files quickly
+
+Fetch specific files without sifting through chats yourself. Avoid losing important files ever again.
+
+### Know who to contact
+
+Use channel and user info to recommend the right place to ask questions. Dodge unnecessary back-and-forths.
+
+## Connect your AI of choice in 4 simple steps
+
+### Configure apps
+
+ Go to your Pumble workspace settings to set up apps and integrations. 
+
+ ![Configure apps in Pumble](https://pumble.com/assets/images/redesign/mcp/step-1@2x.png) 
+
+### Create a new app
+
+ Go to Create app → Create from scratch to set up your AI agent. 
+
+ ![Create a new app in Pumble](https://pumble.com/assets/images/redesign/mcp/step-2@2x.png) 
+
+STEP 3
+
+### Add app details
+
+ Enter app info and control permissions to limit your AIs access your workspace. 
+
+ ![Adding app details](https://pumble.com/assets/images/redesign/mcp/step-3@2x.png) 
+
+STEP 4
+
+### Install the app
+
+ Select Create app to use its app key and install app to use the user and bot tokens. 
+
+ ![Installing a new app in Pumble](https://pumble.com/assets/images/redesign/mcp/step-4@2x.png) 
+
+### Connect the app to your AI agent
+
+ Use developer tools (e.g., your terminal) to connect your AI agent with Pumble. 
+
+ ![Using the terminal to connect your AI agent to Pumble](https://pumble.com/assets/images/redesign/mcp/step-5@2x.png) 
+
+## Security and trust
+
+ Full control over your AI connection 
+
+### Safety
+
+ Your agent is connected via secure API keys to prevent unauthorized access. 
+
+### Permissions
+
+ You control what your AI agent can access with different permissions. 
+
+### Control
+
+ Stay in charge — update permissions, delete apps, or add new ones anytime. 
+
+## Start chatting with your team

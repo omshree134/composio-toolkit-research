@@ -1,0 +1,975 @@
+https://transcriptapi.com/docs/mcp/
+
+MCP (Model Context Protocol) | TranscriptAPI.com
+
+# MCP (Model Context Protocol)
+
+Use TranscriptAPI to fetch transcripts, search YouTube, browse channels, and list playlists — all from within your AI assistant via Model Context Protocol (MCP).
+
+Claude Tutorial
+
+Complete guide to integrate TranscriptAPI with Claude AI assistant via MCP.
+
+Step-by-step guide to connect TranscriptAPI with ChatGPT using OAuth authentication.
+
+Learn how to set up TranscriptAPI with OpenAI Agent Builder for AI workflows.
+
+## YouTube Transcript MCP Server
+
+TranscriptAPI runs a hosted (remote) MCP server at `https://transcriptapi.com/mcp`. Add that URL to an MCP client and your AI assistant can fetch YouTube transcripts, search YouTube, and list a channel’s or playlist’s videos. There is nothing to install or host. The server uses the same account, API keys, and credits as the REST API.
+
+- Server URL:`https://transcriptapi.com/mcp`
+- Authentication: OAuth 2.1 (Claude, ChatGPT) or an API key sent as a Bearer token (OpenAI Agent Builder and other clients). See Authentication.
+- Tools: 12, covering transcripts, video info and metadata, search, channels, and playlists. See Available Tools.
+- Cost: 2 tools cost no credits. The others use 1 credit per call, or 1 credit per page of results. New accounts get 100 free credits. See Credit Cost.
+
+## Supported Clients
+
+| Client | How it connects | Auth | Setup guide |
+| --- | --- | --- | --- |
+| Claude (claude.ai, Claude Desktop) | Custom connector (remote MCP) | OAuth | Claude guide |
+| ChatGPT | Plugin on ChatGPT web (custom MCP server) | OAuth (Client ID and Secret) | ChatGPT guide |
+| OpenAI Agent Builder | MCP server in an agent workflow | API key | Agent Builder guide |
+| Claude Code | TranscriptAPI’s YouTube agent skills (no MCP config needed) | API key, set up on first use | Claude Code guide |
+| Cursor, Windsurf | Remote MCP server (`url` + `headers` config) or TranscriptAPI’s YouTube agent skills | API key | API key configuration |
+| OpenClaw | TranscriptAPI’s YouTube skill | API key, set up on first use | OpenClaw guide |
+| Any other MCP client | Remote MCP server URL | OAuth 2.1 or API key | Server configuration |
+
+Writing your own code instead? The REST API exposes the same data. See the Python, JavaScript, and cURL quick starts.
+
+## What is MCP?
+
+Model Context Protocol (MCP) is a standardized framework that enables AI assistants like Claude and ChatGPT to connect directly with external tools and data sources. With TranscriptAPI’s MCP integration, your AI can fetch YouTube transcripts on-demand without manual copy-pasting or switching between applications.
+
+Key Benefits:
+
+- Direct integration into your AI workflow
+- No manual transcript fetching needed
+- Consistent, structured data format
+- Works with any MCP-compatible platform
+
+## Why Use TranscriptAPI with MCP?
+
+TranscriptAPI offers unique advantages for YouTube Transcript MCP integration:
+
+### Universal Compatibility
+
+TranscriptAPI works with any platform that supports MCP. Whether your platform uses OAuth for seamless authentication (like Claude and ChatGPT) or requires manual API key configuration (like OpenAI Agent Builder), we provide both options to ensure maximum compatibility.
+
+### Proven Reliability
+
+- Battle-tested with major AI platforms
+- Consistent performance across all authentication methods
+- Same powerful transcript extraction engine as our REST API
+- Flexible authentication options (OAuth or API Key) based on your platform’s requirements
+
+## Prerequisites
+
+Before setting up TranscriptAPI with MCP, ensure you have:
+
+- A TranscriptAPI account (sign up free)
+- An AI assistant or platform that supports MCP
+- For OAuth: A web browser for the initial authorization
+- For API Key: An active API key from your dashboard
+
+## MCP Server Configuration
+
+Get your MCP configuration details from the MCP dashboard or use these settings:
+
+| Property | Value |
+| --- | --- |
+| Server Name | Transcript API |
+| Server URL | `https://transcriptapi.com/mcp` |
+| Description | Use TranscriptAPI to fetch YouTube video transcript automatically |
+| Icon | Download Icon |
+
+Visit your MCP dashboard for a personalized setup guide with these configuration details and authentication options tailored to your chosen platform.
+
+## Authentication
+
+TranscriptAPI supports two authentication methods to work with different MCP platforms:
+
+- OAuth (Recommended)
+- API Key
+
+### OAuth Authentication
+
+OAuth provides automatic, secure authentication without manual key management. Supported by:
+
+- Claude (Dynamic Client Registration - optional credentials)
+- ChatGPT (Static Client Registration - requires Client ID/Secret)
+- Any MCP client supporting OAuth 2.1
+
+Two Registration Methods:
+
+TranscriptAPI supports both Dynamic Client Registration (DCR) and Static Client Registration to work with different platforms:
+
+1. Dynamic Client Registration (Claude, optional)
+
+- Claude and other clients that support DCR can automatically register
+- No Client ID/Secret needed - just add the MCP server URL
+- The client automatically discovers OAuth endpoints and registers itself
+- You’ll be redirected to authorize access (one-time)
+
+2. Static Client Registration (ChatGPT, required)
+
+- ChatGPT requires Client ID and Client Secret upfront
+- Get your credentials from the MCP Integration dashboard
+- Expand Advanced: Static OAuth Credentials, click Create New Client, name it, then click Generate Credentials
+- Copy your Client ID and Client Secret
+- In ChatGPT on the web, open Plugins, click the plus button, choose Add custom MCP server, enter the server URL, choose OAuth and paste them in
+- Check I understand and want to continue, click Create as a plugin, install the plugin, then type @ in a new chat to select it
+
+How it works:
+
+1. Add the MCP server URL to your client
+2. For ChatGPT: Add Client ID and Client Secret
+3. For Claude: Credentials are optional (DCR supported)
+4. The client automatically discovers our OAuth endpoints
+5. You’ll be redirected to authorize access (one-time)
+6. Tokens are managed automatically with refresh support
+
+- Uses OAuth 2.1 with both Dynamic Client Registration (RFC 7591) and Static Registration
+- Authorization server metadata: `/.well-known/oauth-authorization-server`
+- Protected resource metadata: `/.well-known/oauth-protected-resource`
+- Required scope: `mcp:access`
+- Access tokens prefixed with `oat_`
+
+- No manual key management (for DCR clients)
+- Automatic token refresh
+- Secure, time-limited access
+- Revocable permissions
+- Platform-specific support (ChatGPT and Claude)
+
+### API Key Authentication
+
+API Key authentication provides simple, direct access for platforms that don’t support OAuth. Required for:
+
+- OpenAI Agent Builder
+- Custom MCP implementations
+- Development/testing environments
+
+1. Get your API key from the API Keys dashboard
+2. Add it to your MCP client configuration
+3. The key is sent as a Bearer token with each request
+
+Configuration: the standard `url` + `headers` format for remote MCP servers, used by clients such as Cursor and Windsurf:
+
+{
+
+ "mcpServers": {
+
+ "transcriptapi": {
+
+ "url": " https://transcriptapi.com/mcp",
+
+ "headers": {
+
+ "Authorization": " Bearer sk_your_api_key_here"
+
+ }
+
+ }
+
+ }
+
+}
+
+- Bearer token authentication: `Authorization: Bearer sk_...`
+- API keys prefixed with `sk_`
+- Keys never expire (unless manually revoked)
+- Same key works for both REST API and MCP
+
+Security Best Practices:
+
+- Store keys in environment variables
+- Never commit keys to version control
+- Use separate keys for different environments
+- Rotate keys regularly
+
+## Available Tools
+
+TranscriptAPI exposes 12 tools through MCP:
+
+| Tool | Description | Cost |
+| --- | --- | --- |
+| `get_youtube_transcript` | Fetch video transcript as markdown or JSON | 1 credit |
+| `get_youtube_video_info` | Basic metadata + available transcript languages (pick a language first) | Free |
+| `get_video_metadata` | Rich video metadata; optional `details` (duration, tags, captions) + `related` | 1 credit |
+| `search_youtube` | Search videos, channels, playlists, or movies — with sort/date/duration filters | 1 credit/page |
+| `get_channel_info` | Channel profile: title, handle, counts, tags, banners, available tabs | 1 credit |
+| `get_channel_latest_videos` | Get latest ~15 videos from a channel (RSS) | Free |
+| `search_channel_videos` | Search within a specific channel | 1 credit/page |
+| `list_channel_videos` | Paginated channel feed — `videos` (default), `shorts`, or `streams` | 1 credit/page |
+| `list_channel_playlists` | Paginated list of a channel’s playlists | 1 credit/page |
+| `list_channel_posts` | Paginated community (Posts tab) content | 1 credit/page |
+| `get_channel_sections` | Curated channel sections (`featured` Home, `podcasts`, `releases`) | 1 credit |
+| `list_playlist_videos` | Paginated list of playlist videos | 1 credit/page |
+
+All channel tools accept flexible input: `@handle`, full YouTube URL, or `UC...` channel ID.
+
+Use `get_youtube_video_info` (free) to discover transcript languages before fetching a transcript. Use `get_video_metadata` (1 credit) for view/like counts, publish date, description, duration, tags, or related videos.
+
+### get_youtube_transcript
+
+Extract transcripts from any YouTube video with full control over the output format.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `video_url` | string | required | YouTube video URL or 11-character video ID |
+| `send_metadata` | boolean | `true` | Include video title, author, and thumbnail |
+| `format` | string | `"text"` | Output format: `"text"` (markdown) or `"json"` (structured) |
+| `include_timestamp` | boolean | `true` | Include timestamps with each segment |
+| `language` | string | none | Comma-separated priority list, e.g. `de,en,asr`. Omit for English, or the video’s first available language. `asr` = auto-generated captions |
+
+Accepted URL Formats:
+
+- Full URL: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`
+- Short URL: `https://youtu.be/dQw4w9WgXcQ`
+- Video ID only: `dQw4w9WgXcQ`
+
+Example Usage:
+
+// Get transcript as markdown with metadata (default)
+
+get_youtube_transcript({
+
+ video_url: " https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": "# Metadata\n## Title: Rick Astley - Never Gonna Give You Up\n## Author: RickAstleyVEVO\n## Author URL: https://www.youtube.com/@RickAstley\n## Thumbnail: https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg\n\n# Transcript\n [0.0s] Never gonna give you up\n [4.12s] Never gonna let you down..."
+
+}
+
+ 
+
+// Get JSON format without metadata
+
+get_youtube_transcript({
+
+ video_url: " dQw4w9WgXcQ",
+
+ format: " json",
+
+ send_metadata: false
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " transcript": [
+
+ {
+
+ " text": " Never gonna give you up",
+
+ " start": 0.0,
+
+ " duration": 4.12
+
+ },
+
+ {
+
+ " text": " Never gonna let you down",
+
+ " start": 4.12,
+
+ " duration": 3.85
+
+ }
+
+ ]
+
+ }
+
+}
+
+ 
+
+// Get plain text without timestamps
+
+get_youtube_transcript({
+
+ video_url: " dQw4w9WgXcQ",
+
+ format: " text",
+
+ include_timestamp: false,
+
+ send_metadata: false
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": "# Transcript\n Never gonna give you up Never gonna let you down Never gonna run around and desert you..."
+
+}
+
+Output Formats:
+
+- Text Format (Default)
+- JSON Format
+
+Returns markdown-formatted text with optional metadata header and timestamped transcript lines.
+
+# Metadata
+
+## Title: Video Title Here
+
+## Author: Channel Name
+
+## Author URL: https://www.youtube.com/@ChannelName
+
+## Thumbnail: https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg
+
+ 
+
+# Transcript
+
+[0.0s] First line of transcript
+
+[3.5s] Second line of transcript
+
+[7.2s] Third line of transcript
+
+Returns structured data with transcript segments and optional metadata.
+
+{
+
+ "transcript": [
+
+ {
+
+ "text": " First line of transcript",
+
+ "start": 0.0,
+
+ "duration": 3.5
+
+ },
+
+ {
+
+ "text": " Second line of transcript",
+
+ "start": 3.5,
+
+ "duration": 3.7
+
+ }
+
+ ],
+
+ "metadata": {
+
+ "title": " Video Title Here",
+
+ "author_name": " Channel Name",
+
+ "author_url": " https://www.youtube.com/@ChannelName",
+
+ "thumbnail_url": " https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg"
+
+ }
+
+}
+
+### get_youtube_video_info
+
+Free (no credit used). Basic metadata (title, author, thumbnail) plus the list of available transcript languages — call this before `get_youtube_transcript` to pick a language.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `video_url` | string | required | YouTube video URL or 11-character video ID |
+
+Each returned language code (e.g. `en`, or `asr-en` for auto-generated English) can be passed to `get_youtube_transcript`’s `language` parameter. For counts, publish date, description, duration, tags, or related videos, use `get_video_metadata`.
+
+get_youtube_video_info({ video_url: " dQw4w9WgXcQ" })
+
+### get_video_metadata
+
+Rich video metadata without needing captions: title, view/like-count text, publish date, structured description + links, uploading-channel summary, and thumbnails. Costs 1 credit.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `video_url` | string | required | YouTube video URL or 11-character video ID |
+| `include` | string[] | none | Extras: `"details"` (duration, category, tags, caption tracks) and/or `"related"` (related videos) |
+
+Hidden counts are `null`, never `0`. When `details` can’t be read, `details.available` is `false` with a `reason` instead of guessed values.
+
+// Metadata only
+
+get_video_metadata({ video_url: " dQw4w9WgXcQ" })
+
+ 
+
+// With player details + related videos
+
+get_video_metadata({ video_url: " dQw4w9WgXcQ", include: [" details", " related"] })
+
+### search_youtube
+
+Search YouTube for videos, channels, playlists, or movies (paginated, ~20 results per page). Returns structured results with video IDs, titles, view counts, and thumbnails, plus a `continuation_token` for the next page.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `query` | string | none | The search query (first call). |
+| `search_type` | string | `"video"` | Type of search: `"video"`, `"channel"`, `"playlist"`, or `"movie"` (first call only). |
+| `sort` | string | `"relevance"` | First-page sort: `"relevance"` or `"views"`. |
+| `upload_date` | string | none | First-page upload window (videos only): `hour`, `today`, `week`, `month`, `year`. |
+| `duration` | string | none | First-page duration bucket (videos only): `short` (under 4m), `medium` (4–20m), `long` (over 20m). |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls). |
+
+Provide either `query` (first call) or `continuation` (next pages) — not both. Filters apply to the first call only; the `continuation` token already encodes them. An empty page can come back while `has_more` is `true` — keep following the token until `has_more` is `false`. Costs 1 credit per page.
+
+Example Usage:
+
+// First call
+
+search_youtube({
+
+ query: " TED talk artificial intelligence",
+
+ search_type: " video"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " results": [
+
+ {
+
+ " video_id": " abc123",
+
+ " title": " The future of AI | TED Talk",
+
+ " channel": " TED",
+
+ " view_count": " 2.5M views",
+
+ " published": " 2024-03-15",
+
+ " thumbnail": " https://i.ytimg.com/vi/abc123/hqdefault.jpg"
+
+ }
+
+ // ... more results
+
+ ],
+
+ " continuation_token": " 4qmFsgKlARIY...",
+
+ " has_more": true
+
+ }
+
+}
+
+ 
+
+// Next page — use continuation token
+
+search_youtube({
+
+ continuation: " 4qmFsgKlARIY..."
+
+})
+
+### get_channel_latest_videos
+
+Get the ~15 most recent videos from a YouTube channel via RSS. Free — no credits consumed.
+
+When YouTube’s feed is unavailable, `published` is approximate: the list then comes from the channel’s uploads, and publish times are worked out from times like “9 hours ago”.
+
+Parameters:
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | required | Channel identifier: `@handle`, channel URL, or `UC...` ID |
+
+Accepted Input Formats:
+
+- Handle: `@TED`
+- URL: `https://www.youtube.com/@TED`
+- Channel ID: `UCsT0YIqwnpJCM-mx7-gSA4Q`
+
+Example Usage:
+
+get_channel_latest_videos({
+
+ channel: "@TED"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " channel": {
+
+ " name": " TED",
+
+ " url": " https://www.youtube.com/channel/UCsT0YIqwnpJCM-mx7-gSA4Q"
+
+ },
+
+ " results": [
+
+ {
+
+ " video_id": " xyz789",
+
+ " title": " The next breakthrough in AI",
+
+ " published": " 2024-06-01",
+
+ " thumbnail": " https://i.ytimg.com/vi/xyz789/hqdefault.jpg"
+
+ }
+
+ // ... up to ~15 results
+
+ ]
+
+ }
+
+}
+
+### search_channel_videos
+
+Search for videos within a specific YouTube channel (paginated, ~30 results per page). Costs 1 credit per page.
+
+Parameters:
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | none | Channel identifier: `@handle`, channel URL, or `UC...` ID (first call). |
+| `query` | string | none | Search query within the channel (first call). |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls). |
+
+Provide either (`channel` + `query`) (first call) or `continuation` (next pages) — not both.
+
+Example Usage:
+
+// First call
+
+search_channel_videos({
+
+ channel: "@TED",
+
+ query: " education"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " results": [
+
+ {
+
+ " video_id": " def456",
+
+ " title": " The future of education | TED Talk",
+
+ " view_count": " 1.2M views",
+
+ " published": " 2024-01-20",
+
+ " thumbnail": " https://i.ytimg.com/vi/def456/hqdefault.jpg"
+
+ }
+
+ // ... more results
+
+ ],
+
+ " continuation_token": " 4qmFsgKlARIY...",
+
+ " has_more": true
+
+ }
+
+}
+
+ 
+
+// Next page — use continuation token
+
+search_channel_videos({
+
+ continuation: " 4qmFsgKlARIY..."
+
+})
+
+### list_channel_videos
+
+List a channel’s feed with pagination. Use `tab` to choose the uploads feed (default, ~100/page), Shorts, or live streams (~48/page). Costs 1 credit per page.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | none | Channel identifier: `@handle`, URL, or `UC...` ID (first call) |
+| `tab` | string | `"videos"` | Which feed: `videos` (uploads), `shorts`, or `streams` (live). Repeat the same `tab` when paginating. |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls) |
+
+Provide either `channel` (first call) or `continuation` (next pages) — not both.
+
+// First call — start listing
+
+list_channel_videos({
+
+ channel: "@TED"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " results": [
+
+ {
+
+ " video_id": " ghi789",
+
+ " title": " How AI could empower any business",
+
+ " view_count": " 800K views",
+
+ " published": " 2024-05-10"
+
+ }
+
+ // ... ~100 results
+
+ ],
+
+ " continuation_token": " Ehl...",
+
+ " has_more": true
+
+ }
+
+}
+
+ 
+
+// Next page — use continuation token
+
+list_channel_videos({
+
+ continuation: " Ehl..."
+
+})
+
+### get_channel_info
+
+A channel’s profile: title, `@handle`, verified flag, subscriber/video-count text, description, keywords, tags, thumbnails, banners, and the tabs it exposes. Not paginated. Costs 1 credit.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | required | Channel identifier: `@handle`, URL, or `UC...` ID |
+
+Counts are display strings (e.g. `27.8M subscribers`) and `null` when YouTube hides them — never `0`. Check `availableTabs` before calling `get_channel_sections` or `list_channel_videos` with a `tab`.
+
+get_channel_info({ channel: "@TED" })
+
+### list_channel_playlists
+
+Paginated list of the playlists on a channel (id, title, URL, video-count text, thumbnails). Costs 1 credit per page.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | none | Channel identifier: `@handle`, URL, or `UC...` ID (first call) |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls) |
+
+Provide either `channel` or `continuation` — not both. Pass a returned playlist id to `list_playlist_videos` to get its videos.
+
+list_channel_playlists({ channel: "@TED" })
+
+### list_channel_posts
+
+Paginated list of a channel’s community (Posts tab) content — text, publish time, like-count text, and attachments (image, multi-image, video, playlist, or poll). Costs 1 credit per page.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | none | Channel identifier: `@handle`, URL, or `UC...` ID (first call) |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls) |
+
+Provide either `channel` or `continuation` — not both. Channels without a community tab return an empty results list (not an error).
+
+list_channel_posts({ channel: "@TED" })
+
+### get_channel_sections
+
+The curated, grouped sections of a channel page — titled shelves of videos, playlists, shorts, or featured channels, in the channel’s own order. Not paginated. Costs 1 credit.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `channel` | string | required | Channel identifier: `@handle`, URL, or `UC...` ID |
+| `tab` | string | `"featured"` | Which curated page: `featured` (Home), `podcasts`, or `releases` |
+
+`podcasts` and `releases` exist only on channels that have them (empty results otherwise — call `get_channel_info` to see a channel’s tabs).
+
+get_channel_sections({ channel: "@TED" })
+
+get_channel_sections({ channel: "@TED", tab: " releases" })
+
+### list_playlist_videos
+
+List videos in a YouTube playlist with pagination (~100 per page). Costs 1 credit per page.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `playlist` | string | none | Playlist URL or ID starting with `PL`, `UU`, `LL`, `FL`, or `OL` (first call) |
+| `continuation` | string | none | Pagination token from previous response (subsequent calls) |
+
+Provide either `playlist` (first call) or `continuation` (next pages) — not both.
+
+// First call — start listing
+
+list_playlist_videos({
+
+ playlist: " UUAuUUnT6oDeKwE6v1NGQxug"
+
+})
+
+ 
+
+// Returns:
+
+{
+
+ " content": {
+
+ " results": [
+
+ {
+
+ " video_id": " jkl012",
+
+ " title": " Introduction to Machine Learning",
+
+ " channel": " TED-Ed",
+
+ " published": " 2024-02-15"
+
+ }
+
+ // ... more results
+
+ ],
+
+ " continuation_token": " Qmx...",
+
+ " has_more": true
+
+ }
+
+}
+
+ 
+
+// Next page — use continuation token
+
+list_playlist_videos({
+
+ continuation: " Qmx..."
+
+})
+
+## Platform Integration
+
+TranscriptAPI MCP works with any platform that supports the Model Context Protocol. Here are guides for popular platforms:
+
+### Tested Platforms
+
+- Connect to Claude - OAuth authentication support
+- Connect to ChatGPT - OAuth authentication support
+- Connect to OpenAI Agent Builder - API key authentication
+
+### Universal Compatibility
+
+TranscriptAPI works with any tool, framework, or custom implementation that supports MCP:
+
+- OAuth-enabled platforms: Automatic authentication and token management
+- API key platforms: Manual configuration with your TranscriptAPI key
+- Custom implementations: Choose the authentication method that fits your needs
+
+As new MCP-compatible platforms emerge, TranscriptAPI will work with them out of the box. Our standards-compliant implementation ensures long-term compatibility.
+
+## Credit Usage & Rate Limits
+
+MCP requests consume credits and are subject to rate limits just like REST API calls:
+
+### Credit Cost
+
+| Tool | Cost |
+| --- | --- |
+| `get_youtube_transcript` | 1 credit |
+| `get_youtube_video_info` | Free |
+| `get_video_metadata` | 1 credit |
+| `search_youtube` | 1 credit per page |
+| `get_channel_info` | 1 credit |
+| `get_channel_latest_videos` | Free |
+| `search_channel_videos` | 1 credit per page |
+| `list_channel_videos` | 1 credit per page |
+| `list_channel_playlists` | 1 credit per page |
+| `list_channel_posts` | 1 credit per page |
+| `get_channel_sections` | 1 credit |
+| `list_playlist_videos` | 1 credit per page |
+
+- Only charged on successful (HTTP 200) responses
+- Failed requests (4xx, 5xx) don’t consume credits
+
+### Rate Limits
+
+- 200 requests per minute on Starter Monthly, 300 requests per minute on Starter Annual and OpenClaw (more on request)
+- Limits apply per account, shared by all your API keys and OAuth tokens
+
+See API Rate Limits for detailed information and best practices.
+
+MCP tools may make multiple requests during a conversation. Monitor your credit usage in the dashboard to avoid unexpected consumption.
+
+## Error Handling
+
+All MCP tools return user-friendly error messages that AI assistants can understand and communicate:
+
+### Common Errors
+
+| Error Code | Description | Retry? | Solution |
+| --- | --- | --- | --- |
+| 401 | Invalid authentication | ❌ | Check your API key or re-authorize OAuth |
+| 402 | Insufficient credits | ❌ | Purchase more credits or upgrade plan |
+| 404 | Transcript not available | ❌ | Video may not have captions or be private |
+| 408 | Timeout / Retry | ✅ | Temporary failure - retry after 1-5 seconds |
+| 422 | Invalid YouTube URL | ❌ | Provide a valid YouTube URL or video ID |
+| 429 | Rate limit exceeded | ✅ | Wait before retrying (see Retry-After header) |
+| 500 | Server error | ⚠️ | Temporary issue, contact support if persistent |
+| 503 | Service unavailable | ✅ | Service temporarily down - retry after 1-5 seconds |
+
+### Error Response Format
+
+Errors are returned in a format that AI assistants can easily interpret:
+
+{
+
+ "content": " Unable to fetch transcript: Payment required. You have no credits remaining. Please purchase more credits at https://transcriptapi.com/dashboard/billing"
+
+}
+
+The AI assistant will communicate these errors naturally to the user.
+
+## Best Practices
+
+### Security
+
+- OAuth platforms: Let the platform handle token storage and refresh
+- API key platforms: Store keys in environment variables, never in code
+- Rotate API keys regularly for enhanced security
+- Monitor usage through the dashboard to detect anomalies
+
+### Performance
+
+- Batch requests when possible to stay within rate limits
+- Cache transcripts locally if you need them multiple times
+- Handle 402 errors gracefully—inform users about credit status
+- Implement exponential backoff for retries on 408/429/503 errors
+
+### Integration Tips
+
+- Test with common videos first to ensure configuration works
+- Provide context to the AI about video content for better responses
+- Use metadata to give AI information about video source and author
+- Choose the right format: JSON for structured processing, text for natural language
+
+You can develop and test with API keys for quick setup, then switch to OAuth for production deployments when supported by your platform.
+
+## Troubleshooting
+
+### OAuth Issues
+
+- “Authorization failed”: Clear browser cookies and try again
+- “Invalid redirect”: Ensure you’re using the latest MCP client version
+- Token expiration: OAuth tokens auto-refresh; if issues persist, re-authorize
+
+### API Key Issues
+
+- “Invalid API key”: Verify key starts with `sk_` and is active in dashboard
+- “No credits”: Check credit balance at /dashboard/billing
+- Key not working: Ensure no extra spaces when copying the key
+
+### General Issues
+
+- No transcript returned: Video might not have captions available
+- Slow responses: Check if video is very long (>2 hours)
+- Connection errors: Verify your internet connection and firewall settings
+
+## Next Steps
+
+Ready to get started? Here’s what to do next:
+
+1. Get your credentials: Sign up and get an API key or prepare for OAuth
+2. Choose your platform: Select from our platform-specific guides
+3. Configure MCP: Follow the configuration examples above
+4. Test it out: Try fetching a transcript from a YouTube video
+5. Explore the API: Check our REST API Reference for advanced usage
+
+Need live testing? Try our Swagger UI to experiment with the API directly.
+
+## Frequently Asked Questions
+
+What is a YouTube transcript MCP server? It is an MCP (Model Context Protocol) server that gives an AI assistant a tool for fetching YouTube transcripts. TranscriptAPI’s server is hosted at `https://transcriptapi.com/mcp`, so the assistant calls it directly and you don’t run anything on your own machine. Besides transcripts, it can search YouTube and list channel and playlist videos.
+
+Which AI assistants work with the TranscriptAPI MCP server? Claude and ChatGPT connect with OAuth, and OpenAI Agent Builder connects with an API key. Each has a step-by-step guide: Claude, ChatGPT, OpenAI Agent Builder. Other clients that support remote MCP servers can connect with OAuth 2.1 or an API key sent as a Bearer token. See Supported Clients.
+
+Do I need to install or host anything? No. TranscriptAPI hosts the MCP server. You add the server URL in your AI client, then either sign in through OAuth or add your API key.
+
+How much does the YouTube MCP server cost? New accounts get 100 free credits with no card required. The `get_youtube_video_info` and `get_channel_latest_videos` tools cost no credits. The other tools use 1 credit per call, or 1 credit per page for paginated results. Failed requests don’t use credits. Calls still need a verified email and an account with credits or a plan. Paid plans start at $5 per month for 1,000 credits. See Credit Cost.
+
+Is the MCP server the same as the REST API? It uses the same account, API keys, and credits as the TranscriptAPI REST API and the same transcript extraction. You can try a workflow in an AI assistant and later call the REST API from your own code.
+
+Can the MCP server get transcripts in other languages? Yes. The `get_youtube_video_info` tool, which costs no credits, lists the transcript languages a video offers, and `get_youtube_transcript` accepts a `language` priority list such as `de,en`. Codes starting with `asr` are YouTube’s auto-generated captions.
+
+Getting Started Quick start guide for TranscriptAPI basics and setup.
+
+Last updated: Nov 22, 2026

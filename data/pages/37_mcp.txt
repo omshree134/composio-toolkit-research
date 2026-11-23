@@ -1,0 +1,117 @@
+https://systeme.io/mcp
+
+Build and manage your business with AI | systeme.io MCP Server
+
+Connect your favorite AI tool to systeme.io and let it create, update, and find what you need, right from the chat
+
+## What is the systeme.io MCP server? 
+
+ systeme.io includes a built-in MCP server that lets you connect AI tools like ChatGPT or Claude directly to your account. Once connected, your AI can access your content to create and manage things like funnels, contacts, courses, and products, and even chain several actions together in a single request. Sensitive actions always require your confirmation first. 
+
+Free Included, no extra cost
+
+Any MCP-compatible AI tool
+
+0 Code required
+
+Confirm Before every sensitive action
+
+The gap between prompt and action
+
+Your AI is great at talking. It can suggest a tag, draft a newsletter, or plan a campaign. But talking isn't doing. Connect it to systeme.io, and it doesn't just describe your next move. it makes it It learns about your business and builds directly inside your account. You just approve it
+
+![systeme.io automation actions panel showing options like subscribe to campaign, add tag, send email, and enroll contacts with conversion rate analytics](https://d1yei2z3i6k35z.cloudfront.net/161/6ab4004bbd3f95.85239006_MCPServer27.jpg)
+
+![systeme.io automation builder showing trigger-based workflow to tag new leads and subscribe contacts to an email campaign](https://d1yei2z3i6k35z.cloudfront.net/161/6ab400e706ea46.84206448_MCPServer281.jpg)
+
+Connect your favorite AI tool in a few clicks
+
+Generate a secure MCP key from your account settings, then use it to connect your favorite AI tool like ChatGPT or Claude
+
+### Let AI access your content
+
+Give your AI context before asking it to act. Ask how many email campaigns you have and what's inside a specific one, so it has everything it needs to start creating content for you
+
+![systeme.io automation builder showing trigger selection and tagging workflow to segment contacts and manage leads](https://d1yei2z3i6k35z.cloudfront.net/161/6ab4018bcca436.32842095_MCPServer29.jpg)
+
+![Visual workflow automation builder showing a sequence of steps: form subscription trigger, tagging, sending emails, delay, conditional split based on link click, followed by targeted email actions and lead tagging paths.](https://d1yei2z3i6k35z.cloudfront.net/161/6ab404e87fe4e5.43495432_MCPServer30.jpg)
+
+Ask AI to create content inside your account
+
+Once your AI has the context it needs, ask it to build things directly inside your account. Create a funnel, draft a newsletter, or set up a new digital product, just by describing what you want
+
+### Handle an entire workflow in one prompt
+
+Go beyond single actions and let your AI handle an entire process in one request. Ask it to create a funnel, tag new leads, build an email campaign, and set up the automation rule connecting them all
+
+![Visual workflow automation builder in systeme.io showing a funnel where a subscriber receives emails, waits, and is routed through different paths based on their actions.](https://d1yei2z3i6k35z.cloudfront.net/161/6ab40528bb3966.37430907_MCPServer31.jpg)
+
+![Visual workflow automation builder showing a sequence of steps: form subscription trigger, tagging, sending emails, delay, conditional split based on link click, followed by targeted email actions and lead tagging paths.](https://d1yei2z3i6k35z.cloudfront.net/161/6ab406191c2639.00733277_MCPServer32.jpg)
+
+Approve every action before it happens
+
+Before your AI creates, changes, or deletes anything in your account, it shows you exactly what it's about to do and waits for your approval. You decide what gets automated and what needs a manual confirmation
+
+## The only platform that has everything you need to launch, grow, and scale your online business
+
+![green cursor click icon representing user interaction, navigation, or actions within systeme.io](https://d1yei2z3i6k35z.cloudfront.net/161/687e5f684e1f2_Group.svg)
+
+Fully integrated
+
+Every feature in systeme.io works together to help save you time and effort
+
+![green checkmark icon representing success, verification, or completed action in systeme.io](https://d1yei2z3i6k35z.cloudfront.net/161/687e60864951d_Group1.svg)
+
+Simple and fast
+
+With a tool that's made by entrepreneurs for entrepreneurs, we've simplified the business building process for you
+
+![green dollar icon representing payments, revenue, or monetization features in systeme.io](https://d1yei2z3i6k35z.cloudfront.net/161/687e6418ee256_Group2.svg)
+
+Affordable
+
+Get your free account or upgrade to any of our paid plans. It'll still be cheaper than what you were using
+
+### People keep telling us all the time that our tool is powerful, yet easy to use
+
+![systeme.io customer testimonial with 5-star rating highlighting all-in-one platform for email marketing, sales funnels, and course creation](https://d1yei2z3i6k35z.cloudfront.net/161/6925b8555a98d_ScreenshotofSysteme.ioReviews2025_DetailsPricingFeatures_G21.jpg)
+
+![systeme.io customer testimonial with 5-star rating highlighting best value, affordability, and all-in-one business platform benefits](https://d1yei2z3i6k35z.cloudfront.net/161/6925b8db6d243_ScreenshotofPage4_Systeme.ioReviews2025_DetailsPricingFeatures_G2.jpg)
+
+![systeme.io dashboard showing lead generation, sales revenue, and performance analytics with growth trends over the last 30 days](https://d1yei2z3i6k35z.cloudfront.net/161/687a1f9f79aff_Image.webp)
+
+### The complete solution to grow your business online
+
+What if you could grow your business online without technical knowledge or expensive tools?
+
+All of these tools are critical if you want to keep up with your competitors. If you don't have them, you can't grow your business.
+
+Systeme.io has helped thousands of entrepreneurs kickstart their businesses with a platform that's easy to use and has every tool you need - all in the same place
+
+## Frequently asked questions about the systeme.io MCP server
+
+What is the systeme.io MCP server and how does it help me?
+
+The systeme.io MCP (Model Context Protocol) server is a standard that securely connects your systeme.io account to AI assistants like ChatGPT or Claude. It allows you to interact with your business data using natural language, enabling you to build funnels, manage contacts, and create email campaigns just by typing simple commands in your chat window.
+
+Is it safe to connect my systeme.io account to AI tools?
+
+Yes. We prioritize your security by using a secure authentication process. When you connect via MCP, you are in control of the permissions granted to the AI. You can choose which tools the AI can access (read-only vs. write/delete) and revoke that access at any time directly from your AI provider’s settings.
+
+Do I need to be a developer to use the MCP server?
+
+Not at all. While the MCP standard is built for developers, our direct integration allows you to connect your account to ChatGPT or Claude in just a few clicks. No coding is required; you simply authorize the connection, and you’re ready to start using AI to manage your systeme.io workspace.
+
+Can the AI perform any action on my account?
+
+You are in control. You can configure permission levels for each tool the AI uses: Always allow, Needs approval, or Blocked. For sensitive operations (like creating or deleting contacts, price plans, or coupons), the AI will require your confirmation within the chat before executing any command.
+
+Which systeme.io plans include access to the MCP server?
+
+The MCP server is a powerful feature included in all systeme.io plans. Whether you are on our Free, Startup, Webinar, or Unlimited plan, you can connect your account to AI tools and start leveraging the power of natural language to streamline your marketing and business management.
+
+Last updated: April 2026
+
+## The only tool you need to launch your online business
+
+We make the whole process easier and faster so that you can focus on what’s important - growing your business

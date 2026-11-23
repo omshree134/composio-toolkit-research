@@ -1,0 +1,117 @@
+https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api
+
+Back
+
+The Higgsfield API lets you generate video and images from your own code: one API key opens every model in the API catalog, and each request is paid in US dollars from a prepaid balance. No plan or subscription is involved: fund the balance, send requests at the rates listed in the catalog, and new requests simply wait once the balance hits zero.
+
+## How is the API different from my Higgsfield plan?
+
+A subscription on higgsfield.ai and the API are two separate products with separate billing. Your plan, credits, and Unlimited access exist only on the website; the API runs on its own account balance in US dollars.
+
+How is the API different from my Higgsfield plan?
+
+| Criteria | Higgsfield plan (higgsfield.ai) | Higgsfield API |
+| --- | --- | --- |
+| Who it's for | Creators working in the visual interface | Developers building generation into their own products |
+| Billing | Subscription plus credits | US dollar balance, pay per generation |
+| Unlimited models | Yes, where included in plan | Not applicable |
+| Requires the other | No | No |
+
+## Which models are available through the API?
+
+One API key unlocks every model in the API catalog: 50+ current video and image models, including Seedance, Kling, Wan, MiniMax, PixVerse, LTX, and Grok for video and Ideogram, Recraft, and Qwen for images, alongside Higgsfield's own Soul 2, Soul Cinema, DoP, and Marketing Studio Image. The API has its own curated catalog, and the selection may differ from the model lineup on higgsfield.ai.
+
+Every model has its own catalog page listing the current rate, supported resolutions and durations, sample code, a short overview, and a side-by-side table of similar models, so picking the right model doesn't require testing each one in code.
+
+## How do I get started?
+
+1. Sign up for an API account, either as an individual or as a company.
+2. Register a payment method and fund your balance.
+3. Generate an API key in the console at open.higgsfield.ai. For security, the full key appears only once, so save it right away. Creating a key unlocks 20 concurrent requests.
+4. Connect through the Python or TypeScript SDK, or call the REST API directly from any language with an HTTP client, sending requests to api.higgsfield.ai. Each model page carries sample code, and if you work through a coding agent, ready setup prompts for Claude Code, Cursor, and ChatGPT (Codex).
+
+Full reference documentation, quickstart guides, and code examples are available at docs.higgsfield.ai.
+
+## How is API usage billed?
+
+Billing is pay-as-you-go from a US dollar balance, and the minimum top-up is $5. Video models are priced per second of output and image models per image; DoP is the exception, priced per generation. Each model has a fixed rate for every configuration: the rate depends on settings like resolution and audio, is listed publicly, and stays the same regardless of how much you top up. An estimate endpoint returns the cost of a request before you run it. Funds expire one year after they are added to the balance. The balance can't go below zero: once it's empty, new requests wait until you add funds, or you can turn on auto top-up so production traffic never stops.
+
+You're only charged for generations that finish successfully. If a request fails, its cost returns to your balance automatically.
+
+## How does generation work?
+
+Generation is asynchronous. You submit a request and receive a request ID, then track progress by polling the status or by receiving a webhook when the result is ready. Once the generation completes, you download the output file.
+
+## How long are generated files stored?
+
+Generated output files stay available for at least 7 days after creation and may be removed from Higgsfield servers after that period. For long-term retention, download completed files to your own storage as part of your integration.
+
+## Where do I see my API spending?
+
+Everything lives in the console at open.higgsfield.ai. Analytics shows spend and request volume over time and exports to CSV for reporting; Billing holds your current balance, payment methods, and invoice history.
+
+## How is the API different from MCP and CLI?
+
+MCP and CLI are agent connections: they attach Claude, Cursor, or another agent to your existing higgsfield.ai account, and everything they generate deducts your plan credits. The API doesn't touch your account or credits at all: it runs on its own key and dollar balance, and it's built for shipping generation inside your own product.
+
+How is the API different from MCP and CLI?
+
+| Criteria | API | MCP and CLI |
+| --- | --- | --- |
+| Account | Separate API account | Your higgsfield.ai account |
+| Billing | US dollars per generation | Plan credits |
+| API key | Yes | No |
+| Best for | Building generation into your own product | Generating from an AI agent |
+
+See What is Higgsfield MCP, and how is it different from the web? and How do I access Higgsfield via CLI?
+
+## Got any questions left?
+
+Is Open Higgsfield a different product?
+
+No. Open Higgsfield is the name of the API console at open.higgsfield.ai. The product, the catalog, and the billing are the same Higgsfield API.
+
+Can I use the API without a Higgsfield plan?
+
+Yes. The API works entirely on its own dollar balance. Having or not having a plan on higgsfield.ai changes nothing about API access or rates.
+
+Can I use content generated through the API commercially?
+
+Yes. Under the Higgsfield Terms of Use you hold the rights to use your generated content, so API outputs can go into commercial products, advertising, and client work.
+
+Can the API generate audio?
+
+There are no standalone audio models in the catalog. Some video models, including Seedance, Kling, LTX, and PixVerse, generate native audio inside the clip as a configuration option, which affects the model's rate.
+
+Can several people use one API account?
+
+Yes. Every account starts as a personal organization, and you can create a team organization and invite people to it. To switch between workspaces, click your profile icon and open Organization. Usage across the account shows up in the Analytics and Billing sections.
+
+I lost my API key. Can I see it again?
+
+No. The key is visible only at the moment of creation. Generate a new key in the console and update your integration.
+
+Do failed generations cost anything?
+
+No. Failed requests aren't billed, and the amount is returned to your balance automatically.
+
+Share Feedback
+
+Was this article helpful?
+
+Yes No
+
+## Related articles
+
+- What is Higgsfield MCP, and how is it different from the web?See how Higgsfield MCP works, and why it always deducts credits unlike the website.
+- How do I connect Higgsfield to Claude, ChatGPT, or another AI agent?Connect Higgsfield to Claude, ChatGPT, Cursor, or another AI agent in minutes.
+- What external integrations does Higgsfield support?See every official Higgsfield plugin, from Figma to DaVinci Resolve, and what each offers.
+
+by Higgsfield
+
+Contents
+
+```json
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Higgsfield","url":"https://higgsfield.ai/","logo":{"@type":"ImageObject","name":"Higgsfield logo","url":"https://higgsfield.ai/icon.png"},"sameAs":["https://x.com/higgsfield","https://www.instagram.com/higgsfield.ai/","https://www.tiktok.com/@higgsfield.ai90","https://discord.com/invite/higgsfield","https://www.linkedin.com/company/higgsfield/"],"@id":"https://higgsfield.ai/#organization"},{"@type":"WebPage","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api","name":"What is the Higgsfield API, and how do I get started?","description":"Generate video and images from your own code with the Higgsfield API: one key, 50+ models, a prepaid US dollar balance, and per-generation rates with no plan required.","breadcrumb":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api#breadcrumb"},"publisher":{"@id":"https://higgsfield.ai/#organization"},"url":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"},{"@type":"BreadcrumbList","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api#breadcrumb","itemListElement":[{"@type":"ListItem","item":"https://higgsfield.ai/creator-hub/help-center","name":"Help Center","position":1},{"@type":"ListItem","item":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api","name":"What is the Higgsfield API, and how do I get started?","position":2}]},{"@type":"TechArticle","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api#article","author":{"@id":"https://higgsfield.ai/#organization"},"dateModified":"2026-09-24T18:20:19Z","datePublished":"2026-09-16T20:12:08Z","description":"Generate video and images from your own code with the Higgsfield API: one key, 50+ models, a prepaid US dollar balance, and per-generation rates with no plan required.","headline":"What is the Higgsfield API, and how do I get started?","mainEntityOfPage":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"},"publisher":{"@id":"https://higgsfield.ai/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Open Higgsfield a different product?","acceptedAnswer":{"@type":"Answer","text":"No. Open Higgsfield is the name of the API console at open.higgsfield.ai. The product, the catalog, and the billing are the same Higgsfield API."}},{"@type":"Question","name":"Can I use the API without a Higgsfield plan?","acceptedAnswer":{"@type":"Answer","text":"Yes. The API works entirely on its own dollar balance. Having or not having a plan on higgsfield.ai changes nothing about API access or rates."}},{"@type":"Question","name":"Can I use content generated through the API commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes. Under the Higgsfield Terms of Use you hold the rights to use your generated content, so API outputs can go into commercial products, advertising, and client work."}},{"@type":"Question","name":"Can the API generate audio?","acceptedAnswer":{"@type":"Answer","text":"There are no standalone audio models in the catalog. Some video models, including Seedance, Kling, LTX, and PixVerse, generate native audio inside the clip as a configuration option, which affects the model's rate."}},{"@type":"Question","name":"Can several people use one API account?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every account starts as a personal organization, and you can create a team organization and invite people to it. To switch between workspaces, click your profile icon and open Organization. Usage across the account shows up in the Analytics and Billing sections."}},{"@type":"Question","name":"I lost my API key. Can I see it again?","acceptedAnswer":{"@type":"Answer","text":"No. The key is visible only at the moment of creation. Generate a new key in the console and update your integration."}},{"@type":"Question","name":"Do failed generations cost anything?","acceptedAnswer":{"@type":"Answer","text":"No. Failed requests aren't billed, and the amount is returned to your balance automatically."}}],"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api#faq","isPartOf":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-the-higgsfield-api"}}]}
+
+```

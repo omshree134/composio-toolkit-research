@@ -1,0 +1,135 @@
+https://docs.ecwid.com/develop-apps/app-settings
+
+App settings | Ecwid Documentation
+
+# App settings
+
+Configuration for all Ecwid apps consists of the following settings:
+
+- Access scopes - a list of permissions defining API access for the app.
+- Access tokens - non-expiring authorization keys for REST API requests.
+- Endpoints - static URLs on the developer's server interacting with specific Ecwid APIs.
+- App keys - unique and constant values used in request decoding and public app authentication.
+
+When created, custom applications automatically get default access scopes and both access tokens unlocking some REST API requests. Both app keys are also automatically generated, though they have no use for a custom app with a default configuration.
+
+All your custom apps and their settings are available on the Ecwid admin > Custom apps page.
+
+Update app settings
+
+App settings can be updated from Ecwid admin > Custom Apps page. To apply the changes, reinstall the app. Learn more
+
+### Access tokens
+
+Access tokens authorize REST API requests for the specific app in the specific store. Even for the same app, an access token from one store won't work for another one.
+
+Access tokens also do not expire, so once you get them for your custom app, save and use these tokens on your side for as long as you need.
+
+You can get access tokens for your store without going through oAuth flow
+
+Depending on the store data and type of API request, you need to use one of the two access tokens:
+
+- Secret token A secret token (`secret_token`) is only limited by the app permissions, so it must not be used in the publically available code. Secret tokens exposed on the storefront put the store data at risk. Secret token example: `secret_EZWiLeBXWsGg82XH3SfSFfdw418QNBBM`. 
+- Public token A public token (`public_token`) is safe to use on the storefront as it can only work with the publically available store data. It grants access only to:
+
+- Receiving details of enabled products and categories.
+- Receiving highly limited store profile data.
+- Placing orders without "Paid" status.
+
+ Public token example: `public_B6mT2teCE55zT2jAeffLjzNJ4se3gfPj`.
+
+### List of access scopes
+
+Access to Ecwid API features is limited by permissions called access scopes.
+
+One application can have from one to all scopes at the same time. However, we recommend keeping the minimum amount of permissions required for the app to work.
+
+Find the full list of access scopes available to apps below:
+
+| Access scope | Notes |
+| --- | --- |
+| read_store_profile | Get general store settings like format units, shipping origin address, email notification settings, etc. Receive webhooks about changes in store settings or applications. Default scope for custom apps. |
+| read_catalog | Get data about categories, products, product options, variations, and attributes. Receive webhooks about product and category changes. Default scope for custom apps. |
+| update_catalog | Update product and category details, upload images and files to products, and delete products or categories. Default scope for custom apps. |
+| create_catalog | Add new products and categories to the store. Default scope for custom apps. |
+| read_orders | Get data about orders placed in the store and abandoned carts. Receive webhooks about changes in carts and orders. Default scope for custom apps. |
+| update_orders | Change order details, update order statuses, and delete orders. Default scope for custom apps. |
+| public_storefront | Get a public access token for the app. Default scope for custom apps. |
+| read_store_profile_extended | Get additional store settings like billing and channel information. Extends the `read_store_profile` access scope. |
+| read_store_limits | Get store limits and restrictions. Extends the `read_store_profile` access scope. |
+| update_store_profile | Update store settings, manage logo images, and close storefront for maintenance with REST API. |
+| read_store_stats | Get store reports details. |
+| update_catalog_batch_delete | Delete all products from the store in one request. |
+| create_orders | Manually add new orders to the store. Convert abandoned carts to orders. |
+| add_custom_blocks | Create new sections – building blocks of website pages – for the Ecwid website builder called Instant Site. |
+| add_custom_templates | Create new templates – design and functionality overhauls – for your website or all users of the Ecwid website builder called Instant Site. |
+| read_customers | Get data about store customers and customer groups from your store. Receive webhooks about customer changes. |
+| update_customers | Update customer or customer group details and delete them. |
+| create_customers | Add new customers to the store. |
+| read_customers_extrafields | Get data about customer extra fields in the store. |
+| update_customers_extrafields | Update and create new customer extra fields. |
+| delete_customers_extrafields | Delete customer extra fields from the store. |
+| read_discount_coupons | Get data about discount coupons. Receive webhooks about discount coupon changes. |
+| update_discount_coupons | Update discount coupon details and delete coupons. |
+| create_discount_coupons | Add new discount coupons to the store. |
+| read_promotion | Get data about promotions in the store. Receive webhooks about any changes in promotions. |
+| update_promotion | Update promotion conditions and delete them. |
+| create_promotion | Add new promotions to the store. |
+| read_reviews | Get data about product reviews with REST API. Receive webhooks about product review changes. |
+| update_reviews | Update product review status and delete reviews. |
+| read_sizecharts | Get data about sizecharts available in the store. |
+| update_sizecharts | Update store sizecharts and delete them. |
+| create_sizecharts | Add new sizecharts to the store with REST API. |
+| customize_storefront | Get access to Ecwid JS API for storefront customization. Modify the storefront with a custom JavaScript code running from a self-hosted endpoint. Requires `customJsUrl` endpoint to function. Optional endpoint: `customCssUrl`. |
+| read_storefront_widget_pages | Get access to URL slugs and static code for store pages. This scope is required for API calls mentioned in this article: Optimize custom website SEO with better URLs |
+| add_to_cp | Add an integrated user settings page for your app to Ecwid admin. Requires a self-hosted `iframeUrl` endpoint to function. |
+| add_shipping_method | Add live shipping rates to the store with Shipping API. The new shipping method provides live rates to customers at the checkout. Requires a self-hosted `shippingUrl` endpoint to function. |
+| add_payment_method | Allow customers to pay for orders online at the checkout with Payment API. Requires a self-hosted `paymentUrl` endpoint to function. |
+| customize_cart_calculation | Create a custom logic for calculating discounts or surcharges at the checkout. Requires a self-hosted `discountUrl` endpoint to function. |
+| buy_domains | Purchase and manage store domains. |
+| read_invoices | Get data about order tax invoices. Receive webhooks about changes in order tax invoices. |
+| read_brands | Get data about product brands. |
+| read_subscriptions | Get data about purchased subscription products. |
+| update_subscriptions | Update subscription products' details. |
+| charge | Use custom charges in your app to expand monetization options with Ecwid billing. Available only for public apps. |
+| read_staff | Get data about additional (staff) accounts in the store. |
+| invite_staff | Send and resend staff account invites. |
+| create_staff | Add new staff accounts to the store. |
+| update_staff | Update staff account details. |
+| delete_staff | Cancel the invite for the staff and revoke their access to your store. |
+
+### Self-hosted endpoints
+
+Access to REST API or storefront/checkout customizations does not require setting up self-hosted endpoints.
+
+Some features require you to set up a live server listening to incoming requests from Ecwid API. 
+
+For example, you need an endpoint called `webhookUrl` to receive webhooks – automatic notifications about any events in the store. 
+
+Any self-hosted endpoint must work:
+
+- On a static HTTPS URL 
+- On a server that can handle HTTP requests.
+
+List of available endpoints and features requiring them:
+
+- `webhookUrl`: Webhooks about events happening in the store.
+- `paymentUrl`: Payment API for adding online payment methods for the store.
+- `shippingUrl`: Shipping API for adding live shipping rates for the checkout.
+- `cartPromotionsUrl`: Live discounts for adding custom live discounts to the checkout.
+- `customJsUrl`: Storefront customization with JavaScript code.
+- `customCssUrl`: Storefront customization with CSS code.
+- `iframeUrl`: Native app for creating a user settings page.
+
+### Application keys
+
+Access to REST API or storefront/checkout customizations does not require app keys.
+
+App keys are used in Payment API and app authentication. Values for app keys are unchangeable and unique for each application. There are two app keys:
+
+- `client_id` - Unique application ID.
+- `client_secret` - Application secret used for decryption in Native app authentication and Payment API processing.
+
+Last updated 1 month ago
+
+Lightspeed® 2025

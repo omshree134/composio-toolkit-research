@@ -1,0 +1,112 @@
+https://docs.runalloy.com/connectors/MetaAds
+
+> ## Documentation Index
+> 
+> Fetch the complete documentation index at: https://docs.runalloy.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Meta Ads
+
+> Integration details and setup guide for the Meta Ads connector in Alloy Automation.
+
+## Pre-Built Tooling
+
+| Category | Details |
+| --- | --- |
+| Authentication | OAuth 2.0 (Authorization Code with refresh tokens) |
+| Two-Way Sync | No |
+| Events Supported | No |
+| Realtime | Polling |
+| Supports Rate Limiting | Yes (Meta's strict rate limiting applies) |
+| Authentication Scopes Supported | `pages_manage_ads`, `pages_manage_metadata`, `pages_read_engagement`, `ads_management`, `email`, `leads_retrieval`, `business_management`, `ads_read`, `read_insights` |
+
+---
+
+## Objects Supported
+
+Alloy Automation supports syncing the following objects from Meta Ads:
+
+Based on the Facebook Ads API, typical objects include:
+
+- Ad Accounts
+- Campaigns
+- Ad Sets
+- Ads
+- Ad Creatives
+- Insights (Reporting)
+- Custom Audiences
+- Leads
+
+---
+
+## Set Up Guide
+
+### Trial Access
+
+| Question | Answer |
+| --- | --- |
+| Offers free trial? | Yes. You can create a free Facebook/Meta account and Business Manager to access the Ads API. Create Meta developer account |
+| Requires paid sandbox | No. Meta provides test accounts and sandbox environments for development. |
+| Requires partnership to obtain authentication? | No, but your app must pass Meta's App Review to access certain advanced features in production. |
+
+---
+
+### Authentication (OAuth 2.0)
+
+For customers who want to completely whitelabel their OAuth experience, you can provide your own developer keys instead of using Alloy Automation's.
+
+#### Create your OAuth app (Meta for Developers)
+
+1. Go to Meta for Developers (https://developers.facebook.com/) and sign in with your Facebook account.
+2. Click My Apps and then Create App.
+3. Select Business as the app type and click Continue.
+4. Fill in your app details: App Name: Your application's name App Contact Email: Your support email Business Account: Select or create a Business Manager account
+5. Click Create App to complete the initial setup.
+6. In the app dashboard, go to Settings → Basic and note your App ID and App Secret.
+7. Add the Marketing API product to your app from the dashboard.
+8. Under Marketing API Settings, add the OAuth Redirect URI: `https://api.runalloy.com/api/strategy/connector/metaAds/callback`
+9. Configure the required permissions (scopes) for your use case:`ads_management` - Create and manage ads`ads_read` - Read ad account data`read_insights` - Access ad performance insights`business_management` - Manage business assets`leads_retrieval` - Access lead ads data
+10. Copy your App ID and App Secret into Alloy Automation.
+
+#### App Review & Permissions
+
+- For development, you can use your app with test users and your own ad accounts without review.
+- For production use with external users, submit your app for App Review to request advanced permissions.
+- Some features like accessing other users' ad accounts require Standard Access or Advanced Access approval.
+
+---
+
+## Use Cases
+
+### 1) Advertising campaign management
+
+Programmatically create, update, and manage Meta advertising campaigns across Facebook and Instagram, syncing campaign structures and settings from your internal marketing platform.
+
+### 2) Performance analytics aggregation
+
+Pull ad performance metrics (impressions, clicks, conversions, spend) from Meta Ads into your data warehouse to create unified marketing dashboards alongside Google Ads, LinkedIn, and other channels.
+
+### 3) Dynamic audience synchronization
+
+Automatically create and update Custom Audiences in Meta Ads based on customer segments from your CRM, enabling targeted remarketing campaigns that stay in sync with your customer database.
+
+### 4) Lead ads automation
+
+Extract leads captured through Facebook Lead Ads in real-time and push them directly into your CRM or marketing automation platform, ensuring immediate follow-up with high-intent prospects.
+
+### 5) Multi-account campaign deployment
+
+Manage advertising campaigns across multiple Meta ad accounts (for agencies or multi-brand companies), deploying consistent campaign structures and creative variations at scale.
+
+---
+
+## API Gotchas
+
+- Meta's API versioning is aggressive - versions are deprecated every 2-3 years and completely removed after. You must specify the API version in every request (e.g., `/v19.0/`), and plan for regular version migrations as older versions sunset.
+- Rate limiting is complex and multi-layered. There are limits per user, per app, and per ad account, with different limits for different endpoint types. The rate limit headers are cryptic, and hitting limits can result in temporary bans. Always implement exponential backoff and respect the `X-Business-Use-Case-Usage` header.
+- Access tokens have a short default lifespan (1-2 hours). While refresh tokens can extend this, tokens obtained through some flows may not include refresh tokens. For long-running applications, implement robust token refresh logic or use long-lived tokens (valid for 60 days).
+- Ad Insights (reporting) data has significant latency and is subject to change. Data from the last 28 days may be revised as Meta processes delayed conversions and attribution. Always account for data inconsistencies when reconciling reports.
+
+> For questions or troubleshooting, contact support@runalloy.com.
+
+This documentation is built and hosted on Mintlify, a developer documentation platform.

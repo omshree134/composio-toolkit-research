@@ -1,0 +1,20 @@
+https://api.docs.dealcloud.com/mcp
+
+DealCloud MCP Server - DealCloud API Docs
+
+# DealCloud MCP Server
+
+The DealCloud MCP Server helps teams turn their DealCloud data into faster, higher-quality outcomes. AI assistants can surface sharper relationship and pipeline insights, prepare teams for diligence and meetings, then act on what they find: logging notes after a call, advancing a deal after a review, or recording a new opportunity. It all runs on a secure, consistent surface, with site and user-level permissions, governance, and attribution built in.
+
+## How It Works
+
+1. A compatible AI assistant connects to the DealCloud MCP Server and signs in as the user.
+2. The assistant discovers the available tools and capabilities.
+3. It calls read tools to retrieve context and surface relevant data.
+4. It calls write tools to create or update records, respecting existing rules & validations
+5. Every action and response honors individual users permissions.
+6. Teams move from insight to action faster, with less manual work and DealCloud kept current.
+
+## Jump In
+
+🚀 Getting Started→🔌 Connecting AI Clients→🔐 Authentication→🛠️ Available Tools→⚙️ Custom MCP Servers→

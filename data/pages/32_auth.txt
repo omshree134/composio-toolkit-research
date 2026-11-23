@@ -1,0 +1,23 @@
+https://developers.facebook.com/docs/marketing-api/system-users/
+
+System Users - Business Management APIs - Documentation - Meta for Developers
+
+Business Management APIs
+
+# System Users
+
+Make programatic, automated actions on ad objects or Pages, or do programmatic ads buying. System users represent servers or software making API calls to assets owned or managed by a Business Manager.
+
+The easiest, quickest way to create a system user is in the Business Manager tool. See Ads Help Center: How do I add a new System User.
+
+To take actions for a person managing an ad account, you should take them through the standard Facebook oAuth flow and get a user access token. If you try to use system user tokens to work on ad objects or Pages on behalf of a real user of your software, you cannot link this user to those actions unless you take them through Facebook Login.
+
+## Documentation Contents
+
+| Overview Learn about the two different types of system users: admin system user and system user. Read API limits for system users. Guide: Create System Users Create, retrieve, and update a system user. Learn how to invalidate access tokens. Guide: Install Apps and Generate Tokens A guide to install apps and generate access tokens through your system user. | Guide: Permissions Assign system user tasks on ad accounts, user page, and proxied assets. Retrieve permissions. Guide: API Calls How to make automated API calls for Marketing API and Pages API. System Users And Custom Audiences Rules for system users to operate with a Custom File Custom Audience. |
+| --- | --- |
+
+## Resources
+
+- Business Manager
+- Business Manager Best Practices

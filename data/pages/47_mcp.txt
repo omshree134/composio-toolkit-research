@@ -1,0 +1,23 @@
+https://mcp.pipedream.com/app/ecwid
+
+# ecwid MCP Server
+
+Online store platform
+
+Commerce
+
+Configure ecwid
+
+Connect your account and select your client below to get started.
+
+### Copy the MCP server URL
+
+This static URL works for every client. You'll authenticate when you add the server to your application.
+
+`https://mcp.pipedream.net/v2`
+
+### Add the server to your app
+
+Select your chat client to learn how to get started
+
+Or check out the full Configuration page.

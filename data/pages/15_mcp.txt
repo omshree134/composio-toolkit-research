@@ -1,0 +1,317 @@
+https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp
+
+Pylon MCP | Pylon
+
+# Pylon MCP
+
+Expose Pylon data to AI tools and assistants via Model Context Protocol.
+
+## Pylon MCP Server
+
+The Pylon MCP Server exposes Pylon data to AI tools that support the Model Context Protocol (e.g. Claude, ChatGPT, Cursor). AI tools authenticate with OAuth or an API token and can read and update issues, accounts, contacts, knowledge base articles, tasks and projects, triggers, and more within the authenticated identity's permissions.
+
+- Server URL (US): `https://mcp.usepylon.com`
+- Server URL (EU): `https://mcp.eu.usepylon.com`
+- Auth: OAuth 2.0 or an API token. Actions are performed as the signed-in user or the token's identity, with that identity's current role and permissions.
+- Transport: Streamable HTTP (stateless; no server-side sessions).
+
+### Setup in Pylon
+
+Open Settings > AI Controls > MCP Server in Pylon. Copy your workspace's regional MCP URL from Installation and use it in your AI tool. For client-specific instructions, see connecting to the Pylon MCP Server.
+
+### Authentication
+
+Both methods use the same regional MCP URL. Choose the method your client supports.
+
+#### OAuth
+
+Use OAuth with AI tools that offer an interactive connection flow. Add the regional MCP URL to your client, then sign in to Pylon when prompted. MCP requests run as the user who authorizes the connection.
+
+#### API token
+
+Use an existing API token for headless workers, scripts, or MCP clients that support custom authorization headers. You don't need a separate MCP token or an interactive sign-in.
+
+1. Create or choose an API token.
+2. Configure your client with your workspace's regional MCP URL.
+3. Include this header on every MCP request:
+
+Replace `<API_TOKEN>` with the token value. Use `https://mcp.usepylon.com` for US workspaces and `https://mcp.eu.usepylon.com` for EU workspaces; the token must belong to the same region.
+
+A token with its own identity uses the role assigned to that identity. A token linked to a teammate or bot uses that user's current role and permissions. The identity must have MCP Access, and each tool still requires the permissions for its operation. Any IP allowlist configured on the token also applies to MCP requests.
+
+Some clients only support OAuth connections. Use their OAuth flow if they don't let you configure an authorization header.
+
+### What you can do with MCP today
+
+The authenticated user or token identity needs the MCP Access permission to connect. The standard Member and Admin roles include this permission. Each tool also requires the permissions for its operation. Access follows the same scoping as the Pylon dashboard — the MCP cannot return data that the authenticated user cannot already see, or perform writes that the authenticated user cannot already write in the UI.
+
+Some tools also require a plan feature, noted in their section. Rate limits apply per tool, elaborated below.
+
+Use the tool names below when configuring your AI client. Your client discovers the input schema for each tool through MCP; available tools depend on your workspace, plan, and permissions.
+
+For a tool whose input schema includes `arguments`, put its required and optional fields inside that object. For example:
+
+Use the schema returned by your client for the exact fields. Writes apply immediately; confirm the intended change before calling them. If the outcome of a write is unknown, check the record before retrying.
+
+Write tools reject arguments they don't recognize instead of ignoring them; the error names the unknown arguments and lists the valid ones. A different casing of a field name, such as `customerPortalTitle` for `customer_portal_title`, is accepted, and tools with a `state` field also accept `status`. Supply each field only once: sending a field under both its name and an alias returns an error.
+
+#### Issues
+
+AI tools can send replies to customers and post internal notes for your team. A reply goes straight to the customer on the issue's channel (Slack, email, chat, etc.) and can't be unsent, so AI tools are instructed to show you the exact message and get your approval before sending it. Most AI tools also ask you to confirm each reply.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `search_issues` | Read | Search issues by keyword (titles, messages, tags, and names) and by state, account, assignee, tags, custom fields, etc. Each result lists its linked engineering tickets and their state |
+| `get_issue` | Read | Fetch a single issue by ID or number; set `include_messages=true` to include its conversation |
+| `get_issue_messages` | Read | Fetch an issue's full message history in order, including the original To and Cc recipients of email messages and each message's attachments |
+| `get_message_attachment` | Read | Fetch one attachment from an issue message |
+| `get_issue_statuses` | Read | List the default and custom issue statuses configured for your organization |
+| `create_issue` | Write | Create an issue in your workspace with an initial internal note |
+| `update_issue` | Write | Update issue fields (status, assignee, team, priority, tags, custom fields, …); tags can be replaced or added and removed individually |
+| `update_issues` | Write | Apply the same status, assignee, team, or tag change to up to 100 issues in one call |
+| `snooze_issue` | Write | Snooze an issue until a future time. It moves to On hold and returns to Waiting on you when the snooze ends |
+| `send_issue_reply` | Write | Send a reply to the customer on an issue. For email issues, recipients follow reply-all |
+| `send_issue_note` | Write | Post an internal note on an issue, visible only to your team |
+| `get_issue_threads` | Read | List an issue's internal threads |
+| `create_issue_thread` | Write | Create an internal thread on an issue, optionally synced to an internal Slack channel |
+| `get_issue_followers` | Read | List an issue's followers |
+| `update_issue_followers` | Write | Add or remove teammates as followers of an issue |
+| `link_product_issue` | Write | Link a Linear, Jira, GitHub, Asana, or Shortcut ticket to an issue |
+| `add_issue_group_children` | Write | Add children to an issue group |
+| `create_issue_ai_response` | Write | Create an AI response for an issue |
+| `create_issue_group` | Write | Create an issue group |
+| `delete_issue` | Write | Delete an existing issue |
+| `delete_message` | Write | Delete a message |
+| `get_issue_voice_calls` | Read | Get voice calls (with recordings and transcripts) for an issue |
+| `link_external_incident` | Write | Link or unlink an incident to/from an issue |
+| `mark_issues_as_spam` | Write | Mark issues as spam |
+| `merge_issues` | Write | Merge issues |
+| `redact_message` | Write | Redact a message |
+| `remove_issue_group_child` | Write | Remove a child from an issue group |
+| `update_message` | Write | Edit a message |
+
+`search_issues` can return each issue's messages with `include_messages`. On large pages, `max_messages_per_issue` keeps only each issue's latest messages (`messages_truncated` is set when older ones were dropped), and `max_message_chars` cuts each message body to that many characters (`body_truncated` is set). Set `include_total` to also get the exact number of matching issues you can read across all pages; it costs an extra query, so use it when sizing work rather than on every page.
+
+`get_issue_messages`, and `get_issue` with `include_messages=true`, list each message's attachments with an `index`, a file name, and a download URL. Images aren't downloaded by default; set `include_images` to `true` when your AI tool needs to look at them. Images hosted in Pylon (PNG, JPEG, GIF, and WebP) are returned as image content, up to 5 images per call, 5 MB each and 10 MB in total, and images that can't be attached are noted in the response. To read a single attachment, call `get_message_attachment` with the `issue`, `message_id`, and `attachment_index` from a message read. Images come back as image content with the same limits.
+
+For UTF-8 text attachments hosted by Pylon, `get_message_attachment` returns the text in a content block and reports the read status in `read`. Supported extensions are CSV, TSV, JSON, JSONL, NDJSON, TXT, LOG, MD, YAML, YML, XML, SQL, INI, CONF, and TOML. Files can be up to 5 MiB, with up to 64 KiB of text per response.
+
+- `complete`: no more text remains.
+- `partial`: pass `read.next_cursor` as `cursor` with the same `issue`, `message_id`, and `attachment_index` to read the next page. Access is checked on every call. If the file changes, restart without a cursor.
+- `unsupported`: use the download link for other formats, external files, non-UTF-8 content, or oversized files.
+- `unavailable`: the download failed. Retry or use the download link.
+
+Tools that act on a single issue accept its ID or its number, as a string or an integer, and a leading `#` is fine. Common alternative argument names such as `issue_id`, `issue_number`, or `ticket_id` also work; if you send more than one and they point to different issues, the call fails before anything changes.
+
+`update_issue` can also set `customer_portal_title`, the title customers see in the customer portal, and `customer_portal_visible`, which shows or hides the issue in the customer portal. Omit either to leave it unchanged. `search_issues` results include `customer_portal_title`, and `get_issue` returns `customer_portal_visible`.
+
+`update_issues` changes only the fields you provide. Issues that don't exist or that you can't update are listed in `skipped_issues` instead of failing the call. Tags replace the issue's tags by default; set `tags_apply_mode` to `append_only` to add tags or `remove_only` to remove them. Use `update_issue` for per-issue changes such as priority or custom fields.
+
+`update_issue` and `update_account` accept the same `tags_apply_mode` for `tags`: `replace` (the default), `append_only`, or `remove_only`. Adding or removing leaves other tags in place and is safe to retry. Setting `tags_apply_mode` requires a tag list, and omitting `tags` leaves tags unchanged.
+
+#### Accounts
+
+#### Account Notes
+
+Requires Account Intelligence and permission to read or update the account.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `get_account_notes` | Read | List the notes in an account's Notes block, newest first |
+| `save_account_note` | Write | Create a timestamped account note or edit its title or HTML body |
+
+Both tools work on one Notes block in an account notebook. To get its ID, hover over the Notes block in Pylon, open Notes block actions, and select Copy block ID. Pass it as `widget_id`.
+
+Use `get_account_notes` with `account_id` and `widget_id` to list notes, up to 20 per page. When `has_next_page` is true, pass the returned `cursor` to fetch older notes. Each note includes its `id`.
+
+Use `save_account_note` without `note_id` to create a note; `account_id`, `widget_id`, and nonempty `content_html` are required.
+
+To edit a note, supply a nonempty `note_id` and `title` and/or `content_html`. Use `get_account_notes` to find note IDs. Omit either field to preserve it; send an empty `title` to clear the title. An empty `content_html` is rejected, and HTML is sanitized. `account_id` and `widget_id` apply only when creating. An explicitly empty `note_id` is rejected; omit it to create.
+
+#### Contacts, Users & Teams
+
+For `save_contact`, omit `contact_id` to create a contact; `name` and `account_id` are required, and `email` is optional. New contacts don't get customer portal access or an invite. To update, read the contact with `get_contact`, then supply a nonempty `contact_id` and only the fields to change. `email` is create-only. Contacts with customer portal access cannot be moved to another account through this tool.
+
+To merge duplicate contacts, supply only `contact_id` and `merge_into_contact_id`; merging needs permission to delete contacts. The contact in `contact_id` is merged into the other one and then permanently deleted, and the merge can't be undone. Its issues, emails, and phone numbers move to the surviving contact. Both contacts must be on the same account, unless `contact_id` has no account, in which case it moves to the surviving contact's account. If that contact can log in to the customer portal, merge it in Pylon instead.
+
+Team reads require permission to view team settings; `save_team` requires permission to edit them. Omit `team_id` to create a team with `name` and `icon`, or supply a nonempty `team_id` to update it. Read `get_team` before changing membership. Removing a teammate also deletes schedule blocks they own in that team. Team changes apply in order; if a later change fails, earlier changes remain applied.
+
+#### Knowledge Base
+
+Reading requires permission to view the knowledge base. Drafting, publishing, changing article settings and tags, and editing collections require the same edit and publish permissions as the Pylon knowledge base editor.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `list_knowledge_bases` | Read | List the knowledge bases you can read |
+| `list_collections` | Read | List collections in a knowledge base |
+| `get_collection` | Read | Fetch a collection's details and visibility settings |
+| `list_collection_contents` | Read | List the articles and sub-collections directly inside a collection |
+| `save_collection` | Write | Create a collection, or edit an existing collection's title, description, or slug, or move it under another collection |
+| `search_articles` | Read | Full-text search across article titles and content |
+| `get_article` | Read | Fetch an article's content, visibility settings, and tags, by ID or by the identifier in its public URL; optionally include its images |
+| `get_related_links` | Read | List the tracked websites and external sites configured for your org |
+| `save_draft_article` | Write | Create a draft article, or save new draft content for an existing article without publishing |
+| `publish_article` | Write | Publish an article's content |
+| `update_article_settings` | Write | Change an article's visibility, AI agent access, and tags |
+| `move_article_to_collection` | Write | Move an article into a different collection |
+| `create_route_redirect` | Write | Create a new route redirect |
+| `delete_article` | Write | Delete an article |
+| `delete_collection` | Write | Delete a collection |
+| `delete_route_redirect` | Write | Delete a route redirect |
+| `get_article_feedback` | Read | Get article feedback |
+| `get_knowledge_base` | Read | Get a knowledge base by its ID |
+| `get_knowledge_base_theme` | Read | Get a knowledge base theme |
+| `get_route_redirects` | Read | Get a list of route redirects |
+| `publish_knowledge_base_theme` | Write | Publish a knowledge base theme |
+| `request_article_review` | Write | Request review on an article |
+| `update_knowledge_base_theme` | Write | Update a knowledge base theme draft |
+
+`get_article` doesn't download images by default. Set `include_images` to `true` when your AI tool needs to look at an article's images, for example to check screenshots or alt text. Images hosted in Pylon are returned as image content along with each image's URL and alt text; images hosted elsewhere stay as URLs in the article text. Images in both the draft and the published version are included once, draft first. PNG, JPEG, GIF, and WebP are supported, up to 5 images per call, 5 MB each and 10 MB in total. Images that can't be attached are noted in the response.
+
+To tag an article, pass `tag_ids` to `update_article_settings`. By default the list replaces the article's current tags, and an empty list removes every tag. To add or remove tags without touching the others, set `tags_apply_mode` to `append_only` or `remove_only`. Use `list_tags` with `object_type` set to `article` to find tag IDs, and `save_tag` to create a new article tag.
+
+For `save_collection`, omit `collection_id` to create a collection. `title` is required, along with exactly one of `knowledge_base_id`, to create the collection at the top level of a knowledge base, or `parent_collection_id`, to nest it under another collection. New collections inherit visibility and AI agent access from where they're created.
+
+To edit a collection, supply its `collection_id` and only the `title`, `description`, or `slug` to change; send an empty `description` to clear it. Pass `parent_collection_id` to move the collection, along with its articles and sub-collections, under another collection in the same knowledge base. Use `list_knowledge_bases` and `list_collections` to find IDs. Change a collection's visibility and AI agent access in Pylon.
+
+#### Feature Requests
+
+Requires the Feature Requests plan feature.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `search_feature_requests` | Read | Search feature requests by status and other filters |
+| `get_feature_request` | Read | Fetch a feature request, including its evidence and the accounts that can see it in the customer portal |
+| `get_feature_request_statuses` | Read | List the feature request statuses configured for your org |
+| `save_feature_request` | Write | Create a feature request with optional initial evidence, or update its title, description, status, or custom fields |
+| `add_evidence_to_feature_request` | Write | Record that a customer asked for an existing feature request, linking the issue or account |
+| `merge_feature_requests` | Write | Merge duplicate feature requests into one; evidence and linked tickets move over and the duplicates are archived |
+| `remove_feature_request_evidence` | Write | Unlink evidence that doesn't support a feature request, such as an issue that asked for something different |
+| `set_feature_request_portal_visibility` | Write | Show or hide feature requests in the customer portal for specific accounts |
+| `delete_feature_request` | Write | Permanently delete a feature request |
+| `link_feature_request_external_issue` | Write | Link or unlink an external issue to/from a feature request |
+
+For `save_feature_request`, omit `feature_request_id` to create a request with a nonempty `title` and `description`. Search first; if a matching request exists, use `add_evidence_to_feature_request` instead. `issue_id`, `account_id`, and `evidence_summary` apply only when creating.
+
+Supply a nonempty `feature_request_id` to update only the provided fields. `request_status` and `custom_fields` apply only when updating; use `get_feature_request_statuses` to find valid statuses. Results contain the new request under `created` or the updated request under `updated`.
+
+`remove_feature_request_evidence` takes a `feature_request_id` and up to 50 evidence IDs from `get_feature_request`; every ID must belong to that request. The source issue, call, or survey response isn't deleted. Accounts left without evidence on the request can no longer see it in the customer portal.
+
+`set_feature_request_portal_visibility` applies to every pair of the `feature_request_ids` and `account_ids` you pass, so you can share one request with many accounts or many requests with one account, up to 500 pairs per call. A request can only be shown to accounts that asked for it, meaning they have evidence on it. Changes are all or nothing: if one pair fails, none are applied. The result lists which accounts can see each request afterward.
+
+`delete_feature_request` permanently deletes the request along with its evidence links, linked product issues, and portal visibility, and can't be undone. To combine duplicates, use `merge_feature_requests` so the evidence is kept. To retire a stale or rejected request, archive it by updating its status with `save_feature_request`. AI tools are instructed to confirm with you before deleting.
+
+#### Tasks & Projects
+
+Requires Account Intelligence.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `search_tasks` | Read | Search tasks across your organization, or for one account or project |
+| `get_task` | Read | Fetch a task, including its subtasks and 20 most recent comments |
+| `get_task_statuses` | Read | List the default and custom task statuses |
+| `save_task` | Write | Create a task or update only the fields you provide |
+| `save_task_comment` | Write | Add a task comment, or replace the body of a comment you authored |
+| `delete_task` | Write | Delete a task and its subtasks |
+| `search_projects` | Read | Search or list projects by name, account, owner, and status |
+| `get_project` | Read | Fetch a project's details and progress |
+| `save_project` | Write | Create a project for an account, optionally from a template, or update an existing project |
+| `get_project_templates` | Read | List project templates |
+| `get_milestones` | Read | List milestones for a project or account, or fetch one by ID |
+| `save_milestone` | Write | Create a milestone in a project or update an existing milestone |
+| `delete_milestone` | Write | Delete a milestone |
+| `delete_project` | Write | Delete an existing project |
+| `delete_task_comment` | Write | Delete a comment on a task |
+| `get_milestone` | Read | Get a milestone by its ID |
+| `get_task_comments` | Read | Get comments for a task |
+| `link_task_external_issue` | Write | Link or unlink an external issue to/from a task |
+| `link_task_issue` | Write | Link or unlink a Pylon issue to/from a task |
+| `search_milestones` | Read | Search for milestones by a given filter |
+
+For `save_task`, `save_project`, and `save_milestone`, omit the object's ID to create it. Supply a nonempty `task_id`, `project_id`, or `milestone_id` to update only the fields you provide; omitted fields keep their current values. An explicitly empty ID is rejected. Read the existing object before updating it.
+
+- Tasks: Creating requires `title`. `parent_task_id` applies only when creating. `completed_at` applies only when updating an already completed task and cannot be cleared. On updates, send an empty string for `due_date`, `assignee_id`, or an account, project, or milestone assignment to clear it.
+- Projects: Creating always requires `account_id`. Also provide `name`, or supply `project_template_id` to copy a template's milestones, tasks, and subtasks. `account_id`, `owner_type`, and `project_template_id` apply only when creating; `is_archived` applies only when updating. On updates, send an empty string for `start_date`, `end_date`, or `owner_id` to clear it.
+- Milestones: Creating requires `name` and `project_id`. `project_id` and `account_id` apply only when creating. On updates, send an empty `due_date` to clear it.
+
+Tasks and projects accept `custom_fields` when creating or updating. Use `get_custom_fields` with `object_type` set to `task` or `project` to discover field slugs and values first.
+
+For `save_task_comment`, provide `task_id` and a `body_html` containing text. Omit `comment_id` to create, or supply a nonempty `comment_id` to edit your own comment. New comments default to `is_internal=false` and may be visible to customers; set `is_internal=true` when creating an internal comment. This setting cannot be changed when editing.
+
+Use `get_task` to find comment IDs. Returned comment bodies are limited to 2,000 characters and marked `body_truncated=true` when shortened. Don't edit using a truncated body: saving replaces the entire comment body. Open the task in Pylon to review the full comment first.
+
+#### Call Recordings
+
+Requires Account Intelligence. Access follows the same per-recording permissions as in Pylon.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `search_call_recordings` | Read | Search call recordings by title or account name, or by what was said during the call |
+| `get_call_recording` | Read | Fetch a recording's details, participants, summary, and full transcript, or list an account's recent recordings |
+| `create_call_recording` | Write | Create a call recording |
+| `delete_call_recording` | Write | Delete a call recording |
+| `update_call_recording` | Write | Update a call recording |
+
+#### Surveys
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `list_surveys` | Read | List NPS, CSAT, and custom surveys |
+| `get_survey_responses` | Read | Fetch survey responses by survey or issue |
+| `get_issue_survey_responses` | Read | Get survey responses for an issue |
+| `get_survey` | Read | Get a survey by its ID |
+| `search_surveys` | Read | Search for surveys by a given filter |
+
+#### Triggers
+
+New triggers are created disabled so you can review them in Pylon before turning them on.
+
+Use `validate_trigger` before saving. `save_trigger` supports custom trigger groups and flat branches with compatible actions, delays, and conditions, including recurring schedule kickoffs. Configure default or special groups, phone/IVR triggers, nested branches, and background-agent investigations in Pylon instead. Updating a trigger replaces its editable configuration while preserving its group and enabled state.
+
+To change only which records a trigger acts on, use `update_trigger_conditions`. Pass `branch_conditions`, mapping top-level branch IDs from `get_trigger` to new filters from `build_filter`; only those branches' conditions are replaced. Kickoffs, actions, branch and step IDs, group, title, description, and enabled state are kept, so this also works on triggers in default or special groups and on triggers with background-agent actions. To add an exclusion, combine it with the branch's complete existing filter, including any OR group. Updating conditions doesn't run the trigger.
+
+To build a recurring schedule, call `describe_trigger_kickoff` with `kickoff_type` `recurring_schedule` and the `object_type` the schedule runs on (for example `issue` or `account`). It returns the schedule fields and the actions that object supports; `get_trigger_examples` includes a weekday schedule example. Every enabled branch of a scheduled trigger needs a filter that selects which records it acts on. `build_filter` can't build meeting filters, so reuse an existing meeting filter from `get_trigger` or set it up in Pylon. To change an existing schedule, start from its `get_trigger` configuration. If a schedule uses recurrence settings that `save_trigger` can't represent, the update is rejected and the trigger is left unchanged; edit it in Pylon instead.
+
+#### Macros
+
+Discover saved macros, create or edit their message text, and delete them. Reading macro details requires permission to view macro settings; saving and deleting require permission to edit macro settings and the macro itself.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `list_macros` | Read | List visible macro summaries and groups, with optional name search and group filtering |
+| `get_macro` | Read | Read stored HTML, text type, visibility, configured action types, and attachment summaries |
+| `save_macro` | Write | Create a text-only macro or edit an existing macro's name, message text, or text type |
+| `delete_macro` | Write | Permanently delete a macro, including its actions and attachments |
+| `get_macro_groups` | Read | Get all macro groups |
+
+`list_macros` accepts `query`, `macro_group_id`, `limit` (default 25, maximum 100), and `cursor`. Continue with the returned cursor and the same filters when `has_next_page` is true.
+
+To create a macro, provide `name`, `macro_group_id` from `list_macros`, and either Markdown `text` or HTML `text_html`. New macros are organization-visible and default to the `reply` text type; `note` and `email` are also supported.
+
+To edit a macro, first call `get_macro`, then supply its `macro_id` and only the fields you want to change. Use `text_html` when editing returned HTML to preserve rich formatting and template metadata. `text` and `text_html` are mutually exclusive and both are sanitized. Explicitly empty content, or content with neither text nor a safe image after sanitization, is rejected. Omit both to preserve existing message text.
+
+Existing actions, conditions, visibility, editor permissions, group, and attachments are preserved. Change those settings or remove files in Pylon. Attachment summaries are read-only and limited to 100 entries; check `attachment_count` and `has_more_attachments` for additional files. These tools do not execute macros, resolve template variables against an issue, or send messages.
+
+`delete_macro` takes a `macro_id` from `list_macros`. Deleting a macro can't be undone.
+
+#### Filters, Fields & Tags
+
+These tools help an AI tool build valid filters and field values for the tools above, and manage tag definitions.
+
+| Tool | Read / Write | Description |
+| --- | --- | --- |
+| `build_filter` | Read | Build a validated filter for any object type |
+| `get_filter_attributes` | Read | Fields, operators, and reference types available when filtering an object type |
+| `get_custom_fields` | Read | List custom field definitions for an object type |
+| `get_ticket_forms` | Read | List your ticket forms, or get one, with each form's fields, required and hidden settings, and visibility conditions |
+| `list_tags` | Read | List issue, account, or knowledge base article tags, or look one up by exact value |
+| `save_tag` | Write | Create a tag, or rename or recolor an existing tag |
+| `delete_tag` | Write | Permanently delete a tag and remove it from everything it's applied to |
+| `create_custom_field` | Write | Create a custom field |
+| `create_custom_field_select_option` | Write | Create a custom field select option |
+| `delete_custom_field_select_option` | Write | Delete a custom field select option |
+| `get_custom_field` | Read | Get a custom field by its ID |
+| `update_custom_field` | Write | Update a custom field |
+| `update_custom_field_select_option` | Write | Update a custom field select option |
+
+For custom-field filters or updates, use `get_custom_fields` to discover the field definitions and valid values first. Use `get_filter_attributes` and `build_filter` for filters beyond a search tool's direct arguments. Pass the returned `filter_json` to search tools that a

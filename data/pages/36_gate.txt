@@ -1,0 +1,60 @@
+https://developers.klaviyo.com/en/docs/create_a_test_account
+
+Create a test account
+
+# Create a test account
+
+Learn how to create a Klaviyo account for testing that is linked to your production account login.
+
+If you want to test custom integrations and applications without any risk to your production account, you can create a separate Klaviyo account for testing. This is optional.
+
+A test account is a regular Klaviyo account with a test label. It runs in the same production environment as any other Klaviyo account, and plans and billing work the same way.
+
+> 📘
+> 
+> New test accounts start on the free plan
+> 
+> Like any new Klaviyo account, a new account you create for testing starts on the free plan, with the free plan's usage limits and features. If you convert an existing account instead, it keeps its current plan. Linking a test account to your production account does not share your production account's plan, usage, or account verification status.
+> 
+> Some features require a paid plan, account verification, or both on the account where you use them. For example, custom hosted pages require paid email features and a passed account verification. Inbox testing and SMS long codes also require a paid plan. To test one of these features, upgrade the test account itself.
+> 
+> Usage on a test account counts toward that account's plan, so watch your profile, email, and SMS usage. To compare plans, see how free and paid plans differ.
+
+The account owner will need to set up a secondary account tied to the same email address and password as the primary account, which will link the two together in Klaviyo.
+
+Sign up for multiple accounts
+
+While logged out of your production account, head over to Klaviyo and click the Sign Up button at the top of the page. 
+
+Sign up using the same email address and password currently in use on your production account, but with a different company name. For example, if the company name on your production account is Ben's Best Books, your test account might be called Ben's Best Books - test.
+
+Complete the guided set up wizard to finalize your test account. You will also want to ensure user roles are assigned in the secondary account. Read more about multi-account user privileges.
+
+Convert to a test account
+
+> ❗️
+> 
+> You will not be able to revert your test account after conversion
+> 
+> We recommend only converting accounts used for testing purposes and NOT production Klaviyo accounts. Please note that once the account is converted, you will not be able to reverse this action without the help of support.
+
+> 🚧
+> 
+> Billing still applies
+> 
+> Converting an account to a test account does not change its plan or billing. Usage counts toward the account's plan as usual.
+
+1. Open the bottom left account selector and click Settings.
+2. Navigate to Account > Testing and click Convert to test account. 
+
+![](https://files.readme.io/d041c2a-image2.png "")
+
+Your account should now be an active test account, as indicated in the top left corner and shown in the example below. Note that there will be minor visual changes, but the account works the same way as any other Klaviyo account on the same plan.
+
+![](https://files.readme.io/a7bf9e8-image1.png "")
+
+Swap between accounts
+
+When you log in with an email and password associated with multiple accounts, you will automatically log in to the most recent account you were previously in. After logging in, use the account dropdown in the lower left corner to switch between production and test accounts.
+
+Updated 5 days ago

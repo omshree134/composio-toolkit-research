@@ -1,0 +1,105 @@
+https://www.gopaygent.com/pricing
+
+Paygent | The Premier Stripe & PayPal Alternative for API Payments
+
+# Powerful Infrastructure. Transparent Pricing.
+
+We leverage wholesale rates to bring you enterprise-grade payment orchestration at a fraction of the cost of heavyweights like Stripe and Square.
+
+## Developer & B2B
+
+For SaaS, Wholesalers, and Platforms.
+
+![B2B Architecture](https://www.gopaygent.com/pricing/pricing_b2b_art_1776903240404.png)
+
+Monthly Gateway
+
+$15
+
+Per Transaction
+
+$0.10
+
+40% cheaper than Authorize.net ($25/mo)
+
+### Essential Add-ons:
+
+Level III Advantage$45/mo
+
+ACH Payments$25/mo
+
+Customer Vault (Tokenization) Included
+
+TAPN PRODUCT
+
+## Retail & World Cup
+
+For Bars, Restaurants, and Festivals.
+
+![Tapn SoftPOS Soccer Theme](https://www.gopaygent.com/pricing/pricing_tapn_soccer_art_1776903959889.png)
+
+Monthly Fee
+
+$0
+
+Per "Tap" Fee
+
+$0.20
+
+Beats Square & Toast on small ticket markups
+
+### Essential Add-ons:
+
+Mobile App (iProcess)$5/mo
+
+TXT2PAY (SMS)$10/mo + $0.25/tx
+
+No Hardware Required Included
+
+## Connect everything. Pay less.
+
+### Electronic Invoicing
+
+Half the cost of standalone invoice software like Bill.com.
+
+$10/mo
+
+### Shopify Connect
+
+Bypass "Shopify Payments" restrictions entirely.
+
+$20/mo + 0.50%
+
+## Common Questions
+
+What PCI compliance level does Paygent maintain?
+
+Paygent is PCI DSS Level 1 certified, the highest level of compliance in the payments industry. When you use our tokenization APIs (Collect.js), your integration qualifies for SAQ-A, the simplest PCI self-assessment questionnaire.
+
+Do you support ACH / eCheck payments?
+
+Yes. ACH payment processing is available as a $25/month add-on. This includes both ACH debits (pulling funds from a customer's bank account) and ACH credits (pushing funds for payouts).
+
+How fast are payouts / settlements?
+
+Standard settlement is next-business-day (T+1). Same-day settlement is available for qualifying merchants. Tapn transactions settle within 48 hours.
+
+Can I migrate from Stripe or Square?
+
+Yes. We offer a white-glove migration service for merchants processing over $50K/month. We handle token migration, webhook re-mapping, and parallel testing.
+
+Are there long-term contracts?
+
+No. Both Paygent Platform and Tapn are month-to-month with no cancellation fees. Enterprise custom pricing may include annual commitments with volume discounts.
+
+What payment methods do you support?
+
+Visa, Mastercard, American Express, Discover, JCB, UnionPay, Apple Pay, Google Pay, ACH/eCheck, and contactless NFC (via Tapn). Local payment methods are available in select regions.
+
+Do you offer chargeback protection?
+
+Paygent Radar provides AI-powered fraud scoring on every transaction. Combined with 3D Secure authentication and customizable risk rules, most fraud is blocked before it becomes a chargeback.
+
+Is there a free trial?
+
+We offer a sandbox environment with full API access at no cost. You can test transactions, webhooks, and integrations before going live. No credit card required to start.

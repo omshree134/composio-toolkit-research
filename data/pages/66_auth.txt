@@ -1,0 +1,139 @@
+https://neo4j.com/docs/aura/api/authentication/
+
+Skip to content
+
+Neo4j Aura
+
+Is this page helpful?
+
+Go to docs home page
+
+Raise an issue
+
+# Authentication
+
+The Aura API uses OAuth 2.0 for API authentication.
+
+## Creating credentials
+
+All tiers can create Aura API credentials. API credentials are linked to the user account, inheriting its capabilities and roles. The API credentials never expire unless you delete them.
+
+To create credentials in the Aura console go to the Client credentials page in your browser, or:
+
+- Go to your profile menu from the top right corner of your screen
+- Select Account Settings
+- Select the Client credentials tab and Aura API
+- Select the Create client credential button
+- Enter a Client Name, and select Create.
+- Save the Client ID and Client Secret you are given in the resulting modal.
+
+| | You cannot retrieve your Client Secret after you close the modal, so save it securely. |
+| --- | --- |
+
+## Authenticating API requests
+
+To authenticate API requests to the Aura API, you must provide a Bearer Token in the `Authorization` header of each request as shown below:
+
+`Authorization: Bearer <access_token>`
+
+| | You can use the Authorize button on the Aura API page to authenticate and test endpoints directly using your client ID and client secret. The UI sets the `Authorization` header for you. |
+| --- | --- |
+
+### Token endpoint
+
+You can use the following `/oauth/token` endpoint to obtain a Bearer Token for authenticating API requests.
+
+Authentication to the token endpoint uses HTTP Basic Authentication, where the client ID and client secret are provided as the username and password, respectively.
+
+#### Request parameters
+
+- Method: `POST`
+- Token URL: `https://api.neo4j.io/oauth/token`
+
+#### Request header
+
+| Parameter | Value |
+| --- | --- |
+| Authorization [1] | `Basic ` [2] |
+| Content-Type | `application/x-www-form-urlencoded` |
+| 1. This header is set for you when providing your client ID as the username and client secret as the password. 2. Where `` is the base64-encoded string of your client ID and client secret, joined by a colon (`:`). | |
+
+#### Request body
+
+| Parameter | Value |
+| --- | --- |
+| `grant_type` | `client_credentials` |
+
+| | Both the request and response contain sensitive information and must be kept secure. You are responsible for keeping the client credentials and access tokens confidential, whether in transit (by specifying HTTPS), if stored at rest, in log files, etc. |
+| --- | --- |
+
+#### Request examples
+
+```shell
+curl --request POST 'https://api.neo4j.io/oauth/token' \
+     --user '<client_id>:<client_secret>' \ (1)
+     --header 'Content-Type: application/x-www-form-urlencoded' \
+     --data-urlencode 'grant_type=client_credentials'
+
+```
+
+| 1 | The `--user` option sets the `Authorization` header for you, handling the base64 encoding of the client ID and client secret. |
+| --- | --- |
+
+```python
+import requests
+from requests.auth import HTTPBasicAuth
+
+# Make the request to the Aura API Auth endpoint
+response = requests.request(
+    "POST",
+    "https://api.neo4j.io/oauth/token",
+    headers={"Content-Type": "application/x-www-form-urlencoded"},
+    data={"grant_type": "client_credentials"},
+    auth=HTTPBasicAuth(client_id, client_secret) (1)
+)
+
+print(response.json())
+
+```
+
+| 1 | `client_id` and `client_secret` must be set to the values obtained from the Aura Console. |
+| --- | --- |
+
+#### Response body example
+
+```json
+{
+  "access_token": "<token>", (1)
+  "expires_in": 3600, (2)
+  "token_type": "bearer"
+}
+
+```
+
+| 1 | The `access_token` returned here is what you will provide as the Bearer Token in the `Authorization` header of Aura API requests. |
+| --- | --- |
+| 2 | The value of `expires_in` is the token expiration time in seconds. Once the token expires, the application must request a new one. |
+
+#### HTTP response codes
+
+| Code | Message | Description |
+| --- | --- | --- |
+| 200 | Success | Access token requested successfully. |
+| 400 | Bad Request | Request is invalid. |
+| 401 | Unauthorized | The provided credentials are invalid, expired, or revoked. |
+| 403 | Forbidden | The request body is invalid. |
+| 404 | Not Found | The request body is missing. |
+
+### Excessive token requests
+
+Excessive token requests may cause inefficiencies or rate-limiting. You can optimize your API usage by following these steps:
+
+- Retrieve the token once per hour: As tokens remain valid for an hour, reduce the frequency of token requests and reuse the same token for multiple API calls.
+- Implement token caching: Store the token securely within your system to reuse it for subsequent requests during its validity period, minimizing unnecessary calls to the endpoint.
+
+### Token expiration
+
+Access tokens are temporary and expire after one hour. If you send a request to the Aura API using an expired token, you will receive a `403 Forbidden` response. To continue using the API, you must obtain a new token using the Aura API credentials.
+
+Join the User Research panelInfluence the future of Neo4j products by sharing your experiences with a researcher. Learn more

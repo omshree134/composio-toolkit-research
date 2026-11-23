@@ -1,0 +1,61 @@
+https://shopify.dev/docs/api/usage/authentication
+
+# Shopify API authentication
+
+To call a Shopify API, your code sends an access token in a request header to authenticate the identity that token represents (your app or a buyer) and authorize what that identity can access. How you obtain the token and which header carries it vary by API.
+
+This page explains the shared model behind Shopify API authentication: how a request is authenticated, and where to go to set it up for each API.
+
+---
+
+## How it works
+
+Every authenticated Shopify API request follows the same shape:
+
+1. Your code obtains an access token scoped to the access it needs.
+2. Your code includes the token in a request header.
+3. Shopify checks the token on each request and returns the data the token is scoped to, or an error if the token doesn't grant the required access scope.
+
+Authentication proves which identity is making a request, and authorization determines what that identity is allowed to do. The access token does both: it identifies your app or a buyer, and its access scopes determine what it can access.
+
+Some flows authenticate a user first. For example, embedded apps validate an ID token, then exchange it for an access token.
+
+---
+
+## Authentication by API
+
+Which token you use depends on whose data you're working with. Most Shopify APIs, including the GraphQL Admin API, Storefront API, and Partner API, authenticate your app acting on behalf of a merchant or organization. The token represents your app and the access a merchant granted it.
+
+The Customer Account API is the exception. It authenticates a buyer accessing their own account data, such as their orders and addresses. After the buyer signs in and consents, your app receives an access token scoped to that buyer and calls the API on their behalf. For how this flow works, see Customer Account API authentication.
+
+The following table shows what each API authenticates, how you get the token, and the header it uses:
+
+| API | Authenticates | How you get the token | Header |
+| --- | --- | --- | --- |
+| GraphQL Admin API | Your app, on behalf of a merchant | OAuth, usually token exchange | `X-Shopify-Access-Token` |
+| Storefront API | Your app (public or private) | Create public or private tokens, or go tokenless for basic data | `X-Shopify-Storefront-Access-Token` or `Shopify-Storefront-Private-Token` |
+| Partner API | Your app, scoped to your Partner organization | Create a Partner API client in Organization settings, and use its access token | `X-Shopify-Access-Token` |
+| Customer Account API | A buyer, on their own behalf | Buyer signs in with OAuth 2.0 and PKCE | `Authorization` |
+
+The table covers the most commonly used APIs. For a complete list, see the Shopify API reference.
+
+Your app's client ID and client secret are on its Settings page in the Dev Dashboard. To use them, refer to Authenticate your app.
+
+---
+
+## Next steps
+
+Set up authentication for:
+
+- The GraphQL Admin API to read and write store data, including products, orders, customers, and inventory.
+- The Storefront API to build buyer-facing experiences such as product browsing, cart, and checkout.
+- The Customer Account API to let buyers access their own account data, such as orders and addresses.
+
+Learn more:
+
+- Learn how access tokens work, including the token types, the GraphQL Admin API's OAuth grants and endpoints, and how tokens expire and refresh.
+- Learn what ID tokens are, the claims your app validates, and how they're exchanged for access tokens.
+- Understand the access scopes you request and what each one grants.
+- Find the response and error codes Shopify returns, including authentication errors.
+
+---

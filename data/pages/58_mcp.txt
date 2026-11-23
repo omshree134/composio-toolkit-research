@@ -1,0 +1,122 @@
+https://docs.sherlocklabs.dev/explore/mcp
+
+> ## Documentation Index
+> 
+> Fetch the complete documentation index at: https://docs.sherlocklabs.dev/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> ## Agent Instructions
+> 
+> Sherlock documentation. In Node.js examples prefer the Sherlock SDK for Node.js (@sherlock-labs/otel).
+> In Go examples use the upstream OpenTelemetry Go SDK exactly as shown on /sdk/go/setup and /sdk/go/configuration; Sherlock has no Go distribution.
+> Two MCP servers exist. This documentation's search server is at https://docs.sherlocklabs.dev/mcp. Sherlock's data server, for a user's own logs, traces, and metrics, is at https://mcp.sherlocklabs.dev/mcp and is described at /explore/mcp.
+
+# Ask an AI assistant
+
+> Connect an AI client to Sherlock through the MCP server and analyze logs, traces, and metrics in conversation.
+
+Sherlock has an MCP server. Connect Claude Code, the Claude apps, Cursor, VS Code, Codex, or any other MCP client to it, and ask about your logs, traces, and metrics in plain language. Settings → MCP in Sherlock shows the same instructions with copy buttons.
+
+## Try asking
+
+- Tell me about the state of the system using the Sherlock MCP tools
+- How many errors did we get in the last hour?
+- Group today's errors and tell me which one is new
+- Which of today's errors actually matter, and which are just noise?
+- Latency spiked at 14:20. Check the metrics, then pull the traces behind it
+
+## Connect with OAuth
+
+This is the recommended way. Point your client at the server URL and sign in through the browser. There is no token to copy, store, or rotate. Access follows your Sherlock account and can be revoked at any time.
+
+Server URL: `https://mcp.sherlocklabs.dev/mcp`
+
+### Set up your client
+
+> [tab] Claude Code
+> 
+> 1. Add the server, with no header and no token: claude mcp add sherlock -t http "https://mcp.sherlocklabs.dev/mcp"
+> 
+> 2. Run `/mcp` in Claude Code, select `sherlock`, then choose Authenticate.
+> 3. Your browser opens. Sign in with your Sherlock account and approve access. Claude Code stores the credentials for you.
+
+> [tab] Claude apps
+> 
+> 1. Open Settings → Connectors and click Add custom connector.
+> 2. Name it Sherlock and paste the server URL.
+> 3. Click Connect and sign in with your Sherlock account when the browser prompts you.
+
+> [tab] Cursor
+> 
+> 1. Press ⌘/Ctrl Shift J to open Cursor Settings.
+> 2. Select Tools & Integrations, then New MCP Server.
+> 3. Add Sherlock to the config that opens:{
+> "mcpServers": {
+> "sherlock": {
+> "url": "https://mcp.sherlocklabs.dev/mcp"
+> }
+> }
+> }
+> 
+> 4. Click Needs login next to Sherlock and complete sign-in in the browser.
+> 5. Optional. To use Sherlock from cursor-agent, run `cursor-agent mcp login sherlock`.
+
+> [tab] VS Code
+> 
+> 1. Press ⌘/Ctrl P and search for MCP: Add Server.
+> 2. Select HTTP (HTTP or Server-Sent Events).
+> 3. Enter the server URL and press Enter.
+> 4. Name it Sherlock and press Enter.
+> 5. Allow the authentication flow to complete.
+> 6. Activate it with MCP: List Servers → Sherlock → Start Server.
+
+> [tab] Codex
+> 
+> From your terminal, add the server:
+> 
+> ```sh theme={null}
+> codex mcp add sherlock --url https://mcp.sherlocklabs.dev/mcp
+> 
+> ```
+> 
+> The next time you run codex, Sherlock is available and opens the OAuth flow to connect to your account.
+> 
+> Or edit `~/.codex/config.toml` and add the remote MCP configuration, then restart any running codex session:
+> 
+> ```toml theme={null}
+> [mcp_servers.sherlock]
+> url = "https://mcp.sherlocklabs.dev/mcp"
+> 
+> ```
+
+> [tab] Other
+> 
+> Any client that speaks MCP over Streamable HTTP with OAuth 2.1 can connect with the server URL. Sherlock advertises its authorization server at `/.well-known/oauth-protected-resource`, and that server supports dynamic client registration. Most clients discover everything they need from the URL alone, with no client id or secret to configure.
+
+## Connect with an API token
+
+A long-lived token works where the browser sign-in flow does not: headless machines and CI, shared automation, or clients that do not implement OAuth. The token grants the same access as your account. Treat it like a password.
+
+```sh
+claude mcp add sherlock -t http "https://mcp.sherlocklabs.dev/mcp" \
+  --header "x-api-key: <your-token>"
+
+```
+
+Generate a token with Generate MCP token on Settings → MCP. Sherlock inserts it into the command on that page. Copy it right away. You cannot see it again. You can also use an existing token from the API Tokens page.
+
+## Ask about these docs
+
+The documentation has its own MCP server, separate from the one above. Connect it and the agent answers from these pages while you integrate. See Docs for AI agents.
+
+## Related topics
+
+> [card] Get started
+> 
+> Send your first data before you ask about it.
+
+> [card] Traces
+> 
+> What the assistant sees when it pulls a trace.
+
+This documentation is built and hosted on Mintlify, a developer documentation platform.

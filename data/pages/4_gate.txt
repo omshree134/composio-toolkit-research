@@ -1,0 +1,428 @@
+https://attio.com/pricing
+
+Plans & Pricing | Attio
+
+# Revenue around the clock.
+
+Start for free with plans for every stage of growth, whether startup or enterprise.
+
+Monthly Annual
+
+Save 20% with annual billing
+
+### Free
+
+For individuals to get started with Attio.
+
+- Ask Attio, your personal agent
+- Self-builds from email and calendar
+- Automatic enrichment
+- Agents and workflows
+- 50,000 records and 3 objects
+
+### Plus
+
+For small teams building their first sales process.
+
+$ 50 40 mo/workspace
+
+Includes 1 user.
+
+Everything in Free, and:
+
+- Email sharing and AI summaries
+- Send 1,000 emails/mo
+- Private lists
+- Basic permissions
+- 250,000 records and 5 objects
+
+### Pro
+
+Most popular
+
+For growing teams turning sales into a repeatable engine.
+
+$ 125 100 mo/workspace
+
+Includes 1 user.
+
+Add users for $99$79/mo each.
+
+Everything in Plus, and:
+
+- Custom objects
+- Call intelligence
+- Sequences
+- Team and user permissions
+- Advanced reporting
+- Track product usage and events
+- Data rules for reps and agents
+- 1M records and 12 objects
+
+### Ultra
+
+For teams and orgs running multiple GTM motions at scale.
+
+$ 1,000 1,000 mo/workspace
+
+Includes 5 users, annual billing.
+
+Add users for $189$189/mo each.
+
+Everything in Pro, and:
+
+- Unlimited objects
+- Query in SQL with API or MCP
+- Data connector
+- Unlimited data rules by team
+- Single sign-on (SSO)
+- User provisioning (SCIM)
+- Audit logs
+- Advanced controls
+- Forward-deployed onboarding
+
+## Compare plans
+
+Platform features
+
+Select preferred billing cycle
+
+### Free
+
+$ 0 0
+
+Up to 3 users.
+
+$ 0 0
+
+Up to 3 users.
+
+### Plus
+
+$ 50 40/mo
+
+Includes 1 user.
+
+Add users for $44$35/mo each.
+
+$ 50 40/mo
+
+### Pro
+
+$ 125 100/mo
+
+Includes 1 user.
+
+Add users for $99$79/mo each.
+
+$ 125 100/mo
+
+### Ultra
+
+$ 1,000 1,000/mo
+
+Includes 5 users, annual billing.
+
+Add users for $189$189/mo each.
+
+$ 1,000 1,000/mo
+
+Includes 5 users, annual billing.
+
+#### Agents and AI
+
+AI agents
+
+Call intelligence
+
+100
+
+500
+
+1,000
+
+2,500
+
+Workspace credits
+
+250
+
+1,500
+
+10,000
+
+20,000
+
+Starting at $85$70/mo
+
+Starting at $85$70/mo
+
+Starting at $85$70/mo
+
+#### Automation
+
+Agent and integration blocks
+
+SQL in workflows
+
+Sequences
+
+#### Context and data model
+
+Records from email and calendar
+
+Records
+
+50,000
+
+250,000
+
+1,000,000
+
+3,000,000
+
+$300$240/mo per 1M records
+
+$300$240/mo per 1M records
+
+12, then $500$400/mo each
+
+Record templates
+
+Record summaries
+
+People enrichment
+
+File storage
+
+50 GB
+
+50 GB
+
++ Headcount and ARR
+
++ Funding
+
++ Funding
+
+Communication intelligence
+
+Interactions and strength
+
++ Email and calendar
+
+#### Pipeline and activity
+
+Activity tracking (beta)
+
+Emails and meetings
+
+Manual logging
+
+Custom + integrations
+
+Rules
+
+8 per object
+
+Rules by team
+
+15
+
++ Targets and trends
+
+#### Email and calendar
+
+Connected accounts per user
+
+1
+
+1
+
+Email sharing
+
+Subject lines and metadata
+
+Full, workspace-wide
+
+Full, by person or record
+
+Full, by person or record
+
++ Workspace blocklist
+
+Emails sent per user
+
+200/mo
+
+1,000/mo
+
+Bulk email sending
+
+10 at once
+
+50 at once
+
+50 at once
+
+50 at once
+
+Custom branding
+
+Email summaries and labeling
+
+#### Platform and developer
+
+API and webhooks
+
+MCP server
+
+Data connectors
+
+1 included
+
+#### Security and admin
+
+Users
+
+3
+
+10
+
+No limit
+
+Access permissions
+
+Everyone can view and edit
+
+Workspace-wide
+
++ Team or person
+
++ Team or person
+
+Private lists
+
+Teams
+
+Single sign-on (SSO)
+
+User provisioning (SCIM)
+
+Audit logs
+
+Admin-only exports
+
+Session management
+
+Pay by invoice
+
+#### Support and services
+
+Chat and email support
+
+Priority support
+
+Migration services
+
+Talk to sales
+
+Talk to sales
+
+Forward-deployed onboarding
+
+Free
+
+Ultra
+
+### Automation
+
+SQL in workflows
+
+Free
+
+### Context and data model
+
+### Pipeline and activity
+
+### Email and calendar
+
+### Platform and developer
+
+Users
+
+Free
+
+Plus
+
+“When I first opened Attio, I instantly got the feeling this was the next generation of CRM.” 
+
+Margaret Shen
+
+Head of Business Operations · Modal
+
+## Frequently asked questions
+
+### Does Attio have a free plan?
+
+Yes. The Free plan costs nothing for up to three users. It includes Ask Attio, automatic enrichment, workflows, and email and calendar sync, with up to 50,000 records and three objects.
+
+### Can I try Attio before I pay?
+
+Yes. Every new Attio workspace starts with a 14-day free trial of the Pro plan, with access to all Pro features. When the trial ends, admins can choose any plan, including Free.
+
+### Is there a discount for paying annually?
+
+Yes. On Plus and Pro, paying annually costs about 20% less than paying monthly. Ultra is billed annually only.
+
+### Which Attio plan is right for my team?
+
+- Free: For individuals getting started.
+- Plus: For small teams of up to 10 users building their first sales process.
+- Pro: For growing teams turning sales into a repeatable engine with advanced features like custom objects to model their business and activity tracking.
+- Ultra: For teams and enterprises running complex GTM motions with people and agents, that need scale, controls, and governance.
+
+### Can I get SSO on the Pro plan?
+
+Yes. Pro teams can add SSO, SCIM, audit logs, and advanced data controls with the Governance add-on for $30 per user a month, billed annually. Governance is included with Ultra.
+
+### Do I need to talk to sales to buy Ultra?
+
+No. Ultra is available for purchase on your own. Talk to sales if you want help with a migration or a security review.
+
+### Can I change or cancel my plan at any time?
+
+Yes. Admins can change plans at any time in workspace settings. Upgrades apply right away and are prorated, and downgrades take effect at the next renewal. If you cancel, your team keeps access until the end of the current billing period.
+
+### How do credits work in Attio?
+
+Each user gets a monthly allowance of Ask Attio credits. Each workspace also gets a shared pool of workspace credits for workflows and AI features. When a user runs out of Ask Attio credits, Ask Attio can draw on workspace credits unless an admin sets a limit. With paid plans you can buy more workspace credits at any time.
+
+For more details on how credits work, check out our guide.
+
+### How much do additional credits cost?
+
+Paid plans can add workspace credits in monthly packs, and larger packs cost less per credit.
+
+Prices per month:
+
+- 5,000 credits: $70 billed annually, or $85 billed monthly
+- 10,000 credits: $120 billed annually, or $150 billed monthly
+- 25,000 credits: $260 billed annually, or $330 billed monthly
+- 50,000 credits: $475 billed annually, or $595 billed monthly
+
+### What are my payment options?
+
+All payments can be made via credit card. For our Pro and Ultra plans, we can issue invoices and will accept PO, ACH, check or wire.
+
+### Does Attio offer discounts for startups?
+
+Yes. Venture-backed startups with up to 10 users get 80% off the annual Pro plan and credits for the first year, and 30% off the second year. Apply within 90 days of creating your workspace.
+
+### Can I use Attio with Claude, ChatGPT, or other AI tools?
+
+Yes. Every plan includes the Attio MCP server, which connects AI tools that support the Model Context Protocol, such as Claude and ChatGPT, to your workspace. Ultra adds SQL access through MCP for exact answers across your data.
+
+### Can Attio help me migrate from another CRM?
+
+Yes. On paid plans, talk to sales for migration help. Ultra also includes onboarding with a forward-deployed engineer (FDE).

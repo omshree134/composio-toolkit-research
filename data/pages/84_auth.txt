@@ -1,0 +1,135 @@
+https://paygentlabs.com/developers/
+
+Agentic commerce MCP checkout, modelled on UCP — Paygent
+
+# Agentic commerce · open standards Add commerce to any agent. Over the standards you would pick anyway.
+
+Paygent is not a proprietary API — it is an agent built on the wire models of the Universal Commerce Protocol: a discovery document and an MCP checkout endpoint modelled on UCP, plus an agent card. Conformance to the current UCP release is on the roadmap. If your runtime can call a tool, it can search, recommend how to pay for the most value on each cart, spend points, and complete the checkout.
+
+All money and points math is deterministic and server-side — never delegated to a model.
+
+ embed_commerce.py 
+
+```
+# 1 · Discover the agent over standard surfaces
+card = fetch("https://agent.example.com/.well-known/agent_card.json")
+ucp  = fetch("https://agent.example.com/.well-known/ucp")
+
+# 2 · Open a session — bound to YOUR wallet provider
+session = paygent.post("/v1/sessions")["session_id"]
+
+# 3 · Stream a turn · typed events, never prose to parse
+for ev in paygent.stream("/v1/run",
+        session_id=session,
+        message="5.5-quart Dutch oven under $250 — how should I pay?"):
+
+    match ev.type:
+        case "products":         ui.offers(ev.data)
+        case "checkout_summary": ui.cart(ev.data)
+        case "wallet_summary":   ui.wallet(ev.data)
+        case "verbatim_block":   ui.as_is(ev.data)  # money: render, never re-derive
+        case "message":          ui.text(ev.data)
+
+# → earning quoted per card on the real cart · points held in escrow
+# → checkout binds to the offer shown, at the price shown
+```
+
+ Discovery · `/.well-known/ucp` Agent card · `/.well-known/agent_card.json` MCP checkout · `/ucp/mcp` 
+
+## Integrate the way the ecosystem already works.
+
+No proprietary SDK required to start — you talk to Paygent through a discovery document and an MCP checkout modelled on UCP. Conformance to the current UCP release is on the roadmap.
+
+### Agent card
+
+Agent card at `/.well-known/agent_card.json`: the commerce agent's identity, capabilities and endpoint. Signing keys are pinned out of band at onboarding, never fetched over the network.
+
+### Discovery document, modelled on UCP
+
+The `/.well-known/ucp` document advertises its checkout capability and MCP endpoint, machine-readable.
+
+### MCP checkout tools
+
+Create, get, add items to, complete, and cancel checkouts as MCP tool calls — completion and cancellation are idempotent on the caller's key.
+
+## Bring your own wallet — against a contract, not a conversation.
+
+Paygent moves value through a wallet agent it does not own. That seam is a versioned specification, available on request (developers@paygentlabs.com), that any wallet vendor can implement without reading our source.
+
+### Frozen `1.x` contract, currently `1.1`
+
+A self-contained guide: discovery, authentication, transport, operations, idempotency, errors, and the KYA test. Frozen at the platform's `v1.0.0` release; changes since then are additive, plus coordinated errata.
+
+### Ten tool calls, plus a sandbox tool
+
+Ten tool calls — instruments, payment credentials, loyalty balance, earning quotes, accrual, card events, and the reserve / capture / release redemption lifecycle, plus user approval requests — and a sandbox-only test-approval tool. MCP over JSON-RPC 2.0.
+
+### Signed both directions
+
+RFC 9421 message signatures over Ed25519, verified in both directions with `Content-Digest` binding. Your agent authenticates us as strictly as we authenticate it.
+
+### Idempotency, specified
+
+Durable keys with replay semantics and a defined conflict rule — the same key with different arguments is an error, not a second debit. A named error vocabulary instead of prose.
+
+### Conformance you can run
+
+A portable harness: point it at any base URL, get pass, fail or not-implemented per checklist item, and a non-zero exit on any failure for CI. Language-neutral wire vectors — signature bases, digests, cart hashes. The harness is available on request, and the vectors ship publicly in the Paygent agent SDK on PyPI.
+
+### Proven by a clean room
+
+We built a second, clean-room implementation of the agent from the written spec alone, with no access to our source.
+
+- Your host calls Paygent over MCP.
+- Paygent calls your wallet agent with an Ed25519 signature (RFC 9421).
+- Before value moves, the wallet checks who is calling and whether the call is inside the mandate (scope, cap, expiry). Before capture, it also checks that the user approved these items at this price (bound to the cart hash).
+- The reservation is held under an idempotency key, captured on completion, released on cancel or timeout.
+- The response is signed too — you authenticate us as strictly as we authenticate you.
+
+Every spend-affecting call runs this gauntlet — which is why a bank can put its own wallet behind us and still answer to its own security review.
+
+## The agent parts are easy. The money parts are not.
+
+Anyone can wire an LLM to a product feed. What you do not want to build twice:
+
+### Deterministic money math
+
+Totals, discounts, and point earning are composed in service code and streamed as sealed verbatim blocks. The splice is structural — the model never sees the number, so correctness does not rest on prompt discipline.
+
+### KYA — Know Your Agent
+
+Before an external wallet agent moves value, it checks who is calling and whether each spend-affecting call is within a scoped, capped, expiring mandate. Before capture, it also checks that the user approved these items at this price. Cart-bound approval, cryptographic accountability, not a chat log.
+
+### Pluggable wallet & loyalty
+
+Bind sessions to your wallet provider — cards, balances, points. The loyalty engine handles escrow, real-time redemption, and crash-safe capture behind one interface.
+
+### Model-agnostic runtime
+
+Any OpenAI-compatible server — LM Studio, vLLM, Ollama — or a hosted frontier model, selected by environment, with per-role overrides so routing can run smaller than composition. Correctness lives in the services, so an 8B model is a real option.
+
+### Earn ingress, not only spend
+
+Post card events and points accrue against the program ledger and settle on Stellar testnet — idempotent on the event id, with a member provisioned just in time on first sight. The earn side of the loop is an API, not a batch file.
+
+### Offer-bound checkout
+
+Adds resolve against the offers discovery actually showed, carried on the session, at the price shown — superlatives and ordinals are arithmetic over that set, not a second keyword search that can land on the wrong item.
+
+## Three ways in, one engine underneath.
+
+#### Call it as a tool
+
+Your existing assistant delegates commerce intents to Paygent over MCP / agent-card discovery. Lightest touch.
+
+#### Build on the /v1 API
+
+Sessions and streamed turns over the versioned `/v1` HTTP contract. Our own reference web chat consumes nothing else — what we build on is what you get.
+
+#### White-label the stack
+
+Run the full engine under your brand with your catalog and your wallet provider behind the interface.
+
+## Build the commerce capability you do not want to maintain.
+
+We are looking for our first design partners — host runtimes, platforms, and wallet providers — ahead of general availability.

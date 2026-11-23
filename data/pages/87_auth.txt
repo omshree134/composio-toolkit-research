@@ -1,0 +1,63 @@
+https://developer.xero.com/faq/getting-started
+
+Getting started FAQs — Xero Developer
+
+# Frequently asked questions
+
+Answers to your most common questions.
+
+## FAQs
+
+- All
+- AI Toolkit
+- API Updates
+- App Awards
+- Custom Integration
+- Getting started
+- Granular Scopes
+- Limits
+- OAuth 2.0
+- Permissions
+- Pricing and Policy Updates
+- Remote MCP
+- Xero Ecosystem Security Requirements Update
+- Xero Functionality
+
+## Getting started
+
+### Can you give me an API key?
+
+The Xero API does not support basic API Key authentication. Our API uses OAuth 2.0 which means you need to register your app to get a client id and client secret which you use to access the API.
+
+### How can I try out the API?
+
+The quickest way to try out the API is to set up your demo company and dive into the API Explorer. Most of the API functionality is supported and you can quickly start playing with real calls against demo data.
+
+### How do I connect Xero to my Salesforce/SQL Database/thing you have no SDK for?
+
+We've got SDKs to cover the most used technologies in the community, but we'll never cater for everyone. If we don't support your particular tech then check out our developer forum archive, or connect with other developers on Stack Overflow. You can also use our OpenAPI spec to generate your own SDK.
+
+### How do I get a Xero account to develop/test against?
+
+The first step is to sign up for a free Xero account. Once you have done that, you have two options as to how you can begin development without incurring any cost:
+
+- Use the demo company (recommended)
+- Start a trial or paid Xero organisation subscription
+
+Check out our Development Accounts guide for more details.
+
+### How do I get support for building my integration?
+
+Hopefully everything you need to know is on the Xero Developer Centre, but if you're still stuck we encourage you to connect with other developers on Stack Overflow, or engage with a Xero certified developer for hire.
+
+### What are some best practices for building an integration?
+
+For some of the basics check out our Integration Best Practices guide. After that, browse through the rest of our how-to guides to find more guidance specific to your integration.
+
+### What Authentication do you support?
+
+We currently support OAuth 1.0a and OAuth 2.0. However, OAuth 1.0a is in the process of being deprecated and OAuth 2.0 is required for all new integrations.
+
+### What kind of App should I build?
+
+That's really up to you! Get connected with accountants and business owners to find out how you can help them be successful.

@@ -1,0 +1,51 @@
+https://whatsappbusiness.com/developers/developer-hub/
+
+Developer Hub | WhatsApp for Business
+
+# Developer Hub
+
+## Build on the WhatsApp Business Platform
+
+With over 2 billion global users, there’s a good chance your customers are already on WhatsApp. Start building within minutes and send engaging, timely, high-quality messages to them today.
+
+![Green globe icon](https://whatsappbusiness.com/wp-content/uploads/2026/03/25_globe_language.svg)
+
+### Easily automate and integrate
+
+Scale and integrate with your technology stack and build interactive experiences – no maintenance or upgrades needed
+
+![Green book/documentation icon](https://whatsappbusiness.com/wp-content/uploads/2026/03/book_icon.svg)
+
+### Get started quickly and test for free
+
+Free access to test numbers, code samples, webhooks, a sandbox and more
+
+![Green hands shaking icon](https://whatsappbusiness.com/wp-content/uploads/2026/03/optimize-delivery.svg)
+
+### Build with confidence
+
+Comprehensive documentation, training and responsive developer support
+
+## Developer Hub
+
+Documentation, training, and resources to help you get more out of the WhatsApp Business Platform.
+
+### Resources to get started
+
+#### Overview of WhatsApp Business Platform
+
+Learn more about the WhatsApp Business Platform hosted by Meta.
+
+#### Get started guide
+
+Documentation to help you set up your environment, test, build and integrate the WhatsApp Business Platform into your stack.
+
+![Meta for Developers Get Started Screen](https://whatsappbusiness.com/wp-content/uploads/2026/03/Developer-Hub-Page.en_US.jpg?w=1000)
+
+### Developer resources
+
+### Learning Resources
+
+## Direct integration
+
+Connect directly to the WhatsApp Business Platform and send from your own phone number

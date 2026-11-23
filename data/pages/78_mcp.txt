@@ -1,0 +1,414 @@
+https://help.coda.io/hc/en-us/articles/44722661982989-Connect-to-the-Coda-MCP
+
+Connect to the Coda MCP – Coda
+
+# Connect to the Coda MCP 
+
+The Coda MCP (Model Context Protocol) is a connection layer that enables AI clients - like Cursor, Claude, etc. - to read and write to your Coda docs using plain-language prompts. Instead of clicking through the Coda UI, you describe what you want in the chat window of your chosen client, and the AI carries it out directly in your doc. Think of it as giving an AI agent the same access to your Coda workspace that you have, and letting it act on your behalf based on your instructions.
+
+The following article will walk you through the steps of connecting your preferred AI tool to the Coda MCP. Once you’ve connected, you can check out this article for some helpful guidance and examples on using the Coda MCP.
+
+ℹ️ The Coda MCP is in beta. Behavior and available tools are subject to change.
+
+### Within this article, you’ll find... 
+
+- Supported clients
+- Connect ChatGPT with Coda MCP
+- Connect Claude Chat & Cowork with Coda MCP
+- Connect Claude Code with Coda MCP
+- Connect Copilot Studio with Coda MCP
+- Connect Cursor with Coda MCP
+- Connect OpenAI Codex CLI with Coda MCP
+- Connect Google Antigravity with Coda MCP
+- FAQs
+
+# Supported clients
+
+The table below lists the clients for which Coda MCP is currently well supported. We've also included the method of authentication available for each client. To learn more about these different authentication methods, refer to this article.
+
+| Supported client | Method of authentication |
+| --- | --- |
+| ChatGPT | OAuth 2 |
+| Claude (including Claude Code, Claude Cowork, and Claude Chat) | OAuth 2 |
+| CoPilot Studio | Personal Access Tokens |
+| Cursor | OAuth 2 |
+| OpenAI Codex | Personal Access Tokens |
+| Google Antigravity | Personal Access Tokens |
+
+You can find specific instructions for connecting to each of these clients in the subsequent sections.
+
+# Connect ChatGPT with Coda MCP
+
+Follow the steps below to connect ChatGPT with Coda MCP:
+
+1. Within ChatGPT, click into the Apps tab of the left panel
+2. Enter "Coda" in the search bar
+3. Select Coda from the search results, then click Connect
+
+1. Note: If you see Disabled by admin instead of Connect, this likely indicates that the admin of your account has disabled connecting to new apps. We suggest contacting your admin and requesting they enable the Coda app for you or your org. Refer to this documentation to learn more.
+4. Click Sign in with Coda ![Update ChatGPT Coda MCP.gif](https://help.coda.io/hc/article_attachments/46430337929741)
+5. A new tab will open, where you will be prompted to sign into Coda and grant ChatGPT the necessary access.
+6. Once authentication has been completed, you'll be redirected back to ChatGTP and should see a Coda is now connected confirmation.
+
+You should now be successfully connected to the Coda MCP and can start using it within your chats.
+
+Tip: If you would like to give ChatGPT more context when working with Coda, look for the Reference memories and chats setting during the connection process (right below the Sign in with Coda button). This setting is toggled off by default, but you can toggle it on if desired. And if you've already connected to Coda and want to change this setting retroactively, just click on your account name in the lower-left > Settings > Apps > Coda app > toggle on/off the Reference memories and chats option.
+
+![16_9 (78).png](https://help.coda.io/hc/article_attachments/46430363762189)
+
+# Connect Claude Chat & Cowork with Coda MCP
+
+Whether you use Claude Chat or Claude Cowork, this section will help you connect Claude to the Coda MCP.
+
+ℹ️ Before you begin: If you are using Claude Desktop for either Chat or Cowork, you must have Node.js v20.18.1 or higher installed on your device in order to complete the connection to Coda MCP.
+
+- To check your Node.js version, open Terminal (Mac) or Command Prompt (Windows) and run node --version. If the version is below v20.18.1, or you see command not found, then jump to the subsection below on installing Node.
+- Check if you have multiple Node versions by running nvm ls in Terminal (Mac) or nvm list in Command Prompt (Windows). If you see multiple versions, you must follow the steps described in the subsection below before continuing — setup will fail otherwise.
+
+Node.js is not a requirement if accessing Claude Chat via web browser.
+
+To connect Claude Chat or Cowork to the Coda MCP:
+
+1. Open Claude
+2. In the lower-left corner, click on your account name, then select Settings
+3. Click into the Connectors section
+4. If you're part of a Team or Enterprise plan on Claude, and your admin has configured Coda MCP as a connector, you may see Coda already in the list of connectors (see FAQ at the bottom of this article to learn more). If so, simply click the corresponding Connect button and follow the prompts to authenticate your account. If you do not see Coda already in the list of connectors, then jump to the next step to learn about adding custom connectors.
+5. Scroll to the bottom of the list of connectors, and select Add custom connectors
+
+1. Note that if an enterprise manages your Claude account, your administrators may have limited the ability to add custom connectors. In these cases, this button will be greyed out, and you will see this message: “Contact an organization owner to add custom connectors.” Before you can move forward, your admin will either need to 1) modify your permissions or 2) pre-configure Coda MCP for your org (see FAQ below) so that it shows up in the connector list.
+
+![16_9 (75).png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-qORKQExdlS/06f5612eb385f473645bd89e1143b6bc8f1280be96328642a641efb211a63e2ba7f694688d0f4408d9e93f2030ac01fea19e06deaf28f8d41f06e34789b569476cb6f9d1131b3a231c84a6c6bbaccd0d6941c2a73935501216b707ed6c1e2f29ec195b65)
+6. Give your connector a name, then enter the following URL into the Remote MCP Server URL field: https://coda.io/apis/mcp
+7. Click Add
+8. Now find the newly added connector in the list, and click Connect
+9. Follow the prompts to allow Claude access to Coda
+10. Once authorized, you’re all set. You can start taking actions in Coda with Claude!
+
+![16_9 (74).png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-F8sFM4RsuD/87cb2b5ce068bd54d84af6a7f78ee78271c7de2e6a907a66c21dd99734b3ef15979491c8b9ebefe8e5735a705d4c4db083990407d983630a6d557444dcaeb3b4af108c0438df32cbfe775fe7a156562e594dc23a3533475df02fd8f5fe8ee31e011a19df)
+
+ℹ️ To learn more about adding custom connectors to Claude, refer to their documentation here.
+
+## Resolve Node issues when connecting to Claude desktop
+
+Download the latest version of Node.js
+
+Claude Desktop requires a tool called Node.js to run the Coda MCP connection. To install the latest version of Node, follow these steps:
+
+1. Hit Cmd+Space → Terminal to open Terminal.
+2. In Terminal, type or paste the following command:
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+3. Hit Enter.
+4. Terminal will ask for your Mac login password. When you type it, nothing will appear on screen — no dots, no asterisks, nothing. This is completely normal! Just type your password carefully and hit Enter.
+5. The installation may take a few minutes. Make sure to pay attention to Homebrew's instructions for next steps. You'll likely need to run three individual commands in your terminal to add Homebrew to your PATH — two start with `echo` and one starts with `eval`.
+6. Wait until you see the regular prompt again (ending with `%` or `$`). Then install Node.js by pasting the following command:
+
+```
+brew install node
+```
+
+7. Hit Enter.
+8. Verify everything is installed correctly by pasting the following command:
+
+```
+npx --version
+```
+
+9. Hit Enter.
+10. If you see a version number (like `10.8.2`), you're good to move on. If it says `command not found`, try closing and reopening Terminal, then run `npx --version` again.
+
+If Node is installed but you’re still running into errors...
+
+For instance, you might be seeing "File is not defined," "Cannot find module 'node:path,'" or "Unsupported engine" errors when connecting the Coda MCP on Claude Desktop. This can happen if you have multiple Node.js versions installed and your system is defaulting to the wrong one. To resolve this, follow the steps below:
+
+Step 1: Find your Node 20 path
+
+1. Hit Cmd+Space → Terminal to open Terminal.
+2. In Terminal, type or paste the following command:
+
+```auto
+nvm which 20
+```
+
+3. Hit Enter.
+
+This should print a path like `/Users/yourname/.nvm/versions/node/v20.x.x/bin/node`. Copy everything up to and including `/bin/` — you'll need it in the next step.
+
+If this command says `N/A` or fails, install Node 20 first:
+
+```auto
+nvm install 20
+```
+
+Then run `nvm which 20` again.
+
+ 
+
+Step 2: Connect to the Coda MCP via the Claude UI
+
+1. Follow the steps in the " Connect Claude Chat & Cowork to Coda MCP" section of this article. 
+
+Step 3: Clear the npm cache
+
+1. Hit Cmd+Space → Terminal to open Terminal.
+2. In Terminal, type or paste the following command:
+
+```auto
+rm -rf ~/.npm/_npx
+```
+
+3. Hit Enter. 
+
+Step 4: Restart Claude Desktop
+
+1. Fully quit and reopen Claude Desktop.
+2. The MCP Server should now connect successfully. 
+
+Windows users: The steps are the same, with a few differences:
+
+- To find your Node 20 path, run `nvm which 20` in Command Prompt.
+- Open Command Prompt by hitting Win+R, typing `cmd`, and hitting Enter.
+- The path will look like `C:\Users\yourname\AppData\Roaming\nvm\v20.x.x`.
+- When updating your config, set `"command"` to that path followed by `npx.cmd`, and update the new `"PATH"` to use that same folder with semicolons instead of colons.
+- To clear the npm cache, run `rmdir /s /q %LOCALAPPDATA%\npm-cache_npx`.
+
+# Connect Claude Code with Coda MCP
+
+To connect Claude Code to the Coda MCP, follow these steps:
+
+1. To start, open a fresh terminal window and run the following block:
+
+```
+claude mcp add --transport http Coda https://coda.io/apis/mcp
+```
+
+2. Once the above has run, type `Claude` into your terminal and hit Enter 
+3. Then type `/mcp` into the terminal and hit Enter again.
+4. You should now see a notice that Coda MCP needs authentication. Click Enter and select Authenticate.
+5. This will open a browser window where you'll be asked to allow Claude Code access to Coda. You'll also see that the redirect URL is `localhost`, which is expected based on how Claude handles OAuth. Follow the prompts to accept and proceed. You should then see an Authentication Successful confirmation.
+6. To confirm connection to the Coda MCP, return to your terminal window and enter the following:
+
+```
+Are you connected to the Coda MCP?
+```
+
+If successful, you’ll see a success message with Coda MCP tools. You can now start building in Coda using Claude Code!
+
+![16_10 - 2026-03-27T101251.123.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-UbrYRGBZP-/9498e5f1c4d3279d198ef8ccd340e93b5f2e77e3ad19306269fa287c7a87275d41c480b867cda627888188fe8a403a0a4ef54a320cc97fa095df71706aaee8392c529313d2b199b3ccd61e7630d1daecdde9c197e1fb9c9532929073db24ed20933cf4ae)
+
+ℹ️ Troubleshooting & Tips:
+
+- If you have already used another MCP that accesses Coda: Use claude mcp remove in this case.
+- If you have directories named “Coda” in your filepath: Change the directory and try again.
+
+# Connect Copilot Studio with Coda MCP
+
+To connect Copilot Studio with the Coda MCP, you will need to authenticate via Personal Access Tokens from your Coda account. Follow the steps below to learn more:
+
+1. First, you’ll need to generate a personal access token from your Coda account page. You can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+![generate token for coda mcp.gif](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-vp697CmOpF/e77404b9932980d01f466c4726f7d634ef24770b2dd1950f857e216cb530e5f1a2cd95a73dde4f85841320960bd1396fa1177a8d58ff5137e6084e210d58ff9073eaf87262f3fa6a85efc637119417fd4ad7dfe88d479cf4296a719cf7dc37b44a650e24)
+2. Next, within Copilot Studio, open the agent you want to connect to the MCP.
+3. From the menu across the top of the agent page, select Tools, then click the + Add a tool button.
+4. Within the Create new options, select Model Context Protocol.
+5. Enter the following info:
+
+1. Server name and Server Description: fill these in as you see fit (for instance "Coda MCP" and "Coda MCP to read and write to docs"
+2. Server URL: https://coda.io/apis/mcp
+3. Authorization: Select the API Key option. Then for the Type choose Header, and for the Header name enter `Authorization`
+6. Once all the above info has been entered, hit Create.
+7. You'll then see the newly added tool, but you'll notice it's not yet connected. Click on Not connected and select Create new connection.
+8. In the hidden field, enter the following string: `Bearer Your-Coda-Auth-Token` - making sure to replace Your-Coda-Auth-Token with the token you generated in step 1.
+
+1. For instance, `Bearer 1bxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`
+9. Hit Create button to finalize the connection.
+
+# Connect Cursor with Coda MCP
+
+To connect Cursor with Coda MCP, follow these steps:
+
+1. Within your Cursor app, simply open up Cursor Settings and select the Tools & MCP section.
+2. Then click New MCP Server. This will open a new mcp.json file.
+
+1. Tip: Only enable the MCPs you are currently working with to save context and improve agent accuracy
+3. Inside your mcp.json file in Cursor, insert the following code:
+
+```
+{     "mcpServers": {          "Coda": {        "url": "https://coda.io/apis/mcp"    }  }}
+```
+
+4. Once you’ve made the above edits, the file should be saved automatically, and you should now be connected to the Coda MCP. You can verify by checking the tools list (under Tools & MCP) or asking Cursor about your tools in Coda. 
+
+![1_1 - 2026-03-27T102500.379.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-EbNp6_Ig_O/e7b8c029d7880ca7273684c2aea858009fda969fe42d84599370936ceb0068d37968255589c473b066c883683604856e511ed6c8e1b7c5e56159e56ff65239b803f0314c348054e731c0a9f8ba28625a69127e382d6371a42e77bc26adb47f3d67ea9d6c)
+
+1. Tip: If you don’t see your MCP show up at this stage, restart Cursor.
+
+You can now use the Cursor agent to put the Coda MCP to work 🚀 
+
+ℹ️ To learn more about connecting MCPs in Cursor, please refer to Cursor’s documentation.
+
+# Connect OpenAI Codex CLI with Coda MCP
+
+To connect OpenAI Codex with Coda MCP, you will need to use Personal Access Tokens from your Coda Account page. Follow the steps below to learn more.
+
+To connect Codex CLI with Coda MCP, follow these steps:
+
+1. First, you’ll need to generate an auth token from your Coda account page. You can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+![generate token for coda mcp.gif](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-vp697CmOpF/e77404b9932980d01f466c4726f7d634ef24770b2dd1950f857e216cb530e5f1a2cd95a73dde4f85841320960bd1396fa1177a8d58ff5137e6084e210d58ff9073eaf87262f3fa6a85efc637119417fd4ad7dfe88d479cf4296a719cf7dc37b44a650e24)
+2. Open a fresh terminal window and paste the block below into it, making sure to replace the Your-Coda-Auth-Token section with the auth token you generated and copied in the previous step.
+
+```
+codex mcp add Coda -- npx -y mcp-remote https://coda.io/apis/mcp --header "Authorization: Bearer Your-Coda-Auth-Token"
+```
+
+3. Start Codex by typing `codex` into your terminal. You should be all set and can start using the Coda MCP! 
+
+ℹ️ For more details on connecting MCPs to OpenAI Codex, we suggest checking out their first-party documentation.
+
+# Connect Google Antigravity with Coda MCP
+
+To connect Google Antigravity with Coda MCP, you will need to use Personal Access Tokens from your Coda Account page. Follow the steps below to learn more.
+
+Follow these steps to connect Google Antigravity with Coda MCP:
+
+1. First, you’ll need to generate an auth token from your Coda account page. You can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+![generate token for coda mcp.gif](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-vp697CmOpF/e77404b9932980d01f466c4726f7d634ef24770b2dd1950f857e216cb530e5f1a2cd95a73dde4f85841320960bd1396fa1177a8d58ff5137e6084e210d58ff9073eaf87262f3fa6a85efc637119417fd4ad7dfe88d479cf4296a719cf7dc37b44a650e24)
+2. Open Google Antigravity. Within the agent panel, click on the horizontal three-dot menu in the upper-right corner, and select MCP Servers. Then click Manage MCP Servers. 
+
+![1_1 - 2026-03-30T093532.393.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-fdhxnD6yGy/cbb7cff252ed84c7f1e4dbcb399dc7191ed0766e69e85f074a99f4a0f439485e4f8129941386b52847e7b774328be8fc00fe0023efda91eaa8a5db1d1b369984d1e82e5c0923eede57eece603063c20383a47c89da90b547977affb59f63782348d4c2b3)
+3. Now click the View raw config option at the top of the page and enter the following details - making sure to replace the Your-Coda-MCP-Auth-Token section with the auth token you generated and copied in the previous step.
+
+```
+{  "mcpServers": {    "Coda": {      "serverUrl": "https://coda.io/apis/mcp",      "headers": {        "Authorization": "Bearer Your-Coda-MCP-Auth-Token"      }    }  }}
+```
+
+4. Save your settings, and hit refresh in Antigravity (if it doesn’t automatically refresh on its own). Coda should now appear as an available MCP tool in Antigravity.
+
+![Screenshot 2026-02-08 at 7.35.50 PM.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-42Sgt28hV2/76a6345adf9b2c9e82c3e04f57658afff0e4457160141bfa7f1ea8ba474eceaa60a6360c3c0b47b8425d0cf9b78194a80200771083489e7617496766d60f9448b43b7a7d946b7c1e7ee5b25dc01885ce4cdf006ce7c5e322b62ca04c9e913760daf61190)
+
+ℹ️ For more details on connecting MCPs to Google Antigravity, please refer to their documentation.
+
+# FAQs
+
+Can I connect Coda MCP to other AI tools not listed in this article?
+
+You should be able to connect the Coda MCP to any AI client that supports creating custom MCP connections. In most cases, you will need to use Personal Access Tokens to complete the connection.
+
+To acquire these access tokens from Coda, you can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+Do I have to be a Doc Maker to connect to the Coda MCP?
+
+No - you do not have to be a Doc Maker to connect to the Coda MCP. Anyone can connect to the Coda MCP, but what you can do from there does depend on your role in Coda.
+
+ Doc Makers on paid Coda plans will have access to the full Coda MCP experience, including all of the available tools and endpoints.
+
+ 
+
+Doc Makers on free plans can utilize a “free taste” of the Coda MCP (30 requests per week, with a max of 60 requests per month). During this “free taste,” you can utilize all of the tools of the MCP.
+
+ 
+
+Editors also have access to a “free taste” of the Coda MCP (30 requests per week, with a max of 60 requests per month). However, they are limited to only the “read” type tools and actions. In other words, editors will not be able to use the MCP to update or add content, or to take other Doc Maker actions.
+
+ 
+
+Can I configure Coda MCP as a custom connector in Claude, so the rest of my organization can easily connect? 
+
+Yes - if you are on a Team or Enterprise plan in Claude, an Owner or Primary Owner can configure Coda MCP as a custom connector on behalf of your org. Once this is done, organization members can easily find the Coda MCP in their available connectors and will be able to connect in a few short clicks.
+
+To complete this configuration on behalf of your organization, follow these steps:
+
+1. Ensure you're logged into Claude as an Owner or Primary Owner
+2. Open Organization settings
+3. Click into the Connectors tab
+4. In the upper-right, click the Add button, hover over the Custom option, then select Web
+5. Next, enter the following URL in the appropriate field: https://coda.io/apis/mcp
+6. Finally, click Add
+
+Now, when members of your org navigate to the Connectors section of their Claude settings, they will see Coda as an available connector (with a custom label). They'll just need to click the Connect button, then follow the prompts to authenticate.
+
+Read more about configuring and connecting to custom connectors in Claude here.
+
+Why am I getting a 401 error when trying to use my auth token to connect?
+
+You may see this error when the auth token has the incorrect restriction type. To resolve this, we suggest creating a new auth token via your Coda account settings, this time ensuring that you select MCP for the restriction type. Then attempt the connection again using this new token.
+
+What auth scopes are used when connecting to the Coda MCP?
+
+When connecting the Coda MCP via OAuth 2 (as with ChatGPT, Claude, and Cursor) the auth scope will automatically be set to read and write.
+
+When connecting via Personal Access Tokens (as described for Google Antigravity and OpenAI Codex), you have the option to choose between three scopes: read only, write only, read and write.
+
+ 
+
+Therefore, if you wish to limit the scope to read only or write only, we recommend connecting via Personal Access Tokens instead of OAuth 2.
+
+How do I submit bugs or feedback for the MCP?
+
+Please submit any bugs or feedback via this form. Thank you in advance!
+
+Can I connect the Coda MCP to Claude Code using Personal Access Tokens, rather than OAuth? 
+
+Yes! In this article, we describe the process of connecting the MCP to Claude Code via OAuth. But if you instead wish to connect to the MCP using Personal Access Tokens, you can do so by following these steps: 
+
+1. First, you’ll need to generate an auth token from your Coda account page. You can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+![generate token for coda mcp.gif](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-vp697CmOpF/e77404b9932980d01f466c4726f7d634ef24770b2dd1950f857e216cb530e5f1a2cd95a73dde4f85841320960bd1396fa1177a8d58ff5137e6084e210d58ff9073eaf87262f3fa6a85efc637119417fd4ad7dfe88d479cf4296a719cf7dc37b44a650e24)
+
+2. Next, open a fresh terminal window and paste in the following block, making sure to replace the Your-Coda-Auth-Token section with the auth token you generated and copied in the previous step.
+
+```
+claude mcp add --transport http Coda https://coda.io/apis/mcp --header "Authorization: Bearer Your-Coda-Auth-Token"
+```
+
+3. Confirm that your MCP got added correctly by pasting the following command into the terminal:
+
+```
+claude mcp list
+```
+
+4. Start Claude Code by typing `claude .` into your terminal and ask it to connect to the Coda MCP.
+
+```
+Connect to the Coda MCP
+```
+
+ 
+
+If successful, you’ll see a success message with Coda MCP tools. You can now start building in Coda using Claude Code!
+
+![16_10 - 2026-03-27T101251.123.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-UbrYRGBZP-/9498e5f1c4d3279d198ef8ccd340e93b5f2e77e3ad19306269fa287c7a87275d41c480b867cda627888188fe8a403a0a4ef54a320cc97fa095df71706aaee8392c529313d2b199b3ccd61e7630d1daecdde9c197e1fb9c9532929073db24ed20933cf4ae)
+
+ 
+
+Can I connect to Cursor using Personal Access Tokens, rather than OAuth?
+
+Yes! In this article, we describe the process of connecting the MCP to Cursor via OAuth. But if you instead wish to connect to the MCP using Personal Access Tokens, you can do so by following these steps:
+
+1. Within your Cursor app, simply open up Cursor Settings and select the Tools & MCP section.
+2. Then click New MCP Server. This will open a new mcp.json file.
+
+1. Tip: Only enable the MCPs you are currently working with to save context and improve agent accuracy
+3. Next, you’ll need to generate an auth token from your Coda account page. You can click here (or scroll to the API settings section of your account page, then click Generate API token). Give your token a memorable name, ensure that the restriction type is MCP, and choose the type of access. Then click the Generate API token button to create. Once created, click the Copy token button to copy it to your clipboard.
+
+![generate token for coda mcp.gif](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-nQK1x-gZP_/96c8ad3ac9d4241a0006009be4a5ccca1b5ca4e4492f8eeac301f8bcbe4099f8535ac09e4f4de3c54cb93bbcb2ae44ff3724a9c9fd3eb3628e38d7a57e56b8e3d5001f398572303b4b13ee2743abb46f2881d0c111dba7aa030f5b77ff93d9492c4ae271)
+
+4. Now, inside your mcp.json file in Cursor, insert the following code, making sure to replace the Your-Coda-Auth-Token section with the auth token you generated and copied in the previous step.
+
+```
+{     "mcpServers": {          "Coda": {        "url": "https://coda.io/apis/mcp",        "headers": {          "Authorization": "Bearer Your-Coda-Auth-Token"      }    }  }}
+```
+
+5. Once you’ve made the above edits, the file should be saved automatically, and you should now be connected to the Coda MCP. You can verify by checking the tools list (under Tools & MCP) or asking Cursor about your tools in Coda. 
+
+![1_1 - 2026-03-27T102500.379.png](https://staging.codahosted.io/docs/ZO_Xf5cp9n/blobs/bl-EbNp6_Ig_O/e7b8c029d7880ca7273684c2aea858009fda969fe42d84599370936ceb0068d37968255589c473b066c883683604856e511ed6c8e1b7c5e56159e56ff65239b803f0314c348054e731c0a9f8ba28625a69127e382d6371a42e77bc26adb47f3d67ea9d6c)
+
+1. Tip: If you don’t see your MCP show up at this stage, restart Cursor.
+
+ 
+

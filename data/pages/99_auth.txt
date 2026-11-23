@@ -1,0 +1,546 @@
+https://youtubescribe.com/docs
+
+YouTube transcript API reference · YouTubeScribe
+
+# Every YouTube video, over one REST call.
+
+Eight endpoints cover transcripts, video and channel search, channel uploads, RSS latest and playlists. Bearer auth, JSON out, credits charged only on a 200.
+
+Base URL https://api.localhost
+
+Auth Authorization: Bearer sk_…
+
+Rate limit 300 requests / minute
+
+## One bearer token, every request.
+
+Send your key in the Authorization header. Keys are prefixed sk_, never expire unless revoked, and work for both the REST API and the MCP server.
+
+Authorization
+
+curl -X GET "https://api.localhost/youtube/transcript?video_url=dQw4w9WgXcQ" \
+
+ -H "Authorization: Bearer sk_your_key"
+
+Keys are created and revoked in the API keys dashboard.
+
+The same key authenticates the REST API and the MCP server. Hosted MCP also accepts OAuth 2.1.
+
+Store keys in environment variables, never in the client.
+
+Use separate keys per environment and rotate them regularly.
+
+## YouTube transcript
+
+GET/youtube/transcript
+
+1 credit
+
+Pull the caption track from any YouTube video. Returns structured segments or plain text, with timestamps on or off, in the language you ask for.
+
+Parameters
+
+| Name | Type | Need | Description | Default |
+| --- | --- | --- | --- | --- |
+| video_url | string | Required | Full YouTube URL, youtu.be short URL, or the bare 11-character video ID. Pattern ^([a-zA-Z0-9_-]{11}|https?://.*)$ | |
+| format | string | Optional | json returns structured segments; text returns the transcript as one string. | json |
+| include_timestamp | boolean | Optional | Include start and duration on each segment, or [123.45s] prefixes in text format. | true |
+| send_metadata | boolean | Optional | Add title, author_name, author_url and thumbnail_url to the response. | false |
+| language | string | Optional | Comma-separated priority list of up to 10 codes, tried left to right, for example de,en,asr. | en, else first available |
+
+Codes are case-insensitive and region is ignored: en-GB and en-US both resolve to en. asr requests auto-generated captions, and asr-hi a specific auto-generated language. The language field in a 200 is the resolved code.
+
+Every 200 also carries length_seconds and lengthText, independent of send_metadata. Both are null for live streams.
+
+The response header X-Cache-Status is HIT, PARTIAL-HIT or MISS. Cached responses still cost a credit.
+
+curl -X GET "https://api.localhost/youtube/transcript?video_url=dQw4w9WgXcQ&language=de,en,asr" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+Response JSON, timestamps JSON, no timestamps Text, timestamps Text, plain
+
+JSON, timestamps
+
+ "video_id": "dQw4w9WgXcQ",
+
+ "language": "en",
+
+ "transcript": [
+
+ { "text": "Never gonna give you up", "start": 0.0, "duration": 4.12 },
+
+ { "text": "Never gonna let you down", "start": 4.12, "duration": 3.85 }
+
+ ],
+
+ "title": "Rick Astley - Never Gonna Give You Up",
+
+ "author_name": "RickAstleyVEVO",
+
+ "author_url": "https://www.youtube.com/@RickAstley",
+
+ "thumbnail_url": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+
+ "length_seconds": 213,
+
+ "lengthText": "3:33"
+
+## Video info
+
+GET/youtube/info
+
+Free
+
+Metadata plus the transcript languages a video offers, so you can pick a language before spending a transcript credit.
+
+Parameters
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| video_url | string | Required | Full YouTube URL, short URL, or the bare 11-character video ID. |
+
+Each available_languages code can be passed straight to the transcript endpoint’s language parameter: en for creator captions, asr-en for auto-generated English.
+
+Free, but the request still needs a valid key and at least one active credit. Returns 404 when the video does not exist or has no captions.
+
+curl -X GET "https://api.localhost/youtube/info?video_url=dQw4w9WgXcQ" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+ "video_id": "dQw4w9WgXcQ",
+
+ "title": "Rick Astley - Never Gonna Give You Up",
+
+ "author_name": "RickAstleyVEVO",
+
+ "author_url": "https://www.youtube.com/@RickAstley",
+
+ "thumbnail_url": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+
+ "available_languages": [
+
+ { "code": "en", "name": "English" },
+
+ { "code": "asr-en", "name": "English (auto-generated)" }
+
+## Search YouTube
+
+Search YouTube for videos or channels. Each call returns one full YouTube page, roughly 20 items, plus a continuation token for the next.
+
+Parameters
+
+| Name | Type | Need | Description | Default |
+| --- | --- | --- | --- | --- |
+| q | string | Conditional | Search query, 1–200 characters. Required for the first page. | |
+| type | string | Optional | Result type: video or channel. First page only. | video |
+| continuation | string | Conditional | Continuation token from the previous response, for subsequent pages. | |
+
+Provide exactly one of q or continuation. When continuation is provided, q and type are ignored: the token already encodes them.
+
+Pagination: request ?q=design&type=video, then ?continuation=… with each new token, until has_more is false or continuation_token is null. Each page costs 1 credit.
+
+# First page
+
+curl -X GET "https://api.localhost/youtube/search?q=innovation&type=video" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+curl -X GET "https://api.localhost/youtube/search?continuation=4qmFsgKlARIYVVV1QVhGa2dz..." \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+ "results": [
+
+ "videoId": "abc123xyz00",
+
+ "title": "Last To Leave Mansion, Keeps It",
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "channelTitle": "MrBeast",
+
+ "channelHandle": "@MrBeast",
+
+ "channelVerified": true,
+
+ "lengthText": "12:34",
+
+ "viewCountText": "3.4M views",
+
+ "publishedTimeText": "2 years ago",
+
+ "hasCaptions": true,
+
+ "thumbnails": [
+
+ { "url": "https://i.ytimg.com/vi/abc123xyz00/default.jpg", "width": 120, "height": 90 }
+
+ "result_count": 20,
+
+ "continuation_token": "4qmFsgKlARIYVVV1QVhGa2dz...",
+
+ "has_more": true
+
+## Resolve channel
+
+GET/youtube/channel/resolve
+
+Free
+
+Resolve any channel reference, an @handle, channel URL, or UC… ID, to a canonical UC… channel ID.
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| input | string | Required | @handle, channel URL, or UC… ID, 1–200 characters. |
+
+Fast path: if input is already a valid UC… channel ID (24 characters starting with UC) the API returns immediately, with no external lookup.
+
+Free, but the request still needs a valid key and at least one active credit.
+
+curl -X GET "https://api.localhost/youtube/channel/resolve?input=@MrBeast" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+{ "channel_id": "UCX6OQ3DkcsbYNE6H8uQQuVA", "resolved_from": "@MrBeast" }
+
+## Search within a channel
+
+Search for videos inside a specific channel. Accepts an @handle, channel URL, or UC… ID, and returns roughly 30 items per page.
+
+Parameters
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| channel | string | Conditional | @handle, channel URL, or UC… channel ID. First page only. |
+| q | string | Conditional | Search query, 1–200 characters. First page only. |
+| continuation | string | Conditional | Continuation token from the previous response. |
+
+Provide exactly one of (channel + q) or continuation. When continuation is provided, channel and q are ignored.
+
+The legacy channel_id parameter still works but is no longer documented. Prefer channel, which accepts flexible input.
+
+ "type": "video",
+
+ "videoId": "abc123xyz00",
+
+ "title": "Video Title",
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "channelTitle": "MrBeast",
+
+ "channelHandle": "@MrBeast",
+
+ "channelVerified": true,
+
+ "lengthText": "12:34",
+
+ "viewCountText": "2.1M views",
+
+ "publishedTimeText": "3 months ago",
+
+ "hasCaptions": true,
+
+ "thumbnails": []
+
+ ],
+
+ "result_count": 12,
+
+ "continuation_token": "4qmFsgKlARIYVVV1QVhGa2dz...",
+
+ "has_more": true
+
+## Channel videos
+
+GET/youtube/channel/videos
+
+1 credit / page
+
+List every video uploaded to a channel, paginated at roughly 100 per page, with the uploads playlist metadata alongside.
+
+Parameters
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| channel | string | Conditional | @handle, channel URL, or UC… channel ID. First page only. |
+| continuation | string | Conditional | Continuation token from the previous response. |
+
+Provide exactly one of channel or continuation. Repeat until has_more is false or continuation_token is null; each page costs 1 credit.
+
+The legacy channel_id parameter still works but is no longer documented.
+
+curl -X GET "https://api.localhost/youtube/channel/videos?channel=@MrBeast" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+curl -X GET "https://api.localhost/youtube/channel/videos?continuation=4qmFsgKlARIYVVV1QVhGa2dz..." \
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "channelTitle": "MrBeast",
+
+ "channelHandle": "@MrBeast",
+
+ "lengthText": "15:22",
+
+ "viewCountText": "3.2M views 2 weeks ago",
+
+ "thumbnails": [],
+
+ "index": "0"
+
+ "title": "Uploads from MrBeast",
+
+ "numVideos": "997",
+
+ "description": "",
+
+ "ownerName": "MrBeast",
+
+ "continuation_token": "4qmFsgKlARIYVVV1QVhGa2dz...",
+
+ "has_more": true
+
+## Channel latest, via RSS
+
+The 15 most recent videos from a channel, read from YouTube’s RSS feed. Returns exact publish timestamps and view counts.
+
+Parameters
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| channel | string | Required | @handle, channel URL, or UC… channel ID. |
+
+Free: no credits charged, so it is the cheap way to poll a channel before spending credits on transcripts.
+
+The legacy channel_id parameter still works but is no longer documented.
+
+curl -X GET "https://api.localhost/youtube/channel/latest?channel=@MrBeast" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "title": "MrBeast",
+
+ "author": "MrBeast",
+
+ "url": "https://www.youtube.com/channel/UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "published": "2012-02-20T00:43:50Z"
+
+ "videoId": "abc123xyz00",
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "author": "MrBeast",
+
+ "published": "2026-01-30T16:00:00Z",
+
+ "updated": "2026-01-31T02:00:00Z",
+
+ "link": "https://www.youtube.com/watch?v=abc123xyz00",
+
+ "description": "Full video description...",
+
+ "thumbnail": { "url": "https://i1.ytimg.com/vi/abc123xyz00/hqdefault.jpg", "width": "480", "height": "360" },
+
+ "viewCount": "2287630",
+
+ "starRating": { "average": "4.92", "count": "45000", "min": "1", "max": "5" }
+
+ "result_count": 15
+
+## Playlist videos
+
+GET/youtube/playlist/videos
+
+1 credit / page
+
+List the videos in a playlist, paginated at roughly 100 per page. Accepts a playlist URL or a bare playlist ID.
+
+Parameters
+
+| Name | Type | Need | Description |
+| --- | --- | --- | --- |
+| playlist | string | Conditional | Playlist URL or ID starting with PL, UU, LL, FL or OL. First page only. |
+| continuation | string | Conditional | Continuation token from the previous response. |
+
+Provide exactly one of playlist or continuation. Pagination follows the same flow as channel videos.
+
+The legacy playlist_id parameter still works but is no longer documented.
+
+# First page
+
+curl -X GET "https://api.localhost/youtube/playlist/videos?playlist=PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+curl -X GET "https://api.localhost/youtube/playlist/videos?continuation=4qmFsgKlARIYVVV1QVhGa2dz..." \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+ "videoId": "abc123xyz00",
+
+ "channelId": "UCX6OQ3DkcsbYNE6H8uQQuVA",
+
+ "channelTitle": "MrBeast",
+
+ "channelHandle": "@MrBeast",
+
+ "lengthText": "10:05",
+
+ "viewCountText": "1.5M views 6 months ago",
+
+ "numVideos": "47",
+
+ "description": "Every challenge video in one place",
+
+ "ownerName": "MrBeast",
+
+ "viewCount": "5000000"
+
+ "continuation_token": "4qmFsgKlARIYVVV1QVhGa2dz...",
+
+ "has_more": true
+
+## You pay for answers, not attempts.
+
+Credits are deducted in real time on a successful response. Cached hits still cost a credit; failures and rate limits cost nothing. When the balance runs out the API returns 402 Payment Required.
+
+| Endpoint | Note | Cost |
+| --- | --- | --- |
+| /youtube/transcript | Charged only on a 200 response | 1 credit |
+| /youtube/info | Requires auth and at least 1 active credit | Free |
+| /youtube/search | Paginated: each page costs 1 credit | 1 / page |
+| /youtube/channel/resolve | Requires auth and at least 1 active credit | Free |
+| /youtube/channel/search | Paginated: each page costs 1 credit | 1 / page |
+| /youtube/channel/videos | Paginated: each page costs 1 credit | 1 / page |
+| /youtube/channel/latest | Requires auth and at least 1 active credit | Free |
+| /youtube/playlist/videos | Paginated: each page costs 1 credit | 1 / page |
+
+Successful requests (200) cost 1 credit on paid endpoints.
+
+Cached responses (200) still cost 1 credit.
+
+Free endpoints cost 0 credits, but need 1 active credit on the account.
+
+Failed requests (4xx, 5xx) cost nothing.
+
+Rate-limited requests (429) cost nothing.
+
+## 300 requests per minute, per key.
+
+Limits are shared across REST and MCP usage. Every response carries the current window in its headers, so a client can pace itself without guessing.
+
+| Header | Description |
+| --- | --- |
+| X-RateLimit-Limit | Total allowed requests in the window |
+| X-RateLimit-Remaining | Requests left in the window |
+| X-RateLimit-Reset | UTC epoch seconds when the window resets |
+| Retry-After | Seconds until you can retry, sent on 429 only |
+
+HTTP/1.1 429 Too Many Requests
+
+X-RateLimit-Limit: 300
+
+Retry-After: 12
+
+ "detail": "Rate limit exceeded, wait for Retry-After, then retry."
+
+## Standard codes, and what to do next.
+
+| Status | Meaning | Action | Retry |
+| --- | --- | --- | --- |
+| 200 | Success | Response returned, 1 credit charged on paid endpoints | N/A |
+| 400 | Bad request | Check your request parameters | No |
+| 401 | Unauthorized | Invalid or missing API key; carries WWW-Authenticate: Bearer | No |
+| 402 | Payment required | No credits remaining: top up or choose a plan | No |
+| 404 | Not found | Video missing, or no transcript in the requested languages | No |
+| 408 | Timeout | Temporary failure such as bot detection, retry in 1–5s | Yes |
+| 422 | Validation error | Invalid YouTube URL or ID | No |
+| 429 | Too many requests | Rate limit exceeded, wait for Retry-After | Yes |
+| 500 | Server error | Contact support if it persists | Maybe |
+| 503 | Service unavailable | Temporarily down, retry in 1–5s | Yes |
+
+Example error 404 · language list missed 402 · out of credits
+
+404 · language list missed
+
+ "detail": "No transcript available for the requested languages: en, de",
+
+ "code": "no_transcript_for_requested_languages",
+
+ "available_languages": [
+
+ { "code": "hi", "name": "Hindi" },
+
+ { "code": "asr-hi", "name": "Hindi (auto-generated)" }
+
+## A working call, in three languages.
+
+# Basic request
+
+curl -X GET "https://api.localhost/youtube/transcript?video_url=dQw4w9WgXcQ" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+# Every parameter
+
+curl -X GET "https://api.localhost/youtube/transcript?video_url=dQw4w9WgXcQ&format=json&include_timestamp=true&send_metadata=true&language=de,en,asr" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+# Plain text, no timestamps
+
+curl -X GET "https://api.localhost/youtube/transcript?video_url=dQw4w9WgXcQ&format=text&include_timestamp=false" \
+
+ -H "Authorization: Bearer YOUR_API_KEY"
+
+## The same endpoints, as agent tools.
+
+Point any MCP client at https://mcp.localhost. Claude, Cursor and ChatGPT authorize over OAuth 2.1; scripts and Agent Builder can still send the same sk_ key as a bearer token.
+
+mcp.json
+
+{ "mcpServers": { "youtubescribe": { "type": "http", "url": "https://mcp.localhost" } } }
+
+get_youtube_transcript
+
+Fetch a video transcript as markdown or JSON
+
+get_channel_latest_videos
+
+Latest ~15 videos from a channel, via RSS
+
+list_playlist_videos
+
+Paginated list of playlist videos
+
+Claude
+
+Dynamic client registration, add the URL and authorize once.
+
+ChatGPT
+
+Add the MCP URL as a connector. It registers itself and asks you to sign in.
+
+OpenAI Agent Builder
+
+API key authentication; OAuth is not supported there yet.
+
+## Running this in production.
+
+Back off, then give up
+
+Retry only 408, 429 and 503, two or three times with exponential backoff, honouring Retry-After.
+
+Cache transcripts
+
+Transcripts rarely change, and a cached response still costs a credit. Store them and invalidate metadata separately.
+
+Watch the headers
+
+Queue requests as X-RateLimit-Remaining falls rather than discovering the limit at 429.

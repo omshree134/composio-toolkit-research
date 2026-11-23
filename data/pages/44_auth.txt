@@ -1,0 +1,43 @@
+https://developer.salesforce.com/docs/commerce/account-manager/guide/api-clients.html
+
+Use the API Clients API | Account Manager | Account Manager | Salesforce Developers
+
+# Use the API Clients API
+
+API clients are service accounts used for programmatic access to APIs. They can be assigned roles and organizations, support various authentication methods (JWT, client secrets), and can be enabled, disabled, or deleted based on their state.
+
+API clients are commonly created to access the B2C Commerce API (SCAPI), the Open Commerce API (OCAPI), and the On-Demand Sandbox API.
+
+You can't use the same client ID for both SCAPI and OCAPI. Each API framework requires its own client ID. An API client ID that's meant for OCAPI must not have the role "Salesforce Commerce API" assigned to it.
+
+To create an API client, send a POST request to `/dw/rest/v1/apiclients` with the required properties. See the Create an API client endpoint reference for complete details.
+
+- The API client must be assigned to at least one organization.
+- By default, the API client is created in an inactive state (`active=false`) and must be explicitly activated before it can be used for authentication.
+
+You can update API client properties, change passwords, disable inactive clients, and delete clients that have been disabled for at least 7 days.
+
+To update an API client, send a PUT request to `/dw/rest/v1/apiclients/{apiClientId}`. This is a partial update operation; only the fields provided are updated, and omitted fields retain their current values. See the Update an API client endpoint reference for complete details.
+
+You can update properties such as:
+
+- `name`: Name of the API client.
+- `description`: Description of the API client.
+- `redirectUrls`: List of allowed redirect URLs for OAuth flows.
+- `scopes`: OAuth scopes available to this API client.
+- `defaultScopes`: Default OAuth scopes granted to this API client.
+- `organizations`: List of organization IDs this API client belongs to.
+- `active`: Whether the API client is active.
+- `roles`: List of IDs of the roles this API client possesses.
+- `roleTenantFilter`: Filter for role tenant assignments.
+- `tokenEndpointAuthMethod`: Authentication method for the token endpoint.
+
+To change an API client's password, send a PUT request to `/dw/rest/v1/apiclients/{apiClientId}/password` with the current and new password. See the Change the password for an API client endpoint reference for complete details.
+
+Set the `active` property to `false` to disable an API client. Disabled API clients can't be used for authentication.
+
+To delete an API client, send a DELETE request to `/dw/rest/v1/apiclients/{apiClientId}`. See the Delete an API client endpoint reference for complete details.
+
+Only API clients that have been disabled for at least 7 days can be deleted. If you attempt to delete an API client that hasn't been disabled long enough, you'll receive a `412 Precondition Failed` response.
+
+To retrieve details about a specific API client, send a GET request to `/dw/rest/v1/apiclients/{apiClientId}`. Use the `expand` query parameter to retrieve more information on related organizations and roles. See the Retrieve details of a specific API client endpoint reference for complete details.

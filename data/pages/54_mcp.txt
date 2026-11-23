@@ -1,0 +1,842 @@
+https://docs.mrscraper.com/docs/getting-started/mcp-server
+
+MCP Server | MrScraper Documentation
+
+# MCP Server
+
+Official MrScraper MCP server for retrieving web pages, web search, and account usage. Connect AI clients or run the open-source server locally.
+
+MrScraper MCP is the official Model Context Protocol server for MrScraper. It connects AI clients to web page retrieval, web search, and your account usage.
+
+MrScraper MCP server source code on GitHub · Install the @mrscraper/mcp npm package
+
+The server exposes seven tools:
+
+### status
+
+Return the raw account status API response without summarizing, redacting body fields, or adding calculated fields.
+
+### scrapeHtml
+
+Retrieve the raw HTML of a page. Browser rendering is optional.
+
+### scrapeMarkdown
+
+Retrieve a page as Markdown. Including HTML also enables browser rendering and returns both outputs as JSON.
+
+### getScreenshot
+
+Capture a base64 screenshot of the full page or top viewport. Browser rendering is always enabled.
+
+### scrapeBrand
+
+Extract a website's colors, typography, logos, and social links as JSON.
+
+### scrapeJson
+
+Extract structured JSON from a page using a natural-language prompt. Append Json Schema: and a JSON schema to shape the output.
+
+### webSearch
+
+Search the web and return ranked results with titles, URLs, descriptions, and sources.
+
+Use the hosted Streamable HTTP endpoint for a managed connection, or run the published MCP package locally through Streamable HTTP or stdio.
+
+Package information
+
+This page documents `@mrscraper/mcp` version 0.5.0. Its seven tools share their descriptions, inputs, and defaults with the MrScraper CLI, SDKs, and integrations. 0.5.0 replaced `scraperAPI` with `scrapeHtml`, `scrapeMarkdown`, and `getScreenshot`, added `scrapeBrand` and `scrapeJson`, renamed the inputs to camel case, and changed the OAuth scopes. See Migration from the previous tool set.
+
+## Capabilities
+
+### Page Retrieval
+
+Retrieve a known URL as HTML, Markdown, or a screenshot, with optional browser rendering, real-device routing, proxy controls, selector waiting, and retry limits.
+
+### Brand and JSON Extraction
+
+Extract a website's colors, typography, logos, and social links, or structured JSON from a natural-language prompt.
+
+### Web Search
+
+Search the web for ranked results, for a chosen country and up to 100 results at a time.
+
+### Account Status
+
+Read the subscription, token limit, token usage, remaining tokens, and rate limit.
+
+### Managed Endpoint
+
+Connect to the hosted MCP endpoint through Streamable HTTP with OAuth 2.1 browser sign-in.
+
+### Structured Tool Results
+
+Receive a consistent response envelope in MCP structured content.
+
+### Interactive Widgets
+
+Render search results and an account usage meter in hosts that support MCP Apps.
+
+## Requirements
+
+- A MrScraper account
+- An MCP client with Streamable HTTP support
+- An API key only when the client cannot use OAuth 2.1 or when running the server locally
+
+## Quick start with the hosted server
+
+Add the hosted endpoint
+
+Configure a Streamable HTTP server named `mrscraper` with no credential:
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "type": "http",
+      "url": "https://mcp.mrscraper.com/mcp"
+    }
+  }
+}
+```
+
+Use this exact URL, including the `/mcp` path.
+
+Sign in
+
+Connect or reload the MCP server. Your client follows the OAuth 2.1 challenge, opens MrScraper in your browser, and asks you to approve `scrape:read` for the six scraping and search tools and `account:read` for `status`.
+
+Reload and verify
+
+Reload the client or start a new session, then inspect its MCP tool list. The connection should expose `status`, `scrapeHtml`, `scrapeMarkdown`, `getScreenshot`, `scrapeBrand`, `scrapeJson`, and `webSearch`.
+
+## Copyable AI setup prompt
+
+Copy Text
+
+```
+Connect MrScraper MCP to this agent. Detect the current MCP client and use its native Streamable HTTP setup to add a server named mrscraper at exactly https://mcp.mrscraper.com/mcp with no static credential. Complete the OAuth 2.1 browser sign-in; if it does not start automatically, use the client's MCP login or authenticate command. Only if the client does not support OAuth, fall back to a MrScraper API key from https://app.mrscraper.com/api-tokens stored through the client's environment-variable or secret-storage mechanism and sent as Authorization: Bearer <key>. Reload the MCP client when required, then list the tools and confirm that status, scrapeHtml, scrapeMarkdown, getScreenshot, scrapeBrand, scrapeJson, and webSearch are available.
+```
+
+## Client configuration
+
+Add the hosted URL without a static `Authorization` header, then complete browser sign-in when the client prompts you.
+
+### Codex
+
+Copy Text
+
+```
+codex mcp add mrscraper \
+  --url https://mcp.mrscraper.com/mcp
+```
+
+Codex uses OAuth by default for Streamable HTTP servers. If browser sign-in does not start automatically, run `codex mcp login mrscraper`.
+
+### Claude Code
+
+Copy Text
+
+```
+claude mcp add \
+  --transport http \
+  --scope user \
+  mrscraper https://mcp.mrscraper.com/mcp
+```
+
+Open `/mcp` inside Claude Code and authenticate, or run `claude mcp login mrscraper` from your shell.
+
+To add MrScraper's three skills for page retrieval and web search along with the server, install the MrScraper plugin for Claude Code instead:
+
+Copy Text
+
+```
+claude plugin marketplace add mrscraper-com/mrscraper-claude-plugin
+claude plugin install mrscraper@mrscraper-claude
+```
+
+The plugin is also listed on ClaudePluginHub.
+
+### Claude and Claude Desktop
+
+Open the custom connector form
+
+In a general Claude chat, select the + button below the input box, then choose Connectors → Add connector → Add custom connector.
+
+![Open Add custom connector from a Claude chat](https://docs.mrscraper.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fclaude-add-custom-connector.f57e2f22.png&w=3840&q=75)
+
+Add MrScraper
+
+Enter `MrScraper` as the name and `https://mcp.mrscraper.com/mcp` as the MCP server URL, then select Continue.
+
+![Enter the MrScraper name and MCP server URL](https://docs.mrscraper.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fclaude-fill-connector.dbf99caf.png&w=3840&q=75)
+
+Sign in
+
+Complete the MrScraper OAuth browser flow when Claude prompts you.
+
+### Cursor
+
+Open Cursor Settings → Tools & MCP → Add Custom MCP, then add:
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "type": "http",
+      "url": "https://mcp.mrscraper.com/mcp"
+    }
+  }
+}
+```
+
+Refresh the MCP server list, then authenticate when prompted.
+
+### VS Code
+
+Add the server to your user settings:
+
+Copy Text
+
+```
+{
+  "mcp": {
+    "servers": {
+      "mrscraper": {
+        "type": "http",
+        "url": "https://mcp.mrscraper.com/mcp"
+      }
+    }
+  }
+}
+```
+
+For a workspace configuration, place the server object under `servers` in `.vscode/mcp.json`. Start the server and VS Code opens a browser for OAuth.
+
+### Windsurf
+
+Add the following entry to the Windsurf MCP configuration:
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "serverUrl": "https://mcp.mrscraper.com/mcp"
+    }
+  }
+}
+```
+
+Refresh the MCP server list, then complete OAuth when prompted.
+
+### Other MCP clients
+
+Use these connection values:
+
+| Setting | Value |
+| --- | --- |
+| Name | `mrscraper` |
+| Transport | Streamable HTTP |
+| URL | `https://mcp.mrscraper.com/mcp` |
+| Authentication | OAuth 2.1; do not configure a static header |
+
+## API key fallback
+
+If a client cannot complete OAuth, create an API key, store it through the client's secret mechanism, and send it as a bearer token:
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "type": "http",
+      "url": "https://mcp.mrscraper.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_MRSCRAPER_API_KEY"
+      }
+    }
+  }
+}
+```
+
+For Codex, pass the environment-variable name instead of embedding the key:
+
+Copy Text
+
+```
+export MRSCRAPER_API_KEY="YOUR_MRSCRAPER_API_KEY"
+codex mcp add mrscraper \
+  --url https://mcp.mrscraper.com/mcp \
+  --bearer-token-env-var MRSCRAPER_API_KEY
+```
+
+## Authentication
+
+| Connection | Credential source |
+| --- | --- |
+| Hosted Streamable HTTP | OAuth 2.1 browser sign-in, or an API key fallback |
+| Self-hosted Streamable HTTP | OAuth 2.1 access token, or `Authorization: Bearer ` |
+| Local stdio | `MRSCRAPER_API_KEY`, then `MRSCRAPER_API_TOKEN` |
+
+The hosted server publishes OAuth 2.1 protected-resource metadata and challenges unauthenticated clients to start browser sign-in. Access tokens are issued for the exact `https://mcp.mrscraper.com/mcp` resource. A tool called without its required scope returns `403 insufficient_scope`, and your client can offer to grant the missing permission.
+
+| Scope | Tools |
+| --- | --- |
+| `scrape:read` | `scrapeHtml`, `scrapeMarkdown`, `getScreenshot`, `scrapeBrand`, `scrapeJson`, and `webSearch` |
+| `account:read` | `status` |
+
+These are the only application scopes the server advertises; the authorization server also offers `offline_access` for refresh tokens. Clients take the scopes from the server's metadata, so don't pin scopes in client configurations.
+
+OAuth connections that already hold `scrape:read` keep working without reconnecting; `scrape:write` is no longer needed by any tool. Connections without `scrape:read` must reconnect and approve it to run the scraping and search tools; `status` still uses `account:read`.
+
+API keys remain supported for clients without OAuth and carry full account authority, so no scope is enforced against them. Authentication stays at the transport layer; tools never accept credentials as arguments.
+
+## Run the MCP server locally
+
+Node.js 20 or newer is required.
+
+### Published package over stdio
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "command": "npx",
+      "args": ["-y", "@mrscraper/mcp@latest"],
+      "env": {
+        "MRSCRAPER_API_KEY": "YOUR_MRSCRAPER_API_KEY"
+      }
+    }
+  }
+}
+```
+
+### Source checkout over Streamable HTTP
+
+Clone and build
+
+Copy Text
+
+```
+git clone https://github.com/mrscraper-com/mrscraper-mcp.git
+cd mrscraper-mcp
+npm ci
+npm run build
+```
+
+Start HTTP transport
+
+Copy Text
+
+```
+TRANSPORT=http npm start
+```
+
+The default endpoint is `http://127.0.0.1:8000/mcp`.
+
+Connect the client
+
+Copy Text
+
+```
+{
+  "mcpServers": {
+    "mrscraper": {
+      "type": "http",
+      "url": "http://127.0.0.1:8000/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_MRSCRAPER_API_KEY"
+      }
+    }
+  }
+}
+```
+
+### Docker
+
+Copy Text
+
+```
+docker build -f docker/Dockerfile -t mrscraper-mcp .
+docker run --rm -p 8000:8000 mrscraper-mcp
+```
+
+The image binds to `0.0.0.0`. Apply network controls appropriate for the deployment and keep bearer verification enabled.
+
+## Environment variables
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `TRANSPORT` | `stdio` | Selects `stdio` or `http`. |
+| `HOST` | `127.0.0.1` | HTTP bind address; the Docker image uses `0.0.0.0`. |
+| `PORT` | `8000` | HTTP listen port. |
+| `MRSCRAPER_API_KEY` | — | Primary stdio credential. |
+| `MRSCRAPER_API_TOKEN` | — | Alternative stdio credential, also used by the Python SDK. |
+| `MRSCRAPER_HTTP_AUTH` | `1` | Enables HTTP bearer verification. |
+| `MRSCRAPER_OAUTH` | `1` | Accepts OAuth 2.1 access tokens alongside API keys. |
+| `MRSCRAPER_MCP_PUBLIC_URL` | `https://mcp.mrscraper.com` | Public origin; ` /mcp` is the required token audience. |
+| `MRSCRAPER_OAUTH_ISSUER` | `https://api.app.mrscraper.com` | Authorization server issuer. |
+| `MRSCRAPER_OAUTH_JWKS_URL` | ` /.well-known/jwks.json` | Key set used to verify access tokens. |
+| `MRSCRAPER_ALLOWED_ORIGINS` | — | Comma-separated browser origins allowed to call the HTTP server. |
+| `MRSCRAPER_API_BASE_URL` | MrScraper platform API | Platform endpoint override used by `status`. |
+| `MRSCRAPER_FETCH_BASE_URL` | MrScraper Scraper API | Endpoint override used by the six scraping and search tools. |
+| `MRSCRAPER_LOG_HTTP_PAYLOAD` | off | Enables trusted-environment request-body diagnostics. |
+| `MRSCRAPER_LOG_HTTP_PAYLOAD_MAX` | `8192` | Maximum diagnostic payload length. |
+
+## Security behavior
+
+- HTTP authentication is enabled by default.
+- Credential-bearing response headers are filtered from tool output.
+- Credential metadata in scraping and search responses is redacted, and network errors redact signed query credentials.
+- `status` preserves every field of the account status response body, including account identity and billing identifiers. Only credential-bearing response headers are removed.
+- Browser-origin requests are accepted from trusted local origins, from `claude.ai` and `chatgpt.com`, and from exact values configured through `MRSCRAPER_ALLOWED_ORIGINS`.
+- Tool calls receive the caller's authenticated OAuth token or API key through the MCP transport rather than through tool arguments.
+
+## Choosing the right tool
+
+| Starting point | Desired outcome | Tool |
+| --- | --- | --- |
+| A known URL | Raw HTML | `scrapeHtml` |
+| A known URL | Markdown, or Markdown and HTML together | `scrapeMarkdown` |
+| A known URL | A screenshot of the full page or top viewport | `getScreenshot` |
+| A website | Colors, typography, logos, and social links | `scrapeBrand` |
+| A known URL | Data extracted as JSON with a natural-language prompt | `scrapeJson` |
+| A topic or keyword | Search result discovery | `webSearch` |
+| An account | Plan, token usage, and remaining tokens | `status` |
+
+A discovery workflow commonly uses `webSearch` first, followed by `scrapeMarkdown` or `scrapeHtml` for the pages that will inform the answer. Agents produce summaries, tables, and structured output from the retrieved content, or call `scrapeJson` to have MrScraper extract the data.
+
+### Migration from the previous tool set
+
+Version 0.5.0 replaces the tools and inputs of version 0.4:
+
+| Previous | Replacement |
+| --- | --- |
+| `scraperAPI` | `scrapeHtml` for raw HTML, `scrapeMarkdown` for Markdown (with `html: true`, Markdown and HTML), or `getScreenshot` for a screenshot. Brand and JSON extraction are the separate `scrapeBrand` and `scrapeJson` tools. |
+| `scraperAPI` inputs `geo_code`, `proxy_country`, `browser_rendering`, `wait_for_selector`, `block_resources`, `max_retries`, and `home_page` | `geoCode`, `proxyCountry`, `browserRendering`, `waitForSelector`, `blockResources`, `maxRetries`, and `warmStart`. |
+| `scraperAPI` inputs `use_proxy`, `bypass_proxy`, `cookie_jar`, `headers`, `token_cap`, `stream`, and `discard_token_secret` | Removed. |
+| `webSearch` inputs `url`, `region`, `num_results`, and `timeout` | `query`, `country`, and `numResults`. `query` is search text; a search results URL is no longer read for its `q` parameter. The HTTP deadline is fixed at 120 seconds. |
+| `status` summary fields, such as `token_remaining` and `usage_percent` | The raw account status body, with account details at `data.data`. |
+| OAuth scopes `scrape:read` and `scrape:write` | `scrape:read` for all six scraping and search tools; `scrape:write` is no longer needed. `status` still uses `account:read`. |
+
+Browser rendering no longer switches on automatically. It is off unless `browserRendering` is true; `getScreenshot` always renders, and `scrapeMarkdown` renders when `html` is true. The page timeout defaults to 300 seconds (was 120), and omitting `maxRetries` means no retry limit (was 3). ChatGPT and Codex sign-ins, which got a reduced `scraperAPI` in 0.4, now receive the same seven tools and inputs as every other client.
+
+Start a new client session or reconnect so the client refreshes its tool list. OAuth connections that already hold `scrape:read` keep working; others must reconnect and approve it. API keys keep working without scope approval.
+
+Versions before 0.2.0 exposed `fetch`, `scrape`, `serp`, `rerun`, `results`, and `result`. Manage AI scrapers, reruns, and stored results in the MrScraper dashboard.
+
+## Common response envelope
+
+Every tool returns the same envelope in MCP `structuredContent` and as formatted JSON in a text content block:
+
+Copy Text
+
+```
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[Formatted JSON matching structuredContent]"
+    }
+  ],
+  "structuredContent": {
+    "status_code": 200,
+    "data": "<html><body>Example page content...</body></html>",
+    "headers": {
+      "content-type": "text/html; charset=utf-8"
+    }
+  }
+}
+```
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `status_code` | number or `null` | HTTP status returned by the MrScraper service, or `null` when the request ends before an HTTP response arrives. |
+| `data` | JSON value, string, or `null` | The API response body, as parsed JSON or text. Its field names are not converted. |
+| `headers` | object | Response headers with credential-bearing headers filtered out. |
+| `error` | string, when present | Request failure summary. |
+
+`status` preserves the complete account status body without adding summary fields.
+
+### Error handling
+
+HTTP and network failures set `isError: true` on the MCP tool result and include `error` in the envelope. Network failures use `status_code: null`. Invalid inputs, including inputs a tool does not define, are rejected before any upstream call. Authentication and missing OAuth scopes are enforced by the HTTP transport before a tool runs.
+
+## Tool reference
+
+Tool names, descriptions, inputs, and defaults match the MrScraper CLI, SDKs, and integrations. Inputs use camel case and are sent to the API under the same names. Tools authenticate through the MCP connection and do not accept a token argument.
+
+| Tool | Title | OAuth scope | `readOnlyHint` | `openWorldHint` |
+| --- | --- | --- | --- | --- |
+| `status` | Account Status | `account:read` | `true` | `false` |
+| `scrapeHtml` | Scrape HTML | `scrape:read` | `false` | `true` |
+| `scrapeMarkdown` | Scrape Markdown | `scrape:read` | `false` | `true` |
+| `getScreenshot` | Get Screenshot | `scrape:read` | `false` | `true` |
+| `scrapeBrand` | Scrape Brand | `scrape:read` | `true` | `true` |
+| `scrapeJson` | Scrape JSON | `scrape:read` | `false` | `true` |
+| `webSearch` | Web Search | `scrape:read` | `true` | `true` |
+
+Every tool sets `destructiveHint: false`. `scrapeHtml`, `scrapeMarkdown`, `getScreenshot`, and `scrapeJson` are not marked read-only because `saveResult` can save their results to your dashboard. The six scraping and search tools use tokens from your plan.
+
+Examples use `https://example.com` as the sample target. Replace it for your use case. Response examples show the envelope from `structuredContent`, with selected keys and types observed in live API responses. Values are placeholders; page content, base64 images, and arrays are abbreviated. Actual responses may contain additional fields.
+
+### Shared parameters
+
+HTML, Markdown, screenshots, and JSON extraction share `url`, `timeout`, `geoCode`, `proxyCountry`, `super`, `waitUntil`, `proxy`, `maxRetries`, and `saveResult`. Page defaults are 300 seconds, US geolocation and proxy country, real-device routing off, and dashboard saving off. Omitted retry limits mean no limit.
+
+HTML, Markdown, and screenshots additionally accept `blockResources`, `waitForSelector`, and `returnCookie`. JSON extraction does not accept these controls. Browser rendering is optional for HTML, Markdown, and JSON; screenshots always enable it. Markdown with HTML also enables browser rendering.
+
+The six scraping and search tools send `GET` requests to the Scraper API with their inputs as query parameters:
+
+Copy Text
+
+```
+GET https://api.mrscraper.com
+```
+
+Each tool's table lists its complete inputs.
+
+### `status`
+
+Return the raw account status API response without summarizing, redacting body fields, or adding calculated fields.
+
+`status` takes no service parameters and calls:
+
+Copy Text
+
+```
+GET https://api.app.mrscraper.com/api/v1/subscription-accounts
+```
+
+The HTTP deadline is fixed at 600 seconds. It is not a service parameter.
+
+#### Example
+
+Copy Text
+
+```
+{
+  "name": "status",
+  "arguments": {}
+}
+```
+
+#### Response
+
+The API body contains message and data. Account details remain nested in data, including subscriptionItem and scraperAllowance. The response envelope therefore exposes account details at data.data. Sensitive response headers are removed.
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": {
+    "message": "Example response",
+    "data": {
+      "id": "ACCOUNT_ID",
+      "tokenLimit": 100000,
+      "tokenUsage": 2500,
+      "stripeStatus": "active",
+      "user": {
+        "name": "Example user",
+        "email": "user@example.com",
+        "isVerified": true
+      },
+      "subscriptionItem": {
+        "name": "Example plan",
+        "tokenLimit": 100000
+      },
+      "scraperAllowance": {
+        "remaining": 97500,
+        "plans": [
+          {
+            "remaining": 97500
+          }
+        ]
+      }
+    }
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  }
+}
+```
+
+### `scrapeHtml`
+
+Retrieve the raw HTML of a page. Browser rendering is optional.
+
+The request sets `html=true`, `markdown=false`, and `screenshot=false`.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `url` | string | Required | Absolute HTTP or HTTPS URL of the page to process. |
+| `timeout` | integer | `300` | Page load timeout in seconds, from 1 to 300. The HTTP request allows 30 additional seconds. |
+| `geoCode` | string | `"us"` | Two-letter country code to load the page from, sent in lowercase. |
+| `proxyCountry` | string | `"us"` | Two-letter country code of the proxy server, sent in lowercase. |
+| `super` | boolean | `false` | Whether to route the request through real devices. |
+| `waitUntil` | string: `domcontentloaded`, `load`, `networkidle0`, `networkidle2` | `"domcontentloaded"` | Navigation completion event to wait for: domcontentloaded, load, networkidle0, or networkidle2. |
+| `proxy` | string | Omitted | Custom proxy URL used to load the page. |
+| `maxRetries` | integer | Omitted | Maximum number of retries, as a nonnegative integer. Omit this parameter for no limit. |
+| `saveResult` | boolean | `false` | Whether to save the result to the dashboard Result tab. |
+| `blockResources` | boolean | `false` | Whether to block images, fonts, and stylesheets while loading the page. |
+| `waitForSelector` | string | Omitted | Wait for the page to contain the specified CSS selector before returning the result. |
+| `returnCookie` | boolean | `false` | Whether to include browser session cookies in the response. |
+| `browserRendering` | boolean | `false` | Whether to render the page in a browser before returning the result. |
+| `warmStart` | boolean | `false` | Whether to enable warm start for more reliable scraping, at the cost of additional latency. |
+
+#### Example
+
+Copy Text
+
+```
+{
+  "name": "scrapeHtml",
+  "arguments": {
+    "url": "https://example.com",
+    "browserRendering": true,
+    "warmStart": true,
+    "waitForSelector": "body",
+    "timeout": 120,
+    "maxRetries": 0
+  }
+}
+```
+
+#### Response
+
+The default response body is HTML text. Additional controls can cause the API to return JSON; the returned structure is preserved.
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": "<html><body>Example page content...</body></html>",
+  "headers": {
+    "content-type": "text/html; charset=utf-8"
+  }
+}
+```
+
+### `scrapeMarkdown`
+
+Retrieve a page as Markdown. Including HTML also enables browser rendering and returns both outputs as JSON.
+
+The request sets `markdown=true` and `screenshot=false`. Setting `html` to `true` also sets `browserRendering=true`.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `url` | string | Required | Absolute HTTP or HTTPS URL of the page to process. |
+| `timeout` | integer | `300` | Page load timeout in seconds, from 1 to 300. The HTTP request allows 30 additional seconds. |
+| `geoCode` | string | `"us"` | Two-letter country code to load the page from, sent in lowercase. |
+| `proxyCountry` | string | `"us"` | Two-letter country code of the proxy server, sent in lowercase. |
+| `super` | boolean | `false` | Whether to route the request through real devices. |
+| `waitUntil` | string: `domcontentloaded`, `load`, `networkidle0`, `networkidle2` | `"domcontentloaded"` | Navigation completion event to wait for: domcontentloaded, load, networkidle0, or networkidle2. |
+| `proxy` | string | Omitted | Custom proxy URL used to load the page. |
+| `maxRetries` | integer | Omitted | Maximum number of retries, as a nonnegative integer. Omit this parameter for no limit. |
+| `saveResult` | boolean | `false` | Whether to save the result to the dashboard Result tab. |
+| `blockResources` | boolean | `false` | Whether to block images, fonts, and stylesheets while loading the page. |
+| `waitForSelector` | string | Omitted | Wait for the page to contain the specified CSS selector before returning the result. |
+| `returnCookie` | boolean | `false` | Whether to include browser session cookies in the response. |
+| `browserRendering` | boolean | `false` | Whether to render the page in a browser before returning the result. |
+| `warmStart` | boolean | `false` | Whether to enable warm start for more reliable scraping, at the cost of additional latency. |
+| `html` | boolean | `false` | Whether to include the page HTML in the response. |
+
+#### Example
+
+Copy Text
+
+```
+{
+  "name": "scrapeMarkdown",
+  "arguments": {
+    "url": "https://example.com",
+    "html": true,
+    "warmStart": true
+  }
+}
+```
+
+#### Response
+
+The default response body is Markdown text. Enabling HTML returns JSON containing both HTML and Markdown.
+
+With html enabled
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": {
+    "html": "<html>...</html>",
+    "markdown": "# Example page\n\n..."
+  },
+  "headers": {
+    "content-type": "application/json"
+  }
+}
+```
+
+Default Markdown text
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": "# Example page\n\nExample Markdown content...",
+  "headers": {
+    "content-type": "text/markdown; charset=utf-8"
+  }
+}
+```
+
+### `getScreenshot`
+
+Capture a base64 screenshot of the full page or top viewport. Browser rendering is always enabled.
+
+The request always sets `browserRendering=true`, so this tool has no `browserRendering` input.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `url` | string | Required | Absolute HTTP or HTTPS URL of the page to process. |
+| `timeout` | integer | `300` | Page load timeout in seconds, from 1 to 300. The HTTP request allows 30 additional seconds. |
+| `geoCode` | string | `"us"` | Two-letter country code to load the page from, sent in lowercase. |
+| `proxyCountry` | string | `"us"` | Two-letter country code of the proxy server, sent in lowercase. |
+| `super` | boolean | `false` | Whether to route the request through real devices. |
+| `waitUntil` | string: `domcontentloaded`, `load`, `networkidle0`, `networkidle2` | `"domcontentloaded"` | Navigation completion event to wait for: domcontentloaded, load, networkidle0, or networkidle2. |
+| `proxy` | string | Omitted | Custom proxy URL used to load the page. |
+| `maxRetries` | integer | Omitted | Maximum number of retries, as a nonnegative integer. Omit this parameter for no limit. |
+| `saveResult` | boolean | `false` | Whether to save the result to the dashboard Result tab. |
+| `blockResources` | boolean | `false` | Whether to block images, fonts, and stylesheets while loading the page. |
+| `waitForSelector` | string | Omitted | Wait for the page to contain the specified CSS selector before returning the result. |
+| `returnCookie` | boolean | `false` | Whether to include browser session cookies in the response. |
+| `screenshot` | string: `full`, `top` | `"full"` | Screenshot area to capture: full for the entire page or top for the top viewport. |
+| `html` | boolean | `true` | Whether to include the page HTML in the response. |
+| `markdown` | boolean | `false` | Whether to include the page Markdown in the response. |
+
+#### Example
+
+Copy Text
+
+```
+{
+  "name": "getScreenshot",
+  "arguments": {
+    "url": "https://example.com",
+    "screenshot": "top",
+    "html": false,
+    "markdown": true
+  }
+}
+```
+
+#### Response
+
+The response body contains a base64 screenshot and requested page outputs. The API can still include HTML when HTML output is disabled.
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": {
+    "html": "<html>...</html>",
+    "screenshot": "BASE64_PNG_DATA",
+    "markdown": "# Example page\n\n..."
+  },
+  "headers": {
+    "content-type": "application/json; charset=utf-8"
+  }
+}
+```
+
+### `scrapeBrand`
+
+Extract a website's colors, typography, logos, and social links as JSON.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `url` | string | Required | Absolute HTTP or HTTPS URL of the page to process. |
+
+The HTTP deadline is fixed at 120 seconds. It is not a service parameter.
+
+The request uses `action=brand-scraping` and `bundle=none`; page controls are not accepted.
+
+#### Example
+
+Copy Text
+
+```
+{
+  "name": "scrapeBrand",
+  "arguments": {
+    "url": "https://example.com"
+  }
+}
+```
+
+#### Response
+
+The API body contains message and a data object with job_id, status, url, final_url, brand, and error. Brand details are available at data.data.brand in the response envelope.
+
+Copy Text
+
+```
+{
+  "status_code": 200,
+  "data": {
+    "data": {
+      "job_id": "JOB_ID",
+      "status": "succeeded",
+      "url": "https://example.com",
+      "final_url": "https://example.com",
+      "brand": {
+        "name": "Example brand",
+        "colors": {
+          "background": "#ffffff",
+          "text": "#222222"
+        },
+        "typography": {
+          "body": {
+            "font_family": "Example font"
+          }
+        }
+      },
+      "error": null,
+      "bundle_url": null
+    },
+    "message": "Example response"
+  },
+  "headers": {
+    "content-type": "application/json"
+  }
+}
+```
+
+### `scrapeJson`
+
+Extract structured JSON from a page using a natural-language prompt. Append Json Schema: and a JSON schema to shape the output.
+
+#### Parameters
+
+| Parameter | Type | Default | Description |
+| --- |

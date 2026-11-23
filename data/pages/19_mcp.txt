@@ -1,0 +1,159 @@
+https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546
+
+Connect your AI assistant to the Gorgias MCP
+
+# Connect your AI assistant to the Gorgias MCP Updated 23 days ago
+
+### Who can use this feature?
+
+All Helpdesk plans (AI Agent isn't required)
+
+The Gorgias MCP lets you work with your Gorgias helpdesk using an AI assistant, like Claude or ChatGPT. Once you connect the MCP, your AI assistant can access your Gorgias data and account, so you can manage your helpdesk through conversations. For example, you can use an AI assistant to read and analyze your tickets, audit your account, configure AI Agent, and update your settings.
+
+MCP (Model Context Protocol) is the standard that lets an AI tool connect to another app like Gorgias.
+
+You can add the Gorgias MCP from Claude's connector directory or ChatGPT's plugin directory. If you use another AI client, such as Claude Code, Codex, Cursor, or Copilot, you can create a custom connector for the MCP instead. This article covers:
+
+- Requirements
+- Who can use the Gorgias MCP?
+- Connecting an AI assistant to the Gorgias MCP
+
+- Connecting Claude
+- Connecting ChatGPT
+- Authorizing your Gorgias account
+- Connecting a different AI client, such as Claude Code
+- What your AI assistant can do, with prompts to try
+
+## Requirements
+
+- A Gorgias account on any Helpdesk plan.
+- An account with Claude, ChatGPT, or another MCP-compatible AI assistant.
+- Your Gorgias subdomain. This is the `your-brand` part of your account URL (`your-brand.gorgias.com`). You'll enter it when you authorize the connection.
+
+## Who can use the Gorgias MCP?
+
+Everyone can connect the Gorgias MCP, but the actions you can take with your AI assistant depend on the role assigned to your user in Gorgias.
+
+If your company uses Claude Team or Enterprise, or a managed ChatGPT workspace (Business, Enterprise, or Edu), an admin may need to make the Gorgias MCP available before you can connect.
+
+## Connect an AI assistant to the Gorgias MCP
+
+Claude and ChatGPT both list the Gorgias MCP in their connector directories, so you can add it without any manual configuration. Follow the steps for the assistant you use, then authorize your Gorgias account to finish connecting.
+
+### Connect Claude
+
+The Gorgias MCP is available in Claude's connector directory. You can connect the MCP using Claude on the web, desktop app, or mobile app.
+
+On Claude Team and Enterprise plans, an Owner or Primary Owner must enable the Gorgias MCP for your organization before members can connect it. Owners can find the steps in Claude's connector documentation. If you don't see the Gorgias MCP in your connectors list, ask your Owner to enable it.
+
+Note: Claude's menus change from time to time. For the most up-to-date steps, refer to Claude's connector documentation.
+
+1. In Claude, select Customize, then select Connectors.
+2. Browse the connector directory and search for Gorgias.
+3. Select Gorgias MCP, then select Connect. You're redirected to your browser.
+4. Authorize your Gorgias account.
+
+### Connect ChatGPT
+
+The Gorgias MCP is available in ChatGPT as a plugin. If you use a managed ChatGPT workspace (Business, Enterprise, or Edu), an admin may need to make the Gorgias MCP available to your workspace first. Admins can find the steps in OpenAI's plugin controls documentation. If you can't find the Gorgias MCP in the directory, ask your workspace admin.
+
+Note: ChatGPT's menus change from time to time. For the most up-to-date steps, refer to OpenAI's plugin documentation.
+
+1. In ChatGPT, open the plugin directory and search for Gorgias MCP.
+2. Select Install plugin.
+3. Authorize your Gorgias account.
+
+## Authorize your Gorgias account
+
+After you select Connect in Claude or Install plugin in ChatGPT, a browser window opens where you can authorize your AI assistant to connect with the Gorgias MCP.
+
+1. Enter your Gorgias subdomain (example: `your-brand.gorgias.com`), then select Continue.
+2. Select Allow Access.
+3. Sign in to Gorgias. If you already have an active Gorgias session in your browser, you won't be prompted to sign in.
+4. Review the data the Gorgias MCP can access, then select Authorize.
+5. Return to Claude or ChatGPT.
+
+That's it. You're connected, and you can start prompting.
+
+## Connect a different AI client
+
+Gorgias MCP works with any MCP-compatible AI client. The setup process varies by client, but the connection URL is the same: https://mcp.gorgias.com/mcp
+
+Refer to your AI client's documentation for how to add an HTTP MCP server, then complete the Gorgias authentication step when prompted:
+
+- Claude Code (if you sign in with your Claude account, connectors you add in Claude on the web are also available in Claude Code)
+- Codex
+- Cursor
+- VS Code Copilot
+
+## What your AI assistant can do
+
+Once connected, your AI assistant can read your helpdesk data and take actions on your behalf, within the limits of your Gorgias role. It can work with:
+
+- Tickets: search and read tickets, reply to customers, add internal notes, and update status, priority, and assignee, and add tags.
+- Macros and rules: find stale or duplicate macros, create and update macros, and manage automation rules.
+- AI Agent: audit your setup, edit tone of voice, guidance, skills, and handover topics, and preview replies before you turn anything on.
+- Knowledge: review and draft Help Center articles and AI Agent knowledge.
+- Customers and team: look up customer profiles and review your team.
+- Insights: pull voice-of-customer trends, response times, ticket volume, and CSAT data.
+
+Some actions can reach your customers or go live, so check the details before you approve them. For example, replying to a ticket or applying a macro can send a message to a customer, and publishing guidance or skills changes how AI Agent responds. By default, Help Center articles and AI Agent guidance are saved as drafts until you publish them, and new rules and actions are created turned off.
+
+You can also explore every tool in the Gorgias MCP, including the Gorgias role each one needs.
+
+## Try it out
+
+Now that you've connected the Gorgias MCP to your AI assistant, you're ready to start prompting. Here are a few examples to get you started:
+
+- "Audit my AI Agent setup and flag any handover conditions that seem too broad or likely to cause unnecessary escalations."
+- "Simulate how my AI Agent would respond to this message before I enable it: [paste a sample customer message]."
+- "What are the top reasons customers are contacting us this month? Group them by theme."
+- "Find the macros we use least and suggest which ones we should update or retire."
+- "What was our average first response time last month, broken down by channel?"
+- "Find recent tickets about refunds and summarize what customers are asking for."
+
+To see what else your AI assistant can do, explore the full list of Gorgias MCP tools.
+
+## FAQ
+
+Can I do anything in Gorgias with my AI assistant?
+
+ 
+
+No. Your AI assistant acts as you, so it can only do what your Gorgias role allows. Some actions need a Lead or Admin role. If a request fails with an "Insufficient role" message, review the AI assistants section of user permissions or ask an Admin.
+
+What does my AI assistant see when I connect Gorgias?
+
+ 
+
+Your AI assistant receives the ticket, customer, and settings data it retrieves to answer your requests. That data is handled under your AI provider's terms and privacy settings, not Gorgias's. In ChatGPT, plugins can also receive parts of your conversation, such as chat context and memories. Review your provider's data controls before you connect, especially if your company has specific data-handling policies.
+
+What's the difference between the Gorgias MCP and AI Agent?
+
+ 
+
+AI Agent helps your shoppers browse, buy, and get support automatically and in your brand's voice. It works inside your helpdesk, across email, chat, SMS, and social media, resolving questions like returns, order changes, and shipping updates and helping new shoppers find products.
+
+The Gorgias MCP is different: it lets you manage your Gorgias account from an external AI tool, like Claude or ChatGPT. AI Agent talks to your shoppers, while the MCP lets you talk to your helpdesk. The two work together. For example, you can use your AI assistant to audit and improve your AI Agent's guidance, skills, and settings.
+
+I can't find the Gorgias MCP in Claude or ChatGPT.
+
+ 
+
+On Claude Team and Enterprise plans, an Owner or Primary Owner enables connectors for the organization. If you can't find Gorgias MCP under Customize > Connectors, ask them to add it from Organization settings > Connectors. In a managed ChatGPT workspace (Business, Enterprise, or Edu), ask your workspace admin to make the plugin available (admins can follow OpenAI's plugin controls documentation). Once it's enabled, it appears in your directory.
+
+The connection URL shows a page saying "This URL hosts an MCP endpoint" when I open it in a browser.
+
+ 
+
+This is expected. The URL is a connection endpoint. It's designed to be added inside your AI client's connectors settings, not opened in a browser tab. When you connect the Gorgias MCP in your AI tool, use this URL as the remote MCP server URL.
+
+Can I connect the Gorgias MCP for multiple brands?
+
+ 
+
+Each connection works with one Gorgias account. To connect more than one brand in Claude, add a custom connector for each brand and use that brand's Gorgias subdomain in the connection URL, replacing `YOUR_GORGIAS_SUBDOMAIN`:
+
+`https://mcp.gorgias.com/mcp?gorgias_subdomain=YOUR_GORGIAS_SUBDOMAIN`
+
+Authenticate each connection with the Gorgias account that has access to the corresponding brand. For steps on adding a custom connector, refer to Claude's documentation.

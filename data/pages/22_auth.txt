@@ -1,0 +1,55 @@
+https://www.twilio.com/docs/usage/api-security-reference-guide/secure-auth
+
+# Secure authentication
+
+Secure authentication provides the foundation of API security. To verify that you granted the requester permission to your account resources, Twilio requires authentication on every API request.
+
+When you create a Twilio account, Twilio generates an Account SID and an Auth Token. The Auth Token provides broad account access and should be protected like a high-privilege password.
+
+## Supported authentication methods
+
+Twilio supports three authentication methods. Choose based on your security requirements and integration needs:
+
+1. OAuth 2.0 — Recommended for new integrations Short-lived access tokens, as brief as one minute Scoped to specific permissions Best for third-party apps and delegated access Requires token refresh mechanism
+2. API Keys — Recommended for server-side apps Main API Key: Provides broad account access (avoid for new integrations) Standard API Key: Full account access with SID isolation Restricted API Key: Scoped to specific capabilities (recommended for new integrations)
+3. Auth Token authentication — Legacy option Provides broad account access Should only be used when OAuth 2.0 or API keys are not supported Treat as last-resort option
+
+## Choosing the right authentication method
+
+Whenever the integration supports OAuth 2.0 or a Restricted API Key, use it. These options allow you to scope access to the capabilities your integration needs. This limits the potential impact of a leaked credential.
+
+Auth Tokens and Main API Keys provide broad account access. Although they remain supported, treat them as legacy or last-resort options rather than the default for new integrations.
+
+The following table compares key attributes of each authentication method:
+
+| Method | Scope control | Token lifetime | Recommended use | Security level |
+| --- | --- | --- | --- | --- |
+| OAuth 2.0 | Highly scoped | Short-lived (configurable) | Third-party apps, delegated access | Highest |
+| Restricted API Key | Scoped to capabilities | Long-lived (until revoked) | Server-side apps | High |
+| Standard API Key | Account-level access | Long-lived (until revoked) | Admin access, account management | Medium |
+| Auth Token | Broad account access | Long-lived (until rotated) | Legacy integrations only | Low |
+
+## OAuth 2.0 and SDK support
+
+OAuth 2.0 provides the strongest security posture for API authentication. To simplify implementation, Twilio provides SDK support for OAuth. These SDKs refresh tokens and reduce the amount of code that you must implement for authentication. This reduces the risk of expired token errors.
+
+## Best practices for all authentication methods
+
+Implement the following practices regardless of which authentication method you choose:
+
+- Prefer short-lived OAuth 2.0 access tokens where appropriate.
+- Rotate client credentials and signing keys according to organizational policy.
+- Revoke credentials immediately when you suspect compromise.
+- Grant each integration only the permissions it needs.
+- Keep authentication logic on the server side and out of browser-delivered code.
+- Never hardcode credentials in source code or client-side apps.
+- Store all credentials in a secrets manager.
+
+## Next steps
+
+Learn more about securing your Twilio integration:
+
+- Secrets management — how to store and protect credentials
+- Defense-in-depth strategy — layer multiple security controls
+- Incident response — respond to credential compromise
+- Authentication anti-patterns — practices to avoid

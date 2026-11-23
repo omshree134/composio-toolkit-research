@@ -1,0 +1,269 @@
+https://docs.ramp.com/developer-api/v1/authorization
+
+Authorization — Ramp API docs
+
+Authorization
+
+Ramp uses OAuth 2.0. Your app gets an access token from `/developer/v1/token`, authenticating with its client ID and secret (typically HTTP Basic Auth), and scopes control what the token can access.
+
+For a quick start, see the Setup Guide. For Ramp's own MCP server and CLI, see Ramp MCP and Ramp CLI.
+
+## Supported grant types
+
+| Grant Type | Use Case | User Interaction |
+| --- | --- | --- |
+| Client Credentials | Internal integrations, server-to-server | None required |
+| Authorization Code | Third-party apps, public integrations | Authorized user consent required |
+| Refresh Token | Renew access after an Authorization Code grant | None after the initial authorization |
+
+## Permission model and scopes
+
+Scopes follow the pattern `resource:permission`, where the permission is usually `read` or `write`, such as `transactions:read`. A few use other permissions, such as `cards:read_vault`. OpenID Connect scopes, such as `openid` and `offline_access`, don't follow the pattern.
+
+Request only the scopes your app needs. Each endpoint's API reference lists its required scopes. The table below lists common scopes and isn't exhaustive.
+
+| Scope | Resource | Description |
+| --- | --- | --- |
+| `accounting:read` | Accounting data | Access accounting sync status and metadata |
+| `accounting:write` | Accounting data | Update accounting sync settings and connections |
+| `ai_spend:read` | AI spend | View AI token usage and spend data |
+| `ai_spend:write` | AI spend | Update AI spend and tagging settings |
+| `ai_usage:write` | AI usage | Report AI and LLM usage data for spend tracking |
+| `applications:read` | Applications | View financing application status (partners only) |
+| `applications:write` | Applications | Requested in the application OAuth consent flow; not required to submit applications (partners only) |
+| `approvals:read` | Approvals | View approval data for transactions, reimbursements, and bills |
+| `approvals:write` | Approvals | Approve or reject pending approvals |
+| `audit_logs:read` | Audit logs | View business audit log events |
+| `bank_accounts:read` | Bank accounts | View connected bank account information |
+| `bank_accounts:write` | Bank accounts | Create and manage bank account information (partners only) |
+| `billing_statements:read` | Billing statements | View your Ramp billing statements |
+| `bills:read` | Bills | Access bill data and payment history |
+| `bills:write` | Bills | Create, update, and pay bills |
+| `blank_canvas:write` | Blank canvas approvals | Approve, reject, and update external workflow steps |
+| `budgets:read` | Budgets | View budget information |
+| `business:read` | Business profile | Access business information and settings |
+| `cards:read` | Cards | View physical and virtual card information |
+| `cards:read_vault` | Card vault | Access sensitive card data (PAN, CVV) |
+| `cards:write` | Cards | Create, update, and manage cards |
+| `cashbacks:read` | Cashback rewards | View cashback earnings and history |
+| `custom_forms:read` | Custom forms | View custom form collection responses |
+| `custom_records:read` | Custom records | Access custom data fields and records |
+| `custom_records:write` | Custom records | Create and update custom data fields |
+| `departments:read` | Departments | View department structure and assignments |
+| `departments:write` | Departments | Create and manage departments |
+| `embedded_cards:write` | Embedded cards | View sensitive card details through Ramp Embedded |
+| `entities:read` | Legal entities | Access entity information and hierarchies |
+| `funds:read` | Funds | View funds, members, cards, and spending policies |
+| `funds:write` | Funds | Create and manage funds, members, and suspension state |
+| `incorporation:read` | Incorporation | View incorporation information and status (partners only) |
+| `incorporation:write` | Incorporation | Submit and update incorporation information (partners only) |
+| `item_receipts:read` | Item receipts | View itemized receipt data |
+| `item_receipts:write` | Item receipts | Create and update itemized receipt data |
+| `limits:write` | Card vault compatibility | Required with `cards:read_vault` when creating a card through `POST /developer/v1/cards/vault` |
+| `locations:read` | Locations | View location data and assignments |
+| `locations:write` | Locations | Create and manage location data |
+| `memos:read` | Memos | Access transaction memos and notes |
+| `memos:write` | Memos | Add and update transaction memos |
+| `merchants:read` | Merchants | View merchant information and policies |
+| `payments:read` | Payments | View vendor payments |
+| `payments:write` | Payments | Create and initiate vendor payments |
+| `purchase_orders:read` | Purchase orders | Access purchase order data and status |
+| `purchase_orders:write` | Purchase orders | Create and update purchase orders |
+| `receipt_integrations:read` | Receipt integrations | View receipt integration settings |
+| `receipt_integrations:write` | Receipt integrations | Configure receipt integration settings |
+| `receipts:read` | Receipts | Access receipt images and data |
+| `receipts:write` | Receipts | Upload and manage receipt data |
+| `reimbursements:read` | Reimbursements | View reimbursement requests and status |
+| `reimbursements:write` | Reimbursements | Create and update reimbursement requests |
+| `repayments:read` | Repayments | View repayments |
+| `spend_programs:read` | Spend programs | Access spend program configuration |
+| `spend_programs:write` | Spend programs | Create and manage spend programs |
+| `spend_requests:write` | Spend requests | Create and update spend requests |
+| `statements:read` | Statements | Download monthly statements |
+| `tasks:read` | Tasks | View task information and status |
+| `transactions:read` | Transactions | Access transaction data and history |
+| `transactions:write` | Transactions | Update transaction data and accounting information |
+| `transfers:read` | Transfers | View transfer history and status |
+| `treasury:read` | Banking | View banking accounts and balance history |
+| `trips:read` | Trips | View trips |
+| `unified_requests:read` | Requests | View requests, such as procurement requests |
+| `unified_requests:write` | Requests | Create, edit, and submit procurement requests |
+| `users:read` | Users | Access user profiles and roles |
+| `users:write` | Users | Create and manage user accounts |
+| `vendors:read` | Vendors | View vendor information and payment details |
+| `vendors:write` | Vendors | Create and update vendor information |
+
+`cards:read_vault` is available only to approved integrators; see Virtual Cards. Scopes marked partners only appear in the partner Developer Console, not in a business's own Developer API settings. Some endpoints also require a Ramp plan feature and return `403` without it, even with the right scope.
+
+## Ramp MCP and Ramp CLI
+
+Ramp MCP and Ramp CLI sign in with OAuth, but you don't choose scopes. A connection can do what the connecting user's Ramp role allows, within the access level chosen at sign-in.
+
+When you connect, the consent screen asks you to choose Full access (the default) or Read-only. With the CLI, you can also run `ramp auth login --read-only`. A read-only connection gets read scopes only:
+
+- Ramp MCP doesn't list tools that make changes.
+- Write requests fail with `403 Forbidden` and error code `DEVELOPER_7100` (`These scopes are not allowed for this token: ...`). Through Ramp MCP, the agent sees this as a tool error.
+
+To make changes, reconnect and choose Full access, or run `ramp auth login` without `--read-only`.
+
+Unlike other apps, Ramp MCP and Ramp CLI get a new refresh token each time they refresh, and its lifetime restarts. Connections still expire 30 days after they're created; reconnect to renew. Who can connect is controlled by a Ramp role permission; see Manage connected AI tools↗.
+
+Third-party apps are unchanged: they get exactly the scopes they were granted.
+
+## Token management
+
+- Format: Access tokens are bearer tokens prefixed with `ramp_business_tok_`, `ramp_user_tok_`, `ramp_business_jwt_`, or `ramp_user_jwt_`.
+- Lifetime: Client Credentials access tokens last 10 days (864,000 seconds). Authorization Code and Refresh Token access tokens default to 1 hour (3,600 seconds), and some apps have a different configured lifetime. Use `expires_in` from the token response.
+- Scopes: A token can't be used beyond its granted scopes. To change scopes, get a new token. Ramp MCP and Ramp CLI tokens are limited by the user's role and access level instead.
+- Environment: Tokens work only in the environment that issued them. Sandbox and production need separate apps.
+
+Treat tokens as credentials
+
+Never log tokens or include them in error messages, store them encrypted, and send them only over HTTPS.
+
+## Authorization flows
+
+### Client credentials flow
+
+Use this flow for server-to-server integrations with your own Ramp business. Send `client_id:client_secret`, base64-encoded, in an `Authorization: Basic ...` header. Some apps are configured to send `client_id` and `client_secret` in the form body instead.
+
+Pass the scopes you need as a space-separated `scope` field. If you omit `scope`, the token has no scopes. The token has business-wide access limited by those scopes, and there's no end user. Actions that need a user are attributed to the app's creator by default.
+
+Client Credentials doesn't return a refresh token. Request a new access token when the current one expires. Keep the client secret on your servers, never in client-side code.
+
+### Authorization code flow
+
+Permanent link: Authorization code flow
+
+Use this flow when other Ramp businesses or users grant your app access, such as apps listed on ramp.com/integrations.
+
+![](https://docs.ramp.com/assets/oauth_diagram-Cv7n-U3P.png)
+
+#### Step 1: Redirect the user to Ramp
+
+Send the user to Ramp's authorization URL with these parameters:
+
+- `response_type` Required — Must be `code`.
+- `scope` Required — Space-separated list of scopes, such as `transactions:read business:read`.
+- `client_id` Required — Your app's client ID from the Ramp Developer Console↗.
+- `redirect_uri` Required — Must exactly match a redirect URI configured for your app, including the path. Use `https://`, or `http://` only for `localhost` or `127.0.0.1`.
+- `state` Required — A random value your app verifies on return, to protect against CSRF. Required for apps created after June 15, 2023, and recommended for all apps.
+
+https://app.ramp.com/v1/authorize?response_type=code&client_id=YOUR_CLIENT_ID&redirect_uri=https://yourapp.com/callback&scope=transactions:read business:read&state=random_csrf_token
+
+Use the builder below to generate a correctly encoded URL. It uses `https://demo.ramp.com/v1/authorize` for sandbox and `https://app.ramp.com/v1/authorize` for production. No client secret is needed.
+
+Build your authorization URL
+
+Use the client ID and registered callback URI from this environment.
+
+Your app's client ID, not its client secret.
+
+Must exactly match a redirect URI registered for your app. Paste the URI without URL-encoding it first.
+
+Enter space-separated scopes enabled for your app and available to the business you are authorizing.
+
+Use a cryptographically random value for each authorization attempt. Store it in your app and verify it on the callback.
+
+`Your authorization URL will appear here once all required fields are valid.`
+
+#### Step 2: The user approves access
+
+Permanent link: Step 2: The user approves access
+
+The user signs in to Ramp and approves your app's requested access.
+
+Who can approve
+
+For apps that access the whole business, an Admin or Business Owner must approve. Other users see "An admin must connect this app." For apps that act as an individual user, an admin must first enable the app for the organization in Manage Access.
+
+Ramp then redirects to your `redirect_uri` with a `code` and the original `state`. If the user denies access, the redirect includes `error=access_denied` instead.
+
+https://yourapp.com/callback?code=AUTH_CODE_HERE&state=random_csrf_token
+
+#### Step 3: Exchange the `code` for an access token
+
+Permanent link: Step 3: Exchange the `code` for an access token
+
+Codes expire after 5 minutes.
+
+Exchange code for access token
+
+Shell
+
+Copy
+
+curl --request POST '{environment-url}/developer/v1/token' \
+
+ --header "Authorization: Basic $(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)" \
+
+ --header "Content-Type: application/x-www-form-urlencoded" \
+
+ --data-urlencode "grant_type=authorization_code" \
+
+ --data-urlencode "code=AUTH_CODE_HERE" \
+
+ --data-urlencode "redirect_uri=https://yourapp.com/callback"
+
+#### Step 4: Refresh the access token
+
+Permanent link: Step 4: Refresh the access token
+
+To get refresh tokens, enable the Refresh Token grant type for your app. Then exchange the refresh token for a new access token:
+
+curl --request POST '{environment-url}/developer/v1/token' \
+
+ --header "Authorization: Basic $(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)" \
+
+ --header 'Content-Type: application/x-www-form-urlencoded' \
+
+ --data-urlencode 'grant_type=refresh_token' \
+
+ --data-urlencode 'refresh_token=REFRESH_TOKEN_HERE'
+
+The response has a new access token but no new refresh token. Keep using the original refresh token until it expires or is revoked, then restart the Authorization Code flow. `refresh_token_expires_in` is returned with the original refresh token only if your app has a configured refresh-token lifetime; refreshing doesn't extend it.
+
+### Revoke an access or refresh token
+
+Send the token to `POST /developer/v1/token/revoke`, with the same Basic Auth credentials you use to create tokens. A successful request returns HTTP `200`.
+
+curl --request POST 'https://api.ramp.com/developer/v1/token/revoke' \
+
+ --header "Authorization: Basic $(echo -n "$CLIENT_ID:$CLIENT_SECRET" | base64)" \
+
+ --header 'Content-Type: application/x-www-form-urlencoded' \
+
+ --data-urlencode "token=$RAMP_API_TOKEN"
+
+## Error handling
+
+### Token request errors
+
+Failed requests to `/developer/v1/token` return HTTP `400` with error code `DEVELOPER_7012` and one of these messages:
+
+| Message | What to check |
+| --- | --- |
+| Client authentication failed. | Client ID and secret, and the environment |
+| The provided authorization grant or refresh token is invalid. | The code expired, was already used, or the `redirect_uri` doesn't match; or the refresh token expired or was revoked |
+| The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner. | Request only scopes configured for your app |
+| The authenticated client is not authorized to use this authorization grant type. | Enable the grant type in your app settings |
+
+If the client credentials are missing or malformed, the request returns HTTP `401`.
+
+### API errors
+
+- 401 Unauthorized: The token is missing, expired, or invalid.
+- 403 Forbidden: The token lacks a required scope. For Ramp MCP and Ramp CLI, the user's role doesn't allow the action, or the connection is read-only and the request makes a change (`DEVELOPER_7100`). Some role errors from these tools return `400` with the message `You do not have the required permissions to use this tool`.
+- 429 Too Many Requests: See Rate Limiting.
+
+## FAQ
+
+#### My customer sees "An admin must connect this app." What's wrong?
+
+Permanent link: My customer sees "An admin must connect this app." What's wrong?
+
+Only an Admin or Business Owner can approve apps that access the whole business. Ask one to complete the authorization.
+
+#### Do Ramp MCP and Ramp CLI connections need specific scopes?
+
+No. They follow the connecting user's Ramp role and the access level chosen when connecting. To switch between Full access and Read-only, reconnect. See Ramp MCP and Ramp CLI.

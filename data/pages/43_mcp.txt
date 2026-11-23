@@ -1,0 +1,67 @@
+https://www.bigcommerce.com/blog/storefront-mcp/
+
+Build AI Shopping Agents with BigCommerce Storefront MCP
+
+# Storefront MCP Is Now Live: Here's What You Can Build with It
+
+![Storefront MCP brings AI agents to your BigCommerce store. Opt in today and start building conversational product discovery, gifting tools, and cross-storefront experiences.](https://images.ctfassets.net/wowgx05xsdrr/2wOtskflt0ZeLUISYOozuz/234b6962d00eeb5136217b7bf45286c9/ChatGPT_Image_May_8__2026__04_44_58_PM.png?fm=webp&w=3840&q=75)
+
+##### Written by
+
+Kristina Pototska
+
+A link to download the PDF will arrive in your inbox shortly.
+
+BigCommerce Storefront MCP is now available to every store on the platform. Any live, transacting store can opt in starting now.
+
+If you've been watching this space and waiting for the right moment to start building AI-powered shopping experiences, this is it.
+
+## What is Storefront MCP, and why does it matter?
+
+MCP, or Model Context Protocol, is an open standard that lets AI agents like Claude, Cursor, and others discover and call tools over a common protocol. Think of it as the interface layer between a language model and the real world. Instead of generating text about products, an AI can search your catalog, build a cart, and hand a shopper off to checkout.
+
+BigCommerce’s Storefront MCP server gives AI agents purpose-built commerce tools to do exactly that: interact with a BigCommerce storefront through natural language on behalf of any shopper.
+
+The result is a dramatically shorter path from “I want to build an AI shopping experience” to something live in front of customers.
+
+## What it does
+
+The B2C Storefront MCP supports the full guest shopping flow end to end. An AI agent can search your product catalog by keyword, retrieve product details and available variants, build and manage a cart, and generate a checkout URL to hand off to the shopper when they’re ready to buy.
+
+The experience is conversational throughout. A shopper describes what they want, the agent finds relevant products, helps them make decisions, and gets them to checkout without navigating a traditional browse-and-filter experience.
+
+Coming next is authenticated shopping, which will unlock personalized pricing, order history, and account features for logged-in customers.
+
+## What you can build with it
+
+The tools are deliberately composable, and the surface area of what’s possible is wide. A few directions to consider:
+
+### Conversational product discovery. 
+
+A shopper describes what they want in natural language and gets results that actually match, not just keyword-based listings, but contextually relevant products. Paired with conversational search (also available to opt in today), this creates a shopping experience that mirrors how customers actually think, not how catalogs are structured.
+
+### Vertical-specific shopping agents. 
+
+An AI agent tailored to your industry, like a fashion stylist that asks about occasion, body type, and existing wardrobe before assembling a full outfit, or a sports and outdoor gear advisor that matches products to activity level, climate, and skill level.
+
+### Quiz-to-cart flows. 
+
+Ask a few questions, land the shopper on the right products, and get them straight to checkout. It’s a conversion optimization tool you can measure directly in add-to-cart uplift, and a format that works across almost any vertical.
+
+### Gift-finding experiences. 
+
+Gifting is high emotion and high frequency — Father’s Day, birthdays, holidays. An agent that asks a few questions and assembles a curated shortlist is a natural fit for these high-intent moments, with room for shareable lists and embeddable widgets on top.
+
+### Cross-storefront experiences. 
+
+For agencies managing multiple brands, or enterprises running multiple storefronts, one agent experience can span across all of them. “Find me the best option across these three brands” is a real enterprise problem, and it’s solvable today.
+
+The most interesting things built on top of Storefront MCP are probably the ones that haven’t been imagined yet, built with your deep vertical expertise for your specific customers, with your own unique context layered on top.
+
+## The final word
+
+Storefront MCP is available to any BigCommerce store today. To enable it, log in as a store owner and go to Settings → Early Access in your BigCommerce control panel. For everything you need to connect your first agent, see the full technical documentation in the BigCommerce developer docs.
+
+Start Building
+
+Everything you need to connect your first agent — tools reference, setup guide, and example flows.

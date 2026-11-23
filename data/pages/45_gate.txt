@@ -1,0 +1,76 @@
+https://developers.apideck.com/apis/ecommerce/magento/overview
+
+Magento connector - Apideck
+
+# Magento
+
+Magento is the premier open source e-commerce app used by millions of customers each and every day.
+
+### At a Glance
+
+Difficulty
+
+⚠️ INVOLVED Custom Auth + Manual Per-Consumer Integration Setup
+
+Authentication
+
+Custom Four credentials from a Magento integration sign each request, OAuth 1.0a style; no redirect flow.
+
+Webhooks
+
+Virtual webhooks↗ - order, product and customer events (created, updated); deletes are not detected
+
+Partnership Required
+
+No
+
+Apideck Credentials
+
+Not available(Each consumer creates an integration in their own Magento store.)
+
+Costs
+
+Integration tokens are a built-in Admin feature of the store; Adobe publishes no separate API fee.
+
+Sandbox Availability
+
+Available — Access Sandbox↗(Install Magento Open Source on your own server or container and create an integration there; Adobe hosts no test store, so this takes server skills.)
+
+Account Type Required
+
+Magento Open Source 2.x, or Adobe Commerce 2.x on-premises or on Adobe's cloud infrastructure (PaaS).
+
+Consumer Access Level
+
+A Magento Admin user with permission to manage integrations.
+
+Rate Limits
+
+No general REST quota is published; Adobe's opt-in rate limiting covers checkout and payment endpoints only.
+
+### Responsibility matrix
+
+| Task | You (Customer) | Your Consumer | Apideck |
+| --- | --- | --- | --- |
+| Enable the Magento Connector | ✓ Via Apideck Dashboard | — | — |
+| Create & Activate the Magento Integration | — | ✓ | — |
+| Set the Integration's Resource Access | — | ✓ | — |
+| Enter Store Details & Credentials in Vault | — | ✓ | — |
+| Sign Requests & Store Credentials | — | — | ✓ |
+
+### Environments
+
+Single environment
+
+Magento has no separate test credentials: each store is its own endpoint at its domain's /rest/V1 path, with no shared Adobe host, and one connection covers one store.
+
+Testing
+
+Credentials from a test store work only against that store. Going live means creating a new integration in the live store and a new connection for it; requests against a live store touch production data.
+
+### Important to know about Magento
+
+- Check the store's edition before you commit: Adobe Commerce as a Cloud Service (SaaS) offers no integration tokens and uses Adobe IMS OAuth 2 instead, which this connector does not use, so SaaS stores cannot connect.
+- The store's /rest endpoints must be reachable from the internet. Stores behind Cloudflare, a WAF or bot protection need Apideck's requests let through; otherwise calls fail with an HTML error while the connection still shows as connected.
+
+4 gotchas across 2 resources Connector-specific behaviors and limitations to be aware of 4 supported resources View field mappings, supported operations, and schema details

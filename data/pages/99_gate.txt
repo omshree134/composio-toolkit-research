@@ -1,0 +1,118 @@
+https://developers.google.com/youtube/apis
+
+YouTube APIs and services | Google for Developers
+
+ YouTube APIs and services
+
+YouTube offers a variety of APIs, tools, and services that let you integrate YouTube functionality into your own website, application, or device.
+
+### YouTube Players and Widgets Copy link to this section: YouTube Players and Widgets
+
+| Product | Type | Description | Primary Users |
+| --- | --- | --- | --- |
+| IFrame Player API Reference | Public | Use an embedded player to play videos directly in your app. | Web & App Developers |
+| iOS Helper Library | Public | Embed a YouTube IFrame Player into an iOS application. | iOS Developers |
+| YouTube Player Parameters | Public | Customize the playback experience with a variety of player settings. | Web & App Developers |
+| YouTube Subscribe Button | Public | Enable users to subscribe to your YouTube channel with one click. | Web Developers |
+| YouTube Playables | Public | Build and integrate interactive HTML5 games that run directly on YouTube across web and mobile. | Game Developers |
+
+### YouTube Data and Reporting APIs Copy link to this section: YouTube Data and Reporting APIs
+
+Use the following table to find the YouTube API that best fits your needs:
+
+| API | Type | Description | Primary Users | Auth |
+| --- | --- | --- | --- | --- |
+| YouTube app features | | | | |
+| YouTube Data API | Public | Add YouTube app features to your application, including the ability to upload videos, create and manage playlists, edit video metadata, and more. | Developers | API Key / OAuth 2.0 |
+| YouTube Live Streaming API | Public | Schedule live YouTube broadcasts and manage your broadcast video streams. Technically, this API is part of the YouTube Data API. | Developers | API Key / OAuth 2.0 |
+| YouTube Video Third-Party Trainability API | Public | Check whether creators and rights holders allow a video to be used for training AI models. | Developers | None |
+| YouTube analytics and reporting | | | | |
+| YouTube Analytics API | Public | Real-time Dashboards. Targeted queries for demographics, traffic sources, and engagement. | MCNs & Labels | OAuth 2.0 |
+| YouTube Reporting API | Public | Big Data. Bulk downloads of large datasets for financial reporting and performance analysis. | Data Analysts | OAuth 2.0 |
+| YouTube content ownership and management | | | | |
+| YouTube Content ID API | Restricted to YouTube Partners (details) | Rights Management. Bulk asset creation, policy updates, and claims management. | Content Owners | OAuth 2.0 |
+
+### Devices and Integrations
+
+| Integration | Type | Description | Primary Users |
+| --- | --- | --- | --- |
+| Devices and certification | | | |
+| Cobalt | Public | High-performance, lightweight application container and Starboard porting layer for running the YouTube TV app on living room devices. | Device Manufacturers & Porters |
+
+### Dimensional Data in YouTube APIs
+
+| Type | Content ID API | Data API | Analytics API | Reporting API |
+| --- | --- | --- | --- | --- |
+| Revenue Data | ✘ | ✘ | ✔ | Granular |
+| Asset/Ownership Data | ✔ | ✘ | ✔ | ✔ |
+| ISRC UPC Data | ✔ | ✘ | ✘ | ✔ |
+| Playlist Data | ✘ | Granular | ✔ | ✔ |
+| Demographic Data | ✘ | ✘ | ✔ | ✔ |
+| Policy Data | Granular | ✘ | ✘ | ✘ |
+| Caption & Thumbnail Data | ✘ | ✔ | ✘ | ✘ |
+
+### Dimension Breakdown
+
+This table provides a granular breakdown of the data available in each API.
+
+ Note: The Reporting API supports the ability to distinguish between UGC (User-Generated Content) and PMV (Premium Music Video) content types, which is critical for royalty calculations. 
+
+| Type | Dimension | Content ID API | Data API | Analytics API | Reporting API |
+| --- | --- | --- | --- | --- | --- |
+| DateTime | Time Periods | ✔ | ✔ | ✔ | ✔ |
+| Entity IDs | Video ID | ✔ | ✔ | ✔ | ✔ |
+| | Channel ID | ✔ | ✔ | ✔ | ✔ |
+| | Asset ID | ✔ | ✘ | ✘ | ✔ |
+| | ISRC | ✘ | ✘ | ✘ | ✔ |
+| | Custom Partner ID | ✘ | ✘ | ✘ | ✔ |
+| | Content Owner ID | ✔ | ✔ | ✘ | ✔ |
+| | UPC | ✔ | ✘ | ✘ | ✔ |
+| Playback Slices | Traffic Source | ✘ | ✘ | ✔ | Granular |
+| | Content Type (UGC / PMV) | ✘ | ✘ | ✘ | ✔ |
+| | Platform | ✘ | ✘ | ✔ | ✔ |
+| | OS | ✘ | ✘ | ✔ | ✔ |
+| | Playlists | ✘ | Granular | ✔ | ✔ |
+| | Playback Location | ✘ | ✘ | ✔ | ✔ |
+| User Slices | Age Group | ✘ | ✘ | ✔ | ✔ |
+| | Gender | ✘ | ✘ | ✔ | ✔ |
+| | Country | ✘ | ✘ | ✔ | ✔ |
+| | Region | ✘ | ✔ | ✘ | ✘ |
+| Metrics | Views | ✘ | ✔ | ✔ | ✔ |
+| | Engaged Views | ✘ | ✘ | ✔ | ✔ |
+| | Claims | ✔ | ✘ | ✘ | Granular |
+| | Watch Time | ✘ | ✘ | ✔ | Granular |
+| | Likes / Dislikes | ✘ | Granular | ✔ | ✔ |
+| | Audience Retention | ✘ | ✘ | ✔ | ✘ |
+| | Cards Shown/Clicked | ✘ | ✘ | ✔ | ✔ |
+| | End Screens Shown/Clicked | ✘ | ✘ | ✔ | ✔ |
+| | Subscribers | ✘ | Granular | ✔ | ✔ |
+| | Shared | ✘ | ✘ | ✔ | ✔ |
+| | Impressions | ✘ | ✘ | ✔ | ✔ |
+| | Revenue | ✘ | ✘ | ✔ | Granular |
+| | Ad-Supported Financial Reports | ✘ | ✘ | ✔ | Granular |
+| | Subscription Financial Reports | ✘ | ✘ | ✔ | Granular |
+| | Annotations | ✘ | ✘ | ✔ | ✔ |
+| | Shorts Metrics | ✘ | ✘ | ✔ | ✔ |
+| Platform Functions | Activities | ✘ | Granular | ✘ | ✘ |
+| | Captions | ✘ | ✔ | ✘ | ✔ |
+| | Channels | ✔ | Granular | ✘ | ✔ |
+| | Policies | Granular | ✔ | ✘ | ✘ |
+| | Comments | ✘ | Granular | ✔ | ✔ |
+| | i18nRegions | ✘ | ✔ | ✘ | ✘ |
+| | i18nLanguages | ✘ | ✔ | ✘ | ✘ |
+| | Members | ✘ | ✔ | ✘ | ✘ |
+| | Playlists | ✘ | Granular | ✔ | ✔ |
+| | Search | ✘ | ✔ | ✘ | ✘ |
+| | Subscriptions | ✘ | ✔ | ✔ | ✔ |
+| | Thumbnails | ✘ | ✔ | ✘ | ✘ |
+| | Videos | ✔ | Granular | ✔ | ✔ |
+| | Ownership | Granular | ✘ | ✘ | ✘ |
+| | References | Granular | ✘ | ✘ | ✔ |
+| | Watermarks | ✘ | Granular | ✘ | ✘ |
+| MetaData | Artist | ✔ | ✔ | ✘ | ✔ |
+| | Description | ✔ | ✔ | ✘ | ✘ |
+| | Published Time | ✘ | ✔ | ✘ | ✔ |
+| | Title | ✘ | ✔ | ✘ | ✔ |
+| | Language | ✘ | Granular | ✔ | ✔ |
+| | Content Rating | ✘ | Granular | ✘ | ✘ |
+| | Content Details | ✘ | Granular | ✘ | ✘ |

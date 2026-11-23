@@ -1,0 +1,41 @@
+https://developer.close.com/integrations
+
+> For a complete page index, fetch https://developer.close.com/llms.txt
+
+# Build an Integration
+
+Close's REST API supports everything from a simple internal script to a full product integration used by thousands of Close customers. If building AI Agent integrations, you may prefer to connect via the MCP server instead.
+
+## Choose an authentication method
+
+There are two ways to authenticate with the Close REST API or MCP server.
+
+- API keys — A key is tied to a specific user and organization. Great for scripts, internal tools, import jobs, and automations. Generate one in Settings → Developer → API Keys and then follow API keys to authenticate your requests.
+- OAuth 2.0 — Lets each user authorize your app to act on their behalf. Strongly recommended for user-facing integrations that multiple users will authenticate to. See Creating an OAuth App to get started and then follow Authentication with OAuth to implement the request flow.
+
+Access permissions inherit from the specific user/membership associated with the API key or OAuth token.
+
+## Internal integration
+
+Building something for your own Close organization — an import script, a sync job, an internal dashboard, or an AI agent?
+
+1. Choose an authentication method — Either method described above can be a good choice for internal integrations.
+2. Build your integration — Use the API Reference to read and write Close data. Set up webhooks if you need real-time updates.
+
+## Multi-customer integration
+
+Building a product that connects to your customers' Close accounts? OAuth 2.0 is strongly recommended so each customer can authorize access to their own org.
+
+1. Create an OAuth App — Register your application in Close to get client credentials.
+2. Implement the OAuth 2.0 flow — Let users authorize your app and obtain access tokens.
+3. Build your integration — Use the API Reference to interact with Close data on behalf of each connected customer.
+4. Get listed — Submit your integration to the Close Integrations Directory to reach thousands of sales teams.
+
+## Dev/test organization
+
+If you need a separate Close organization for development and testing:
+
+- Already a Close user — You can create a free secondary organization. See Secondary organization for instructions.
+- Not a Close user — Integration partners who don't use Close in their own sales process can request a free Dev organization by emailing support@close.com with a description of your OAuth app, the overall workflow, and your expected release timeline. Dev organizations work identically to standard Close organizations but have no subscription fees.
+
+Your OAuth app continues to work regardless of whether your Close account's subscription is active, expired, or canceled.

@@ -1,0 +1,479 @@
+https://www.zoho.com/cliq/pricing.html
+
+Cliq - Chat Pricing | Free Chat plans for all Teams size
+
+# Convenient plans for businesses of all sizes
+
+Connect better, work smarter: Your all-in-one UCaaS solution for modern teams.
+
+- Messaging and channels
+- File storage
+- Meetings with screen share
+- Remote work
+- Chat export
+
+### Everything in the Free edition +
+
+- External channels
+- Call recording
+- Custom domain and email
+- Basic usage reports
+- Networks Add-on
+
+### Everything in the Standard edition +
+
+- Team management
+- Task management
+- Roles and permissions
+- Module configurations
+- Live events and room devices
+- Mobile permissions
+- Networks (3 free Networks)
+- Bulk team import New
+- IP restriction across clients New
+- On-demand chat summary New
+
+### Everything in the Professional edition +
+
+- Audit history
+- Advanced usage reports
+- eDiscovery and DRP
+- Networks (3 free Networks)
+- Data Loss Prevention (DLP) New
+- Branded meetings New
+- Usage report export New
+
+## Introducing the Flexi Subscription plan
+
+Not every user needs the same plan. Mix and match license tiers based on individual usage for greater flexibility and cost efficiency.
+
+## Compare our pocket-friendly plans.
+
+| Unlimited 1-1 chats and group chats | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Participants per group | 100 | 500 | 500 | 500 |
+| Read receipts | Available | Available | Available | Available |
+| Searchable messages | 10000 | Unlimited | Unlimited | Unlimited |
+| @mentions and #tags @available, @all, @username, #channel | Available | Available | Available | Available |
+| Star important messages | Available | Available | Available | Available |
+| Time limit to delete sent messages | Within 24 hours | Within 24 hours | Up to 730 days | Up to 730 days |
+| Maximum duration for audio/video messages and screen recordings | 5 mins | 15 mins | 60 mins | 60 mins |
+| Link preview | Available | Available | Available | Available |
+| Print chat transcript | Available | Available | Available | Available |
+| On-demand chat summary | - | - | Available | Available |
+
+Collaboration
+
+| File storage | 100 GB per organization | 100 GB per organization | 100 GB per user | 100 GB per user |
+| --- | --- | --- | --- | --- |
+| Unified org directory | | | | |
+| Reminders | Available | Available | Available | Available |
+| Zia events | Available | Available | Available | Available |
+| Guest chat | - | - | Available | Available |
+| Remote work Checkin, Checkout, Status | Available | Available | Available | Available |
+| Team management View teams you are a part of | - | - | Available | Available |
+| Calendar events | Available | Available | Available | Available |
+| Task management View and manage tasks through Zoho Projects or directly within Cliq. | - | - | Available | Available |
+| Custom keyboard shortcuts Editing default keyboard shortcuts is available across all plans. | - | 10 per user | 25 per user | 50 per user |
+| Extract text from images | Available | Available | Available | Available |
+
+User, Departments, Designations
+
+User, Departments, Designations
+
+Teams, Custom Roles
+
+Teams, Custom Roles
+
+| Organization & personal channels | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| External channels (Shared channels) Collaborate with users from other organizations with channels | - | 5 channels per user license | 5 channels per user license | |
+| Individual channel-level permissions | - | - | Available | Available |
+| Announcement channels | Available | Available | Available | Available |
+| Roles & permissions Users can be assigned custom roles to access specific channel levels | - | - | Available | Available |
+| Mobile permissions | - | - | Available | Available |
+| Archiving channels | Available | Available | Available | Available |
+| Team & multi-team channels | - | - | Available | Available |
+| Participants per channel (Organization, team, & personal) | 100 | 100 | 20000 | 20000 |
+| Participants per channel (External) | - | 500 | 500 | 500 |
+| Threads | Available | Available | Available | Available |
+| Default channels | - | - | Available | Available |
+
+Only organization admins can create external channels.
+
+Calls and meetings
+
+| 1-1 audio & video calls | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Screen sharing | Available | Available | Available | Available |
+| Audio & video meetings | Up to 100 participants | Up to 100 participants | 1,000 active participants 10,000 viewers | 1,000 active participants 10,000 viewers |
+| Maximum meeting duration | 60 mins | 24 hours | 24 hours | 24 hours |
+| Call recording | - | Available | Available | Available |
+| Add guests to meetings | Available | Available | Available | Available |
+| Room devices No. of devices in which Cliq Rooms app can be configured | - | 5 devices licenses included | 25 devices licenses included | 50 devices licenses included |
+| Live events Schedule and stream virtual events to a large audience | - | - | Available (up to 1 hour) | Available |
+| Branded meetings | - | - | - | Available |
+
+Security and privacy
+
+| Single SSO sign-on & Google sign-on | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Two factor authentication | Available | Available | Available | Available |
+| Password policies | Available | Available | Available | Available |
+| Restricted IP | IP restrictions apply across all Zoho apps and is not limited to just Cliq. Available | IP restrictions apply across all Zoho apps and is not limited to just Cliq. Available | IP restrictions can be applied for specific clients like mobile, and desktop app also. Available | IP restrictions can be applied for specific clients like mobile, and desktop app also. Available |
+| Data encryption both in transit and at rest | Available | Available | Available | Available |
+| SSL support | Available | Available | Available | Available |
+| Consents Dialogs requesting permissions to access data in extensions and internal tools | Available | Available | Available | Available |
+| Secret chat Disable chat history to chat off the record | - | - | Available | Available |
+
+| User provisioning & de-provisioning | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Teams To collaborate through team and multi-team channels | - | - | Available | Available |
+| Exclusive security policy for teams Restricted IP | - | - | Available | Available |
+| Departments & designations | Available | Available | Available | Available |
+| User roles To configure feature access for specific roles | - | - | Available | Available |
+| Module configurations Control over modules like chats, live media, integrations, and more | - | - | Available | Available |
+| One theme for the entire organization | - | - | Available | Available |
+| Brand logo and favicon | - | Available | Available | Available |
+| Custom domain | - | Available | Available | Available |
+| Custom email | - | Available | Available | Available |
+| Availability reports | Reports will be available only for the last 30 days. Available | Available | Available | Available |
+| Chat export | Available | Available | Available | Available |
+| Import | Available | Available | Available | Available |
+| Audit history | - | - | - | Available |
+| Usage reports | - | Limited Up to 60 days | Limited Up to 60 days | Advanced Analyze usage data across any date and time range |
+| eDiscovery & DRP | - | - | - | Available |
+| Channel management Centralized management of all channels for admins | Available | Available | Available | Available |
+| Org-wide channel permissions Set unified permissions for different channel levels across your organization | - | - | - | Available |
+| Data loss prevention (DLP) | - | - | - | Available |
+| Usage report export | - | - | - | Available |
+| Bulk team import | - | - | Available | Available |
+| Data clean up management | Available | Available | Available | Available |
+| Branches & rooms | - | Available | Available | Available |
+| Custom user fields | - | Available | Available | Available |
+
+| Desktop notifications | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Themes | Available | Available | Available | Available |
+| Email & sound notifications | Available | Available | Available | Available |
+
+| Integration with other Zoho apps | Available Zoho People, Zoho Calendar, and Zoho Notebook | Available Zoho People, Zoho Calendar, and Zoho Notebook | Available Zoho People, Zoho Projects, Zoho Calendar, and Zoho Notebook | Available Zoho People, Zoho Projects, Zoho Calendar, and Zoho Notebook |
+| --- | --- | --- | --- | --- |
+| Office365 Redirects users to O365 login page | Available | Available | Available | Available |
+| Extensions Custom integration with third-party apps | 10 per organization | 10 per organization | 100 per organization | 150 per organization |
+
+Developer platform
+
+| API support | Available | Available | Available | Available |
+| --- | --- | --- | --- | --- |
+| Slash commands | 100 per organization | 100 per organization | 1,000 per organization | 5,000 per organization |
+| Message actions | 100 per organization | 100 per organization | 1,000 per organization | 5,000 per organization |
+| Bots | 100 per organization | 100 per organization | 250 per organization | 1,000 per organization |
+| Functions | 100 per organization | 100 per organization | 1,000 per organization | 10,000 per organization |
+| Schedulers | 50 per organization | 50 per organization | 100 per organization | 1,000 per organization |
+| Databases | 50 per organization | 50 per organization | 100 per organization | 250 per organization |
+| Database records | 1,000 per organization | 1,000 per organization | 10,000 per organization | 50,000 per organization |
+| Widgets | 25 per organization | 100 per organization | 100 per organization | 250 per organization |
+| Internal apps Custom apps that can be built based on purpose | 100 | 100 | 1000 | 5000 |
+| Default bots | Available | Available | Available | Available |
+
+Room devices
+
+ /device/month (or) /device/month billed annually
+
+ /device/month (or) /device/month billed annually
+
+ /device/month (or) /device/month billed annually
+
+## Add-ons
+
+### Additional storage
+
+Storage Price 5GB storage 25GB storage 50GB storage 100GB storage 200GB storage
+
+### Networks Dedicated external collaboration space for organizations using Zoho Cliq
+
+Plans Users Storage Price /month
+
+Mini 101-500 users 200GB storage
+
+Standard 501-2K users 500GB storage
+
+Ultimate 2K<10K users 1TB storage
+
+Note:
+
+- Networks is available as an add-on for the Cliq Standard plan and above.
+
+- Additionally, the Cliq Professional and Enterprise plans include 3 free Networks.
+
+- Every org user added to a network will be considered as a network license.
+
+- For networks over 10K users, please reach out to support@zohocliq.com
+
+### Additional room devices
+
+ /device/month 
+
+Note: This is applicable only for Standard, Professional and Enterprise plans.
+
+### Phone system
+
+ for 5 users
+
+(For every additional user, will be charged)
+
+### Phone credits
+
+ for 10 credits
+
+(Up to 1,000 credits can be purchased)
+
+## Frequently asked questions
+
+- ### Can I get a demo of Zoho Cliq?
+
+Yes, we would be happy to demonstrate Zoho Cliq through a web-conference at your convenience. To schedule your personal session, please fill in your details and let us know your preferred time by clicking here. We will get back to you on your time!
+- ### What happens after my trial ends?
+
+After your 14-day trial expires you will need to purchase a subscription to convert your trial account into a permanent account with all your data, and integrations and advanced features squarely intact. If you choose to not subscribe to Zoho Cliq after your trial ends, your account will be downgraded to our free plan, where you can continue to communicate and collaborate with your colleagues.
+- ### How can I pay?
+
+We accept payment via Visa, MasterCard, American Express and PayPal. We also accept payments via bank transfer or check transfer for yearly subscriptions.
+- ### What features of Cliq are available as a part of Zoho Workplace and People Plus suites?
+
+The Zoho Workplace Suite offers a complete set of tools for communication and collaboration, and the People Plus Suite offers a complete set of tools to empower the workforce and HR Teams. The Standard version of Cliq with unlimited message search is available as a part of Zoho Workplace Standard plan and People Plus, and the Professional version of Cliq is available as a part of Zoho Workplace Professional Plan. The admin console of both suites allows you to set up and manage Cliq users.
+
+Additionally, support for up to 20,000 users within a single channel is applicable for the Zoho Workplace suite.
+- ### What features of Cliq are available as a part of Zoho One?
+
+Zoho One gives you one suite of more than 40 integrated business and productivity applications for your entire organization. Cliq's Enterprise plan with all the features is available as a part of the Zoho One bundle.
+- ### What is Networks and when should I use them?
+
+Organizations can use Networks to communicate with external agents, partners, and other people who aren't part of your organization. If you want to set up a permanent external collaboration platform, you can use Networks. Learn more
+
+## Zoho Cliq Pricing
+
+ Zoho Cliq pricing is determined by the customer's country, available currency, and billing frequency. Zoho Cliq paid plans are available with monthly and annual billing. Monthly billing shows the monthly subscription price. Annual billing shows the monthly equivalent price when the subscription is billed annually. Customers in supported countries are shown localized pricing when the corresponding currency is available. Countries without applicable localized pricing use USD or the applicable regional USD pricing.
+
+ Applicable local taxes, including VAT, GST, or similar taxes, are charged in addition to the prices displayed on the pricing page except AU and BR. AU and BR are inclusive of local taxes.
+
+## Zoho Cliq Plans and Pricing
+
+### USD — US Dollar
+
+ The default USD pricing applies to AG, AI, AN, AR, AW, BB, BD, BL, BM, BO, BS, BZ, CL, CO, CR, CW, DM, DO, EC, FK, GD, GP, GS, GT, GU, GY, HN, HT, JM, KN, KY, LC, LK, MF, MQ, MV, NI, NP, PA, PE, PK, PM, PR, PY, SH, SR, SV, SX, TC, TH, TT, US, UY, VC, VE, VG, VI, and to any country not covered by another pricing list on this page.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | US$18/month (up to 25 users) | US$16.20/month (up to 25 users) |
+| Professional | US$2/user/month | US$1.80/user/month |
+| Enterprise | US$4/user/month | US$3.60/user/month |
+
+### INR — Indian Rupee
+
+ For customers in IN, Zoho Cliq displays pricing in Indian Rupees.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | ₹750/month (up to 25 users) | ₹675/month (up to 25 users) |
+| Professional | ₹100/user/month | ₹90/user/month |
+| Enterprise | ₹200/user/month | ₹180/user/month |
+
+### GBP — British Pound
+
+ For customers in GB, Zoho Cliq displays pricing in British Pounds when GBP pricing is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | £14.40/month (up to 25 users) | £12.96/month (up to 25 users) |
+| Professional | £1.60/user/month | £1.44/user/month |
+| Enterprise | £3.20/user/month | £2.88/user/month |
+
+### EUR — Euro
+
+ Zoho Cliq displays pricing in Euros for the following countries and territories where EUR pricing is available: AD, AL, AT, AX, BA, BE, BG, BY, CH, CY, CZ, DE, DK, EE, ES, FI, FO, FR, GE, GI, GR, HR, HU, IE, IS, IT, LI, LT, LU, LV, MC, MD, ME, MK, MT, NC, NL, NO, PL, PT, RO, RS, SE, SI, SK, SM, UA, VA, XK.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | €18/month (up to 25 users) | €16,20/month (up to 25 users) |
+| Professional | €2/user/month | €1,80/user/month |
+| Enterprise | €4/user/month | €3,60/user/month |
+
+### CAD — Canadian Dollar
+
+ For customers in CA, Zoho Cliq displays pricing in Canadian Dollars.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | C$22.50/month (up to 25 users) | C$20.25/month (up to 25 users) |
+| Professional | C$2.50/user/month | C$2.25/user/month |
+| Enterprise | C$5/user/month | C$4.50/user/month |
+
+### AUD — Australian Dollar
+
+ For customers in AU, Zoho Cliq displays pricing in Australian Dollars.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | A$27.92/month (up to 25 users) | A$25.12/month (up to 25 users) |
+| Professional | A$3.10/user/month | A$2.79/user/month |
+| Enterprise | A$6.20/user/month | A$5.59/user/month |
+
+### SGD — Singapore Dollar
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | S$23.94/month (up to 25 users) | S$21.55/month (up to 25 users) |
+| Professional | S$2.66/user/month | S$2.39/user/month |
+| Enterprise | S$5.32/user/month | S$4.79/user/month |
+
+### AED — United Arab Emirates Dirham
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | AED 65.70/month (up to 25 users) | AED 59.13/month (up to 25 users) |
+| Professional | AED 7.30/user/month | AED 6.57/user/month |
+| Enterprise | AED 14.60/user/month | AED 13.14/user/month |
+
+### SAR — Saudi Riyal
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | SAR 65.70/month (up to 25 users) | SAR 59.13/month (up to 25 users) |
+| Professional | SAR 7.30/user/month | SAR 6.57/user/month |
+| Enterprise | SAR 14.60/user/month | SAR 13.14/user/month |
+
+### JPY — Japanese Yen
+
+ For customers in JP, Zoho Cliq uses JPY pricing when JPY is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | ¥2,550/month (up to 25 users) | ¥2,290/month (up to 25 users) |
+| Professional | ¥280/user/month | ¥250/user/month |
+| Enterprise | ¥570/user/month | ¥510/user/month |
+
+### MXN — Mexican Peso
+
+ For customers in MX, Zoho Cliq uses MXN pricing when MXN is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | Mex$324/month (up to 25 users) | Mex$291.60/month (up to 25 users) |
+| Professional | Mex$36/user/month | Mex$32.40/user/month |
+| Enterprise | Mex$72/user/month | Mex$64.80/user/month |
+
+### ZAR — South African Rand
+
+ For customers in ZA, Zoho Cliq uses ZAR pricing when ZAR is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | R252/month (up to 25 users) | R226.80/month (up to 25 users) |
+| Professional | R28/user/month | R25.20/user/month |
+| Enterprise | R56/user/month | R50.40/user/month |
+
+### NGN — Nigerian Naira
+
+ For customers in NG, Zoho Cliq uses NGN pricing when NGN is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | ₦13,860/month (up to 25 users) | ₦12,474/month (up to 25 users) |
+| Professional | ₦1,540/user/month | ₦1,386/user/month |
+| Enterprise | ₦3,080/user/month | ₦2,772/user/month |
+
+### KES — Kenyan Shilling
+
+ For customers in KE, Zoho Cliq uses KES pricing when KES is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | KES 1,620/month (up to 25 users) | KES 1,458/month (up to 25 users) |
+| Professional | KES 180/user/month | KES 162/user/month |
+| Enterprise | KES 360/user/month | KES 324/user/month |
+
+### EGP — Egyptian Pound
+
+ For customers in EG, Zoho Cliq uses EGP pricing when EGP is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | E£630/month (up to 25 users) | E£567/month (up to 25 users) |
+| Professional | E£70/user/month | E£63/user/month |
+| Enterprise | E£140/user/month | E£126/user/month |
+
+### IDR — Indonesian Rupiah
+
+ For customers in ID, Zoho Cliq uses IDR pricing when IDR is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | Rp248.400/month (up to 25 users) | Rp223.560/month (up to 25 users) |
+| Professional | Rp27.600/user/month | Rp24.840/user/month |
+| Enterprise | Rp55.200/user/month | Rp49.680/user/month |
+
+### BRL — Brazilian Real
+
+ For customers in BR, Zoho Cliq uses BRL pricing when BRL is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | R$112,86/month (up to 25 users) | R$101,58/month (up to 25 users) |
+| Professional | R$12,54/user/month | R$11,29/user/month |
+| Enterprise | R$25,08/user/month | R$22,58/user/month |
+
+### NZD — New Zealand Dollar
+
+ For customers in NZ, Zoho Cliq uses NZD pricing when NZD is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | NZ$29/month (up to 25 users) | NZ$26/month (up to 25 users) |
+| Professional | NZ$4/user/month | NZ$3/user/month |
+| Enterprise | NZ$7/user/month | NZ$6/user/month |
+
+### MYR — Malaysian Ringgit
+
+ For customers in MY, Zoho Cliq uses MYR pricing when MYR is available.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | RM72/month (up to 25 users) | RM64.80/month (up to 25 users) |
+| Professional | RM8/user/month | RM7.20/user/month |
+| Enterprise | RM16/user/month | RM14.40/user/month |
+
+### Localised USD Pricing
+
+ Zoho Cliq uses regional USD pricing for the countries and territories included in its country group, when pricing is available for the product.
+
+ The country group used by Zoho Cliq includes the following country and territory codes: AO, BF, BI, BJ, BQ, BV, BW, CD, CF, CG, CI, CM, CV, DJ, DZ, EH, ER, ET, GA, GF, GH, GM, GN, GQ, GW, JO, KM, LB, LR, LS, LY, MA, MG, ML, MR, MS, MU, MW, MZ, NA, NE, PF, PN, PS, RE, RW, SB, SD, SJ, SL, SN, SO, SS, ST, SZ, TD, TF, TG, TK, TN, TZ, UG, WF, YE, YT, ZM, ZW.
+
+| Plan | Monthly Billing | Annual Billing |
+| --- | --- | --- |
+| Free | Free | Free |
+| Standard | US$12/month (up to 25 users) | US$11/month (up to 25 users) |
+| Professional | US$1/user/month | US$1/user/month |
+| Enterprise | US$2/user/month | US$2/user/month |
+
+ Localised pricing is displayed in US dollars using the US$ symbol. The applicable pricing is determined by the customer's country and the currency configuration available for Zoho Cliq. If localised pricing is not available, the pricing logic falls back to standard USD pricing.

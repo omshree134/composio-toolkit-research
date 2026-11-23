@@ -1,0 +1,215 @@
+https://mermaid.ai/docs/ai/mcp-server
+
+MCP Server — Mermaid Chart
+
+# Mermaid MCP Server
+
+The Mermaid MCP Server enables AI assistants to create, validate, and render Mermaid diagrams seamlessly, plus full integration with your Mermaid account for advanced diagram management. When you ask your AI assistant to create a flowchart, sequence diagram, or any other Mermaid diagram, this server handles the entire process automatically - from syntax validation to PNG generation, interactive playground links, and direct integration with your Mermaid projects.
+
+The Mermaid MCP Server supports multiple transport modes, and every tool call requires authentication with a Mermaid account. Authentication is free — you can sign up for a free Mermaid account (the Basic tier) to get started. Authenticate automatically via OAuth 2.1 with Dynamic Client Registration (for clients that support OAuth discovery, such as VS Code, Cursor, and Antigravity via `mcp-remote`), or manually by pasting a Mermaid token into your client configuration. See Authentication Setup below for details on both options.
+
+Available Transport Types:
+
+- HTTP: `https://mcp.mermaid.ai/mcp` with `"type": "http"`
+- SSE (Server-Sent Events): `https://mcp.mermaid.ai/sse` with `"type": "sse"`
+
+Authentication: Every tool call requires a valid Mermaid login — free to create — either through automatic OAuth or a manually configured Authorization header.
+
+### Available Tools
+
+> All tools listed below require Mermaid authentication (OAuth login or a manual token). Authentication is free: a Basic Mermaid account works, no paid plan required.
+
+#### Core Validation & Rendering Tools
+
+1. `validate_and_render_mermaid_diagram` - Validates Mermaid syntax and renders diagrams as PNG images with Mermaid live links
+2. `get_diagram_title` - Generates descriptive titles for Mermaid diagrams
+3. `get_diagram_summary` - Creates concise summaries of diagram content
+4. `list_tools` - Lists all available MCP tools
+
+#### Mermaid Integration Tools
+
+5. `list_mermaid_chart_projects` - List all projects in your Mermaid account
+6. `list_mermaid_chart_diagrams` - List diagrams within a specific project
+7. `create_mermaid_chart_diagram` - Create new diagrams in Mermaid
+8. `get_mermaid_chart_diagram` - Retrieve specific diagrams from Mermaid
+9. `update_mermaid_chart_diagram` - Update existing diagrams in Mermaid
+
+### Setup and Configuration
+
+> Using a client that supports OAuth discovery? (VS Code, Cursor, Antigravity via `mcp-remote`, and others) You can use the plain, header-free configuration below — the first tool call will trigger a browser login/consent popup automatically. No token needs to be stored in your config. The examples with an `Authorization` header are for manual token-based authentication instead.
+
+#### VS Code (with GitHub Copilot or other MCP extensions)
+
+- HTTP Streamable Mode (For remote servers) :
+
+```
+{
+  "servers": {
+    "mermaid-mcp": {
+      "url": "https://mcp.mermaid.ai/mcp",
+      "type": "http"
+    }
+  }
+}
+```
+
+- HTTP Mode with Authentication (For Mermaid integration) :
+
+```
+{
+  "servers": {
+    "mermaid-mcp": {
+      "url": "https://mcp.mermaid.ai/mcp",
+      "type": "http",
+      "headers": {
+        "Authorization": "YOUR_MERMAID_TOKEN_HERE"
+      }
+    }
+  }
+}
+```
+
+- SSE Mode with Authentication (For real-time connections) :
+
+```
+{
+  "servers": {
+    "mermaid-mcp": {
+      "url": "https://mcp.mermaid.ai/sse",
+      "type": "sse",
+      "headers": {
+        "Authorization": "YOUR_MERMAID_TOKEN_HERE"
+      }
+    }
+  }
+}
+```
+
+#### Cursor
+
+- HTTP Streamable Mode (For remote servers) :
+
+```
+{
+  "mcpServers": {
+    "mermaid-mcp": {
+      "transport": "http",
+      "url": "https://mcp.mermaid.ai/mcp"
+    }
+  }
+}
+```
+
+- HTTP Mode with Authentication (For Mermaid integration) :
+
+```
+{
+  "mcpServers": {
+    "mermaid-mcp": {
+      "transport": "http",
+      "url": "https://mcp.mermaid.ai/mcp",
+      "headers": {
+        "Authorization": "YOUR_MERMAID_TOKEN_HERE"
+      }
+    }
+  }
+}
+```
+
+- SSE Mode with Authentication (For Mermaid integration) :
+
+```
+{
+  "mcpServers": {
+    "mermaid-mcp": {
+      "transport": "sse",
+      "url": "https://mcp.mermaid.ai/sse",
+      "headers": {
+        "Authorization": "YOUR_MERMAID_TOKEN_HERE"
+      }
+    }
+  }
+}
+```
+
+#### Antigravity with authentication
+
+Prerequisites: Connecting to our remote MCP server from a antigravity IDE requires the following dependencies:
+
+- Node.js
+- mcp-remote
+
+Remote MCP Server (via mcp-remote proxy) :
+
+```
+{
+  "mcpServers": {
+    "mermaid": {
+      "command": "npx",
+      "args": [
+        "-y", 
+        "mcp-remote",
+        "--header",
+        "Authorization:YOUR_MERMAID_TOKEN_HERE",
+        "https://mcp.mermaid.ai/mcp"]
+    }
+  }
+}
+```
+
+> Note: Antigravity currently requires the `mcp-remote` proxy for connecting to remote MCP servers. Direct remote URL support is not working proper and may be fixed in future versions. Check the Antigravity MCP documentation for the latest configuration options.
+
+### Authentication Setup
+
+Every tool call requires you to be logged in to your Mermaid account. Signing up is free — the Basic tier costs nothing. There are two ways to authenticate:
+
+#### Option 1: OAuth Login (recommended)
+
+If your MCP client supports OAuth discovery, no manual token setup is required. The first time you call a tool, a browser window opens asking you to log in to your Mermaid account. Once you log in, your client stays authenticated automatically — no token needs to be added to your config.
+
+Just use the plain, header-free configuration examples above.
+
+#### Option 2: Manual Token-Based Authentication (still supported)
+
+1. Get Your Token: Visit your Mermaid account settings and generate an API token
+2. Add to Configuration: Include the token in the `Authorization` header as shown in the examples above
+3. Replace Placeholder: Change `YOUR_MERMAID_TOKEN_HERE` with your actual token
+
+If the token is missing or invalid, and OAuth login hasn’t completed, every tool call is rejected.
+
+### How It Works
+
+When an AI assistant (like GitHub Copilot or ChatGPT) supports MCP, it will automatically detect your configured server. When you make a request such as “Create a sequence diagram for checkout flow,”
+
+It automatically :
+
+1. Generates Mermaid syntax
+2. Sends it to the Mermaid MCP Server for validation and rendering
+3. Returns a ready-to-use PNG and SVG and an interactive playground link
+4. With Authentication: Can also save directly to your Mermaid projects, list your existing diagrams, and manage your diagram library
+
+### What You Receive
+
+For every diagram request, you get:
+
+1. Rendered PNG Image & SVG image: High-quality diagram ready for presentations or documentation
+2. Clean Mermaid Code: Properly formatted syntax you can copy and modify
+3. Interactive Playground Link: Click to edit the diagram in Mermaid’s advanced editor
+4. Mermaid Integration (with authentication): Direct access to your projects, ability to save, update, and manage diagrams in your account
+
+ ![Diagram attached to code](https://mermaid.ai/docs/img/mermaid-mcp/mcp_demonstration_withauth.gif "Code view") 
+
+### Troubleshooting and Support
+
+If you encounter issues:
+
+1. Check your MCP client’s configuration matches the examples above
+2. Verify the server URL is accessible (for hosted deployments)
+3. OAuth Issues: If the login popup doesn’t appear, confirm your client supports OAuth discovery; otherwise fall back to manual token-based authentication
+4. Authentication Issues: Ensure your Mermaid token is valid and properly formatted in the Authorization header
+5. Permission Errors: Verify your token has the necessary permissions for the operations you’re trying to perform
+6. Restart your AI assistant/IDE after configuration changes
+7. Consult your MCP client’s documentation for additional setup steps
+8. Report issues or request help at contact us
+
+Ready to level up your workflow? Connect the Mermaid MCP Server to your AI assistant and start generating professional diagrams instantly, with full integration to your Mermaid account for advanced diagram management.

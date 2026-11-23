@@ -1,0 +1,696 @@
+https://docs.reducto.ai/mcp-server
+
+> Documentation Index
+> Fetch the complete documentation index at: https://docs.reducto.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Reducto MCP Server
+
+The Reducto MCP server connects AI agents directly to Reducto. Once installed, agents in Claude Desktop, Claude Code, Codex, Cursor, VS Code, Windsurf, or any other Model Context Protocol client can classify, parse, extract, split, and edit documents as part of their reasoning loop, without custom integration code.
+
+## Agent quick path
+
+If you are setting this up for a coding agent, choose local MCP for local files and hosted MCP for public URLs.
+
+Claude Code
+
+```bash
+uvx mcp-server-reducto --login
+claude mcp add -s user reducto -- uvx mcp-server-reducto
+
+```
+
+Codex
+
+```toml
+[mcp_servers.reducto]
+command = "uvx"
+args = ["mcp-server-reducto"]
+
+```
+
+Hosted HTTP
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "type": "http",
+      "url": "https://mcp.reducto.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer your-api-key"
+      }
+    }
+  }
+}
+
+```
+
+After setup, ask the agent to call:
+
+```text
+parse_document(document_url="https://cdn.reducto.ai/samples/fidelity-example.pdf")
+
+```
+
+For local files, ask the agent to call `upload_file("./document.pdf")` first, then pass the returned `reducto://` URL to `parse_document`.
+
+## What is MCP?
+
+The Model Context Protocol is an open standard that lets AI agents call external tools. An MCP server exposes a set of tools (here, Reducto's APIs) that the agent can invoke as part of its reasoning loop. You install the server once, point your client at it, and the agent figures out which tool to call and how to chain results.
+
+If you've never used MCP before, the mental model is simple: you describe what you want in plain English, and the agent decides which Reducto tool to call, when to upload a file, and how to pass results between steps.
+
+## When to use the MCP server
+
+Use the MCP server when you want an agent to:
+
+- Answer questions about a PDF, spreadsheet, or scanned document inside Claude Desktop or another chat client.
+- Read documents and write code against the result inside Claude Code, Cursor, or VS Code Copilot.
+- Run multi-step workflows (parse, then extract, then split) without you writing glue code.
+- Prototype a Reducto integration by letting the agent show you the right API calls, schemas, and response shapes.
+
+For non-agent workflows (scripting, batch jobs, CI), use the Reducto CLI or one of the SDKs instead.
+
+## Quick Start
+
+Pick one of two options. The hosted server is fastest to set up. The local server lets agents read files directly from your machine.
+
+### Option A: Hosted server (no install)
+
+The hosted server runs at `https://mcp.reducto.ai/mcp`. Add this block to your MCP client config and replace `your-api-key` with a key from studio.reducto.ai/api-keys:
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "type": "http",
+      "url": "https://mcp.reducto.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer your-api-key"
+      }
+    }
+  }
+}
+
+```
+
+> Warning: The hosted server runs in the cloud, so it cannot read files from your local filesystem. `upload_file` only accepts public URLs through the hosted server. To upload local files directly, use Option B.
+
+### Option B: Local server (runs on your machine)
+
+The local server runs via `uvx` and accepts local file paths, public URLs, and `reducto://` references.
+
+1. Install uv curl -LsSf https://astral.sh/uv/install.sh | sh
+
+2. Authenticate uvx mcp-server-reducto --login
+This opens an OAuth device-code flow in your browser. Once approved, your API key is saved to `~/.reducto/config.yaml` with `chmod 600`. If you already use the Reducto CLI, you're authenticated already. The MCP server reads from the same credential file.
+3. Add to your MCP client{
+ "mcpServers": {
+ "reducto": {
+ "command": "uvx",
+ "args": ["mcp-server-reducto"]
+ }
+ }
+}
+No API key in the config: the server reads it from `~/.reducto/config.yaml` automatically.
+
+To pass the key explicitly instead (for CI or shared machines), use the `env` field:
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"],
+      "env": { "REDUCTO_API_KEY": "your-api-key" }
+    }
+  }
+}
+
+```
+
+### Hosted vs local
+
+| | Hosted (`mcp.reducto.ai`) | Local (`uvx mcp-server-reducto`) |
+| --- | --- | --- |
+| Install | None | Python 3.11+, `uvx` |
+| Auth | Bearer token in headers | Browser login or env var |
+| Local file uploads | Public URLs only | Local paths supported |
+| Shares creds with `reducto` CLI | No | Yes |
+| Best for | Web/Studio users, quick demos | Desktop agents, local workflows |
+
+## Client Setup
+
+Most MCP clients use the same JSON shape, but the config file location differs.
+
+### Claude Desktop
+
+Edit the config file at `~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, or `%APPDATA%\Claude\claude_desktop_config.json` on Windows:
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"]
+    }
+  }
+}
+
+```
+
+Restart Claude Desktop after saving. Reducto appears in the MCP servers list.
+
+### Claude Code
+
+Add to your project's `.mcp.json` to share the server with collaborators, or run `claude mcp add -s user reducto -- uvx mcp-server-reducto` to enable it across all projects (stored in `~/.claude.json`):
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"]
+    }
+  }
+}
+
+```
+
+### Codex
+
+Codex uses TOML, not JSON. Edit `~/.codex/config.toml` (or a project-scoped `.codex/config.toml`) to add the local server:
+
+```toml
+[mcp_servers.reducto]
+command = "uvx"
+args = ["mcp-server-reducto"]
+
+```
+
+To use the hosted server instead, configure it as a Streamable HTTP server. Set `REDUCTO_API_KEY` in your environment first, then add:
+
+```toml
+[mcp_servers.reducto]
+url = "https://mcp.reducto.ai/mcp"
+bearer_token_env_var = "REDUCTO_API_KEY"
+
+```
+
+You can also add the local server via the CLI:
+
+```bash
+codex mcp add reducto -- uvx mcp-server-reducto
+
+```
+
+### Cursor
+
+Add to `.cursor/mcp.json` in your project root:
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"]
+    }
+  }
+}
+
+```
+
+### VS Code (Copilot)
+
+Add to `.vscode/mcp.json` in your project root:
+
+```json
+{
+  "servers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"]
+    }
+  }
+}
+
+```
+
+### Windsurf
+
+Add to `~/.codeium/windsurf/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "reducto": {
+      "command": "uvx",
+      "args": ["mcp-server-reducto"]
+    }
+  }
+}
+
+```
+
+### HTTP transport (self-hosted)
+
+To run the server in HTTP mode for shared use on a single machine:
+
+```bash
+REDUCTO_API_KEY=your-key \
+REDUCTO_MCP_TRANSPORT=http \
+REDUCTO_MCP_PORT=8000 \
+uvx mcp-server-reducto
+
+```
+
+Connect MCP clients to `http://your-host:8000/mcp`.
+
+## Concepts
+
+A few small ideas to internalize before reading the tool reference. Most chained operations rely on these.
+
+### Document URL schemes
+
+Every `document_url` parameter accepts one of four schemes:
+
+| Scheme | Meaning | Where it comes from |
+| --- | --- | --- |
+| `https://` / `http://` | A public URL Reducto can fetch | You provide it |
+| `reducto://` | A file in Reducto's temporary storage (24-hour TTL) | Returned by `upload_file` |
+| `jobid://` | A reference to a previous processing job | Returned by `parse_document`, `extract_data`, `split_document`, `classify_document`, `edit_document` |
+
+Other schemes (`s3://`, `file://`, raw paths) fail validation. Use `upload_file` to bring local files or other URLs into Reducto.
+
+### Job chaining with `jobid://`
+
+Every processing tool returns a `job_id`. Pass `jobid://<job_id>` as `document_url` to a follow-up tool to reuse the work, with no re-upload and no re-parse:
+
+```text
+upload_file("./report.pdf")            →  reducto://abc       (file_id)
+parse_document("reducto://abc")        →  jobid://xyz123      (job_id)
+extract_data("jobid://xyz123", ...)    →  reuses parsed text
+split_document("jobid://xyz123", ...)  →  reuses parsed text
+
+```
+
+This is the cheapest and fastest way to run multiple operations against the same document.
+
+### Response shape
+
+Every tool returns a JSON object with a consistent set of fields. A representative parse response:
+
+```json
+{
+  "job_id": "xyz123",
+  "duration_seconds": 4.1,
+  "studio_link": "https://studio.reducto.ai/jobs/xyz123",
+  "usage": { "num_pages": 12, "credits": 12 },
+  "num_blocks": 42,
+  "block_type_counts": { "Text": 30, "Table": 6, "Figure": 6 },
+  "blocks": [],
+  "next_steps": "Use jobid://xyz123 as document_url for extract_data, split_document, or classify_document."
+}
+
+```
+
+Common fields:
+
+- `job_id`: pass to `get_job` later, or chain via `jobid://<job_id>`.
+- `studio_link`: open in Reducto Studio to inspect the result visually.
+- `usage`: pages and credits consumed.
+- `next_steps`: a hint the server adds describing the recommended follow-up call.
+
+### Large or async results
+
+When a result is too large to inline, the response contains a URL-backed payload:
+
+```json
+{
+  "job_id": "xyz123",
+  "result_type": "url",
+  "result_url": "https://...",
+  "result_access_warning": "Result content is URL-backed; call get_job(job_id='xyz123') before reading it."
+}
+
+```
+
+When `result_type` is `"url"`, call `get_job(job_id=...)` to fetch the materialized result before reading any fields. Do not read `result` directly.
+
+### Response truncation
+
+If a response (typically the `blocks` array from `parse_document`) exceeds `REDUCTO_MCP_MAX_RESPONSE_SIZE` (defaults to `50000` characters), the server truncates it and adds:
+
+```json
+{
+  "truncated": true,
+  "truncation_note": "Response truncated (showing 20 of 150 blocks). Use get_job(job_id='xyz123') for full results, or narrow with page_range."
+}
+
+```
+
+When `truncated` is `true`, call `get_job(job_id=...)` for the full result, or re-run with a narrower `page_range`.
+
+### The `options` escape hatch
+
+Most tools accept an `options` parameter for any Reducto API field not exposed as a top-level argument.
+
+- Top-level params win. When a top-level argument and `options` set the same key, the top-level value takes precedence. Nested config dicts get a one-level shallow merge.
+- JSON strings are accepted. Some MCP clients struggle to pass nested JSON. `options`, `schema`, and `categories` therefore each accept either a native object or a JSON-encoded string. Both work identically.
+
+### Page range syntax
+
+`page_range` accepts a string with 1-based page numbers:
+
+- `"1-5"`: pages 1 through 5
+- `"3,7,10-12"`: pages 3, 7, 10, 11, and 12
+
+## Tools
+
+### Which tool to use
+
+| If you need to... | Use |
+| --- | --- |
+| Look up working SDK or REST examples for any Reducto endpoint | `get_documentation` |
+| Bring a local file or arbitrary URL into Reducto | `upload_file` |
+| Get text, tables, figures, and layout from a document | `parse_document` |
+| Pull specific fields into JSON using a schema | `extract_data` |
+| Divide a document into named page-range sections | `split_document` |
+| Categorize a document into one of N labels | `classify_document` |
+| Fill a form or modify a PDF or DOCX | `edit_document` |
+| Fetch a full, URL-backed, truncated, or async result | `get_job` |
+| Inspect recent jobs | `list_jobs` |
+
+### `get_documentation`
+
+Returns Reducto SDK and REST documentation, including install commands, auth setup, working code examples, and response shapes for a specific topic. Call this before writing any Reducto integration code so the agent works from the current API surface, not training memory.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `topic` | string | Yes | One of: `quickstart`, `parse`, `extract`, `split`, `classify`, `edit`, `upload`, `auth` |
+| `language` | string | No | `node`, `python`, or `http`. Omit to receive all three. |
+
+### `parse_document`
+
+Parses a document into structured text, tables, and figures. Supports PDFs, images, spreadsheets, DOCX, PPTX, and 30+ other formats.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `document_url` | string | Yes | `https://`, `reducto://`, or `jobid://` URL |
+| `table_output_format` | string | No | `html`, `json`, `md`, `csv`, `dynamic`, `jsonbbox` (defaults to `dynamic`) |
+| `page_range` | string | No | e.g. `"1-5"` or `"3,7,10-12"` (1-based) |
+| `chunk_mode` | string | No | `disabled`, `variable`, `section`, `page`. See parse reference. |
+| `agentic` | list[string] | No | Subset of `["text", "table", "figure", "layout"]`. With r-1, use agentic processing for custom prompts or specialized augmentation. Legacy Parse uses it as a general accuracy enhancement. Adds latency. |
+| `add_page_markers` | bool | No | Insert page-boundary markers in the output |
+| `return_images` | list[string] | No | Subset of `["figure", "table", "page"]` to return as images |
+| `options` | dict / JSON string | No | Any other `ParseOptions` field |
+
+### `extract_data`
+
+Extracts structured data from a document using a JSON schema.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `document_url` | string | Yes | Pass `jobid://<parse_job_id>` to skip re-parsing |
+| `schema` | dict / JSON string | Yes | JSON Schema describing the target fields |
+| `system_prompt` | string | No | Custom extraction instructions |
+| `citations` | bool | No | Include source references for each extracted field |
+| `array_extract` | bool | No | Deprecated flag for repeating items. Prefer `deep_extract`, or model the array directly in your schema. |
+| `deep_extract` | bool | No | Iterative agentic refinement for harder documents |
+| `include_images` | bool | No | Add page images to the LLM context |
+| `page_range` | string | No | Limit pages to process |
+| `options` | dict / JSON string | No | Any other `ExtractOptions` field |
+
+### `split_document`
+
+Segments a document into labeled sections by topic. Returns each section's name, page range, and a confidence score.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `document_url` | string | Yes | Document to split |
+| `categories` | list / JSON string | Yes | `[{"name": "Disclosures", "description": "Legal and risk disclosures"}, ...]` |
+| `split_rules` | string | No | Natural-language splitting guidance |
+| `page_range` | string | No | Limit pages |
+| `options` | dict / JSON string | No | Any other `SplitOptions` field |
+
+### `classify_document`
+
+Categorizes a document into one of the provided categories.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `document_url` | string | Yes | Document to classify |
+| `categories` | list / JSON string | Yes | `[{"category": "invoice", "criteria": ["has billing info", "has line items"]}, ...]` |
+| `page_range` | string | No | Defaults to first 5 pages |
+| `document_metadata` | string | No | Additional context to bias classification |
+
+### `edit_document`
+
+Fills forms or modifies a document (PDF or DOCX). Returns a download URL for the edited file plus a `form_schema` describing the fields it found.
+
+The first edit on a new form returns a `form_schema` and a hint:
+
+```json
+{
+  "document_url": "https://.../edited.pdf",
+  "form_schema": {},
+  "form_schema_note": "Cache this form_schema and pass it via options.form_schema for repeated edits."
+}
+
+```
+
+For repeated edits to the same form template, cache `form_schema` and pass it back via `options.form_schema` to skip re-detection.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `document_url` | string | Yes | Document to edit |
+| `edit_instructions` | string | Yes | Natural-language instructions |
+| `options` | dict / JSON string | No | `edit_options`, `form_schema`, `priority` |
+
+### `upload_file`
+
+Uploads a document to Reducto's temporary storage (24-hour TTL) and returns a `reducto://` URL for use in other tools.
+
+Accepts:
+
+- Local file paths: `./report.pdf`, `/Users/me/docs/x.pdf`, `~/inbox/y.pdf` (local server only).
+- Public URLs: `https://example.com/report.pdf` (downloaded server-side, then uploaded).
+
+> Note: The hosted server (`mcp.reducto.ai`) does not support local paths. Use a public URL or run the server locally.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `file_url` | string | Yes | Local file path or public URL |
+
+### `get_job`
+
+Returns the status and result of a previous processing job. Use this to fetch URL-backed results, full content for truncated responses, or to poll an async job.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `job_id` | string | Yes | Job ID returned by any processing tool |
+
+### `list_jobs`
+
+Returns recent processing jobs.
+
+| Name | Type | Required | Description |
+| --- | --- | --- | --- |
+| `limit` | int | No | Max jobs to return (defaults to `10`) |
+
+## Usage Patterns
+
+### Basic parse
+
+> "Parse this PDF and show me the content."
+
+The agent calls `parse_document(document_url="https://example.com/report.pdf")`.
+
+### Extract with a schema
+
+> "Extract the invoice number, date, and total from this document."
+
+The agent calls `extract_data` with a JSON schema describing the three fields.
+
+### End-to-end chain
+
+A full workflow using `upload_file`, `parse_document`, and chained `extract_data`:
+
+```text
+1. upload_file("./contracts/q4-msa.pdf")
+   → { "file_id": "reducto://abc", "next_steps": "Pass reducto://abc as document_url ..." }
+
+2. parse_document("reducto://abc")
+   → { "job_id": "xyz123", "studio_link": "...", "next_steps": "Use jobid://xyz123 ..." }
+
+3. extract_data(
+     "jobid://xyz123",
+     schema={
+       "type": "object",
+       "properties": {
+         "effective_date": {"type": "string"},
+         "parties": {"type": "array", "items": {"type": "string"}},
+         "termination_clauses": {"type": "array", "items": {"type": "string"}}
+       },
+       "required": ["effective_date", "parties"]
+     },
+     citations=True
+   )
+   → structured fields, with citations
+
+```
+
+The same `jobid://xyz123` can also be reused by `split_document` or `classify_document` without re-parsing.
+
+### Triage a mixed document set
+
+> "Classify each of these PDFs as `invoice`, `contract`, or `lab_report`, then run the right extraction schema for each."
+
+The agent calls `classify_document` per file, then routes each to `extract_data` with a category-specific schema.
+
+### Fill a recurring form
+
+> "Fill out a W-9 for each of these vendors using the data in `vendors.json`."
+
+The first call to `edit_document` returns a `form_schema`. Subsequent calls pass the cached `form_schema` via `options` to skip re-detection.
+
+### Handle large or async results
+
+If a response includes `result_type: "url"`, call `get_job` before reading fields:
+
+```text
+parse_document("reducto://big-doc")
+  → { "job_id": "j1", "result_type": "url", "result_url": "...",
+      "result_access_warning": "Result content is URL-backed; call get_job(job_id='j1') before reading it." }
+get_job(job_id="j1")
+  → full materialized result
+
+```
+
+If a response includes `truncated: true`, either call `get_job(job_id=...)` for the full result or re-run with a narrower `page_range`.
+
+## Authentication
+
+The server resolves API keys in this order:
+
+1. `REDUCTO_API_KEY` environment variable (highest priority). Useful for CI or explicit config.
+2. `~/.reducto/config.yaml`, the shared credential store with the Reducto CLI.
+
+Three ways to authenticate:
+
+```bash
+# Browser login (recommended)
+uvx mcp-server-reducto --login
+
+# Reuse an existing CLI session
+reducto login
+
+# Set the env var directly
+export REDUCTO_API_KEY=your-key
+
+```
+
+`--login` runs an OAuth device-code flow: it prints a code, opens your browser to the verification page, and waits for you to approve. Once approved, the key is written to `~/.reducto/config.yaml` with `chmod 600`. Use `--login --force` to replace an existing saved key.
+
+The hosted server (`mcp.reducto.ai`) does not use this flow. Pass your key as `Authorization: Bearer ` in your client config instead.
+
+## Environment Variables
+
+| Variable | Required | Default | Description |
+| --- | --- | --- | --- |
+| `REDUCTO_API_KEY` | No* | none | API key (or authenticate via `--login`) |
+| `REDUCTO_BASE_URL` | No | `https://platform.reducto.ai` | Override the API base URL (EU region, on-prem) |
+| `REDUCTO_MCP_MAX_RESPONSE_SIZE` | No | `50000` | Response truncation threshold in characters |
+| `REDUCTO_MCP_TIMEOUT` | No | `300` | Request timeout in seconds |
+| `REDUCTO_MCP_TRANSPORT` | No | `stdio` | Transport mode: `stdio` or `http` |
+| `REDUCTO_MCP_PORT` | No | `8000` | Port when using HTTP transport |
+| `REDUCTO_TELEMETRY` | No | `1` | Set to `0` to opt out of anonymous usage telemetry |
+
+*Required only if you have not run `mcp-server-reducto --login` or `reducto login`.
+
+## Telemetry
+
+The MCP server sends a small amount of anonymous usage telemetry to PostHog so the team can prioritize improvements.
+
+Collected:
+
+- Lifecycle events: `mcp.installed` (once per machine, on first run) and `mcp.start` (once per server boot).
+- Per-tool invocation events: `tool..invoked` with `tool` name, `status` (`ok`, `error`, or `exception`), and `latency_ms`.
+- Environment fingerprint on every event: client name and version, transport (`stdio` or `hosted`), Python version, OS platform.
+
+Never collected:
+
+- Tool arguments (document URLs, file IDs, schemas, prompts, page ranges).
+- Tool responses or document content.
+- API keys. The user identifier on each event is `sha256(api_key)[:16]`, which is one-way.
+
+To opt out, set `REDUCTO_TELEMETRY=0` in the environment that runs the MCP server.
+
+## Debugging
+
+### MCP Inspector
+
+Test the server interactively:
+
+```bash
+npx @modelcontextprotocol/inspector -- uvx mcp-server-reducto
+
+```
+
+This opens a web UI where you can discover tools, call them, and inspect responses. Requires prior authentication via `--login`.
+
+### Studio links
+
+Most parse and extract responses include a `studio_link`. Open it to inspect the same job interactively in Reducto Studio. This is the fastest way to compare parser output side by side with the original document.
+
+### Logs
+
+The server logs to stderr. Stdout is reserved for the MCP transport. Set `LOG_LEVEL=DEBUG` for verbose output.
+
+## Troubleshooting
+
+No Reducto API key found
+
+Problem: The server starts but every tool call fails with an authentication error.
+
+Solution: Run `mcp-server-reducto --login`, or set `REDUCTO_API_KEY` in your client config's `env` block.
+
+Invalid URL scheme
+
+Problem: A tool call fails with a validation error about `document_url`.
+
+Solution: `document_url` must start with `https://`, `http://`, `reducto://`, or `jobid://`. For local files, call `upload_file` first to get a `reducto://` URL.
+
+Local file paths are not supported on the hosted server
+
+Problem: You passed a local path to `upload_file` while connected to `mcp.reducto.ai`.
+
+Solution: Switch to the local server (Option B above), or pass a public URL.
+
+Tools not appearing in the client
+
+Problem: After editing your client config, no Reducto tools show up.
+
+Solution: Restart your MCP client. Then test the server directly by running `uvx mcp-server-reducto` in your terminal to confirm it starts cleanly.
+
+Timeout on large documents
+
+Problem: A long-running parse or extract returns a timeout error.
+
+Solution: Increase `REDUCTO_MCP_TIMEOUT` (defaults to `300` seconds), or narrow the request with `page_range`.
+
+Result not visible in the response
+
+Problem: A response references content but the `result` field is empty or missing.
+
+Solution: Check for `result_type: "url"` or `truncated: true`. In either case, call `get_job(job_id=...)` to fetch the full materialized result.
+
+## Next Steps
+
+- Reducto CLI: Run parse, extract, and edit from your terminal.
+- Agent Guide: A self-contained API reference designed for AI coding agents.
+- Parse Overview: How parse turns documents into structured text, tables, and figures.
+- Extract Overview: Schema-driven structured data extraction.
+
+Source: https://docs.reducto.ai/mcp-server/index.mdx

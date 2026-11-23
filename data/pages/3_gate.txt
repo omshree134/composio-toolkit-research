@@ -1,0 +1,201 @@
+https://www.pipedrive.com/en/features/crm-api
+
+Skip to main content
+
+# Integrate and optimize with Pipedrive’s CRM API
+
+Connect any software, system, or app in your technology stack with Pipedrive. Our open API (or Application Programming Interface) and Developer Platform give you the opportunity to integrate and optimize the tools you need, share data and automate your sales processes.
+
+Find out more Opens in new window
+
+![](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/API-hero.svg)
+
+![Capterra rating:](https://www-cms.pipedriveassets.com/Company-logos/Capterra-1.svg)
+
+4.5/5
+
+4.5 of 5
+
+![G2 rating:](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=70,format=auto/https://www-cms.pipedriveassets.com/Company-logos/G2.png)
+
+4.2/5
+
+4.2 of 5
+
+![Gartner rating:](https://www-cms.pipedriveassets.com/Company-logos/Gartner-logo.svg)
+
+4.3/5
+
+4.3 of 5
+
+![GetApp rating:](https://www-cms.pipedriveassets.com/Company-logos/getapp-logo.svg)
+
+4.5/5
+
+4.5 of 5
+
+![Software Advice rating:](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=90,format=auto/https://www-cms.pipedriveassets.com/Company-logos/SoftwareAdvice.png)
+
+4.5/5
+
+4.5 of 5
+
+![SourceForge rating:](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=90,format=auto/https://www-cms.pipedriveassets.com/Company-logos/SourceForge_logo_transparent.svg.png)
+
+4.7/5
+
+4.7 of 5
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/API.svg)
+
+##### Free API access with every plan
+
+Grab your API token and unlock a world of possibilities with our RESTful Pipedrive API v1. Access what you need via webhooks, API endpoints, Postman, Insomnia, client libraries, SDKs and more.
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/Integrations.svg)
+
+##### Build and integrate what you need
+
+Seamlessly integrate your existing technology stack and optimize your revenue cycle with apps from Pipedrive’s Marketplace, or build your own app using interactive app extensions like app panels and app actions.
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/Resources.svg)
+
+##### Get started with developer resources and tools
+
+Kick-start your development with our developer resources. Browse our API Reference and Developer Documentation to learn more and use our Developer Community and API clients on Github for help along the way.
+
+![](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/Create-in-Asana-3.svg)
+
+## Easily connect Pipedrive with other software
+
+Not a developer? No problem! With our flexible open platform, you can connect what you need with Pipedrive using the Zapier app or any of the hundreds of available apps in our Marketplace.
+
+Syncing and sharing your CRM data between Pipedrive and any software, system, or app, like Slack, Zoom, Microsoft Teams and Leadfeeder, is both easy and secure.
+
+With our powerful and flexible CRM API, the way you use Pipedrive is only limited by your imagination.
+
+## Access the Pipedrive CRM API for free
+
+Every Pipedrive plan comes with an API token that gives you access to our RESTful API for free. This means you can extend and customize your Pipedrive experience to streamline your business processes and improve your CRM software’s functionality and efficiency.
+
+- Pull call lists and customer information and make them appear in your call center software
+- Create new leads based on shared custom data in your data warehouse or any other tool in your tech stack
+- Assign new tasks to your after-sales team via project management software once a deal is closed
+- Integrate marketing automation and communication tools so you can streamline workflows and never miss notifications
+
+These are just a few of many possibilities. The opportunities are endless with our CRM API.
+
+## Integrate with your existing tech stack
+
+![](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/All-tools.svg)
+
+SOFTWARE FEATURE
+
+### All your tools in one platform
+
+A good CRM tool has an open API that enables you to connect all the tools you use in one platform.
+
+With Pipedrive’s RESTful API and developer resources, you can connect and integrate any app, software, or system in your tech stack with Pipedrive.
+
+You, or your IT team, can also build custom CRM integrations to share and import data to empower your business processes.
+
+SOFTWARE FEATURE
+
+### Extend and customize using the API
+
+No more manual data entry or imports and exports between systems! Automate all your everyday tasks.
+
+Connect systems using the Zapier app, create webhooks to push information, or build your own integration using our developer resources.
+
+Within our powerful and flexible API is our extensive API Reference with hundreds of endpoints. Along with our Developer Documentation, there are endless ways in which you can extend and customize Pipedrive to your business needs.
+
+![](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/Lego-blocks_2023-07-04-123930_wyzv.svg)
+
+## How Pipedrive’s CRM API helps companies to empower their sales processes
+
+![](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=70,format=auto/https://www-cms.pipedriveassets.com/case-studies/Sobtic-case-study.png)
+
+##### SobTIC streamlined their business management with Pipedrive’s CRM API
+
+Thanks to Pipedrive’s open API, SobTIC’s business management is more efficient and effective. By connecting Slack, Pipefy, Mailchimp and other everyday tools with Pipedrive, their team now has a singular hub to house all sales and administrative data.
+
+Read the case study
+
+Opens in new window
+
+![](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=70,format=auto/https://www-cms.pipedriveassets.com/case-studies/vindi-pd.jpg)
+
+##### Vindi leverages Pipedrive’s CRM API to manage their data lake by integrating sales data
+
+For Vindi, the most important thing was deciding the API integration of pre- and post-sales data. By using Pipedrive’s API, they’ve built a unified system that incorporates their platform, Zendesk, RD Station and SenseData.
+
+Read the case study
+
+![](https://www-cms.pipedriveassets.com/cdn-cgi/image/quality=70,format=auto/https://www-cms.pipedriveassets.com/case-studies/leni-leon-luchse.jpg)
+
+##### Leni, Leon & die Luchse connected their tech stack using Pipedrive’s CRM API
+
+Once Leni, Leon & die Luchse started using integrations and the Pipedrive API, they discovered how powerful Pipedrive and Zapier could be when connected with tools they already use; further empowering their sales process.
+
+Read the case study
+
+## Build and test in a safe, secure environment
+
+Our stable API lets you make API calls in a safe and secure environment, while receiving outputs in a JSON format, enabling you to fully customize your CRM system and create integrations that work for you! There are three types of apps you can create depending on your purpose and intended users. Secure authentication is managed using OAuth 2.0 authentication.
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/Target.svg)
+
+##### Create a public app
+
+Public apps are available for all users in the Pipedrive Marketplace. The app has its own unique, public landing page, which can be promoted through the Pipedrive Marketplace.
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/globe.svg)
+
+##### Create an unlisted app
+
+Unlisted apps cater to specific users in the Pipedrive Marketplace. The app has its own non-public app landing page and is only visible to users with its specific Marketplace URL.
+
+![](https://www-cms.pipedriveassets.com/brand-spot-icons/Lock.svg)
+
+##### Create a private app
+
+Private apps are for users in the same company. As private apps aren’t published in our Marketplace, this allows you or your developers to develop exclusive integrations for your business only.
+
+## Let our API documentation, developer resources and tools help you along the way
+
+In addition to our API Reference and Developer Documentation, we have a host of connector tools to help you with accessing and using our API:
+
+- Pipedrive API client libraries and SDKs on Github for PHP, JavaScript (Node JS), Python, .NET and Ruby
+- Ready-to-import Open API 3 specification file for Postman, Insomnia, or any API tool of your choice
+- An up-to-date changelog for all changes, especially breaking changes
+
+![](https://www-cms.pipedriveassets.com/brand-half-page-illustrations/Security-policy_2023-03-06-094742_nviz.svg)
+
+## Built with security in mind
+
+We know that every developer is concerned about the security of REST APIs and CRM account, which is why we keep our API under lock and key.
+
+Access to the Pipedrive API is only possible using the API key or an access token when using OAuth 2.0. Not only does Pipedrive encrypt disks and enforce HTTPS from outside the network, but certain data inside the database is also encrypted when necessary.
+
+We’ve mirrored the rigorous security approach outlined in the OWASP Framework to ensure everything is safe. Plus, we take extra steps to keep our API secure by tracking issues like broken object level authorization and broken user authentications.
+
+Read more about our security
+
+## CRM API FAQs
+
+- What is CRM API? A CRM’s API (Application Programming Interface) allows users to connect any software, system or app to it. Businesses that require bespoke integrations between their technology stack and CRM can use the API to create custom integrations to share data and automate their sales processes. Interested in APIs beyond CRM? Learn more about application programming interfaces on our “ What is API?” page.
+- How do I use web API in CRM? With the right CRM, web API should be simple. Pipedrive, for example, makes it easy to access and use your CRM API. With its RESTful Pipedrive API v1, you can access anything you need via webhooks, API endpoints, Postman, Insomnia, client libraries, SDKs and more. Plus, with API reference and developer documentation, as well as a Developer Community and API clients on Github, you can find resources to help you get your integration off the ground.
+- Does CRM API benefit users? Yes. A CRM API is a powerful tool that allows users to integrate their favorite third-party software tools and systems with their CRM. On top of that, a CRM API lets users create various custom workflows between apps. Want to import call lists and customer information into your call center software? Looking to integrate your marketing and communication tools into your CRM? The possibilities are endless.
+
+## Create your sales powerhouse today with our CRM API!
+
+Try Pipedrive for free
+
+14-day trial. Free code library. Zero cost. No credit card required.
+
+```json
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pipedrive","item":"https://www.pipedrive.com"},{"@type":"ListItem","position":2,"name":"CRM API | REST API integration","item":"https://www.pipedrive.com/en/features/crm-api"}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is CRM API?","acceptedAnswer":{"@type":"Answer","text":"<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">A CRM’s API (Application Programming Interface) allows users to connect any software, system or app to it.</p>\n<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">Businesses that require bespoke integrations between their technology stack and CRM can use the API to create custom integrations to share data and automate their <a href=\"https://www.pipedrive.com/en/blog/sales-process\" class=\"puco-link puco-link--display-inline\" target=\"_blank\" data-original-href=\"https://www.pipedrive.com/en/features/sales-process-management\">sales processes</a>.</p>\n<p class=\"puco-text puco-text--size-s\">Interested in APIs beyond CRM? Learn more about application programming interfaces on our “<a href=\"https://support.pipedrive.com/article/what-is-api\" class=\"puco-link puco-link--display-inline\" target=\"_blank\">What is API?</a>” page.</p>"}},{"@type":"Question","name":"How do I use web API in CRM?","acceptedAnswer":{"@type":"Answer","text":"<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">With the right CRM, web API should be simple. Pipedrive, for example, makes it easy to access and use your CRM API. With its RESTful Pipedrive API v1, you can access anything you need via webhooks, API endpoints, Postman, Insomnia, client libraries, SDKs and more.</p>\n<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">Plus, with API reference and developer documentation, as well as a Developer Community and API clients on Github, you can find resources to help you get your integration off the ground.<br></p>"}},{"@type":"Question","name":"Does CRM API benefit users?","acceptedAnswer":{"@type":"Answer","text":"<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">Yes. A CRM API is a powerful tool that allows users to integrate their favorite third-party software tools and systems with their CRM.</p>\n<p dir=\"ltr\" class=\"puco-text puco-text--size-s\">On top of that, a CRM API lets users create various custom workflows between apps. Want to import call lists and customer information into your <a href=\"https://www.pipedrive.com/en/crm/solutions/call-center-crm\" class=\"puco-link puco-link--display-inline\" target=\"_blank\" data-original-href=\"https://www.pipedrive.com/en/industries/call-center-crm\">call center software</a>? Looking to integrate your marketing and communication tools into your CRM? The possibilities are endless.</p>"}}]}
+{"@context":"https://schema.org","@type":"Product","name":"CRM Software","brand":"Pipedrive","image":"https://www-cms.pipedriveassets.com/Generic_logo.png","description":"Pipedrive's free CRM API integration lets you connect any software, system, or app in your technology stack. Customize your experience for more efficiency.","offers":{"@type":"Offer","name":"Pipedrive Pricing","priceCurrency":"usd","price":"0","availability":"OnlineOnly","url":"https://www.pipedrive.com/en/pricing"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","ratingCount":"1585"}}
+
+```

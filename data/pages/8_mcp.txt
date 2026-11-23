@@ -1,0 +1,188 @@
+https://developer.close.com/mcp/
+
+> For a complete page index, fetch https://developer.close.com/llms.txt
+
+# Close MCP Server
+
+Model Context Protocol (MCP) servers provide a standardized interface that allows any compatible AI model or agent to access your Close data in a simple and secure way. Below are instructions for adding Close's MCP server to commonly used clients.
+
+## Accessing Close's Remote MCP Server
+
+The MCP server URL is `https://mcp.close.com/mcp` and has "HTTP Streamable" and "OAuth 2.0 Dynamic Client Registration (DCR)" support.
+
+We recommend accessing the MCP server via OAuth 2.0 using a supported MCP client (e.g. Claude, ChatGPT, Cursor, etc). If you prefer to interact with the MCP server using a custom setup, create an OAuth application to authenticate using OAuth 2.0 or authenticate using an API key and include the following headers in your request:
+
+```
+Close-API-Key: {{ Your Close API Key }}
+Close-Scope: {{ mcp.read, mcp.write_safe, or mcp.write_destructive }}
+
+```
+
+The `Close-Scope` header determines the scope and available tools:
+
+- `mcp.read` — read-only access
+- `mcp.write_safe` — can read and write data
+- `mcp.write_destructive` — can read, write, and delete data
+
+For more information on which tools are available for each scope, see Close MCP Tools.
+
+## MCP Client Setup
+
+#### Claude
+
+Close's MCP server is officially supported across the Claude ecosystem. Watch this video to learn more about connecting Claude to Close and see some example use cases:
+
+1. Navigate to Settings by clicking your name in the bottom left sidebar on web or desktop.
+2. In the Settings sidebar, select Connectors, then Organization connectors.
+3. Find and select the Close connector, then click Connect. Alternatively, you can view the connector here.
+4. Grant access to your desired Close organization and scopes.
+5. Make sure to enable the tools in any new chats.
+
+> Note
+> 
+> If you want to set up MCP for multiple organizations, you need to add custom connectors for each:
+> 
+> 1. Add a custom connector under Customize > Connectors > + > Add Custom Connector.
+> 2. Name it something descriptive like `close-mcp-org-name`.
+> 3. Enter the URL: `https://mcp.close.com/mcp?1`. You will need to increment `1` for each additional connection (the second custom connector would have `https://mcp.close.com/mcp?2` for the URL). This is a hack, as Claude does not allow multiple connectors with the same URL.
+> 4. Add the connector.
+> 5. Navigate to the newly added connector and click "Connect". Give the correct organization permissions in the Close OAuth dialogue.
+
+#### Claude Code
+
+1. In your terminal, add the MCP server:
+
+```bash
+claude mcp add --scope user --transport http close https://mcp.close.com/mcp 
+
+```
+
+If you prefer to use API key instead of OAuth, you can specify it in headers:
+
+```bash
+export CLOSE_API_KEY=YOUR_API_KEY
+
+claude mcp add --scope user --transport http close https://mcp.close.com/mcp \
+  --header "Close-API-Key: ${CLOSE_API_KEY}" \
+  --header "Close-Scope: mcp.read"
+
+```
+
+Optionally, change `mcp.read` to `mcp.write_safe` or `mcp.write_destructive` to increase the scope.
+
+> Note
+> 
+> If you want to set up MCP for multiple organizations, you can give this a more specific name like `close-your-org-name` instead of `close` so that you can distinguish the servers from one another.
+
+1. Launch a Claude Code session with `claude` and type `/mcp` to verify Close MCP was set up.
+
+See the Claude Code MCP Docs for more information on using MCP servers with Claude Code.
+
+#### ChatGPT
+
+Interact with Close's MCP server by connecting Close's official ChatGPT plugin.
+
+#### Grok Bot
+
+Connect Close to Grok Bot using the official Close for Grok Bot plugin.
+
+#### Muse
+
+Connect Muse to Close by asking it to create a custom OAuth connector.
+
+1. Open a conversation in Muse and send: I want to have you read and update information in my CRM, Close. Can you add a connector using OAuth? Their MCP docs are here: https://developer.close.com/mcp
+
+2. Open the authorization link Muse provides.
+3. Sign in to Close, select your organization and the permissions you want to grant, then click Allow.
+4. Return to Muse and start using the connector.
+
+The permissions you grant on Close's OAuth consent screen determine which tools Muse can use. See Close MCP Tools for details on the available tools.
+
+#### n8n
+
+You can use n8n's "AI Agent" node to set up a chatbot with read access to your Close Organization.
+
+1. Create a new Workflow and add Chat Trigger as your first step.
+
+![n8n workflow with Chat Trigger and AI Agent](https://developer.close.com/_fern-files/_img/c68200bbc5f9aa69834eb5a8653cded95149a3e56cac4c683d3fb9bfbd2043bb.webp)
+
+1. Add an AI Agent node as your second step. The AI Agent node has three components: Chat Model — The LLM of your choice (n8n supports all major LLM providers) Memory — Allows a model to remember and reference past interactions. While not required, we recommend n8n's "Simple Memory," which requires no setup. Tool — This is where you will connect to Close's MCP server.
+2. Connect the Chat Model and Memory options of your choice, and then add the MCP Client Tool node under Tool.
+3. For the MCP Client Tool node, use the following configuration: Endpoint: `https://mcp.close.com/mcp` Server Transport: HTTP Streamable Authentication: MCP OAuth2 Create a new MCP OAuth2 API Credential in your n8n account with: Server URL: `https://mcp.close.com/mcp` Tools to Include: All
+
+![n8n MCP Client Tool configuration](https://developer.close.com/_fern-files/_img/493bcf67c1874e7d51238065b7ad4548fad78c25b051dfae33e5947e624439f9.webp)
+
+1. Once you've successfully connected the MCP server, start chatting with your new AI Agent in the "Chat" window at the bottom left of the Workflow Editor.
+
+> Note
+> 
+> OAuth is recommended. If you need to use an API key instead, select Header Auth for Authentication and create a Header Auth Credential with Name set to `Close-API-Key` and Value set to your Close API Key.
+
+#### Cursor
+
+Connect Close to Cursor using the Close plugin in Cursor's marketplace.
+
+#### VS Code
+
+### Step 1: Configure the MCP server
+
+Add the following to your `settings.json`:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "close": {
+        "url": "https://mcp.close.com/mcp",
+        "type": "http",
+        "headers": {
+          "Close-API-Key": "${input:close-api-key}",
+          "Close-Scope": "mcp.read"
+        }
+      }
+    },
+    "inputs": [
+      {
+        "id": "close-api-key",
+        "description": "Enter your Close API key",
+        "type": "promptString"
+      }
+    ]
+  }
+}
+
+```
+
+This will add a read-only MCP server to your VS Code. You can change `Close-Scope` to `mcp.write_safe` or `mcp.write_destructive` to increase the scope. Alternatively, you can add the snippet to your `mcp.json` file for workspace-level server access.
+
+### Step 2: Start the server
+
+Use the command palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows) to list the MCP servers, select `close`, and click "Start Server." Enter your Close API Key when prompted.
+
+![Starting the Close MCP server in VS Code](https://developer.close.com/_fern-files/_img/a25ab15743e6bbcddb6fba64e90f25e2aa66596b058deffa045c2e857e5fa629.webp)
+
+If the server is not in the list, use the command palette to "Reload Window." The console will confirm that the server is connected:
+
+![VS Code console confirming server connection](https://developer.close.com/_fern-files/_img/ca8afd369f972c800cf039a9eb1664216bc7415ee7115bf6f612ec23e480bc36.webp)
+
+### Step 3: Start using the server
+
+Open Copilot in the sidebar (`Cmd+Shift+I` on Mac, `Ctrl+Alt+I` on Windows) and switch to agent mode. You can click the tool icon to list the available tools. Ask Chat what Close Organization you are working in and you should see that it uses the server to return organization information.
+
+#### Other MCP Clients
+
+Any MCP client that supports HTTP Streamable transport can connect to Close's MCP server at `https://mcp.close.com/mcp`. Use either OAuth 2.0 or API key authentication via the `Close-API-Key` and `Close-Scope` headers as described above.
+
+## FAQs
+
+### Does Close MCP support SSE?
+
+We currently don't support SSE, but please email support@close.com with your specific use case and MCP client details if this is something your team requires.
+
+### What tools does the MCP server have access to?
+
+See Close MCP Tools for the full list of tools available for each scope.
+
+### Can I create multiple MCP connections if I want to work with more than one Close organization?
+
+Yes. You can add a custom connector for each organization with the URL as `https://mcp.close.com/mcp` and use either OAuth 2.0 or API key authentication via the Close-API-Key and Close-Scope headers. Each connection will need a unique name like `close-mcp-org-name`.

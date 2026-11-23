@@ -1,0 +1,202 @@
+https://docs.pumble.com/
+
+Pumble API reference
+
+# Pumble Integration API
+
+## Introduction
+
+ Welcome to the Pumble API. Built on REST principles, this API allows you to integrate Pumble into your own app, by using the endpoints below. If you're looking to integrate operations over users, channels, messages (list/preview, create new, update an existing one, leave reaction, reply etc.), you are in the right place. 
+
+Detailed documentation is available here, explaining how to use the Node SDK to avoid boilerplate code and manual API calls. We strongly advise you to use our SDK, alternatively continue reading these docs if you prefer to integrate directly with our endpoints manually.
+
+A prerequisite for using the integrations API is to set two headers (token and x-app-token) – in order to authenticate. You can follow this page to find out how to set it up.
+
+## API endpoints usage
+
+ All the endpoints (except auth) are prefixed with the API URL: https://api-ga.pumble.com/v1/. 
+
+ For example, the endpoint to send a message looks as follows: https://api-ga.pumble.com/v1/channels/{channelId}/messages, where you'll replace ID in curly braces with your actual channel ID. 
+
+## Authentication
+
+To ensure the security of your data, all API requests must be authenticated.
+
+- It's mandatory to include the token (access token issued to user/bot) and x-app-token (app token issued to your app, prefixed with 'xpat-') headers in every request, refer to API Client.
+- Your credentials should only be visible to you and should NOT be shared publicly.
+- By using this API, only operations within the scope of your workspace, user role and permissions are allowed.
+
+## Rate limiter
+
+ We enforce a rate limit on all API requests in order to maintain high availability and fair usage for all users. Default limitation is 100 requests per user per minute (per token header) and 500 per app (per x-app-token header). Exceeding this limit will result in error 429 - TOO_MANY_REQUESTS. 
+
+Every 429 response includes a Retry-After header with the number of seconds to wait before retrying (e.g. Retry-After: 60).
+
+ Server 
+
+Server: https://api-ga.pumble.com
+
+Authentication Required
+
+Selected Auth Type: AppToken & AccessToken
+
+| AppToken: App Key (xpat) |
+| --- |
+| Name : x-app-token Clear Value |
+| Value : QUxMIFlPVVIgQkFTRSBBUkUgQkVMT05HIFRPIFVT Show Password |
+| AccessToken: App auth token issued to user or bot |
+| Name : token Clear Value |
+| Value : QUxMIFlPVVIgQkFTRSBBUkUgQkVMT05HIFRPIFVT Show Password |
+
+ Client Libraries 
+
+## App Interactions 
+
+Rest API for app interactions
+
+- post/v1/interactions/complete
+
+## App OAuth2 
+
+App OAuth2 Operations
+
+- post/oauth2/access
+- get/workspaces/{workspaceId}/workspaceUsers/{workspaceUserId}/oauth2/grant
+- get/oauth2/me
+- get/apps/{appId}/websocket-connection
+
+## Apps 
+
+Rest API for app management
+
+Apps Operations
+
+- post/v1/app/homeView/workspaceUsers/{workspaceUserId}
+- delete/v1/app/installation
+- delete/v1/app/authorization
+
+## Calls 
+
+Rest API for calls
+
+- post/v1/calls/permanent
+
+## Channels 
+
+Rest API for channel management
+
+Channels Operations
+
+- get/v1/channels
+- post/v1/channels
+- post/v1/channels/{channelId}/users
+- post/v1/channels/{channelId}/permissions
+- get/v1/channels/direct
+- post/v1/channels/direct
+- get/v1/channels/{channelId}
+- delete/v1/channels/{channelId}/users/{userId}
+
+## Files 
+
+Rest API for file management
+
+Files Operations
+
+- post/v1/files/upload/token
+- post/v1/files/upload/complete
+
+## Messages 
+
+Rest API for messages
+
+Messages Operations
+
+- get/v1/messages/scheduled/{scheduledMessageId}
+- put/v1/messages/scheduled/{scheduledMessageId}
+- delete/v1/messages/scheduled/{scheduledMessageId}
+- put/v1/messages/scheduled/{scheduledMessageId}/attachments
+- put/v1/messages/drafts/{draftId}
+- delete/v1/messages/drafts/{draftId}
+- get/v1/channels/{channelId}/messages/{messageId}
+- put/v1/channels/{channelId}/messages/{messageId}
+- post/v1/channels/{channelId}/messages/{messageId}
+- delete/v1/channels/{channelId}/messages/{messageId}
+- put/v1/channels/{channelId}/messages/{messageId}/attachments
+- post/v1/messages/{messageId}/reactions
+- delete/v1/messages/{messageId}/reactions
+- post/v1/messages/search
+- get/v1/messages/scheduled
+- post/v1/messages/scheduled
+- get/v1/messages/drafts
+- post/v1/messages/drafts
+- get/v1/channels/{channelId}/messages
+- post/v1/channels/{channelId}/messages
+- get/v1/channels/{channelId}/messages/{messageId}/replies
+- delete/v1/channels/{channelId}/messages/{messageId}/ephemeral
+
+## Workspace Users 
+
+Rest API for workspace user management
+
+Workspace Users Operations
+
+- put/v1/workspaceUsers/customStatus
+- get/v1/workspaceUsers
+- get/v1/workspaceUsers/{workspaceUserId}
+- get/v1/workspaceUsers/groups
+
+## Workspaces 
+
+Rest API for workspace management
+
+Workspaces Operations
+
+- get/v1/workspace
+
+Selected Auth Type: AppToken & AccessToken
+
+| AppToken: App Key (xpat) |
+| --- |
+| Name : x-app-token Clear Value |
+| Value : QUxMIFlPVVIgQkFTRSBBUkUgQkVMT05HIFRPIFVT Show Password |
+| AccessToken: App auth token issued to user or bot |
+| Name : token Clear Value |
+| Value : QUxMIFlPVVIgQkFTRSBBUkUgQkVMT05HIFRPIFVT Show Password |
+
+## Variables
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+
+## Cookies
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| | Key | Value |
+
+## Headers
+
+ Clear All Headers
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| | Content-Type | application/json More Information |
+| | Accept | */* More Information |
+| | Key | Value |
+
+## Query Parameters
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| | Key | Value |
+
+## Request Body
+
+{ "status": "", "code": "", "skinTone": 1, "expiration": "never", "expiresAt": 1, "pausedNotifications": true }
+
+| JSON |
+| --- |
+
+## Code Snippet (Collapsed) 
+
+Shell Curl

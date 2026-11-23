@@ -1,0 +1,492 @@
+https://dataforseo.com/model-context-protocol
+
+DataForSEO Model Context Protocol – DataForSEO
+
+# Empower AI integration with DataForSEO MCP
+
+Connect your AI application with the most capable source of SEO data
+
+## Get Started With DataForSEO MCP
+
+Choose your AI client and follow the instructions to connect with DataForSEO APIs.
+
+ Connectors Config file 
+
+1. 1
+
+Open Claude Desktop and go to Customize → Connectors.
+2. 2
+
+Click Add custom connector and paste the DataForSEO MCP HTTP URL:
+
+https://mcp.dataforseo.com/v3/mcp
+3. 3
+
+When prompted, approve the Authorization request to access the DataForSEO API.
+4. 4
+
+Start a new chat. Claude will request your approval the first time it calls a DataForSEO tool.
+
+1. 1
+
+Open the configuration file:
+
+~/Library/Application Support/Claude/claude_desktop_config.json
+
+On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+2. 2
+
+Add the following configuration to the file:
+
+ JSON Copy 
+
+```
+{
+  "mcpServers": {
+    "dataforseo": {
+      "command": "npx",
+      "args": ["-y", "dataforseo-mcp-server"],
+      "env": {
+        "DATAFORSEO_USERNAME": "your_api_login",
+        "DATAFORSEO_PASSWORD": "your_api_password"
+      }
+    }
+  }
+}
+```
+3. 3
+
+Replace `your_api_login` and `your_api_password` with credentials from the API Access dashboard.
+4. 4
+
+Restart Claude Desktop. The DataForSEO tools will appear in your tool list.
+
+ Connectors Config file 
+
+1. 1
+
+Generate a Base64 token from your API login and password (or copy a pre-encoded one from the API Access dashboard via the Send by Email button).
+2. 2
+
+Add the remote DataForSEO MCP server in your terminal. Replace your_base64_encoded_token with the Base64 token from the previous step.
+
+ Bash Copy 
+
+```
+claude mcp add --header "Authorization: Basic your_base64_encoded_token>" --transport http dfs-mcp https://mcp.dataforseo.com/v3/mcp
+```
+3. 3
+
+Verify the connection:
+
+ Bash Copy 
+
+```
+claude mcp list
+```
+
+1. 1
+
+Make sure you have Node.js 18+ installed.
+2. 2
+
+Register the local NPX server with your credentials:
+
+ Bash Copy 
+
+```
+claude mcp add dataforseo \
+  --env DATAFORSEO_USERNAME=your_api_login \
+  --env DATAFORSEO_PASSWORD=your_api_password \
+  -- npx -y dataforseo-mcp-server
+```
+3. 3
+
+Verify the connection:
+
+ Bash Copy 
+
+```
+claude mcp list
+```
+
+Check our Help Center for more ways to install DataForSEO MCP with Claude Code. 
+
+ Connectors Config file 
+
+1. 1
+
+In Cursor, open Settings → Tools & Integrations → MCP Tools.
+2. 2
+
+Click Add Custom MCP and paste the remote configuration:
+
+ JSON Copy 
+
+{ "mcpServers": { "dataforseo": { "url": "https://mcp.dataforseo.com/v3/mcp", "headers": { "Authorization": 
+
+"Basic 
+
+"
+
+ } } } }
+3. 3
+
+Replace 
+
+ with your Base64-encoded `username:password` from the API Access dashboard.
+4. 4
+
+Save and reopen the chat. Cursor supports up to 40 active MCP tools — disable any modules you don’t need.
+
+1. 1
+
+Open the global Cursor MCP configuration:
+
+~/.cursor/mcp.json
+
+You can also access this file from Settings → Tools & Integrations → Add Custom MCP.
+2. 2
+
+Add the local NPX configuration:
+
+ JSON Copy 
+
+```
+{
+  "mcpServers": {
+    "dataforseo": {
+      "command": "npx",
+      "args": ["-y", "dataforseo-mcp-server"],
+      "env": {
+        "DATAFORSEO_USERNAME": "your_api_login",
+        "DATAFORSEO_PASSWORD": "your_api_password"
+      }
+    }
+  }
+}
+```
+3. 3
+
+Replace credentials with values from the API Access dashboard and save the file.
+4. 4
+
+Restart Cursor or reload the MCP servers from Tools & Integrations.
+
+1. 1
+
+Log into the OpenAI platform dashboard, go to Settings → Plugins → Developer Mode and enable the Developer mode.
+2. 2
+
+Go back to Plugins and click the + icon to create a new plugin.
+3. 3
+
+Paste the DataForSEO MCP server URL and give the app a name:
+
+https://mcp.dataforseo.com/v3/mcp
+4. 4
+
+Select the OAuth authentication method and click Create
+5. 5
+
+When prompted, approve the Authorization request to access the DataForSEO API.
+6. 6
+
+Start a new chat. ChatGPT will request your approval the first time it calls a DataForSEO tool.
+
+1. 1
+
+Install the Gemini CLI globally:
+
+ Bash Copy 
+
+```
+npm install -g @google/gemini-cli
+```
+2. 2
+
+Open the Gemini settings file:
+
+~/.gemini/settings.json
+
+Windows: 
+
+C:\Users\
+
+\.gemini\settings.json
+3. 3
+
+Add the DataForSEO MCP server:
+
+ JSON Copy 
+
+```
+{
+  "selectedAuthType": "gemini-api-key",
+  "mcpServers": {
+    "dataforseo": {
+      "command": "npx",
+      "args": ["-y", "dataforseo-mcp-server"],
+      "env": {
+        "DATAFORSEO_USERNAME": "your_api_login",
+        "DATAFORSEO_PASSWORD": "your_api_password"
+      }
+    }
+  }
+}
+```
+4. 4
+
+Restart the CLI and run `/mcp list` to confirm DataForSEO is connected.
+
+1. 1
+
+Install Docker for your operating system.
+2. 2
+
+Pull and run the official DataForSEO MCP image:
+
+ Bash Copy 
+
+```
+docker run -p 3000:3000 \
+  -e DATAFORSEO_USERNAME=your_api_login \
+  -e DATAFORSEO_PASSWORD=your_api_password \
+  dataforseo/mcp:latest
+```
+
+Use your API login and password from the API Access section of the dashboard. 
+3. 3
+
+The MCP server is now available locally at:
+
+http://localhost:3000
+
+Connect any MCP-compatible client to that URL. See the Docker Hub repository for advanced configuration. 
+
+ Remote (HTTP) Local (NPX) 
+
+1. 1
+
+Point your MCP-compatible client to the official DataForSEO remote endpoint:
+
+https://mcp.dataforseo.com/v3/mcp
+2. 2
+
+Authenticate with a Base64-encoded Basic Auth header:
+
+ Header Copy 
+
+Authorization: Basic 
+
+Get your credentials from the API Access dashboard. The Send by Email button delivers a pre-encoded token. 
+
+1. 1
+
+Make sure Node.js 18+ is installed, then launch the server locally:
+
+ Bash Copy 
+
+```
+npx -y dataforseo-mcp-server
+```
+2. 2
+
+Provide your credentials as environment variables:
+
+ Bash Copy 
+
+```
+export DATAFORSEO_USERNAME=your_api_login
+export DATAFORSEO_PASSWORD=your_api_password
+```
+3. 3
+
+Or register the server directly inside your client config:
+
+ JSON Copy 
+
+```
+{
+  "mcpServers": {
+    "dataforseo": {
+      "command": "npx",
+      "args": ["-y", "dataforseo-mcp-server"],
+      "env": {
+        "DATAFORSEO_USERNAME": "your_api_login",
+        "DATAFORSEO_PASSWORD": "your_api_password"
+      }
+    }
+  }
+}
+```
+
+Need a different setup? See the full DataForSEO MCP help center. 
+
+## How does it work?
+
+### MCP Clients
+
+AI applications that communicate with MCP servers.
+
+Manual for MCP & CLI >>
+
+### MCP Server
+
+A bridge between your AI model and DataForSEO APIs, managing requests and responses.
+
+DataForSEO MCP Server >>
+
+### MCP Host
+
+The application managing MCP clients and controlling permissions and security polices.
+
+ ![mcp img](https://dataforseo.com/wp-content/uploads/2026/05/mcp_img.webp "DataForSEO Model Context Protocol 2") 
+
+## Fast-track your AI training: gather data at scale without interruption
+
+ ![Accelerated integration](https://dataforseo.com/wp-content/uploads/2026/05/Accelerated-integration.webp "DataForSEO Model Context Protocol 3") 
+
+### Accelerated integration
+
+Take advantage of out-of-the-box MCP to swiftly connect your AI model to a range of DataForSEO APIs without undertaking lengthy technical integration.
+
+ ![Interoperability](https://dataforseo.com/wp-content/uploads/2026/05/Interoperability.webp "DataForSEO Model Context Protocol 4") 
+
+### Interoperability
+
+MCP server allows connecting DataForSEO APIs to a variety of AI models, like Claude, and Integrated Development Environments like Cursor AI.
+
+ ![Scalability](https://dataforseo.com/wp-content/uploads/2026/05/Scalability.webp "DataForSEO Model Context Protocol 5") 
+
+### Scalability
+
+From pay-as-you-go pricing model to API endpoints – all DataForSEO services are built for outmost scalability. DataForSEO MCP server is no exception.
+
+## Connect to DataForSEO APIs with MCP server
+
+### SERP API
+
+Get real-time Google, Bing, and Yahoo SERPs for any location and language.
+
+### AI Optimization API
+
+Access LLM prompt data and aggregated AI agent responses.
+
+### DataForSEO Labs API
+
+SEO data for keyword research and market analysis.
+
+### Backlinks API
+
+### Business Data API
+
+ Collect reviews, business listings, and social media data. 
+
+### Domain Analytics API
+
+ Analyze technologies and Whois records of any website 
+
+## DataForSEO MCP server is made for every application
+
+The DataForSEO MCP server is designed to support AI-driven applications across different industries and use cases. It enables seamless access to structured SEO and marketing data, making it a reliable foundation for training language models, powering search intelligence tools, and enriching large-scale datasets.
+
+In addition to the MCP server, you can use the Command-line Interface (CLI) to integrate our data into your AI application.
+
+### AI-powered SEO tools
+
+The DataForSEO MCP server delivers structured, real-time SEO data optimized for use in AI-powered tools, enabling accurate insights and intelligent automation at scale.
+
+### In-house SEO & marketing analysis
+
+You get reliable, high-volume access to SEO and marketing data without any coding, making it easy to power up in-house analysis and reporting.
+
+## Jumpstart your journey with DataForSEO MCP
+
+## Release in days, not weeks
+
+Integrating a new data source can take a lot of time and money. We accelerate this process by providing a user-friendly interface for controlling your API usage and spending.
+
+### Well-rounded documentation
+
+### GUI for API usage control
+
+ ![release 2](https://dataforseo.com/wp-content/uploads/2026/05/release-2.png "DataForSEO Model Context Protocol 12") 
+
+Every DataForSEO user has access to a comprehensive graphic user interface (GUI) and can monitor and control every aspect of data usage.
+
+### Ad hoc integration and deployment support
+
+ ![release 3](https://dataforseo.com/wp-content/uploads/2026/05/release-3.png "DataForSEO Model Context Protocol 13") 
+
+Our support team is available 24/7 to ensure you get the required assistance and all your requests are addressed promptly and proficiently.
+
+## Data industry leaders trust
+
+Solutions developers praise
+
+![twinword head](https://dataforseo.com/wp-content/uploads/2021/08/twinword-head.png "DataForSEO Model Context Protocol 14")
+
+Customer success story
+
+### Twinword Wins 35% More Paid Customers After Switching To DataForSEO APIs
+
+ ![rev Kono Kim](https://dataforseo.com/wp-content/uploads/2021/08/rev-Kono-Kim.png "DataForSEO Model Context Protocol 15") 
+
+"I always recommend DataForSEO. No worries about server capacity, no need for maintenance, and splendid possibilities for rapid development when we want to try something new. Why reinvent the wheel?"
+
+ Kono Kim Connect on LinkedIn 
+
+![pathfinder seo home](https://dataforseo.com/wp-content/uploads/2021/03/pathfinder_seo_home.png "DataForSEO Model Context Protocol 16")
+
+Customer success story
+
+### How DataForSEO Helps Pathfinder SEO Guide its Customers, One Simple Task at a Time
+
+ ![rev Lindsay Halsey](https://dataforseo.com/wp-content/uploads/2021/08/rev-Lindsay-Halsey.png "DataForSEO Model Context Protocol 17") 
+
+"We found DataForSEO online while we were planning for the beta version of our software. We were impressed by how responsive the team DataForSEO was and by the comprehensive nature of the APIs available."
+
+ Lindsay Halsey Connect on LinkedIn 
+
+![onthemap head](https://dataforseo.com/wp-content/uploads/2021/08/onthemap-head.png "DataForSEO Model Context Protocol 18")
+
+Customer success story
+
+### DataForSEO API Helps On the Map Marketing Go Up at the Time of a Downturn
+
+ ![rev Kaspars Milbergs](https://dataforseo.com/wp-content/uploads/2021/08/rev-Kaspars-Milbergs.png "DataForSEO Model Context Protocol 19") 
+
+"We have enjoyed working with DataForSEO. We can recommend it to any company that needs SEO related APIs. We have been satisfied with the speed, cost, and accuracy"
+
+ Kaspers Milbergs Connect on LinkedIn 
+
+![WebShed head](https://dataforseo.com/wp-content/uploads/2021/08/WebShed-head.png "DataForSEO Model Context Protocol 20")
+
+Customer success story
+
+### theWebShed boost innovation in SEO software with DataForSEO APIs
+
+ ![rev Kieran Headley](https://dataforseo.com/wp-content/uploads/2021/08/rev-Kieran-Headley.png "DataForSEO Model Context Protocol 21") 
+
+"DataForSEO have been great to work with right from the start. They offer a wide range of different APIs and are constantly adding to their offerings. They are always on hand to help with any questions or queries that we have. I would recommend to anyone looking for SEO data."
+
+ Kieran Headley Connect on LinkedIn 
+
+![blog image worldwide backlinks with dataforseo](https://dataforseo.com/wp-content/uploads/2024/12/blog-img-worldwide.png "DataForSEO Model Context Protocol 22")
+
+Customer success story
+
+### Worldwide Backlinks’ Secret Sauce: DataForSEO Backlinks API
+
+ ![Worldwide Backlinks img](https://dataforseo.com/wp-content/uploads/2025/03/Worldwide-Backlinks-img.webp "DataForSEO Model Context Protocol 23") 
+
+"DataForSEO has always been in our tool kit. I guess the most simple way to put it is that when you explore a tool's API, you can see what it is really capable of. DataForSEO also provides awesome documentation to utilise.”
+
+ Callum Sherwood Connect on LinkedIn 
+
+Vesivärava tn 50-201, Kesklinna linnaosa, Tallinn, Harju maakond, Republic of Estonia, 10152
+
+63 Profesora Otamanovskoho St , Kharkiv, Ukraine, 61166
+
+Email: [email protected]

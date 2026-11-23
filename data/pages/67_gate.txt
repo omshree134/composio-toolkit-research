@@ -1,0 +1,137 @@
+https://www.snowflake.com/en/why-snowflake/partners/product-partners/
+
+Snowflake Product Partners: Build & Scale ISV Solutions
+
+# AI Data Cloud Product Partners
+
+Build and scale products on Snowflake's easy-to-implement, low-maintenance platform — with Marketplace distribution and marketing programs to drive adoption and revenue.
+
+![Snowflake & Oracle](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--bba11ad4-4249-435c-a8d2-f08e422f7933/blog-snowflake-oracle-1680x720.png?quality=85&preferwebp=true&sfver=0a0ff3c2)
+
+## Build products on the platform your customers already run
+
+#### Increase your revenue streams
+
+Every Marketplace listing puts your product in front of customers already buying. Co-sell motions turn that reach into revenue.
+
+#### Land bigger deals faster
+
+Align marketing initiatives and joint pipelines to close faster and grow together.
+
+#### Gain a competitive edge
+
+Reduce compliance risks and infrastructure overhead by utilizing trusted partner solutions.
+
+## Your customers win when you partner with Snowflake
+
+Give your customers access to a secure, AI ready infrastructure and a rich partner ecosystem on one scalable platform. Get the tools and support to reach them.
+
+| | What you get | What your customers get |
+| --- | --- | --- |
+| Revenue acceleration | Go-to-market alignment | Market differentiation |
+| Marketplace reach | Elevated positioning | Growth levers |
+| Streamlined transactions | Faster time-to-value | Modernization |
+
+#### Faster time-to-value
+
+Pre-built integrations and Snowflake's scalable platform simplify delivery so customers see results faster.
+
+#### Reduced risks and costs
+
+Reduce infrastructure overhead with Snowflake's managed platform. Lower risk and total cost for you and your customers.
+
+#### Knowledge transfer
+
+Snowflake training, developer resources and technical enablement give your team the product depth your enterprise customers expect.
+
+#### Strategic data modernization
+
+Migrate and modernize legacy stacks faster, delivering unified, AI ready data infrastructure your customers can build on.
+
+![Posit logo](https://www.snowflake.com/content/experience-fragments/snowflake-site/language-masters/en/site/customer_features/pullquote-cards/posit-pullquote/_jcr_content/root/case_study_card_copy_601311331/logo.coreimg.svg/1788279850128/posit-logo.svg)
+
+PARTNER TESTIMONIAL
+
+“Partnering with Snowflake helps Posit convert community strength into enterprise momentum, generating +173% top-of-funnel growth in one year.”
+
+Adam Smith VP Alliances, Posit
+
+![Two coworkers looking at a computer together](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--f457fa72-29dd-403a-818c-8e8e3a495607/att-1280x1280.png?quality=85&preferwebp=true&sfver=55dbdd4f)
+
+## Your roadmap to becoming an AI Data Cloud Product Partner
+
+#### Join the Snowflake Partner Network
+
+Join SPN and get access to the partner portal, deal registration and co-selling tools now.
+
+#### Align to program opportunities
+
+Develop a build and market strategy optimized to deliver customer outcomes and revenue growth. 
+
+#### Start building with Snowflake
+
+Access environments and developer resources to start building on Snowflake in minutes.
+
+Join over 14,000 partners that are growing their business on Snowflake
+
+![Braze logo](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--18768753-f695-4756-9bcc-c3e51929b7b3/braze-transparent.png?quality=85&preferwebp=true&sfver=b44237d7)
+
+## Start your path to becoming an AI Data Cloud Product Partner
+
+#### Snowflake Marketplace
+
+Reach thousands of Snowflake customers instantly. List your app or data product on the Marketplace without integration friction.
+
+![Two coworkers looking at a computer togehter](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--5a809c11-99d5-42be-8896-12e71413dedd/promo-banner-generic-61.png?quality=85&preferwebp=true&sfver=ba345660)
+
+#### SPN Learn
+
+Build Snowflake expertise anytime, anywhere, at your own pace with classes, certifications and learning paths designed specifically for partners.
+
+![Coworkers collaborating together around a meeting table](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--50e301ce-aad3-43a8-8e4b-a370bd7aee0f/media-publisher-advertising.png?quality=85&preferwebp=true&sfver=5631670c)
+
+#### Snowflake University
+
+Discover on-demand courses, hands-on labs and certifications to deepen expertise and validate skills at every level.
+
+![Abstract image of database](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--77ffa490-18c6-4e8d-b4a1-e68466b3a9de/sf-native-apps-cointainer-services.jpg?quality=85&preferwebp=true&sfver=7be351ce)
+
+#### Snowflake Native App Framework
+
+Build secure apps that run inside customers' Snowflake accounts with zero data movement, built-in governance capabilities and seamless distribution.
+
+![Two coworkers looking at a tablet](https://www.snowflake.com/adobe/dynamicmedia/deliver/dm-aid--4107e520-6615-48c8-8dc7-acba6537790f/promo-banner-generic-8.png?quality=85&preferwebp=true&sfver=106c93dc)
+
+#### Snowflake Partner Activate
+
+Access co-marketing, demo credits and go-to-market resources to launch, promote and scale your product built on Snowflake faster.
+
+## Frequently Asked Questions
+
+The most common questions about the Snowflake Partner Network, answered here.
+
+How do I join the Snowflake Partner Network?
+
+Submit your application at spn.snowflake.com and select the Data Cloud Product Partner track. Once approved, you get immediate access to the Snowflake Native App Framework, developer sandbox environments and Marketplace listing tools — everything you need to start building and distributing on Snowflake.
+
+What tiers exist for Data Cloud Product Partners?
+
+Data Cloud Product Partners are organized into three tiers — Select, Premier and Elite. Your tier reflects the maturity of your Snowflake integration, the depth of your Marketplace presence and the number of joint customers you've built together with Snowflake. Higher tiers come with greater co-sell support, marketing investment and program benefits.
+
+What technical requirements must my product meet?
+
+Your product needs to pass Snowflake's security review and support either the Snowflake Native App Framework or Snowflake Partner Connect. A published or in-progress Marketplace listing is also required. Snowflake's technical team works with you through the review process to make sure your integration meets the standards customers expect.
+
+How do I publish on the Snowflake Marketplace?
+
+Build your product using the Snowflake Native App Framework, then submit it for listing review. You can offer your product as free, paid or trial-based, and once approved, it's available to more than 14,000 Snowflake customers globally. Snowflake's partner team can guide you through the process and help you optimize your listing for discovery.
+
+What go-to-market support is available?
+
+The support you receive scales with your partner tier. Qualified partners can access joint solution briefs, co-branded marketing assets, featured placement on the Snowflake Marketplace and a listing on the Snowflake Partner Directory. Elite and Premier partners also get alignment with Snowflake's field sales team for co-sell motions and account introductions.
+
+Is there a cost to join or maintain partner status?
+
+There is no fee to join or be a Registered partner. Select, Premier and Elite partners each have an annual fee, due upon achieving the tier and unlocking relevant program benefits.
+
+## Where Data Does More

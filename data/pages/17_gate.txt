@@ -1,0 +1,311 @@
+https://www.plain.com/pricing
+
+[Product]
+
+[Solutions]
+
+[Resources]
+
+Customers
+
+Pricing
+
+Sign in
+
+Book a demo
+
+# Pricing
+
+Support for teams that ship. Start today, no credit card required.
+
+Foundation
+
+For small teams getting started with support
+
+### 55
+
+### 45
+
+per user per month
+
+Billed annually
+
+#### Save 20%
+
+start Free Trial
+
+1,000 credits / month
+
+Sidekick (internal AI agent)
+
+Ari (customer AI agent)
+
+AI workflows
+
+Slack, email, in-app channels
+
+Linear, Jira integrations
+
+Help Center, Knowledge Base
+
+Horizon
+
+For growing teams with more complex workflows
+
+### $99
+
+per user per month
+
+Billed annually
+
+Book a Demo
+
+2,500 credits / month, Microsoft Teams, SLAs and Business hours, Escalation paths, CRM integrations, Reporting themes, AI suggested responses, Most Popular, Frontier
+
+For larger organizations who require advanced governance and control
+
+### Custom
+
+Billed annually
+
+Book a Demo
+
+Custom credits, Multiple workspaces, Custom contracting, Advanced security, SSO and SCIM, HIPAA, White glove onboarding
+
+Dedicated customer success manager
+
+7 day free trial
+
+No credit card required
+
+Stellar support
+
+Check out our startup program for 50% off
+
+Foundation
+
+$45/user/month
+billed annually
+
+Horizon
+
+$99/user/month
+billed annually
+
+Frontier
+
+Custom
+
+#### Seats
+
+Member seats, Up to 5, Minimum 3, up to 10, Custom, Viewer seats, Unlimited
+
+#### Credits
+
+Credits included, 1,000/month, 2,500/month, Custom, +1,000 credits, $10.00 USD, +2,000 credits, $20.00 USD, +5,000 credits, $50.00 USD, +10,000 credits, $100.00 USD
+
+#### AI agents
+
+Customer Agent
+
+100 credits/resolution
+
+Sidekick Agent
+
+15-300+ credits, depending on effort
+
+#### INFRASTRUCTURE
+
+Connected Agent
+
+15 credits/assignment + 15 credits/discussion
+
+#### Automation
+
+Workflows, Unlimited, Auto-labelling, Urgency detection, Thread summaries, Suggested responses
+
+#### Channels & self-service
+
+Slack, 25 channels, Unlimited, Email, 2 addresses, 10 addresses, 25 addresses, In-app forms, Live chat, Knowledge Base, 1, Unlimited, Customer inbox, 1, Unlimited, Headless portal, Microsoft Teams, Discord
+
+#### Support operations
+
+Tiers, Saved views, CSAT, Autoresponders, Business hours, 1 schedule, Unlimited, SLAs, Escalation paths
+
+#### Slack operations
+
+Slack Broadcasts
+
+Slack Discussions
+
+Slack Digests
+
+#### Customer context & insights
+
+Customer cards
+
+Unlimited
+
+Customer card data freshness
+
+15s, Thread fields, Tenants, Reporting history, 7 days, All time, Themes, Team reporting
+
+#### Integrations
+
+Linear, Shortcut, Jira, GitHub, incident.io, Rootly, Cursor, HubSpot sync, Attio sync, Salesforce sync
+
+#### Importers
+
+Intercom importer, Freshdesk importer, Zendesk importer, Help Scout
+
+#### Developer platform
+
+API, Webhooks, Events, MCP, Custom channels
+
+#### Security & Governance
+
+SOC2 Type II Report, HIPAA, Custom roles, SSO and SCIM, Multiple workspaces, Custom contracting, Advanced Security Review, Support SLAs, Uptime SLAs
+
+7 Day Free Trial
+
+Book a Demo
+
+## Frequently Asked Questions
+
+Can I try Plain before paying?
+
+What am I paying for?
+
+What’s the difference between a member seat and a viewer seat?
+
+Which plan should I choose?
+
+What are credits?
+
+What uses credits?
+
+How do I know how many credits an AI task will use?
+
+Do unused credits roll over?
+
+What happens if I run out of credits?
+
+Do you offer discounts for startups?
+
+#### Fast growing companies love plain
+
+## Take their word for it
+
+Case study
+
+We see Plain as a tool very similar to Raycast. Focused on a great user experience, intelligent workflows, and truly empowering the teams that use it.
+
+Daniel Sequeira
+
+Head of Business Operations
+
+#### WHere next?
+
+## Choose your own adventure
+
+Product
+
+Customers
+
+Changelog
+
+## Get your support running on Plain in minutes.
+
+Book a demo
+
+Start for free
+
+Platform & AI Agents
+
+Platform
+
+Customer Agent
+
+Sidekick Agent
+
+Connected Agents
+
+Workflow Automation
+
+Broadcasts
+
+Headless Support
+
+Integrations
+
+Slack
+
+Microsoft Teams
+
+Email
+
+Help Center
+
+CRMs
+
+Live Chat
+
+All Integrations
+
+Solutions
+
+Open Infrastructure
+
+Multi-Channel
+
+AI-Native
+
+Migrate to Plain
+
+Compare
+
+B2B SaaS
+
+Startups
+
+Support
+
+Help Center
+
+Documentation
+
+API & Developer
+
+Changelog
+
+Status
+
+Trust Center
+
+Resources
+
+Blog
+
+Guides
+
+Events & Webinars
+
+Customers
+
+Pricing
+
+Company
+
+Careers
+
+Contact (help@plain.com)
+
+© 2026 Not Just Tickets Ltd. All rights reserved.
+
+Privacy
+
+Security
+
+Terms
+
+DPA

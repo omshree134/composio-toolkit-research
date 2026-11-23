@@ -1,0 +1,394 @@
+https://developer.vonage.com/en/messages/concepts/messages-api-sandbox
+
+Sandbox API Guide | Messages API
+
+ Messages API Sandbox
+
+The Messages API Sandbox is a quick way to try out sending messages via certain messaging channels using the Vonage Messages API. It does not need any external accounts to be set up with providers (such as WhatsApp Business Account). This means that you can try out these channels of the Messages API right away using your Vonage account.
+
+- WhatsApp
+- Viber
+- Facebook Messenger
+- Instagram
+
+Note: the Instagram channel itself is currently in Early Access and not Generally Available for all customers. This channel is, however, available for anyone to try out using the Sandbox.
+
+To use the sandbox to try out sending messages for a particular channel, your number or ID associated with that channel must first be added to a list of allowed numbers/IDs for the channel. You will need to send a message to the sandbox as instructed on the Dashboard so that your number or ID can be allow-listed.
+
+Please note that:
+
+- Allow-listed numbers and IDs are associated with specific Vonage API keys. If you allow-list the same number/ID with a different Vonage API key (e.g., via a separate Vonage Dashboard account), that number/ID will be removed from the Sandbox allow-list for the API key it was previously added for.
+- The Sandbox uses a different API endpoint from the production Messages API. Ensure that you are using the Sandbox endpoint when trying out the Messages API via the Sandbox.
+- The Sandbox is for trying out the Messages API, for example during an initial exploration of the API. It is not intended to be used as part of a QA or staging environment for testing your integration before going live. If you've already decided to integrate the Messages API into your application, we recommend setting up your own account by following the instructions on the dashboard for the particular channel.
+
+Note: when using the Sandbox, sending messages is still subject to the same messaging workflow constraints as they would be when sending a message via the production endpoint. For example, when sending WhatsApp messages, there is still a 24-hour communication window, so when first allow-listing your number for the Sandbox, you would need to send a message from the WhatsApp Sandbox number to your allow-listed number within that window if you want to send a non-template message (WhatsApp templates are currently nor enabled for the Messages Sandbox).
+
+ Messages API Sandbox Pricing
+
+The Messages API Sandbox is free to use. A monthly fair usage limit of 100 messages/month applies. If this is exceeded, your message requests will return a 429 HTTP error.
+
+ Rate Limit
+
+The Messages API Sandbox has a rate limit of one message per second.
+
+ Set up your sandbox
+
+Follow the steps below to set up a channel on the Sandbox (note that each channel needs to be set up separately).
+
+1. Go to the Messages API Sandbox on the Dashboard.
+2. If you have multiple API keys available in the API Key drop-down list, select the API key to associate with the sandbox you are setting up.
+3. Click the Add to sandbox link associated with the channel you want to set up and follow the instructions in the Dashboard for that channel.
+
+ Configure webhooks
+
+Inbound Message and Message Status webhooks need to be configured for the Sandbox separately from any account-level webhooks or Vonage Application webhooks that you may already have set up.
+
+1. Enter your application's Inbound webhook URL. The inbound webhook is the URL to which inbound messages are forwarded.
+2. Enter your application's Status webhook URL. The status webhook is the URL at which you will receive message status updates.
+3. Click the Save webhooks button.
+
+![Configure webhooks](https://developer.vonage.com/api/v1/developer/assets/images/messages/config-webhooks.png)
+
+ Webhook Retries
+
+Inbound and Status webhooks are retried on a per-notification basis in the Messages API Sandbox. Any non-200 response to a webhook will prompt Vonage to retry periodically at intervals of increasing length: 5, 10, 20, 40, 80, 160, 320, 640, and then every 900 seconds for 24 hours.
+
+ Send a test message via the Messages API Sandbox
+
+Once your number or recipient ID is allow-listed, you will need to use the Messages API Sandbox endpoint to send your test messages. The `from` value in the request should be the ID or number associated with the specific Vonage Sandbox external account. For your testing purposes, the value in the `from` field is already populated in the code snippets provided in the Dashboard. It is important to note that you will need to replace the value in the `to` field with your number or Recipient ID that is allow-listed on the specific Vonage Sandbox external account.
+
+The example below demonstrates using the Sandbox to send a WhatsApp text message, but the same general approach can be used for other channels. Note the use of the Sandbox endpoint rather than the standard Messages endpoint (when using one of the Server SDKs, this requires overriding the default endpoint).
+
+Find the description for all variables used in each code snippet below:
+
+| Key | Description |
+| --- | --- |
+| `VONAGE_APPLICATION_ID` | The Vonage Application ID. |
+| `VONAGE_PRIVATE_KEY` | Private key for the Vonage Application. |
+| `MESSAGES_SANDBOX_URL` | For sandbox testing the base URL is `https://messages-sandbox.nexmo.com/v1/messages`. |
+| `MESSAGES_SANDBOX_HOST` | For sandbox testing the hostname is `messages-sandbox.nexmo.com`. |
+| `WHATSAPP_SENDER_ID` | The WhatsApp number that has been allocated to you by Vonage. For sandbox use this is the number shown as the `from` value in the WhatsApp example on the Sandbox page in the Vonage Dashboard. |
+| `MESSAGES_TO_NUMBER` | The number you are sending the to in E.164 format. For example `447700900000`. |
+
+NOTE: Don't use a leading `+` or `00` when entering a phone number, start with the country code, for example, 447700900000.
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+## Write the code
+
+Add the following to `send-text.sh`:
+
+```
+curl -X POST $MESSAGES_SANDBOX_URL \
+  -H "Authorization: Bearer "$JWT\
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d $'{
+    "to": "'${MESSAGES_TO_NUMBER}'",
+    "from": "'${WHATSAPP_SENDER_ID}'",
+    "channel": "whatsapp",
+    "message_type": "text",
+    "text": "This is a WhatsApp text message sent using the Vonage Messages API."
+  }'
+```
+
+## Run your code
+
+Save this file to your machine and run it:
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+```
+npm install @vonage/server-sdk @vonage/messages
+```
+
+Create a file named `send-text.js` and add the following code:
+
+```
+const vonage = new Vonage(
+  {
+    applicationId: VONAGE_APPLICATION_ID,
+    privateKey: VONAGE_PRIVATE_KEY,
+  },
+  {
+    apiHost: MESSAGES_SANDBOX_URL,
+  },
+);
+```
+
+## Write the code
+
+Add the following to `send-text.js`:
+
+```
+vonage.messages.send({
+  to: MESSAGES_TO_NUMBER,
+  from: WHATSAPP_SENDER_ID,
+  channel: Channels.WHATSAPP,
+  messageType: 'text',
+  text: 'This is a WhatsApp text message sent using the Vonage Messages API.',
+})
+  .then((resp) => console.log(resp.messageUUID))
+  .catch((error) => console.error(error));
+```
+
+## Run your code
+
+Save this file to your machine and run it:
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+Add the following to `build.gradle`:
+
+```
+implementation 'com.vonage:server-sdk-kotlin:2.1.1'
+```
+
+Create a file named `SendWhatsappText` and add the following code to the `main` method:
+
+```
+val client = Vonage {
+    applicationId(VONAGE_APPLICATION_ID)
+    privateKeyPath(VONAGE_PRIVATE_KEY_PATH)
+}
+```
+
+## Write the code
+
+Add the following to the `main` method of the `SendWhatsappText` file:
+
+```
+println(client.messages.send(
+    whatsappText {
+        to(MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER)
+        from(MESSAGES_SANDBOX_WHATSAPP_NUMBER)
+        text("Hello from $WHATSAPP_SENDER_ID!")
+    },
+    sandbox = true
+))
+```
+
+## Run your code
+
+We can use the `application` plugin for Gradle to simplify the running of our application. Update your `build.gradle` with the following:
+
+```
+apply plugin: 'application'
+mainClassName = project.hasProperty('main') ? project.getProperty('main') : ''
+```
+
+Run the following `gradle` command to execute your application, replacing `com.vonage.quickstart.kt.messages.sandbox.whatsapp` with the package containing `SendWhatsappText`:
+
+gradle run -Pmain=com.vonage.quickstart.kt.messages.sandbox.whatsapp.SendWhatsappText
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+Add the following to `build.gradle`:
+
+```
+implementation 'com.vonage:server-sdk:9.3.1'
+```
+
+## Write the code
+
+Add the following to the `main` method of the `SendWhatsappText` file:
+
+```
+System.out.println(VonageClient.builder()
+		.applicationId(VONAGE_APPLICATION_ID)
+		.privateKeyPath(VONAGE_PRIVATE_KEY_PATH)
+		.build()
+		.getMessagesClient()
+		.useSandboxEndpoint()
+		.sendMessage(WhatsappTextRequest.builder()
+			.from(MESSAGES_SANDBOX_WHATSAPP_NUMBER)
+			.to(MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER)
+			.text("Hello from Vonage, "+System.getenv("NAME"))
+			.build()
+		).getMessageUuid()
+);
+```
+
+## Run your code
+
+We can use the `application` plugin for Gradle to simplify the running of our application. Update your `build.gradle` with the following:
+
+```
+apply plugin: 'application'
+mainClassName = project.hasProperty('main') ? project.getProperty('main') : ''
+```
+
+Run the following `gradle` command to execute your application, replacing `com.vonage.quickstart.messages.sandbox.whatsapp` with the package containing `SendWhatsappText`:
+
+gradle run -Pmain=com.vonage.quickstart.messages.sandbox.whatsapp.SendWhatsappText
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+```
+Install-Package Vonage
+```
+
+## Write the code
+
+Add the following to `SendWhatsAppText.cs`:
+
+```
+// Set "Url.Api" to "https://messages-sandbox.nexmo.com" in appsettings.json
+var credentials = Credentials.FromAppIdAndPrivateKeyPath(VONAGE_APPLICATION_ID, VONAGE_PRIVATE_KEY_PATH);
+
+var vonageClient = new VonageClient(credentials);
+
+var request = new WhatsAppTextRequest
+{
+    To = messagesSandboxAllowListedToNumber,
+    From = messagesSandboxWhatsAppNumber,
+    Text = "A WhatsApp text message sent using the Vonage Messages API via the Messages Sandbox"
+};
+
+var response = await vonageClient.MessagesClient.SendAsync(request);
+```
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+```
+composer require vonage/client
+```
+
+Create a file named `send-text.php` and add the following code:
+
+```
+$keypair = new \Vonage\Client\Credentials\Keypair(
+    file_get_contents(VONAGE_APPLICATION_PRIVATE_KEY_PATH),
+    VONAGE_APPLICATION_ID
+);
+
+$client = new \Vonage\Client(
+    $keypair,
+    [
+        'base_api_url' => MESSAGES_SANDBOX_URL
+    ]   
+);
+```
+
+## Write the code
+
+Add the following to `send-text.php`:
+
+```
+$whatsApp = new \Vonage\Messages\MessageType\WhatsApp\WhatsAppText(
+    MESSAGES_SANDBOX_ALLOW_LISTED_TO_NUMBER,
+    MESSAGES_SANDBOX_WHATSAPP_NUMBER,
+    'This is a WhatsApp text message sent using the Vonage PHP SDK via the Messages Sandbox via the Messages Sandbox'
+);
+
+$response = $client->messages()->send($message);
+```
+
+## Run your code
+
+Save this file to your machine and run it:
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+```
+pip install vonage python-dotenv
+```
+
+Create a file named `send-text.py` and add the following code:
+
+```
+client = Vonage(
+    auth=Auth(
+        application_id=VONAGE_APPLICATION_ID,
+        private_key=VONAGE_PRIVATE_KEY,
+    ),
+    http_client_options=HttpClientOptions(api_host=MESSAGES_SANDBOX_HOST),
+)
+```
+
+## Write the code
+
+Add the following to `send-text.py`:
+
+```
+message = WhatsappText(
+    to=MESSAGES_TO_NUMBER,
+    from_=WHATSAPP_SENDER_ID,
+    text="This is a WhatsApp text message sent using the Vonage Messages API via the Messages Sandbox",
+)
+
+response = client.messages.send(message)
+```
+
+## Run your code
+
+Save this file to your machine and run it:
+
+## Prerequisites
+
+If you do not have an application you can create one. Make sure you also configure your webhooks.
+
+```
+gem install vonage
+```
+
+Create a file named `send-text.rb` and add the following code:
+
+```
+client = Vonage::Client.new(
+  application_id: VONAGE_APPLICATION_ID,
+  private_key: VONAGE_PRIVATE_KEY,
+  api_host: MESSAGES_SANDBOX_HOST
+)
+```
+
+## Write the code
+
+Add the following to `send-text.rb`:
+
+```
+message = client.messaging.whatsapp(
+  type: 'text',
+  message: "This is a WhatsApp text message sent using the Vonage Messages API"
+)
+
+client.messaging.send(
+  from: WHATSAPP_SENDER_ID,
+  to: MESSAGES_TO_NUMBER,
+  **message
+)
+```
+
+## Run your code
+
+Save this file to your machine and run it:
+
+ Try it out
+
+When you run the code, a WhatsApp message is sent to the destination number.
+
+ Next Steps
+
+Now that you've tried out these channels with the Messages API Sandbox, here are some steps you can follow to get building with the Messages API itself:
+
+ Set up your social channels
+
+The exact process for doing this will depend on the channel itself. You can start from the External Accounts page of the Vonage Dashboard, or first refer to the channel-specific Getting Started documentation:
+
+- Getting Started with WhatsApp
+- Getting started with Facebook Messenger
+- Getting Started with Viber Business Messages

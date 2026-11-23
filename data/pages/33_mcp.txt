@@ -1,0 +1,464 @@
+https://www.markifact.com/linkedin-ads-mcp
+
+LinkedIn Ads MCP: Run B2B Campaigns from Claude & ChatGPT | Markifact
+
+# The LinkedIn Ads MCP server that moves B2B revenue forward
+
+Give Claude, ChatGPT, or any AI agent a working connection to LinkedIn Ads. Explore B2B performance, shape precise audiences, build campaigns and creative, and review each account change before it runs.
+
+![Bassem](https://www.markifact.com/images/testimonials/bassem.webp)![Gamal](https://www.markifact.com/images/testimonials/gamal.webp)![Ahmed](https://www.markifact.com/images/testimonials/ali.jpg)![Juan](https://www.markifact.com/images/testimonials/juan.webp)
+
+10,000+ marketers scaling with AI.
+
+![LinkedIn Ads connected to Claude, ChatGPT, and MCP clients through Markifact](https://www.markifact.com/images/features/linkedin-ads-mcp.webp)
+
+## See LinkedIn Ads MCP in action
+
+Trusted by marketing teams at
+
+![Incubeta](https://www.markifact.com/images/clients/incubeta.webp)
+
+![GroupM](https://www.markifact.com/images/clients/groupm.png)
+
+![Dentsu](https://www.markifact.com/images/clients/dentsu.png)
+
+![OMD](https://www.markifact.com/images/clients/omd.png)
+
+![Starcom](https://www.markifact.com/images/clients/starcom.png)
+
+![Desertcart](https://www.markifact.com/images/clients/desertcart.png)
+
+![Kave Home](https://www.markifact.com/images/clients/kavehome.png)
+
+![Brainlabs](https://www.markifact.com/images/clients/brainlabs.webp)
+
+![Ting](https://www.markifact.com/images/clients/ting.png)
+
+![Orka](https://www.markifact.com/images/clients/orka.png)
+
+![Nova Post](https://www.markifact.com/images/clients/nova.webp)
+
+## What you can do with LinkedIn Ads MCP
+
+B2B advertising asks harder questions than a dashboard can answer. Markifact gives your AI the reporting, targeting, campaign, and creative tools to carry the work from account plan to approved action.
+
+![LinkedIn Ads lead generation report across B2B campaigns inside Claude using Markifact MCP](https://www.markifact.com/images/features/linkedin-ads-reporting.webp)
+
+### See every account in one answer
+
+Compare campaigns, ad sets, and ads across LinkedIn ad accounts with the metrics, pivots, date windows, and filters your question actually needs.
+
+### Find the story behind CPL
+
+Break spend and leads down by campaign, audience, or creative, then surface the B2B programs gaining efficiency before the trend disappears in a spreadsheet.
+
+![LinkedIn carousel ad for a B2B benchmark report prepared in Claude and waiting for approval](https://www.markifact.com/images/features/linkedin-ads-creative.webp)
+
+### Build lead-focused creative
+
+Create single image, video, carousel, text, and Spotlight ads, or sponsor an existing Company Page post. Attach an existing Lead Gen Form where LinkedIn supports it.
+
+### Launch a complete campaign structure
+
+Create campaign groups and campaigns with objectives, schedules, budgets, bidding, conversions, and audience settings, while keeping new work paused until review.
+
+![Account list matched to a professional LinkedIn audience for account-based marketing](https://www.markifact.com/images/features/linkedin-ads-abm-audience.webp)
+
+### Turn an ICP into targeting
+
+Resolve real LinkedIn targeting values for companies, job titles, seniority, industry, skills, company size, and location, then combine them into an ABM-ready audience.
+
+### Protect budgets with a review stop
+
+Raise or lower budgets, pause weak campaigns, activate approved work, and standardize names. Markifact holds every account change until someone approves it.
+
+## Use LinkedIn Ads in your favorite AI. Plus your whole marketing stack
+
+One MCP connection brings LinkedIn Ads, your wider marketing stack, and your preferred AI assistant into the same workflow.
+
+Your Stack
+
+![Claude logo](https://www.markifact.com/images/apps/claude.webp)
+
+Claude
+
+![ChatGPT logo](https://www.markifact.com/images/apps/openai.webp)
+
+ChatGPT
+
+Gemini
+
+Grok
+
+![Markifact MCP hub](https://www.markifact.com/images/logo/icon.svg)
+
+Ad Platforms 14 platforms
+
+![Meta Ads logo](https://www.markifact.com/images/apps/meta.webp)
+
+![Google Ads logo](https://www.markifact.com/images/apps/gads.webp)
+
+![TikTok Ads logo](https://www.markifact.com/images/apps/tiktok.webp)
+
+![Microsoft Ads logo](https://www.markifact.com/images/apps/microsoft.webp)
+
+![Snapchat Ads logo](https://www.markifact.com/images/apps/snapchat.webp)
+
++9
+
+Analytics & Data 13 platforms
+
+![Google Analytics logo](https://www.markifact.com/images/apps/ga4.webp)
+
+![BigQuery logo](https://www.markifact.com/images/apps/bigquery.webp)
+
+![Google Search Console logo](https://www.markifact.com/images/apps/gsc.webp)
+
+![Bing Webmaster Tools logo](https://www.markifact.com/images/apps/bing-webmaster.webp)
+
+![Google Tag Manager logo](https://www.markifact.com/images/apps/gtm.webp)
+
++8
+
+Workspace 8 platforms
+
+![Google Drive logo](https://www.markifact.com/images/apps/drive.webp)
+
+![Google Sheets logo](https://www.markifact.com/images/apps/sheets.webp)
+
+![Google Slides logo](https://www.markifact.com/images/apps/slides.webp)
+
+![Google Docs logo](https://www.markifact.com/images/apps/docs.webp)
+
+![Microsoft SharePoint logo](https://www.markifact.com/images/apps/sharepoint.webp)
+
++3
+
+Messaging & Social 9 platforms
+
+![YouTube logo](https://www.markifact.com/images/apps/youtube.webp)
+
+![Email logo](https://www.markifact.com/images/apps/email.webp)
+
+![Facebook Organic logo](https://www.markifact.com/images/apps/facebook.webp)
+
+![Instagram Organic logo](https://www.markifact.com/images/apps/instagram.webp)
+
+![LinkedIn Organic logo](https://www.markifact.com/images/apps/linkedin.webp)
+
++4
+
+E-commerce & CRM 4 platforms
+
+![Google Merchant Center logo](https://www.markifact.com/images/apps/gmc.webp)
+
+![Shopify logo](https://www.markifact.com/images/apps/shopify.webp)
+
+![HubSpot logo](https://www.markifact.com/images/apps/hubspot.webp)
+
+![Klaviyo logo](https://www.markifact.com/images/apps/klaviyo.webp)
+
+AI Assistants
+
+![Claude logo](https://www.markifact.com/images/apps/claude.webp)
+
+Claude
+
+Ad Platforms 14 platforms
+
+![Meta Ads logo](https://www.markifact.com/images/apps/meta.webp)
+
+![TikTok Ads logo](https://www.markifact.com/images/apps/tiktok.webp)
+
+![Microsoft Ads logo](https://www.markifact.com/images/apps/microsoft.webp)
+
++10
+
+Analytics & Data 13 platforms
+
++9
+
+Workspace 8 platforms
+
+![Google Drive logo](https://www.markifact.com/images/apps/drive.webp)
+
+## Set up in minutes
+
+Skip the developer application and infrastructure work. Connect your account, add Markifact to your AI client, and start asking LinkedIn Ads questions.
+
+![Connect LinkedIn Ads to Markifact through OAuth](https://www.markifact.com/images/features/connect-linkedin-ads-to-mcp.webp)
+
+### Connect LinkedIn Ads
+
+Sign in to Markifact and authorize the LinkedIn ad accounts you manage. Your team can get started without creating its own developer app or hosting an API integration.
+
+Clients
+
+- ![](https://www.markifact.com/images/apps/claude.webp) Claude
+- ![](https://www.markifact.com/images/apps/openai.webp) ChatGPT
+- ![](https://www.markifact.com/images/apps/grokbot.webp) Grok Bot
+- ![](https://www.markifact.com/images/apps/codex.webp) Codex
+- ![](https://www.markifact.com/images/apps/gemini.webp) Gemini CLI
+- Other clients
+
+Markifact is available in the Claude connector directory:
+
+![](https://www.markifact.com/images/apps/claude.webp) Connect in Claude 
+
+Open the listing and click Connect to add Markifact to Claude.
+
+Markifact is available in the ChatGPT plugins marketplace:
+
+Connect in ChatGPT 
+
+Open the listing and click Connect to add Markifact to ChatGPT.
+
+Markifact is available in the Grok Bot Directory:
+
+Open the listing and click Add to Grok Bot.
+
+```
+https://api.markifact.com/mcp
+```
+
+Codex Desktop -> Settings -> MCP Servers -> Add Server -> name Markifact, transport Streamable HTTP, paste the URL.
+
+```
+$ gemini mcp add --transport http markifact https://api.markifact.com/mcp
+```
+
+ Use this URL in any MCP-compatible client:
+
+```
+https://api.markifact.com/mcp
+```
+
+### Connect your AI assistant
+
+Pick Claude, ChatGPT, Cursor, or any MCP-compatible assistant and copy the setup. One URL or command and you're connected to Markifact.
+
+![Manage LinkedIn Ads campaigns from Claude using Markifact](https://www.markifact.com/images/features/start-managing-ads.webp)
+
+### Start managing ads
+
+Ask for a cross-account report, prepare a new ABM campaign, sponsor a Company Page post, or adjust a budget. Markifact pauses every write for your decision.
+
+## LinkedIn Ads MCP prompt examples
+
+Start with a real B2B question. These prompts show how Markifact can investigate the market, prepare campaigns, explain results, and queue controlled optimizations.
+
+01 Research 02 Launch 03 Report 04 Optimize 
+
+Map the market, message, and B2B audience before launch.
+
+- >
+
+Search LinkedIn's Ads Library for our three closest competitors and group their offers by funnel stage.
+
+Copy prompt: Search LinkedIn's Ads Library for our three closest competitors and group their offers by funnel stage.
+- >
+
+Find valid LinkedIn targeting values for VP Finance, CFO, and finance operations roles in the UAE.
+
+Copy prompt: Find valid LinkedIn targeting values for VP Finance, CFO, and finance operations roles in the UAE.
+- >
+
+Build an audience outline for enterprise cybersecurity buyers using job title, seniority, industry, and company size.
+
+Copy prompt: Build an audience outline for enterprise cybersecurity buyers using job title, seniority, industry, and company size.
+- >
+
+List our recent Company Page posts and identify which ones make a strong sponsored content test.
+
+Copy prompt: List our recent Company Page posts and identify which ones make a strong sponsored content test.
+
+Assemble the B2B campaign, creative, and targeting for review.
+
+- >
+
+Create a paused lead generation campaign for our CFO benchmark with a $250 daily budget.
+
+Copy prompt: Create a paused lead generation campaign for our CFO benchmark with a $250 daily budget.
+- >
+
+Build an ad set for IT directors at companies with more than 1,000 employees in the United States.
+
+Copy prompt: Build an ad set for IT directors at companies with more than 1,000 employees in the United States.
+- >
+
+Create three single image ads, attach our existing Lead Gen Form, and leave every ad paused.
+
+Copy prompt: Create three single image ads, attach our existing Lead Gen Form, and leave every ad paused.
+- >
+
+Sponsor our latest Company Page post in the enterprise ABM ad set and wait for approval.
+
+Copy prompt: Sponsor our latest Company Page post in the enterprise ABM ad set and wait for approval.
+
+Connect spend to leads, efficiency, and account-level decisions.
+
+- >
+
+Compare spend, leads, CPL, and conversion rate by campaign across all LinkedIn ad accounts this quarter.
+
+Copy prompt: Compare spend, leads, CPL, and conversion rate by campaign across all LinkedIn ad accounts this quarter.
+- >
+
+Which job title audiences produced the most leads in the last 30 days, and what did each cost?
+
+Copy prompt: Which job title audiences produced the most leads in the last 30 days, and what did each cost?
+- >
+
+Show lead gen performance by creative and flag ads with more than $2,000 spend but no leads.
+
+Copy prompt: Show lead gen performance by creative and flag ads with more than $2,000 spend but no leads.
+- >
+
+Compare enterprise and mid-market campaign results week over week and explain the largest change.
+
+Copy prompt: Compare enterprise and mid-market campaign results week over week and explain the largest change.
+
+Turn B2B performance signals into controlled account changes.
+
+- >
+
+Pause ad sets with CPL above $180 after at least 10 leads, and show me the approval request.
+
+Copy prompt: Pause ad sets with CPL above $180 after at least 10 leads, and show me the approval request.
+- >
+
+Move $2,000 of daily budget from the weakest campaign to the strongest campaign without activating anything new.
+
+Copy prompt: Move $2,000 of daily budget from the weakest campaign to the strongest campaign without activating anything new.
+- >
+
+Find active ads with falling click-through rate and prepare two carousel replacements for review.
+
+Copy prompt: Find active ads with falling click-through rate and prepare two carousel replacements for review.
+- >
+
+Rename every active campaign to our region, audience, offer, and quarter naming standard.
+
+Copy prompt: Rename every active campaign to our region, audience, offer, and quarter naming standard.
+
+## What a session actually looks like
+
+A single request can move from diagnosis to a prepared account change without hiding the decision. Here, Claude finds rising CPL, identifies the stronger campaign, and stops at approval.
+
+![Claude conversation finding LinkedIn campaigns with rising CPL and preparing a budget change that waits for approval](https://www.markifact.com/images/features/linkedin-ads-mcp-session.webp)
+
+Example session. Claude uses Markifact's real LinkedIn Ads operations (linkedin_ads_get_report, linkedin_ads_update_campaign_budget); the budget change stops before execution and waits for your approval.
+
+## Which LinkedIn Ads MCP path fits your team?
+
+As of July 13, 2026, LinkedIn has not published an official Ads MCP server. It provides Marketing APIs and an official client library, while community projects and managed services translate those APIs into MCP tools. The right choice depends on who will own access, safeguards, and maintenance.
+
+### LinkedIn Marketing APIs
+
+First-party building blocks, no official MCP
+
+Choose it if
+
+- You have engineers, an approved LinkedIn app, and a narrow custom use case
+- You want to control each API request and maintain the agent layer yourself
+
+### Open-source MCPs
+
+Community code with hands-on ownership
+
+Choose it if
+
+- You can evaluate project security, tool coverage, and maintenance activity
+- You are prepared to host it and manage LinkedIn authentication
+
+### Markifact
+
+Hosted execution with approval controls
+
+Choose it if
+
+- You manage B2B programs across several accounts or clients
+- You need reporting and campaign actions in the same conversation
+- You want LinkedIn Ads beside the rest of your marketing stack
+
+| Capability | Markifact | LinkedIn (no official MCP) | Open-source MCPs |
+| --- | --- | --- | --- |
+| Setup | Hosted OAuth connection, ready without your own app | Marketing APIs require an approved LinkedIn developer app | Usually needs local hosting, credentials, and API access |
+| MCP availability | Managed remote MCP available now | No official LinkedIn Ads MCP published as of July 13, 2026 | Several community projects are available |
+| Best fit | B2B marketers, agencies, and multi-channel teams | Developers building directly on LinkedIn's Marketing APIs | Technical teams comfortable owning the integration |
+| Reporting depth | Custom metrics, pivots, filters, sorting, and date comparisons | Full API surface, with implementation left to your team | Ranges from read-only queries to broader analytics |
+| Multiple ad accounts | Account selection and cross-account agency workflows | Available through API permissions you implement | Support depends on the project and its auth design |
+| Campaign changes | Create and update campaigns, ad sets, ads, budgets, and statuses | Possible through Marketing APIs with approved write access | Some are read-only; writable projects vary in coverage |
+| Approval controls | Every write waits for explicit approval | No MCP approval layer because no Ads MCP is published | Must be designed, added, and maintained by your team |
+| Creative and lead gen | Image, video, carousel, text, Spotlight, sponsored posts, and Lead Gen Form attachments | Available through separate Marketing API resources | Coverage differs widely between servers |
+| B2B targeting | Company, title, seniority, industry, skill, size, and location lookup | Native targeting APIs and Campaign Manager workflows | Often limited to common targeting facets |
+| Other marketing systems | Google Ads, Meta Ads, TikTok Ads, GA4, Sheets, Slack, and more | LinkedIn only | Usually LinkedIn only, with a few multi-platform exceptions |
+| Ongoing maintenance | Auth, hosting, API version changes, and errors handled for you | Your team owns the application and API integration | Your team owns deployment, security, and upgrades |
+
+## Frequently Asked Questions
+
+Have a different question? Reach out to Markifact support team.
+
+### What is a LinkedIn Ads MCP server? 
+
+A LinkedIn Ads MCP server connects LinkedIn advertising data and actions to AI clients through the Model Context Protocol. With Markifact, you can ask for reports, build campaigns and creatives, resolve B2B targeting, and manage budgets from Claude, ChatGPT, Cursor, or another MCP client.
+
+### Is this an official LinkedIn MCP server? 
+
+No. As of July 13, 2026, LinkedIn has not published an official MCP server for LinkedIn Ads. LinkedIn provides Marketing APIs and an official Python client for approved developers. Markifact is a third-party managed MCP service that uses LinkedIn's supported API and OAuth access.
+
+### What does LinkedIn offer instead of an official Ads MCP? 
+
+LinkedIn offers Campaign Manager, versioned Marketing APIs, partner programs, and an official API client library. Those are building blocks rather than a ready-to-connect MCP endpoint, so a team using them directly must build the tools, authentication, hosting, safety controls, and maintenance layer.
+
+### Can I use Lead Gen Forms through LinkedIn Ads MCP? 
+
+Yes, with an important boundary. Markifact can attach an existing LinkedIn Lead Gen Form to supported single image, video, and carousel ads, and report on lead performance. The current tool set does not create the form itself inside chat.
+
+### Which LinkedIn ad formats can Markifact create? 
+
+Markifact can create single image, single video, carousel, text, and Dynamic Spotlight ads. It can also list Company Page posts and sponsor an existing post. Format availability still depends on LinkedIn's objective, ad set type, account eligibility, and creative rules.
+
+### Does it support LinkedIn's B2B targeting? 
+
+Yes. You can search LinkedIn targeting facets and resolve valid values for company, job title, seniority, industry, skill, company size, location, school, field of study, and other supported categories before creating an ad set.
+
+### Can I use Matched Audiences and account lists? 
+
+You can use audience identifiers already available to the ad account in campaign targeting, subject to LinkedIn permissions and compatibility. Markifact's current LinkedIn operations do not upload a new company list or create a new Matched Audience from chat, so those source audiences should be prepared in LinkedIn first.
+
+### Do I need my own LinkedIn developer app? 
+
+Not when you connect through Markifact. Building directly on LinkedIn's Marketing APIs normally requires a developer application, product access, OAuth setup, and the permissions needed for advertising data or writes. Markifact provides the managed connection layer.
+
+### Can one conversation work across multiple LinkedIn ad accounts? 
+
+Yes. Markifact supports selecting and reusing multiple LinkedIn ad accounts, which is useful for agencies, regional teams, and businesses with separate product lines. You can compare results across accounts without reconnecting each one for every report.
+
+### Can the AI change budgets or activate campaigns by itself? 
+
+No write executes silently. The AI can prepare a budget, status, rename, campaign, ad set, or creative change, but Markifact stops the operation and presents an approval request before anything is sent to LinkedIn.
+
+### How is MCP different from a LinkedIn Ads AI agent? 
+
+MCP is the connection standard that exposes tools to an AI client. An AI agent is the reasoning layer that decides which tools to use and in what order. Markifact supplies the managed LinkedIn Ads tools, while your chosen assistant or agent handles the conversation and planning.
+
+### How secure is the LinkedIn Ads connection? 
+
+Markifact uses OAuth-based access, keeps LinkedIn tokens away from the AI client, and separates instant read operations from approval-gated writes. Account access follows the LinkedIn permissions granted during connection.
+
+### Can I research competitors with LinkedIn's Ads Library? 
+
+Yes. Markifact can search and retrieve public ads from LinkedIn's Ads Library, so an AI client can organize competitor messaging, offers, formats, and calls to action before you plan a campaign. See the dedicated LinkedIn Ads Library MCP page for supported filters, prompts, and examples.
+
+### Are there open-source LinkedIn Ads MCP servers? 
+
+Yes. By July 2026, community options included linkedin-campaign-manager-mcp, read-only projects such as CData's LinkedIn Ads MCP example, and broader multi-platform servers. Their authentication, write coverage, hosting model, safeguards, and maintenance vary, so review the code and LinkedIn API requirements before connecting an ad account.
+
+### Is there a Claude connector for LinkedIn Ads? 
+
+Yes. Markifact works as a LinkedIn Ads connector for Claude. A connector is Claude's name for an MCP server in its interface: add Markifact under Settings, then Connectors, enable the LinkedIn Ads tools, and Claude can pull reports and prepare approval-gated campaign changes. The same connector works in ChatGPT and other MCP clients.
+
+### Can I also manage organic LinkedIn posts and my personal profile? 
+
+Yes. Use the separate LinkedIn MCP for personal profile and Company Page analytics, publishing text, images, videos, and documents, and managing comments with approval before writes. Connect LinkedIn Organic in Markifact separately from your LinkedIn Ads account.

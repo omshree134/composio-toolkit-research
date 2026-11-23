@@ -1,0 +1,1307 @@
+[
+ {
+  "n": 1,
+  "app": "Salesforce",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 2,
+  "app": "HubSpot",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 3,
+  "app": "Pipedrive",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 4,
+  "app": "Attio",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 5,
+  "app": "Twenty",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 6,
+  "app": "Podio",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 7,
+  "app": "Zoho CRM",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 8,
+  "app": "Close",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 9,
+  "app": "Copper",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 10,
+  "app": "DealCloud",
+  "cat": "CRM and Sales",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 11,
+  "app": "Zendesk",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 12,
+  "app": "Intercom",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 13,
+  "app": "Freshdesk",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 14,
+  "app": "Front",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 15,
+  "app": "Pylon",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 16,
+  "app": "LiveAgent",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 17,
+  "app": "Plain",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 18,
+  "app": "Help Scout",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 19,
+  "app": "Gorgias",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 20,
+  "app": "Gladly",
+  "cat": "Support and Helpdesk",
+  "auth": [
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 21,
+  "app": "Slack",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 22,
+  "app": "Twilio",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 23,
+  "app": "Zoho Cliq",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 24,
+  "app": "Lark (Larksuite)",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 25,
+  "app": "Pumble",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 26,
+  "app": "Discord",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 27,
+  "app": "Telegram",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 28,
+  "app": "WhatsApp Business",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 29,
+  "app": "Aircall",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 30,
+  "app": "Vonage",
+  "cat": "Communications and Messaging",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 31,
+  "app": "Google Ads",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 32,
+  "app": "Meta Ads",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 33,
+  "app": "LinkedIn Ads",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 34,
+  "app": "GoHighLevel",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 35,
+  "app": "Mailchimp",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 36,
+  "app": "Klaviyo",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 37,
+  "app": "systeme.io",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 38,
+  "app": "Pinterest",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 39,
+  "app": "Threads (Meta)",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 40,
+  "app": "SendGrid",
+  "cat": "Marketing, Ads, Email and Social",
+  "auth": [
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 41,
+  "app": "Shopify",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 42,
+  "app": "WooCommerce",
+  "cat": "Ecommerce",
+  "auth": [
+   "API key",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 43,
+  "app": "BigCommerce",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 44,
+  "app": "Salesforce Commerce Cloud",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 45,
+  "app": "Magento (Adobe Commerce)",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 46,
+  "app": "Squarespace",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 47,
+  "app": "Ecwid",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 48,
+  "app": "Gumroad",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 49,
+  "app": "Amazon Selling Partner",
+  "cat": "Ecommerce",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 50,
+  "app": "fanbasis",
+  "cat": "Ecommerce",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 51,
+  "app": "DataForSEO",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 52,
+  "app": "SE Ranking",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 53,
+  "app": "Ahrefs",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 54,
+  "app": "MrScraper",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 55,
+  "app": "Apify",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 56,
+  "app": "Firecrawl",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 57,
+  "app": "Bright Data",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 58,
+  "app": "Sherlock",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 59,
+  "app": "Waterfall.io",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 60,
+  "app": "Clay",
+  "cat": "Data, SEO and Scraping",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 61,
+  "app": "GitHub",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 62,
+  "app": "Vercel",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 63,
+  "app": "Netlify",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 64,
+  "app": "Cloudflare",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 65,
+  "app": "Supabase",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 66,
+  "app": "Neo4j",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 67,
+  "app": "Snowflake",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 68,
+  "app": "MongoDB Atlas",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 69,
+  "app": "Datadog",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 70,
+  "app": "Sentry",
+  "cat": "Developer, Infra and Data platforms",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 71,
+  "app": "Notion",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 72,
+  "app": "Airtable",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 73,
+  "app": "Linear",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 74,
+  "app": "Jira",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 75,
+  "app": "Asana",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 76,
+  "app": "Monday.com",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 77,
+  "app": "ClickUp",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 78,
+  "app": "Coda",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 79,
+  "app": "Smartsheet",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 80,
+  "app": "Harvest",
+  "cat": "Productivity and Project Management",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 81,
+  "app": "Stripe",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 82,
+  "app": "Plaid",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 83,
+  "app": "Binance",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 84,
+  "app": "Paygent Connect",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 85,
+  "app": "iPayX",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 86,
+  "app": "QuickBooks",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 87,
+  "app": "Xero",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 88,
+  "app": "Brex",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 89,
+  "app": "Ramp",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "OAuth2",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 90,
+  "app": "PitchBook",
+  "cat": "Finance and Fintech",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 91,
+  "app": "NotebookLM",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 92,
+  "app": "Otter AI",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token",
+   "Basic"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 93,
+  "app": "Fathom",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 94,
+  "app": "Consensus",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 95,
+  "app": "Reducto",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Self-serve",
+  "mcp": true,
+  "build": "Yes"
+ },
+ {
+  "n": 96,
+  "app": "Devin",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 97,
+  "app": "higgsfield",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 98,
+  "app": "Mermaid CLI",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 99,
+  "app": "YouTube Transcript",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ },
+ {
+  "n": 100,
+  "app": "Grain",
+  "cat": "AI, Research and Media-native",
+  "auth": [
+   "OAuth2",
+   "API key",
+   "Token"
+  ],
+  "access": "Gated",
+  "mcp": true,
+  "build": "Needs outreach"
+ }
+]

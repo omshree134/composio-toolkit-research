@@ -1,0 +1,55 @@
+https://developers.smartsheet.com/api/smartsheet/introduction
+
+# Smartsheet API introduction
+
+The Smartsheet API enables you to programmatically access and manage your organization's Smartsheet resources. The API Reference includes object schemas, operation specifications, and code snippets for Sheets, Folders, Users, and more.
+
+Required plan: Business, Enterprise, or Advanced Work Management
+
+Developer Agreement: The Developer Agreement governs the use of the Smartsheet API and Smartsheet software development kits (SDKs)
+
+> ## 🚀 What's new!
+
+- Smartsheet MCP server: Connect Smartsheet to AI clients like Claude, Cursor, and Codex, and use 30+ tools to manage your sheets, rows, columns, and more through natural-language prompts. Get the details here.
+- Report CRUD endpoints: Manage the entire lifecycle of a report with the new endpoints. Explore creating a row report here.
+- Asset path endpoints: Get locations of sheets, reports, dashboards, and folders, for context and to explore related assets. Learn more here.
+
+## Try the API
+
+You can call operations from within the site via our Try it request editor.
+
+![](https://developers.smartsheet.com/assets/call-an-operation.378ffc7b354bfff6927e2825ec137c16fcfca90bbd9da36677a15b8a8ef5c67e.6d36fe45.gif)
+
+It's just that easy to start using the API!
+
+Go to the Get started article (next) for a quickstart video and guidance on making your first API call.
+
+## Base URL
+
+Smartsheet: `https://api.smartsheet.com/2.0`
+
+> Important: Smartsheet Gov and Smartsheet Regions Europe use the respective base URLs:
+
+- Smartsheet Gov: `https://api.smartsheetgov.com/2.0`
+- Smartsheet Regions Europe: `https://api.smartsheet.eu/2.0`
+- Smartsheet Regions Australia: `https://api.smartsheet.au/2.0`
+
+## Client SDKs
+
+Smartsheet provides client libraries that make it easy to call the API from your preferred language. The SDKs handle authentication, request formatting, and response parsing so you can focus on building your integration. You'll find SDK code examples alongside REST snippets throughout the API documentation.
+
+| Language | Reference Docs | Project Repository |
+| --- | --- | --- |
+| JavaScript / Node.js | - | smartsheet-javascript-sdk |
+| Python | docs | smartsheet-python-sdk |
+| Java | docs | smartsheet-java-sdk |
+| C# | docs | smartsheet-csharp-sdk |
+
+Ready to start using the API?
+
+## What's next?
+
+- Get started calling operations via our Try it request editor.
+- Basics explains the fundamentals of using the Smartsheet API
+- OpenAPI Reference: skip ahead to learn about resource endpoints and objects, including Sheets, Cells, Folders, and more
+- Client SDKs: use our JavaScript, Python, Java, or C# libraries for a streamlined integration experience

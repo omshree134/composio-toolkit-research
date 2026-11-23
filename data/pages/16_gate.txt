@@ -1,0 +1,685 @@
+https://www.liveagent.com/pricing/
+
+LiveAgent Pricing & Plans: AI on Every Plan, 30-Day Free Trial
+
+# LiveAgent pricing: AI on every plan
+
+Help desk software with live chat, email, AI agents and, from the Team plan, a call center. You never pay per resolution.
+
+ Monthly Billed monthly Annual Billed annually
+
+Your team
+
+Fewer agents Number of agents More agents
+
+agents
+
+## Starter
+
+Per agent · up to 15 agents
+
+Email and live chat for a small team
+
+Black Friday 40% off
+
+Offer price $9 $12.73$12.73 Regular price: $15. /agent/mo
+
+5 agents: $45/mo
+
+billed annually
+
+Code BLACKFRIDAY40Y at checkout
+
+AI agents
+
+1
+
+Departments
+
+10
+
+Email accounts
+
+3
+
+Live chat buttons
+
+2
+
+What's included 
+
+Start with the essentials:
+
+- Email, live chat, contact forms, knowledge base
+- No social channels, call center or reporting
+- AI AI answer drafts and AI chatbot
+- Single sign-on (SSO)
+
+## Team
+
+Per agent · up to 30 agents
+
+Every channel, phone included
+
+Black Friday 40% off
+
+Offer price $17.40$17.40 $23.45$23.45 Regular price: $29. /agent/mo
+
+5 agents: $87/mo
+
+billed annually
+
+Code BLACKFRIDAY40Y at checkout
+
+AI agents
+
+5
+
+Departments
+
+20
+
+Email accounts
+
+10
+
+Live chat buttons
+
+5
+
+What's included 
+
+Everything in Starter, plus:
+
+- Facebook, Instagram, X, Viber, WhatsApp, Telegram and calls
+- Reports: agent, department, channel, SLA compliance, time and tag reports, CSAT surveys
+- SLA rules and custom roles
+
+## Business
+
+Per agent · any team size
+
+More AI agents, MCP and control
+
+Offer price $29.40$29.40 $39.53$39.53 Regular price: $49. /agent/mo
+
+5 agents: $147/mo
+
+Code BLACKFRIDAY40Y at checkout
+
+AI agents
+
+50
+
+Departments
+
+150
+
+Email accounts
+
+150
+
+Live chat buttons
+
+50
+
+What's included 
+
+Everything in Team, plus:
+
+- AI MCP server for your own AI tools
+- LiveAgent branding removal
+- Audit log and department roles
+- Dedicated account manager from 20 agents
+
+## Enterprise
+
+80 agents included
+
+Highest limits, personal manager
+
+Black Friday 40% off
+
+Offer price $1,919.40$1,919.40 $2,679.33$2,679.33 Regular price: $3,199. /mo
+
+Extra agents $23.40 each
+
+Flat fee · billed annually
+
+Code BLACKFRIDAY40Y at checkout
+
+AI agents
+
+Unlimited
+
+Departments
+
+Unlimited
+
+Email accounts
+
+Unlimited
+
+Live chat buttons
+
+Unlimited
+
+What's included 
+
+Enterprise pays off from about 68 agents
+
+Everything in Business, plus:
+
+- Unlimited departments, channels, rules and roles
+- Dedicated account manager
+- Priority support and review calls
+- Custom billing and release management
+
+ 4.5/5 G2 (1,538) 4.7/5 Capterra (1,789) checked Nov 1, 2026
+
+- A typical AI chat: $0.11 at the provider (how we measured it)
+- No AI fee from LiveAgent
+- We set up the provider for free
+
+Your price stays
+
+- Keep your plan, keep its regular price, added agents included
+- The Black Friday discount ends after the first year
+
+Security and procurement
+
+- SSO and 2-step login on every plan (security details)
+- Data in the EU, US or Singapore (GDPR)
+- Audit log on Business and Enterprise
+- We sign your DPA (DPA templates)
+- Annual plans: quote, invoice or wire transfer
+
+## LiveAgent plans compared
+
+Limits and features side by side. Select a row for details.
+
+Price per month Monthly / annual billing
+
+Starter Monthly $12.73 · regular $19 Annual $9 · regular $15 per agent / month Start free trial
+
+Enterprise Monthly $3,999 Annual $3,199 flat fee, 80 agents Talk to sales
+
+Human agents Up to 15 Up to 30 Any team size 80 included, add more
+
+AI agents AI 1 5 50 Unlimited
+
+Departments 10 20 150 Unlimited
+
+Organize agents into different departments for better workflow.
+
+Business and Enterprise also have department roles: give agents specific roles within departments.
+
+Ticketing & email accounts 3 10 150 Unlimited
+
+The number shows how many email accounts you can connect.
+
+Every email becomes a ticket, so no email gets lost or stays unanswered.
+
+- Email accounts, incoming and outgoing
+- Unlimited ticket history
+- Canned messages and predefined answers
+- Contact forms
+- Agent collision detection, so two agents never answer the same ticket
+
+Limits for contact forms and canned messages are under Show all limits.
+
+Live chat & chat buttons 2 5 50 Unlimited
+
+The number shows how many chat buttons you can place on your websites.
+
+Personalized, real-time support on your websites.
+
+Social & messaging — Not included Included Included Included
+
+Answer messages from all these channels directly in LiveAgent.
+
+Limits on Telegram bots and WhatsApp numbers are under Show all limits.
+
+Call center — Not included Included Included Included
+
+Handle phone and video calls in the same place as tickets and chats.
+
+- Inbound and outbound calls
+- IVR (automated call menus)
+- Call queueing and routing
+- Call recording and transfers
+- Video calls
+- AI call transcripts
+
+Self-service & knowledge bases 1 1 2 10
+
+The number shows how many knowledge bases you can create.
+
+Let customers find answers themselves, for example with one knowledge base per product or brand.
+
+Reporting — Not included Included Included Included
+
+Analytics overview, performance, agent, department, channel and tag reports, plus agent availability and workload reports.
+
+Satisfaction surveys after tickets and chats (CSAT), and time tracking on tickets and tasks.
+
+Agent ranking: customer ratings for individual agents.
+
+Automation & SLA rules Event rules only Included Included Included
+
+Event rules run actions automatically whenever a specific event happens in LiveAgent. Every plan has them.
+
+Team and higher: time rules run actions automatically after a set time passes, and SLA rules help you avoid breaching the service level you agreed with customers. You can set several SLA levels for different customer tiers.
+
+Limits per plan are under Show all limits.
+
+SLA rules / levels — Not included 5 / 5 50 / 20 Unlimited
+
+SLA rules help you avoid breaching the service level you agreed with customers.
+
+SLA levels let you set different service levels for different customer tiers.
+
+Security SSO, 2FA SSO, 2FA + audit log + audit log
+
+Every plan: single sign-on (SSO), 2-step verification, password policy management, access restriction to the agent panel, HTTPS encryption, and EU, US or Singapore data centers.
+
+Business and Enterprise: audit log, to review what actions each agent performed during a specific period.
+
+Branding removal — Not included — Not included Included Included
+
+Remove LiveAgent branding from live chat windows and buttons, the knowledge base and customer portal, call windows and buttons, contact forms, feedback forms and email templates.
+
+MCP server AI — Not included — Not included Included Included
+
+MCP (Model Context Protocol) is an open standard for connecting AI tools to other software.
+
+Every plan: your AI agents use LiveAgent’s built-in MCP tools.
+
+Business and Enterprise: connect LiveAgent’s MCP server to external AI tools such as Claude.
+
+Support 24/7 24/7 24/7 24/7
+
+Help is available 24/7. Our AI chatbot answers in virtually any language, and for urgent issues it brings in a person from our team right away, day or night.
+
+Email support is monitored around the clock and usually replies within 24 hours. Complex technical issues are handled Monday to Friday.
+
+In-app live chat with our team: Monday to Friday, 7 AM to 11 PM CET/CEST. Outside those hours the AI agent answers first and hands urgent issues to a person on call.
+
+Dedicated account manager — Not included — Not included From 20 agents Included
+
+A dedicated account manager on Business from 20 agents and on Enterprise. Enterprise also gets priority support, service review calls and reports, custom billing setup and scheduled release management.
+
+Telegram & WhatsApp — Not included 5 bots, 5 numbers 20 bots, 20 numbers Unlimited
+
+How many Telegram bots and WhatsApp numbers you can connect.
+
+Team: 5 Telegram bots and 5 WhatsApp numbers. Business: 20 of each. Enterprise: unlimited.
+
+Facebook, Instagram, X and Viber have no limit on connected accounts.
+
+Contact us buttons and full contact forms you can embed directly in your web pages.
+
+Canned messages / predefined answers 20 / 20 100 / 100 500 / 500 Unlimited
+
+Canned messages: pre-written responses for common customer questions.
+
+Predefined answers: quick answers you can insert into a reply.
+
+Event rules 50 150 500 Unlimited
+
+Automation rules that run actions automatically whenever a specific event happens in LiveAgent.
+
+Time rules — Not included 30 100 Unlimited
+
+Rules that run actions automatically after a set time passes.
+
+Custom roles — Not included 2 5 Unlimited
+
+Create custom roles with specific permissions for agents.
+
+API keys 1 5 10 Unlimited
+
+Let third-party apps retrieve and push data and manage tickets from outside LiveAgent.
+
+Custom ticket filters per agent 300 500 1,000 Unlimited
+
+Starter · per agent Monthly $12.73 · regular $19 Annual $9 · regular $15
+
+Team · per agent Monthly $23.45 · regular $35 Annual $17.40 · regular $29
+
+Business · per agent Monthly $39.53 · regular $59 Annual $29.40 · regular $49
+
+Enterprise · flat fee, 80 agents $3,999 / $3,199
+
+Human agents Up to 15 Up to 30 Any team size 80 included, add more
+
+People on your team who log in to handle tickets, chats and calls.
+
+Starter, Team and Business are billed per agent. Starter goes up to 15 agents, Team up to 30, Business any team size.
+
+Enterprise is a flat fee with 80 agents included. Extra agents are $49 / month, or $39 on annual billing.
+
+AI agents AI 1 5 50 Unlimited
+
+AI assistants you set up for a specific job, such as answering chats or replying to tickets.
+
+They run on your own AI provider account. LiveAgent does not charge for AI.
+
+Departments 10 20 150 Unlimited
+
+Organize agents into different departments for better workflow.
+
+Business and Enterprise also have department roles: give agents specific roles within departments.
+
+Ticketing & email accounts 3 10 150 Unlimited
+
+The number shows how many email accounts you can connect.
+
+Every email becomes a ticket, so no email gets lost or stays unanswered.
+
+- Email accounts, incoming and outgoing
+- Unlimited ticket history
+- Canned messages and predefined answers
+- Contact forms
+- Agent collision detection, so two agents never answer the same ticket
+
+Limits for contact forms and canned messages are under Show all limits.
+
+Live chat & chat buttons 2 5 50 Unlimited
+
+The number shows how many chat buttons you can place on your websites.
+
+Personalized, real-time support on your websites.
+
+- Chat buttons and widgets for your websites
+- AI chatbot
+- Real-time typing view: see what visitors type before they send it
+- Pro-active chat invitations (Team and higher)
+
+Social & messaging — Not included Included Included Included
+
+Answer messages from all these channels directly in LiveAgent.
+
+- Facebook and Messenger, Instagram
+- WhatsApp
+- Viber, Telegram, X
+
+Limits on Telegram bots and WhatsApp numbers are under Show all limits.
+
+Call center — Not included Included Included Included
+
+Handle phone and video calls in the same place as tickets and chats.
+
+- Inbound and outbound calls
+- IVR (automated call menus)
+- Call queueing and routing
+- Call recording and transfers
+- Video calls
+- AI call transcripts
+
+Self-service & knowledge bases 1 1 2 10
+
+The number shows how many knowledge bases you can create.
+
+Let customers find answers themselves, for example with one knowledge base per product or brand.
+
+- Public knowledge base for your customers
+- Internal knowledge base for your agents
+- Customer portal and community forum
+
+Need more? An extra knowledge base is $19 / month on Starter, Team and Business.
+
+Reporting — Not included Included Included Included
+
+Analytics overview, performance, agent, department, channel and tag reports, plus agent availability and workload reports.
+
+Satisfaction surveys after tickets and chats (CSAT), and time tracking on tickets and tasks.
+
+Automation & SLA rules Event rules only Included Included Included
+
+Event rules run actions automatically whenever a specific event happens in LiveAgent. Every plan has them.
+
+SLA rules / levels — Not included 5 / 5 50 / 20 Unlimited
+
+SLA rules help you avoid breaching the service level you agreed with customers.
+
+SLA levels let you set different service levels for different customer tiers.
+
+Security SSO, 2FA SSO, 2FA + audit log + audit log
+
+Every plan: single sign-on (SSO), 2-step verification, password policy management, access restriction to the agent panel, HTTPS encryption, and EU, US or Singapore data centers.
+
+Business and Enterprise: audit log, to review what actions each agent performed during a specific period.
+
+Branding removal — Not included — Not included Included Included
+
+Remove LiveAgent branding from live chat windows and buttons, the knowledge base and customer portal, call windows and buttons, contact forms, feedback forms and email templates.
+
+MCP server AI — Not included — Not included Included Included
+
+MCP (Model Context Protocol) is an open standard for connecting AI tools to other software.
+
+Support 24/7 24/7 24/7 24/7
+
+Help is available 24/7. Our AI chatbot answers in virtually any language, and for urgent issues it brings in a person from our team right away, day or night.
+
+In-app live chat with our team: Monday to Friday, 7 AM to 11 PM CET/CEST. Outside those hours the AI agent answers first and hands urgent issues to a person on call.
+
+Dedicated account manager — Not included — Not included From 20 agents Included
+
+A dedicated account manager on Business from 20 agents and on Enterprise. Enterprise also gets priority support, service review calls and reports, custom billing setup and scheduled release management.
+
+Telegram & WhatsApp
+
+How many Telegram bots and WhatsApp numbers you can connect.
+
+Team: 5 Telegram bots and 5 WhatsApp numbers. Business: 20 of each. Enterprise: unlimited.
+
+Facebook, Instagram, X and Viber have no limit on connected accounts.
+
+Contact forms 3 10 50 Unlimited
+
+Contact us buttons and full contact forms you can embed directly in your web pages.
+
+Canned messages / predefined answers 20 / 20 100 / 100 500 / 500 Unlimited
+
+Canned messages: pre-written responses for common customer questions.
+
+Predefined answers: quick answers you can insert into a reply.
+
+Event rules 50 150 500 Unlimited
+
+Automation rules that run actions automatically whenever a specific event happens in LiveAgent.
+
+Time rules — Not included 30 100 Unlimited
+
+Rules that run actions automatically after a set time passes.
+
+Custom roles — Not included 2 5 Unlimited
+
+Create custom roles with specific permissions for agents.
+
+API keys 1 5 10 Unlimited
+
+Let third-party apps retrieve and push data and manage tickets from outside LiveAgent.
+
+Custom ticket filters per agent 300 500 1,000 Unlimited
+
+Custom filters each agent can create to organize and prioritize tickets.
+
+Ticket history Unlimited Unlimited Unlimited Unlimited
+
+The complete history of all customer interactions and tickets, kept on every plan.
+
+## 7,000+ businesses worldwide rely on LiveAgent
+
+- ![NASCAR](https://images.liveagent.com/images/logos/nascar.svg)
+- ![Oxford](https://images.liveagent.com/images/logos/oxford.svg)
+- ![Hyundai](https://images.liveagent.com/images/logos/hyundai.svg)
+- ![Slido](https://images.liveagent.com/images/logos/slido.svg)
+- ![Geodis](https://images.liveagent.com/images/logos/geodis.svg)
+- ![LVBET](https://images.liveagent.com/images/logos/lvbet.svg)
+
+> LiveAgent is reliable, reasonably priced, and simply a great choice for any fast-paced online business!
+
+Allan Bjerkan · Norske Automaten
+
+> We have been using LiveAgent since Spring 2016 and we love that we can attend everything from any computer and the customers get served by the same agent
+
+Ville Majanen, CEO · E-ville.com, online shop with 4 support agents · Read the E-ville.com story
+
+> When it comes to features, we love using tags, being able to clearly define responsibilities and then do complex reporting.
+
+Min Chou · Kwik Charger, 38 support agents serving customers in 127 countries · Read the Kwik Charger story
+
+## Transparent AI pricing
+
+LiveAgent doesn't charge for AI. You connect your own AI provider, such as OpenAI, Anthropic or FlowHunt, and pay it for what you use.
+
+### Who you pay
+
+You pay LiveAgent
+
+$0 for AI
+
+Just your plan price. No AI fees, no token markup, no per-resolution fees.
+
+Every AI feature included Same price however much AI you use
+
+You pay your AI provider
+
+Only what you use
+
+Billed directly by the provider you choose, at their prices. Switch providers any time.
+
+- OpenAI
+- Anthropic
+- Google Gemini
+- FlowHunt
+
+FlowHunt is our own AI platform, with ready-made templates for your use cases. Whichever AI provider you choose, we set it up for free.
+
+### What your plan counts
+
+#### AI agents
+
+An AI agent is an AI worker with its own instructions, AI model and permissions. It can chat with visitors, reply to tickets and sort them.
+
+Your plan sets how many AI agents you can create: Starter 1, Team 5, Business 50, Enterprise unlimited.
+
+One AI agent can work in many places, for example the same chatbot on three websites. It still counts once.
+
+### Built in, no AI agent needed
+
+These run on your AI provider too, but they don't use an AI agent, so they don't count toward your LiveAgent plan.
+
+- Summaries
+- Call transcripts
+- Translations
+
+## Frequently asked questions
+
+### Black Friday
+
+#### How do I get the Black Friday price?
+
+Choose a plan and pay by December 15, 2026 with the code for your billing: BLACKFRIDAY40Y takes 40% off annual billing for the first year, BLACKFRIDAY33M takes 33% off monthly billing for the first 12 bills. After that, your plan's regular price applies. It works on every plan, Enterprise included, for new and existing customers. The discount applies to the plan and billing period you pay for with the code.
+
+### Plans and billing
+
+#### Is there a free trial?
+
+Yes. Every plan starts with a 30-day free trial, and no credit card is required. When the trial ends, upgrade to a paid plan to keep your account and everything you set up.
+
+#### Can I change or cancel my plan at any time?
+
+Yes. You can upgrade or downgrade at any time, except in the 24 hours before your billing day. If you cancel, your account stays active until the end of the period you paid for.
+
+#### Can my price go up?
+
+No. Your plan keeps its regular price for as long as you keep the plan, also when you add agents. A discount you get with a code ends when its period is over. We may change the prices of our plans, but a new price applies only to new customers and to customers who change plan. Moving up within 12 months? Ask us for a special quote.
+
+#### Is there a contract or a setup fee?
+
+No setup fees and no long-term commitment: pay monthly and cancel anytime, or pay annually and pay less per agent. Buying through procurement? With an annual plan we provide a written quote and a contract: request a quote.
+
+#### How does LiveAgent's price compare with Zendesk?
+
+Our Zendesk pricing guide puts Zendesk's current plans and add-ons next to LiveAgent's. Moving over is free: see Zendesk migration.
+
+#### Can you help me migrate from another help desk?
+
+Yes, free on every paid plan: our built-in importers move tickets, contacts and the knowledge base from Zendesk, Freshdesk, Help Scout and other help desks. Large accounts can take several hours or even days to import. How migration works.
+
+#### Which payment methods do you accept?
+
+All major credit cards (Visa, Mastercard, Maestro, American Express, Diners), Apple Pay, Google Pay, PayPal, and wire transfer on annual plans. Prices are in USD and exclude VAT. Customers in the EU are invoiced in EUR. VAT is added where it applies: an EU company with a valid VAT ID outside Slovakia pays no VAT (reverse charge) when it enters the VAT ID in its account.
+
+#### What do phone calls cost?
+
+LiveAgent charges nothing for calls. Your call center runs on your own phone provider, which bills you directly for phone numbers and minutes.
+
+#### Do you offer a startup discount?
+
+Early-stage startups can apply for a special startup deal.
+
+#### How much do I save with annual billing?
+
+Up to 21% per agent; how much depends on the plan. Switch between monthly and annual billing above the plans: each card shows your team's monthly total for that billing.
+
+#### How is Enterprise priced?
+
+A flat monthly fee that includes 80 agents, about $50 per agent (about $40 on annual billing). Extra agents are $49 / month, or $39 / month on annual billing.
+
+#### What is the difference between Business and Enterprise?
+
+Business is billed per agent, for any team size, with higher limits than Team. Enterprise is a flat fee with 80 agents included, the highest limits and a dedicated account manager.
+
+### AI features
+
+#### How much does AI cost?
+
+A typical AI chat costs about $0.11 at your AI provider, so 300 chats a month cost about $33–$81 (at our median and our average); LiveAgent adds nothing on top. $0.11 is the median in LiveAgent's own support in October 2026 (how we measured it, with the average and our newest chat flow). Drafting replies with AI Answer Assistant costs about $2–3 per 1,000 replies with a low-cost model such as Claude Haiku (our estimate from the providers' list prices, October 2026). The cost depends on the model you choose, the tools an AI agent uses and the length of the chat.
+
+#### Do I need an AI provider account?
+
+Yes. AI features run on your own OpenAI, Anthropic, Google Gemini or FlowHunt account, and you pay the provider directly, only for what you use. Your AI provider processes the text under your agreement with it.
+
+#### Does LiveAgent charge for AI?
+
+No. No AI fees, no token markup, no per-resolution fees: you pay only your AI provider, for what you use. For AI, plans differ only in the number of AI agents.
+
+#### What if I need more AI agents than my plan includes?
+
+You can move to a higher plan. Enterprise includes unlimited AI agents.
+
+#### What is the MCP server on Business and Enterprise?
+
+On every plan, your AI agents use LiveAgent's built-in tools. On Business and Enterprise, you can also connect external AI tools, such as Claude, to LiveAgent through its MCP server.
+
+#### Are there any usage limits?
+
+Each plan except Enterprise has a limit on the number of AI agents. Where a plan says "unlimited", there is no plan limit, but to keep LiveAgent fast and reliable for everyone, we apply technical and rate limits to AI agents, the API and the MCP server to prevent misuse.
+
+- AI on every plan, no per-resolution fees from LiveAgent
+- Data in the EU (Frankfurt), the US or Singapore, you choose
+- 30-day free trial, no credit card
+- Free help moving your tickets and history
+
+4.5 on G2 1,538 reviews (opens another site) 4.7 on Capterra 1,789 reviews (opens another site) checked Nov 1, 2026
+
+### Talk to a person
+
+- US, toll-free (+18882578754)
+
++1 888 257 8754 (+18882578754)
+- Europe (+421233456826)
+
++421 2 33 456 826 (+421233456826)
+- WhatsApp
+
++1 786 204 1375
+
+Our team answers chat, calls and WhatsApp Mon–Fri, 
+
+7:00–23:00

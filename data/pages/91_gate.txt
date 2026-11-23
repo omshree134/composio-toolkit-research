@@ -1,0 +1,48 @@
+https://developers.google.com/notebook/docs/rate-limits
+
+Rate limits and quotas | Gemini Notebook API | Google for Developers
+
+ Rate limits and quotas
+
+The Gemini Notebook API is free to use during the Public Preview period, subject to the following request rate limits and account capacity quotas.
+
+## Request rate limits Copy link to this section: Request rate limits
+
+Rate limits are enforced both per Google Cloud project and per authenticated Google user:
+
+### Per-project rate limits Copy link to this section: Per-project rate limits
+
+| Quota metric | Limit |
+| --- | --- |
+| Read requests (`GetNotebook`, `ListNotebooks`, `GetSource`, `ListSources`) | 100 requests per minute (RPM) per project |
+| Write requests (`CreateNotebook`, `UpdateNotebook`, `CreateSource`, `UploadSource`) | 100 requests per minute (RPM) per project |
+
+### Per-user rate limits Copy link to this section: Per-user rate limits
+
+| Method | Limit |
+| --- | --- |
+| `CreateSource` | 20 requests per minute (RPM) per user |
+| `UploadSource` | 20 uploads per minute per user |
+| All other methods (`CreateNotebook`, `GetNotebook`, `ListNotebooks`, `UpdateNotebook`, `GetSource`, `ListSources`) | 60 requests per minute (RPM) per user per method |
+
+When a rate limit is exceeded, the API returns HTTP `429 Too Many Requests` (`RESOURCE_EXHAUSTED`). Retry failed requests using exponential backoff with jitter. For `UploadSource`, the error includes a `RetryInfo` with the delay before you can start another upload.
+
+## Source size limits
+
+| Limit | Value |
+| --- | --- |
+| Maximum source length | 500,000 words per source |
+| Maximum inline `text_content` payload size | 1,000,000 bytes (1 MB) |
+| Maximum uploaded file size (`UploadSource`) | 200 MiB (209,715,200 bytes) |
+| Maximum notebook or source `displayName` length | 500 characters |
+
+## Account tier quotas
+
+Maximum notebook and source counts depend on the authenticated user's subscription tier:
+
+| Tier | Maximum notebooks per user | Maximum sources per notebook |
+| --- | --- | --- |
+| Free | 100 | 50 |
+| Plus | 200 | 100 |
+| Pro | 500 | 300 |
+| Ultra | 500 | 600 |

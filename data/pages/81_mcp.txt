@@ -1,0 +1,217 @@
+https://docs.stripe.com/mcp
+
+Model Context Protocol (MCP) | Stripe Documentation
+
+# Model Context Protocol (MCP) Public preview
+
+## Let your AI agents interact with the Stripe API by using our MCP server.
+
+The Stripe Model Context Protocol (MCP) server provides tools that AI agents can use to interact with the Stripe API and search the Stripe knowledge base, including documentation and support articles.
+
+## Set up Stripe MCP with a plugin Recommended
+
+Agent plugins for Stripe automatically configure the Stripe MCP server, install our skills, and make sure they’re up to date. You get our latest capabilities without configuration or maintenance.
+
+To install, run:
+
+Install the Stripe CLI using the installation script for your operating system. Script installations enable automatic updates by default.
+
+On macOS or Linux:
+
+Command Line
+
+`curl -fsSL https://cli.stripe.com/install.sh | sh
+export PATH="$HOME/.stripe/bin:$PATH"`
+
+On Windows, run the following command in PowerShell:
+
+`irm https://cli.stripe.com/install.ps1 | iex
+`
+
+After installation, open a new terminal and install the agent tooling:
+
+Command Line
+
+`stripe agent setup`
+
+This command automatically detects which agents you use, and runs the applicable commands.
+
+## Manually set up Stripe MCP 
+
+If your MCP client doesn’t support agent plugins for Stripe, or you prefer to configure the Stripe MCP server and install the skills manually, follow these instructions:
+
+Cursor
+
+Install in Cursor
+
+Select Install in Cursor to open Cursor and add the Stripe MCP server. To configure it manually, add the following configuration to 
+
+~/.
+
+cursor/mcp.
+
+json
+
+.
+
+For more information, see Cursor’s MCP documentation.
+
+`{
+ "mcpServers": {
+ "stripe": {
+ "url": "https://mcp.stripe.com"
+ }
+ }
+}`
+
+## Manage MCP access and sessions 
+
+Stripe’s MCP server supports two authentication methods:
+
+1. OAuth: Use OAuth when a client accesses Stripe on behalf of your Stripe user account.
+2. Agent API keys: Use an agent API key when an AI application needs independent, persistent access to Stripe.
+
+When you connect an MCP client with OAuth, the client opens Stripe’s OAuth consent page. You can grant access to one or more live mode accounts or sandboxes and set different permissions for each environment. See the MCP authorization specification for details.
+
+#### OAuth session expiration
+
+OAuth refresh tokens expire after 14 days, and refreshing tokens doesn’t extend the session beyond 14 days from your initial authorization. When your session expires, reconnect your MCP client to Stripe and authorize it again.
+
+If your organization manages your device or network, your IT administrator might block connections to external MCP servers. When the Stripe MCP server doesn’t connect in a managed environment, ask your IT department to allow 
+
+mcp.
+
+stripe.
+
+com
+
+.
+
+### Manage MCP access for all team members 
+
+If you’re an administrator, you can enable or disable MCP access for your entire team in the Dashboard. Configure access separately for live mode and sandbox environments.
+
+### Manage your sessions 
+
+Your authorized MCP clients appear under OAuth sessions in your user settings. To revoke a session:
+
+1. Find the client in the OAuth sessions list.
+2. Click the overflow menu ().
+3. Select Revoke access.
+
+### Manage sessions as an administrator 
+
+To view or revoke another user’s sessions, your role must include permissions to manage team members. The Administrator role includes these permissions.
+
+1. Open Team and security in the Dashboard.
+2. Select the team member you want to manage.
+3. Find the OAuth sessions table.
+4. To revoke one session, click its overflow menu and select Revoke access. To revoke every listed session, select Revoke all.
+
+Session management applies only to the account or organization and environment—live mode or a sandbox—that you’re currently viewing. Revoking a session removes access only within that scope. The session remains active for accounts outside your current scope.
+
+When you view an organization, the Accounts column shows the accounts associated with each session.
+
+## Authenticate Stripe MCP 
+
+Use OAuth for interactive MCP clients. OAuth lets you authorize and revoke a client without sharing an API key.
+
+For autonomous clients that can’t use OAuth, create an agent API key with only the permissions the client needs. You can identify agent API keys in the Dashboard by the Agent badge. Pass the agent API key as the bearer token in the `Authorization` header of your request. If you’re replacing an existing key, test the new configuration in a sandbox, then expire the old key.
+
+#### Update API key authentication by November 30, 2026
+
+Migrate by November 30, 2026. Starting in December, Stripe MCP will stop accepting full-access secret keys and restricted API keys without the Agent tag. Replace these keys with newly created agent API keys or reconnect with OAuth. Requests using an unsupported key receive a `401` response with an OAuth discovery challenge.
+
+## Tools
+
+The server exposes the following MCP tools.
+
+Turn on your MCP client’s tool-approval setting so you can review tool calls before they run, and exercise caution when using the Stripe MCP with other servers to avoid prompt injection attacks. If you have feedback or want to see more tools, email us at mcp@stripe.com.
+
+| Resource | Tool | Description |
+| --- | --- | --- |
+| API tools | `stripe_api_search` | Search for Stripe API methods by keyword |
+| | `stripe_api_details` | Get detailed parameter information for a specific Stripe API method. |
+| | `stripe_api_read` | Read data with any Stripe API `GET` method |
+| | `stripe_api_write` | Write data with any Stripe API `POST`, `PATCH`, `PUT` and `DELETE` method |
+| Account | `get_stripe_account_info` | Retrieve account |
+| Atlas | `atlas_company_formation` | Prepare or resume an Atlas application for a Delaware C corporation or LLC |
+| Analytics | `stripe_analytics` | Preview Find metrics, reporting tables, and reports. Query metrics, analyze subscriptions and billing, and run financial reports. Build SQL queries based on natural language |
+| Treasury Public preview | `get_balance_summary` | Displays an interactive balance summary across the Stripe balance and Treasury accounts |
+| | `convert_currency` | Converts funds between currencies within a Treasury account Human confirmation |
+| | `send_money` | Sends money from a Treasury account to a recipient Human confirmation |
+| | `setup_recipient` | Sets up a recipient account for sending money from a Treasury account |
+| | `transfer_money` | Transfers money between supported Stripe balances Human confirmation |
+| Others | `search_stripe_documentation` | Search the Stripe documentation for the given question and language |
+| | `stripe_implementation_planner` | Guides the user through Stripe products to help users accept payments, sell products online, set up billing, or build any Stripe integration |
+| | `send_stripe_feedback` | Share feedback about Stripe’s products |
+
+To prepare a company incorporation application, ask your assistant:
+
+> Help me prepare a Stripe Atlas application for a Delaware C corporation with two founders. Check for an existing application before creating one.
+
+You review documents, pay, sign, and submit in the Dashboard. See Prepare an Atlas application with an agent or CLI.
+
+The Stripe MCP server exposes multiple APIs that you can call with the 
+
+stripe_
+
+api_
+
+read
+
+stripe_
+
+api_
+
+write
+
+ tools. This access makes much of the API available through MCP without increasing the context window unnecessarily.
+
+## Confirm actions by agents acting on your behalf
+
+When you connect an AI agent to Stripe through the MCP server using your user credentials, you authorize the agent to access data and take actions in Stripe on your behalf.
+
+Before an agent completes certain actions on your behalf, Stripe can require you to review and approve the request in the Dashboard. Look for the Human confirmation badge beside action descriptions in the Tools reference and Supported API methods.
+
+Your MCP client displays tool names that can group multiple actions. For example, creating a refund uses 
+
+stripe_
+
+api_
+
+write
+
+, which also supports other actions that don’t use this confirmation flow. Confirmation depends on the action, not only the tool name.
+
+Stripe’s confirmation requirement is separate from your MCP client’s tool-approval setting. Account-specific approval rules can require review of additional actions.
+
+To confirm an action, click the URL provided by your agent and review the details of the request.
+
+![Confirm a refund request](https://b.stripecdn.com/docs-statics-srv/assets/human-confirmation.d768e677a3bf87585ee29a003df41b00.png)
+
+Confirm a refund request
+
+When you click Approve, Stripe provides the agent with an approval token, but you need to tell the agent to retry the operation, which doesn’t require human confirmation. If you don’t approve the action within 24 hours, it expires.
+
+## Use MCP with connected accounts 
+
+By default, Stripe MCP tools operate on the Stripe account associated with your OAuth session or API key. If you only need your agent to work with your platform account, manually set up Stripe MCP.
+
+If you’re a Connect platform, you can also use MCP to retrieve or update resources for your connected accounts. For example, a support agent could retrieve a customer or investigate a payment for a specific connected account.
+
+MCP doesn’t support OAuth when acting on behalf of connected accounts. Instead, authenticate with an agent API key for your platform and grant only the connected-account permissions that your agent needs.
+
+To make an MCP call as a connected account, pass the `Stripe-Account` header. This is useful when you provide an agent that allows your connected accounts to make MCP calls through your platform.
+
+`{
+ "mcpServers": {
+ "stripe": {
+ "url": "https://mcp.stripe.com",
+ "headers": {
+ "Authorization": "Bearer {{AGENT_API_KEY}}",
+ "Stripe-Account": "acct_xxxxxxxxx"
+ }
+ }
+ }
+}`

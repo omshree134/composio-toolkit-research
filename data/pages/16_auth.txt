@@ -1,0 +1,47 @@
+https://support.liveagent.com/741982-API-key
+
+API key
+
+# API key
+
+## What is an API key
+
+API key is an identity of your LiveAgent (like your username and password) which you can use to build your own custom integration solutions. Never give it to anybody you don't trust. If your API key is lost, do not hesitate to generate a new one! Anybody with your API key can fully access your LiveAgent.
+
+## How can I get my API key
+
+While logged in as an admin navigate to Configuration> System> API which loads the API v3 section where you find existing API keys or add a new one. To access the API v1 section click the Settings for API v1 link under the API v3 header.
+
+![](https://support.liveagent.com/scripts/file.php?view=Y&file=3a82a672030dfc6153ed91683942829e)
+
+This is how the API v1 section looks where you have settings for your API v1 key.
+
+![](https://support.liveagent.com/scripts/file.php?view=Y&file=8370a821bde2affcec1e0a6f4a945c4b)
+
+When adding a new API key in v3 you have an option to define permissions for this key (as you can have more keys you can also give different keys to different people with different permissions).
+
+![](https://support.liveagent.com/scripts/file.php?view=Y&file=c8d199714c109c43385c527ca488938c)
+
+## Can I change the API key?
+
+Yes both API versions have options to generate new keys and invalidate existing ones.
+
+IMPORTANT NOTE: Do not forget that when you generate a new API key for your LiveAgent ALL clients using the old key will stop working immediately!
+
+## API v3 use
+
+Your API key has to be set in header of your requests:
+
+curl --location --request GET 'https://your.ladesk.com/api/v3/tickets' \ --header 'apikey: 0865evv883j6auflvlt7zrwgqn32qo74' \ --header 'Content-Type: application/json'
+
+Here's an example of cURL code in PHP:
+
+```
+curl_setopt($curl, CURLOPT_HTTPHEADER, array('Accept: application/json', 'apikey: 123456_YOUR_API_KEY_123456'));
+```
+
+ Updated: Mar 16, 2021 
+
+System outage!
+
+We are currently experiencing an unexpected outage which resulted in disabling some services for our customers. Our infrastructure administrators are actively working to identify the root cause of the issue and restore full functionality as soon as possible. We will continue to provide updates on our status page.

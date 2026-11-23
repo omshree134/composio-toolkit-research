@@ -1,0 +1,67 @@
+https://docs.stripe.com/partners
+
+Stripe Partner Ecosystem | Stripe Documentation
+
+# Stripe Partner Ecosystem
+
+The Stripe Partner Ecosystem (SPE) is a program that provides benefits, incentives, and resources to help partners grow with Stripe and deliver greater value to shared users. SPE features trusted partners who integrate with, extend, advocate for, and build on Stripe—helping businesses launch faster, operate more efficiently, and scale with confidence.
+
+## Join Stripe Partner Ecosystem 
+
+Stripe Partner Ecosystem supports four primary partner tracks: Services, SaaS platforms, Apps, and Payment methods. The Technology track is available by invitation only. During the application process, partners can indicate which tracks interest them, and Stripe confirms the best fit.
+
+To become a Stripe partner, you must:
+
+1. Create and activate a free Stripe account.
+2. Make sure you’re not on the Stripe Restricted Businesses list.
+3. Meet the requirements of the individual track.
+4. Complete the partner application.
+5. Accept the Stripe Partner Ecosystem Agreement.
+
+## Partner program benefits 
+
+All Stripe Partner Ecosystem partners receive a core set of benefits designed to help you onboard, go to market faster, support co-marketing, and grow sales. In addition to these core benefits, each partner track offers tailored benefits and incentives aligned with that track’s objectives and tier level. This is to help partners meet their goals and grow with Stripe.
+
+## Core benefits 
+
+Partners receive the following core benefits:
+
+- Access to training and certifications.
+- Marketing campaign assets, how-to guides, and templates.
+- Stripe Partner badges and co-branding guidelines.
+- Market development funds (MDF).
+- Partner directory listing.
+- Deal registration to request co-selling support.
+- Partner portal access.
+- Partner program support.
+
+View the full list of tailored benefits by partner track and tier.
+
+## Partner program tiers 
+
+The Stripe Partner Ecosystem maintains a network of trusted partners. In April 2026, we updated the program to raise the bar for participation. Partners must now meet clear baseline standards across technical expertise, business impact, and customer success to help ensure high-quality integrations and outcomes for your customers.
+
+The program includes two tiers:
+
+- Partner
+- Premier
+
+All partners complete a vetting process and enter the program at the Partner tier. They can advance to the Premier tier when they meet additional track-specific criteria, and unlock additional benefits.
+
+## Partner program tracks, requirements and tailored benefits 
+
+Partners must satisfy the minimum requirements for the track they’re interested in applying to. The Technology track is available by invitation only. Track-specific requirements are intended to guarantee technical competence, measurable business impact, and positive customer outcomes.
+
+Services
+
+Partners who advise, implement, deploy, or offer services with Stripe.
+
+Partners who integrate payments and other Stripe products into their platform.
+
+Partners building integrations between Stripe and other systems enabling a listing on the Stripe App Marketplace.
+
+Partners who provide an alternative to classical card-based payments, enabling businesses to support a local purchase experience.
+
+## Partner program support 
+
+Stripe’s Partner Support Operations can help you navigate the partner program, troubleshoot issues, and answer questions about your partner account. Contact us by logging into the partner portal or emailing partner-support@stripe.com.

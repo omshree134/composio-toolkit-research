@@ -1,0 +1,99 @@
+https://developers.facebook.com/blog/post/2026/07/16/meta-ads-mcp-server/
+
+Meta's ads MCP server is now available for developers
+
+July 16, 2026
+
+# Meta's ads MCP server is now available for developers
+
+#### By Sydney Levitan, Sanjay Patel
+
+Updated September 22, 2026
+
+Today, we are opening up our ads MCP server to any developer with their own Meta app. You can now connect your AI application directly to Meta's advertising capabilities, enabling your users to create and optimize campaigns, pull performance insights, manage product catalogs, and more through natural language. This means any developer can now bring Meta's ads MCP capabilities into the tools their customers already use — whether that's a marketing platform, a data warehouse, or a custom internal system.
+
+Previously, connecting AI agents to Meta ads required writing and maintaining custom integration code. Now, developers can skip that entirely.
+
+## How do I connect using my own app?
+
+1. Go to the developer dashboard and select the app you'd like to use.
+2. Click Use cases in the left navigation, then Add use cases.
+3. In the popup, click Ads and monetization, select Create & manage ads with ads MCP server, and click Save.
+4. OPTIONAL If you manage data on behalf of other businesses, for example you are an agency or a partner, you need to submit your app for review.
+
+- Request Advanced Access on the ads_mcp_management permission.
+
+- On the 'Use cases' screen, click Customize for the ads MCP server use case.
+- On the 'Permissions and features' tab, click Actions to get Advanced Access, then click Go to app review.
+5. Choose how to authenticate: OAuth for automatic token handling via Facebook Login for Business, or pass a pre-obtained access token if you manage your own token lifecycle.
+
+## Managing agent controls programmatically
+
+Connecting an agent to an ad account raises an obvious question: can you control what the agent does? Yes - via ads MCP server rules. Rules define the actions an AI agent can and cannot take on a given ad account or catalog. For example, you can grant an agent read access to performance data while withholding the ability to make changes to budgets, campaigns, or creative.
+
+Until now, those rules could only be set one asset at a time in Meta Business Suite settings. That is workable for a single advertiser but impractical for users operating at scale.
+
+Rules are now available through the Marketing API. A new endpoint lets you set and manage agent controls in bulk, across many ad accounts and catalogs at once. For developers, this moves guardrail configuration out of manual setup and into your provisioning code. A few things that become possible:
+
+- Configure controls at onboarding. When a new advertiser or client account connects to your application, apply your permission model as part of the same automated flow — no manual step in Ads Manager, and no gap between connection and correct guardrails.
+- Enforce a policy consistently across a portfolio. Define one control posture and apply it to every account you manage, rather than relying on per-account configuration staying correct over time.
+- Offer controls as a product surface. Expose your own permission settings to your users and translate them into ads MCP server rules underneath, so agent boundaries become something your customers configure in your interface.
+- Adjust as trust develops. Start an account in a read-only or approval-required posture and widen permissions programmatically as confidence grows, instead of treating access as a one-time decision.
+
+Availability. The endpoint matches current rules availability: any ad account with access to ads MCP server rules in Ads Manager can also be managed through the API. If an account can be configured in Ads Manager today, it can be configured programmatically.
+
+Setup detail, supported rule types, and recommended configurations are in the ads MCP server rules best practices guide.
+
+## What can you do with Meta's ads MCP server?
+
+The ads MCP server unlocks many use cases across ads creation, campaign and catalog management, and performance analysis, and we are continuously adding new tools to further expand capabilities.
+
+Below is a snapshot of the top MCP use cases:
+
+### Ads Creation & Editing
+
+Create, edit, and delete campaigns, ad sets, and ads.
+
+### Custom Audiences
+
+Create, update, and delete custom audiences.
+
+### Catalog Creation & Management
+
+Create a catalog, add products, and set up product sets. Quickly resolve issues that prevent products from being shown in ads.
+
+### Comprehensive Performance
+
+Gain valuable insights and pull detailed reporting to better understand campaign performance. Query spend, impressions, CTR, ROAS, and more with flexible date ranges, breakdowns by age/gender/platform, and multiple aggregation levels.
+
+### Signal Diagnostics
+
+Access signal health and quality information providing better insights into where you should prioritize investment in your signals setup.
+
+### Help & Troubleshooting
+
+Seamlessly execute a search of Meta Business Help Center articles relevant to a query without leaving your AI workflow.
+
+### A/B Tests & Conversion Lift Studies
+
+Create and manage A/B tests and conversion lift studies, plus retrieve details on existing tests and studies.
+
+## How developers are using MCP today
+
+"Marketing is where many enterprises will first see the value of AI agents in a practical way. Together with Meta, Snowflake is making it easier for marketers to connect the first-party data they already manage in Snowflake—such as customer, sales, and product data—with Meta campaign performance. Snowflake and Meta's ads MCP gives AI agents the context they need to identify high-value audiences, optimize campaigns based on business outcomes, and help marketers move from insight to action faster with less friction."
+
+ — Will Allen, Head of Snowflake CoWork & Agents, Snowflake
+
+"We connected the Meta Ads MCP to Moby, our autonomous AI operator for ecommerce brands, and the impact was immediate. It doesn't just let an agent execute changes in Ads Manager. The MCP gives the agent what it needs to validate those changes, debug issues, and surface anomalies, which is the full spectrum of what it takes to genuinely manage a Meta Ads account."
+
+— AJ Orbach, CEO, Triple Whale
+
+"Meta's ads MCP server is a clear signal that marketing is entering the agentic era. Our vision is to empower marketers with Agentforce agents that automate campaign operations, eliminate manual workflows, and act on audience and performance signals in real time. Data 360 provides the trusted first-party data foundation, and Meta's ads MCP server enables Agentforce to turn that data into action—coordinating campaign metadata, audience intelligence, and performance signals to optimize advertising in ways that weren't possible before."
+
+ — Bradley Wright, VP, Product Management, Salesforce
+
+"Meta's ads MCP turns campaign management into a conversation. In our live test on a 270-ad account, we found every ad in 2.4 seconds, reviewed performance trends in 1.3 seconds and received five specific recommendations in under five seconds. All via chat. Normally that would mean searching through multiple screens in Ads Manager. For media buyers and agencies, Meta's MCP means less manual work and more time making decisions that improve performance. We're looking forward to bringing this capability to admanage.ai users."
+
+ — Cedric Yarish, Co-Founder, AdManage
+
+Any app can now connect to the ads MCP server, and we'll be gradually rolling out access to tools available to ad accounts through this integration method. To get started, simply ask your agent what tools you have access to.

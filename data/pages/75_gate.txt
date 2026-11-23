@@ -1,0 +1,28 @@
+https://developers.asana.com/docs/developer-sandbox
+
+Developer sandbox
+
+# Developer sandbox
+
+Learn how to request a developer sandbox
+
+Before moving forward with making sample API requests or building apps that leverage that Asana API, we recommend first getting an Asana developer sandbox. A developer sandbox is a temporary Asana domain with limited users.
+
+Developer sandboxes are intended for:
+
+- Developers building or maintaining a third-party integration with Asana (i.e., submitting your completed integration to get listed in our app directory)
+- Existing Asana Starter customers or higher tiers who require a separate environment to perform risk-free testing on the API
+
+Sandboxes can include Enterprise, Advanced, and Starter features upon request, and are valid for a maximum of one year. Extensions requested after one year will go through Legal review. Approval is not guaranteed, though you may be eligible to request a new sandbox.
+
+To see the feature differences between the Asana plans, please visit our pricing page.
+
+➡ To request a developer sandbox, please complete and submit this form.
+
+> 📘
+> 
+> Processing time
+> 
+> Please note that at this time, it may take up to one (1) week to process and provision your developer sandbox.
+
+Updated about 1 year ago

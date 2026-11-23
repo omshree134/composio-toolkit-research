@@ -1,0 +1,41 @@
+https://developer.linkedin.com/product-catalog/marketing/advertising-api
+
+LinkedIn API | Advertising API
+
+# Advertising API 
+
+## Scale and optimize advertising on LinkedIn to promote a business 
+
+![An illustration of two individuals working together with an infographic in the background.](https://delivery-p143253-e1476319.adobeaemcloud.com/adobe/assets/urn:aaid:aem:da51ad02-24d2-4583-9705-e86e2c2123c6/original/as/p04-01-dsk-e01-v01-2x.png)
+
+### What solutions can you build? 
+
+![](https://delivery-p143253-e1476319.adobeaemcloud.com/adobe/assets/urn:aaid:aem:c8248ef9-34d2-4e8b-a579-ba50e766141e/original/as/Advertising-API-what-solutions-enable-ads-dsk-v01-2x.png)
+
+ Enable ads management at scale 
+
+ Build functionality for scalable ads management with Ad Campaigns and Creatives APIs 
+
+ Build holistic view of marketing performance 
+
+ Leverage the Ad Analytics API to pull campaign performance data and identify which campaigns are delivering results 
+
+ Supercharge targeting in the privacy-first era 
+
+ Easily create high-intent, AI-powered audience segments using first-party or third-party data with Matched Audiences and Predictive Audiences APIs 
+
+ Amplify event reach and boost attendance 
+
+ Utilize the Event Ads API to promote events to targeted audiences before, during, and after they occur, maximizing attendance and engagement 
+
+ *These APIs are private and require additional approval once you’ve been approved for the Advertising API. To apply for access to private APIs, first submit an application for the Advertising API with an ads management or reporting use case. Once you’ve been approved for the Advertising API, submit a request through the form here. 
+
+### Meet the qualifications: 
+
+ Do you have an established business? Do you have an established use case? Does your use case align with our supported solutions and is not restricted? Do you agree to comply with LinkedIn Marketing API Terms? 
+
+### Apply for Development tier access: 
+
+ 1. Create an app, add Advertising API, and complete the access form under My Apps > select your app > Products. 2. LinkedIn will review your application 3. Check the Developer Portal for the status of your application 4. If your application is approved, get started. If your Advertising API application is rejected, review common rejection reasons, create a new app, and submit a new application 
+
+![](https://delivery-p143253-e1476319.adobeaemcloud.com/adobe/assets/urn:aaid:aem:245b6c57-bf94-42da-8b04-90938561dff5/original/as/Advertising-API-resources-bg-dsk-v01-2x.jpg)

@@ -1,0 +1,106 @@
+https://viter.io/blog/jira-mcp-server
+
+Jira MCP server: setup with Claude and Cursor | Viter
+
+# Jira MCP server explained: setup with Claude and Cursor, and what it can change
+
+Atlassian’s Jira MCP server is a hosted connector that lets an AI assistant such as Claude or Cursor search, read and update your Jira Cloud data through the Model Context Protocol. It acts with your own Jira permissions, connects in minutes, and since a September 2026 update can delete items and update screens.
+
+BF Written by Ben Friedman, fractional forward-deployed AI engineer Published 11 October 2026 · 6 min read Sources checked Oct 2026
+
+## Key takeaways
+
+- The official server is hosted by Atlassian, works only with Atlassian Cloud, and sees exactly what the connecting account can see.
+- Its tools come in five groups: read, write, search, delete and manage. Delete and manage stay off until an admin turns them on.
+- Since 30 September 2026 the manage group can update Jira screens, so "MCP never touches configuration" is no longer true.
+- Connecting takes minutes. Choosing which account connects, and which groups it gets, is the part worth slowing down for.
+
+## How the Jira MCP server reaches your data
+
+MCP is an open protocol for giving an AI assistant tools in another system. Atlassian runs its own server for Jira, Confluence, Jira Service Management and its other cloud products, so there is nothing to install on your side. Assistants connect to one endpoint, `https://mcp.atlassian.com/v2/mcp`. The older Server-Sent Events endpoint stopped being supported after 30 June 2026, so a guide that still points there is out of date. If you connected on v1, Atlassian suggests disconnecting it and reconnecting on v2 rather than editing the old connection.
+
+![An assistant such as Claude or Cursor signs in with OAuth 2.1 or an API token to Atlassian’s hosted server at mcp.atlassian.com/v2/mcp, which acts on your Jira Cloud site with exactly the permissions of the connected account.](https://viter.io/images/mcp/mcp-connection.svg)
+
+Following the September update, two ways of signing in exist. With OAuth 2.1 each person approves the connection in a consent screen and the assistant then works as that person. With an API token, personal or from a service account, the assistant works as whoever owns the token, and an admin has to allow token sign-in first. The Jira Service Management tools only accept tokens. Either way, Atlassian’s own description of the boundary is short: "Access is granted only to data that the user already has permission to view" (Atlassian’s MCP server repository).
+
+## Connecting Claude and Cursor to Jira
+
+1. Claude Code. Run `claude mcp add --transport http atlassian https://mcp.atlassian.com/v2/mcp`, then `/mcp` inside a session to sign in.
+2. Claude desktop and web. Add the Atlassian connector from Claude’s connector directory, then sign in to Atlassian when it asks.
+3. Cursor. Install the Atlassian plugin from Cursor’s marketplace, or use the "Add to Cursor" button in Atlassian’s repository.
+4. Consent. Pick the Atlassian site in the consent screen. The first approval in a site also installs the server there, which is why it never appears in the Marketplace list.
+
+If the sign-in fails for everyone at once, look at the admin side before the client. Admins can block AI domains and restrict calls to approved IP ranges, and both stop a connection that is configured correctly.
+
+## What the Jira MCP server can change in 2026
+
+The tools sit in five groups. Read, write and search cover work items: fetching and creating them, editing fields, moving them between statuses, commenting, logging work and running JQL. Delete and manage are switched off by default. An organisation admin has to allow them at the organisation level first, before they appear on any AI surface, and then an admin enables them for the server (supported tools).
+
+![The Jira MCP server has five tool groups. Read, write and search are on by default. Delete and manage are off until an organisation admin allows them for AI and an admin enables them for the server.](https://viter.io/images/mcp/mcp-tool-groups.svg)
+
+Manage is where September 2026 changed the picture. Atlassian’s changelog adds workflow reading on 26 September and screen reading and editing on 30 September (Rovo MCP changelog). The supported-tools page also lists project creation and project settings in the same group. When I compared the tool list in August, nothing on it wrote to configuration at all (the August comparison). Screens now can be edited, with a safeguard worth knowing: the screen tool returns a plan by default and applies the change only when the request explicitly commits it.
+
+Workflows are read-only through MCP. The workflow tool that sounds like an editor opens Jira’s own workflow editor with the change filled in for a person to review, and applies nothing by itself.
+
+I found no published tool, up to 30 September 2026, that creates custom fields, edits permission schemes or writes automation rules. The list grows every few weeks, so treat any statement about it, this one included, as dated.
+
+## What to decide before anyone connects
+
+![Before connecting an assistant to Jira, decide which account connects, which tool groups are on, who reads the audit log, and who can switch the connection off.](https://viter.io/images/mcp/mcp-decisions.svg)
+
+Which account connects
+: The assistant can reach whatever that account can reach. An admin connecting with their own login hands the assistant admin reach. A dedicated account with narrow project permissions is the safer default.
+Which tool groups are on
+: Leave delete and manage off unless a named use case needs them, and name the person who decides to turn them on.
+What gets logged
+: Tool use lands in Atlassian’s audit log. Someone has to read it, or the log only helps after something has gone wrong.
+Who can switch it off
+: Admins can review and revoke the connection, and each person can revoke their own approval. Write down who does which.
+
+Setting this up for a team is part of our Atlassian work. For configuration changes that need a written plan and a sign-off before anything runs, JAMES holds every change for approval first.
+
+## When the Jira MCP server is not the right tool
+
+If your Jira runs on Data Center, the official server will not connect: it needs an Atlassian Cloud site. If all you want is answers about what sits in your issues, Rovo inside Jira covers that without connecting an outside assistant. The rest is where JAMES, the supervised AI Jira administrator I build, takes over.
+
+![The MCP server shows what was done, edits one screen per request and can read a screen. JAMES keeps the approved plan with reasons and result, plans a change across fields, screens and request types, and works out the right way to make it in context.](https://viter.io/images/mcp/mcp-vs-james.svg)
+
+- You need a record of what changed and why. An MCP tool call shows what was done. JAMES keeps the plan you approved, the reasons behind each step, and the result, so the change can be traced later.
+- One request touches many parts of the site. The MCP server edits one screen per request. JAMES plans a change across fields, screens, request types and the projects that share them, and you review it as one plan.
+- The change has to be right in context. MCP can read a screen, but it cannot tell how your site should implement a request. JAMES analyses the configuration around the change first, so a new field lands on the screens of the team that requested it.
+
+See what JAMES can change, or try it free.
+
+## Frequently asked questions
+
+Is there an official Jira MCP server?
+
+Yes. Atlassian hosts the Rovo MCP server for Jira, Confluence, Jira Service Management and its other cloud products, and lists it as generally available. Community servers exist too, but they run with your credentials on infrastructure you have to vet yourself.
+
+Which URL does the Jira MCP server use?
+
+Atlassian recommends `https://mcp.atlassian.com/v2/mcp`. The v1 `/mcp` endpoints still work, and the old `/v1/sse` endpoint stopped being supported after 30 June 2026. To move from v1 to v2, Atlassian suggests disconnecting v1 and reconnecting on v2.
+
+Does the Jira MCP server work with Jira Data Center?
+
+No. It needs an Atlassian Cloud site. For Data Center the options are community servers you host yourself, and I would review one line by line before giving it a token.
+
+Can Claude change Jira configuration through MCP?
+
+Partly, since late September 2026. With the manage group enabled by an admin it can create projects, update project settings, read workflows, and read and edit screens, where a screen change comes back as a plan until it is committed. As of 30 September no published tool created custom fields, changed permission schemes or wrote automation rules.
+
+Is it safe to connect an AI assistant to Jira?
+
+Only as safe as the account behind the connection. Use an account with the narrowest access the job needs, keep delete and manage off by default, and have someone read the audit log.
+
+## Sources
+
+External claims on this page were checked against these documents in October 2026:
+
+- Atlassian’s MCP server repository (github.com)
+- supported tools (developer.atlassian.com)
+- Rovo MCP changelog (developer.atlassian.com)
+
+## About the author
+
+hello@viter.io

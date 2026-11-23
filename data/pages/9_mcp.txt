@@ -1,0 +1,75 @@
+https://www.copper.com/mcp
+
+Copper MCP for Claude | Copper CRM
+
+# MCP - COMING SOON
+
+## Ask questions. Get insights. 
+
+Copper MCP is coming to Claude. Get answers about your clients and pipeline without opening a single record.
+
+## Ask Claude about your relationships, in your own words.
+
+### Built for AI from the ground up
+
+Purpose-built tools designed around how you think about your contacts and pipelines.
+
+### Fluent in your Copper
+
+Claude understands how you’ve tailored Copper to your business: your fields, customizations, activities, and saved filters.
+
+### Safe by design
+
+Your AI can only look, and only at what you’re allowed to see.
+
+## Be the first to get access.
+
+Request early access to the beta, or join the waitlist for updates as we get closer to launch.
+
+Thank you! Your submission has been received!
+
+Oops! Something went wrong while submitting the form.
+
+Already a Copper customer? Use your work email so we can match it to your account.
+
+## FAQs.
+
+Does Copper have an MCP server?
+
+Yes. Copper is launching an official MCP server, built and hosted by Copper. The beta launches in November 2026.
+
+Does Copper work with Claude?
+
+Yes. The Copper MCP beta works with Claude, so you can ask questions about your Copper data right from your Claude chats.
+
+Does it work with other AI assistants or agents?
+
+Not during the beta. Claude is supported in the beta release, and other assistants are being evaluated for after the beta. If you use ChatGPT, Copper GPT is available today.
+
+How is Copper's MCP server different from third-party Copper connectors?
+
+Most third-party connectors run on an admin API key, which ignores each user's permissions. They also wrap Copper's developer API, which was built for programmers. Copper's MCP uses your own login and a new API built for AI, so Claude works with your custom fields, saved filters and record names directly.
+
+What does "built for AI" mean?
+
+We didn't wrap our developer API. We built a brand-new one designed for AI, so Claude thinks about your contacts and pipelines the way you do, not in IDs and raw records.
+
+Will Claude understand how we've set up Copper?
+
+Yes. Claude understands your custom fields, activity types and saved filters, even if you've renamed People to Clients. Just ask the way you'd ask a teammate.
+
+Can Claude change or delete my Copper data?
+
+No. It's read-only on purpose: Claude can look, not touch. You sign in with your own Copper login, so Claude only sees what you can see. Write access is planned for a release after the beta, shaped by your feedback.
+
+Does Copper or the AI use my data for training?
+
+Copper does not allow the LLMs used in our native AI features to train their models on your data. With Copper GPT and the Copper MCP, your data appears in your own chats with ChatGPT or Claude, so your AI provider's training policy applies based on your plan with them.
+
+How do I get access?
+
+Fill out the beta form on this page to stay in the loop and request early access.
+
+When will it be available to everyone, and what will it cost?
+
+We'll share both at public release. Join the beta waitlist to get the latest updates right in your inbox.

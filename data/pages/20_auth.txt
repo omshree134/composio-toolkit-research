@@ -1,0 +1,1711 @@
+https://developer.gladly.com/rest/
+
+Gladly API
+
+# Gladly API (1.0)
+
+Download OpenAPI specification: Download
+
+# Introducing the Gladly API
+
+At Gladly, we believe that customer service is best when it's a conversation. That means more than just helping customers with one-off questions or issues: it's about making them feel known, valued, and respected for the individuals they are.
+
+The Gladly API was built to help facilitate those relationships, providing agents with the rich customer context they need to deliver seamless experiences that make customers feel like they're more than just a number in a sea of others.
+
+# Overview
+
+You can integrate easily with Gladly by calling Gladly's REST API and implementing the Lookup API to provide data from your own services.
+
+Some examples of what you do through Gladly APIs include managing customer profile data, interacting with a customer's timeline, providing the latest information about a customer's orders, and more.
+
+## REST API
+
+Clients can access the REST API via HTTPS at your organization's Gladly domain (e.g. `https://{organization}.gladly.com`).
+
+Resources follow REST semantics and utilize industry-standard HTTP verbs, response codes, and authentication schemes. In addition, all responses and payloads are in JSON with consistent error codes and formats.
+
+## Lookup API
+
+The Gladly Lookup API allows your organization to provide data services to power the agent's experience with a complete view of your customers' information, transactions, and activity. You can provide a web service that implements the Lookup API and Gladly will call it when that data is needed.
+
+Like the REST API, the Lookup API is specified using REST semantics, and exchanges JSON requests and responses authenticated and signed with secure keys.
+
+Gladly will perform lookups when certain activities occur within Gladly, such as when a customer's profile is loaded.
+
+A detailed overview of Lookup Adaptor architecture, requests, resposnes and more can be found here.
+
+## Testing
+
+Test the myriad possibilities of the Gladly API in a safe, secure space. We'll enable the Gladly API in a separate sandbox environment, so you can experiment freely without impacting your production environment (or vice versa).
+
+Your sandbox environment is accessible at `https://{organization}.gladly.qa`, where `organization` is your company name. For specific API endpoints, see documentation below.
+
+# Getting Started
+
+Think of this section as getting the keys to unlocking your access to the Gladly APIs. First, you'll need to set up an account with the necessary API permissions. With these permissions, you can then go on to create the API Token(s) you need to access Gladly's API resources.
+
+## Permissions
+
+Gladly Administrators can set API permissions on an agent-by-agent basis. We'll discuss how this maps to API access in the section on authentication below.
+
+To allow a user to create API tokens and access the API:
+
+1. Log in to your Gladly instance.
+2. Open the menu on the top left-hand corner of the page.
+3. Navigate to Settings > *Users
+4. Search and click the user profile you wish to give access to.
+5. You'll see a permission called API User. Select it, while making sure to keep the user's Agent role intact.
+6. Hit Save to give access.
+
+![Agent profile screen](https://developer.gladly.com/rest/assets/permissions-agent.png)
+
+We recommend creating a dedicated user to make API calls, whose account won't be used for agent and organization management. This will help you with any future audits of API activity vs. agent activity.
+
+## Creating API Tokens
+
+You must create an API token to access Gladly API resources (see above Permissions). If your profile already has access to the API User permission, you'll see a menu item titled More settings. Click More settings:
+
+![API Token Menu](https://developer.gladly.com/rest/assets/permissions-token-nav.png)
+
+Click API Tokens, then the Create Token button on the upper right-hand corner of the page:
+
+![API Token Add](https://developer.gladly.com/rest/assets/permissions-token-add.png)
+
+A token will be generated and named, by default, New Token (though depending on whether you have existing tokens, it may be named New Token 2, or New Token 3, etc.). You can rename the token to something more easily referenceable by clicking the name to edit.
+
+This token will be associated with your agent profile, which we refer to as the API User in this document.
+
+![API Token View](https://developer.gladly.com/rest/assets/permissions-token-view.png)
+
+For security purposes, you'll only see a new token once before you navigate away from the page.
+
+## Replacing/Rotating API Tokens
+
+Should you lose this token, or wish to rotate your application keys, you can do the following:
+
+1. Generate a new token.
+2. Store the new token in a secure location.
+3. Delete the old token.
+4. Update your applications/scripts with the new token.
+
+# Authentication
+
+## BasicAuth
+
+Gladly API uses token-based Basic Authentication. API tokens are associated with designated Gladly users. To create and use an API token, your user must have the API User permission. An API token can be used to perform any API request without restriction.
+
+| user name | password |
+| --- | --- |
+| agent email | API token |
+
+The credentials must be passed via an `Authorization` HTTP header. All requests must be made over HTTPS.
+
+```shell
+curl -u user@organization.com:$GLADLY_API_TOKEN \
+https://organization.gladly.com/api/v1/organization
+```
+
+| Security Scheme Type | HTTP |
+| --- | --- |
+| HTTP Authorization Scheme | basic |
+
+# Agents
+
+An Agent represents the user profile of a person who helps customers in Gladly. The API allows you to lookup Agents who participated in conversations with customers.
+
+## List Agents 
+
+Returns a list of agents.
+
+### Responses 
+
+200 
+
+Agents
+
+ get /api/v1/agents
+
+https://organization.gladly.com/api/v1/agents
+
+### Response samples 
+
+Content type
+
+application/json
+
+- {
+
+- "id": "WmeA3Y51Q5ayCAaZ1AotIA",
+- "name": "Amy Agent",
+- "emailAddress": "amy.agent@company.com"
+
+}
+
+## Get Agent 
+
+Get an agent profile by their unique id.
+
+##### path Parameters
+
+agentId
+
+ required 
+
+ Example: WmeA3Y51Q5ayCAaZ1AotIA
+
+id of the agent
+
+### Responses 
+
+200 
+
+Agent
+
+ get /api/v1/agents/{agentId}
+
+https://organization.gladly.com/api/v1/agents/{agentId}
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "id": "WmeA3Y51Q5ayCAaZ1AotIA",
+- "name": "Amy Agent",
+- "emailAddress": "amy.agent@company.com"
+
+## Get Agent Availability 
+
+Get an agent's availability. An agent who has never logged in is `OFFLINE`.
+
+##### path Parameters
+
+agentId
+
+ required 
+
+ Example: WmeA3Y51Q5ayCAaZ1AotIA
+
+id of the agent
+
+### Responses 
+
+200 
+
+AgentAvailability
+
+404 
+
+Agent not found
+
+ get /api/v1/agents/{agentId}/availability
+
+https://organization.gladly.com/api/v1/agents/{agentId}/availability
+
+### Response samples 
+
+- 200
+- 404
+
+Content type
+
+application/json
+
+- "agentId": "WmeA3Y51Q5ayCAaZ1AotIA",
+- "status": "AWAY",
+- "reason": 
+
+{
+
+- "id": "eRaHXjD4li-moMR8LbULXc",
+- "name": "Lunch"
+
+},
+- "channels": 
+
+[
+
+- "MAIL",
+- "MESSAGING"
+
+],
+- "updatedAt": "2026-06-22T09:00:00.000Z"
+
+## Get Agent CallRecorder 
+
+Get an agent call recording status.
+
+agentId
+
+ Example: WmeA3Y51Q5ayCAaZ1AotIA OR agent@customer.com
+
+Gladly ID or Gladly email address of the agent
+
+### Responses 
+
+CallRecorder
+
+404 
+
+ get /api/v1/agents/{agentId}/call-recorder
+
+https://organization.gladly.com/api/v1/agents/{agentId}/call-recorder
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "agentId": "WmeA3Y51Q5ayCAaZ1AotIA",
+- "customerId": "ZcyobierQhucTS5GV1R2Fw",
+- "conversationItemId": "g6UatsvAQC69AcDpOKF-yQ",
+- "recording": true
+
+## Update Agent CallRecorder 
+
+Update an agent's active call recording status. This API allows changing the `recording` property.
+
+agentId
+
+ Example: WmeA3Y51Q5ayCAaZ1AotIA OR agent@customer.com
+
+Gladly ID or Gladly email address of the agent
+
+##### Request Body schema: application/json
+
+JSON patch of CallRecorder
+
+agentId
+
+Id of the agent
+
+customerId
+
+Id of the customer on the call, if the agent is on a call. If the agent is not on a call this is omitted
+
+Id of the conversation item of the call, if the agent is on a call. If the agent is not on a call this is omitted
+
+recording
+
+If the call is currently being recorded or not
+
+### Responses 
+
+Call recording updated. If an agent is not on a call the update will do nothing.
+
+404 
+
+ patch /api/v1/agents/{agentId}/call-recorder
+
+https://organization.gladly.com/api/v1/agents/{agentId}/call-recorder
+
+### Request samples 
+
+### Response samples 
+
+- "errors": 
+
+{
+
+- "code": "not_exist",
+- "detail": "agent WmeA3Y51Q5ayCAaZ1AotIA does not exist"
+
+}
+
+# Public Answer
+
+A Public Answer in Gladly represents a consumer-facing Answer.
+
+The Public Answers API allows you to search and retrieve Public Answers (created directly in the Gladly UI), which you can display in the Chat web widget, use to build your website's help center/FAQ page, or publish on any page on your website.
+
+This API can be used without an API token because it only provides access to public content. You may also work with Gladly Support to enable CORS access so the API can be used directly from client-side javascript.
+
+### How a user creates a public answer in Gladly
+
+### How that answer is searched and displayed on the Chat Web widget
+
+## Search public answers 
+
+Returns a list of answers that match the provided query string.
+
+id of your organization
+
+You can look up the ID using the Get organization API.
+
+Audience ID. The Audience ID can be retrieved by going to Settings > Audiences in Gladly, then clicking on the Edit button next to the Audience in question. The ID will be in the page URL.
+
+### Responses 
+
+### Response samples 
+
+- {
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password"
+
+}
+
+## List public answers 
+
+Returns the first 1000 public answers sorted alphabetically by name.
+
+##### path Parameters
+
+orgId
+
+ Example: ihKsWxiZCDVtXg1iwVmT9Q
+
+id of your organization
+
+You can look up the ID using the Get organization API.
+
+##### query Parameters
+
+lng
+
+ Example: lng=es-419
+
+Language of the answers returned
+
+Defaults to `en-us`
+
+audienceId
+
+ Example: audienceId=ihKsWxiZCDVtXg1iwVmT9Q
+
+Audience ID for answers returned - optional. The Audience ID can be retrieved by going to Settings > Audiences in Gladly, then clicking on the Edit button next to the Audience in question. The ID will be in the page URL.
+
+### Responses 
+
+200 
+
+answers
+
+ get /api/v1/orgs/{orgId}/answers?lng={lng}&audienceId={audienceId}
+
+https://organization.gladly.com/api/v1/orgs/{orgId}/answers?lng={lng}&audienceId={audienceId}
+
+### Response samples 
+
+application/json
+
+- {
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password",
+- "bodyHtml": " Click here to reset your password ",
+- "language": "en-us",
+- "updatedAt": "2023-05-22T10:00:00.000Z"
+
+}
+
+## List Help Center Answer Titles 
+
+Returns an array of answers configured in Help Center sections with their ID and name
+
+##### path Parameters
+
+orgId
+
+ Example: ihKsWxiZCDVtXg1iwVmT9Q
+
+id of your organization
+
+You can look up the ID using the Get organization API.
+
+ Example: ihKsWxiZCDVtXg1iwVmT9Q
+
+Help Center ID
+
+You can look up the ID by going to Settings > Help Center in Gladly, then clicking on the 3 dots next to the Help Center and selecting Configure. Help Center ID will be in the URL
+
+##### query Parameters
+
+lng
+
+ Example: lng=es-419
+
+Language of the answers returned
+
+Defaults to `en-us`
+
+audienceId
+
+ Example: audienceId=ihKsWxiZCDVtXg1iwVmT9Q
+
+Audience ID for answers returned - optional. The Audience ID can be retrieved by going to Settings > Audiences in Gladly, then clicking on the Edit button next to the Audience in question. The ID will be in the page URL.
+
+### Responses 
+
+ get /api/v1/orgs/{orgId}/help-center/{helpCenterId}/answer-titles?lng={lng}&audienceId={audienceId}
+
+https://organization.gladly.com/api/v1/orgs/{orgId}/help-center/{helpCenterId}/answer-titles?lng={lng}&audienceId={audienceId}
+
+### Response samples 
+
+- {
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password"
+
+}
+
+## Get public answer 
+
+Returns the answer with the provided id.
+
+##### path Parameters
+
+ Example: ihKsWxiZCDVtXg1iwVmT9Q
+
+id of your organization
+
+You can look up the ID using the Get organization API.
+
+answerId
+
+ Example: 1grfSzATQLa334VDLCWc4A
+
+lng
+
+### Responses 
+
+ get /api/v1/orgs/{orgId}/answers/{answerId}
+
+https://organization.gladly.com/api/v1/orgs/{orgId}/answers/{answerId}
+
+### Response samples 
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password",
+- "bodyHtml": " Click here to reset your password ",
+- "language": "en-us",
+- "updatedAt": "2023-05-22T10:00:00.000Z"
+
+# Answer Management
+
+The Answer Management API allows you to create, update, and delete Answers in Gladly. To create an Answer with content, two calls would be needed. One call to create an Answer and subsequent call(s) to add content(s)
+
+## Get answers 
+
+Returns every answer in the org, including the `availableContents` discovery map on each. Intended as the entry point for syncing answers to an external system. Unlike List public answers (which lists help-center public answers in a single language), this endpoint returns all answers regardless of content type or language.
+
+### Responses 
+
+### Response samples 
+
+- {
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password",
+- "description": "This is my first answer",
+- "audienceIds": 
+
+[
+
+- "audience-1",
+- "audience-2"
+
+],
+- "availableContents": 
+
+{
+
+- "en-us": 
+
+[
+
+- "REFERENCE"
+
+]
+
+},
+- "updatedAt": "2024-06-13T15:16:29.894Z",
+- "createdAt": "2024-06-13T15:16:29.894Z"
+
+}
+
+## Add answer 
+
+Adds an answer to the list of answers.
+
+##### Request Body schema: application/json
+
+unique answer id - optional (a new id will be generated if not provided)
+
+name
+
+Customer facing answer name
+
+description
+
+Answer description gives more information about the answer to the Agent and appears in Answers Search when an Agent searches for an email or messaging answer. Only available for email and messaging content types
+
+List of Audience IDs to be associated with the answer
+
+### Responses 
+
+Bad Request
+
+409 
+
+Specified id is in use
+
+### Request samples 
+
+- "name": "How to reset your password",
+- "description": "This is my first answer",
+- "audienceIds": 
+
+[
+
+- "audience-1",
+- "audience-2"
+
+]
+
+### Response samples 
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password",
+- "description": "This is my first answer",
+- "audienceIds": 
+
+[
+
+- "audience-1",
+- "audience-2"
+
+],
+- "createdAt": "2024-06-13T15:16:29.894Z"
+
+## Get Answer 
+
+Returns the answer requested.
+
+### Responses 
+
+404 
+
+ get /api/v1/answers/{answerId}
+
+### Response samples 
+
+- "id": "1grfSzATQLa334VDLCWc4A",
+- "name": "How to reset your password",
+- "description": "This is my first answer",
+- "audienceIds": 
+
+[
+
+- "audience-1",
+- "audience-2"
+
+],
+- "availableContents": 
+
+{
+
+- "en-us": 
+
+[
+
+- "REFERENCE"
+
+]
+
+},
+- "updatedAt": "2024-06-13T15:16:29.894Z",
+- "createdAt": "2024-06-13T15:16:29.894Z"
+
+## Update Answer 
+
+Updates the answer with the provided id.
+
+Answer description gives more information about the answer to the Agent and appears in Answers Search when an Agent searches for an email or messaging answer. Only available for email and messaging content types
+
+List of Audience IDs to be associated with the answer. Updating this will replace the existing set of audience IDs. The Audience API can be used to retrieve the audience IDs created for the org.
+
+### Responses 
+
+Bad Request
+
+### Request samples 
+
+- "name": "How to reset your password",
+- "description": "This is my first answer",
+- "audienceIds": 
+
+[
+
+- "audience-1",
+- "audience-2"
+
+]
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "errors": 
+
+[
+
+- {
+
+- "attr": "name",
+- "code": "taken",
+- "detail": "duplicate answer name"
+
+}
+
+]
+
+## Delete Answer 
+
+Deletes the answer with the provided id.
+
+##### path Parameters
+
+answerId
+
+ required 
+
+ Example: 1grfSzATQLa334VDLCWc4A
+
+id of the answer
+
+### Responses 
+
+204 
+
+Answer deleted
+
+400 
+
+Bad Request
+
+404 
+
+Answer does not exist
+
+ delete /api/v1/answers/{answerId}
+
+https://organization.gladly.com/api/v1/answers/{answerId}
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "errors": 
+
+[
+
+- {
+
+- "attr": "answer",
+- "code": "in_use",
+- "detail": "answer is associated with rules"
+
+}
+
+]
+
+## Get Answer Content 
+
+Returns the answer content requested by language and type.
+
+Note: For `email` type answers, if the subject line is empty, the API will return `204 No Content` instead of a response body.
+
+##### path Parameters
+
+answerId
+
+ Example: 1grfSzATQLa334VDLCWc4A
+
+language
+
+Language code according to ISO 639 format. The specified language must also be configured for the org.
+
+Type of answer. Must be one of `public`, `email`, `messaging`, or `reference`.
+
+### Responses 
+
+200 
+
+answerContent
+
+204 
+
+No content. Returned for email type answers when the subject line is empty.
+
+400 
+
+Bad Request
+
+404 
+
+ get /api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+https://organization.gladly.com/api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+### Response samples 
+
+- "answerId": "1grfSzATQLa334VDLCWc4A",
+- "language": "en-us",
+- "type": "public",
+- "bodyHtml": " Public content ",
+- "title": "Reset Password",
+- "subject": "Re: Your inquiry",
+- "internal": false
+
+## Add or Update Answer Content 
+
+Adds or Updates the answer content for the specified answer by language and type.
+
+ Example: 1grfSzATQLa334VDLCWc4A
+
+Language code according to ISO 639 format. The specified language must also be configured for the org.
+
+ Enum: "public" "email" "messaging" "reference" 
+
+Type of answer. Must be one of `public`, `email`, `messaging`, or `reference`.
+
+##### Request Body schema: application/json
+
+The request body fields depend on the content type:
+
+- public: `bodyHtml` (required), `title` (required)
+- email: `bodyHtml` (required), `subject` (required)
+- messaging: `bodyHtml` (required)
+- reference: `bodyHtml` (required), `internal` (optional, defaults to false)
+
+bodyHtml
+
+The body of the answer content. Required for all content types.
+
+title
+
+Title of the answer content. Required for `public` type.
+
+subject
+
+Subject line of the answer content. Required for `email` type.
+
+internal
+
+Whether the content is internal-only. Applicable to `reference` type.
+
+### Responses 
+
+400 
+
+Bad Request
+
+404 
+
+ put /api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+https://organization.gladly.com/api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+### Request samples 
+
+### Response samples 
+
+- "answerId": "1grfSzATQLa334VDLCWc4A",
+- "language": "en-us",
+- "type": "public",
+- "bodyHtml": " Public content ",
+- "title": "Reset Password",
+- "subject": "Re: Your inquiry",
+- "internal": false
+
+## Delete Answer Content 
+
+Deletes the answer content for the specified answer by language and type.
+
+ Example: 1grfSzATQLa334VDLCWc4A
+
+Language code according to ISO 639 format. The specified language must also be configured for the org.
+
+Type of answer. Must be one of `public`, `email`, `messaging`, or `reference`.
+
+### Responses 
+
+Answer content deleted
+
+400 
+
+Bad Request
+
+404 
+
+ delete /api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+https://organization.gladly.com/api/v1/answers/{answerId}/languages/{language}/type/{type}
+
+### Response samples 
+
+- "errors": 
+
+[
+
+- {
+
+- "attr": "language",
+- "code": "invalid",
+- "detail": "invalid language"
+
+}
+
+]
+
+# Audiences
+
+An Audience represents a brand (or segment) specially for a multi-brand company. They are used to categorize Answers, Help Centers and Chats for the specific brands. The API allows you to lookup the audiences that have been created for the organization.
+
+## List Audiences 
+
+Returns a list of audiences.
+
+### Responses 
+
+ get /api/v1/audiences
+
+https://organization.gladly.com/api/v1/audiences
+
+### Response samples 
+
+# Business Hours
+
+Business Hours define the operating schedule for your organization. They determine when your organization is available to handle customer communications and can be used to control routing, auto-responses, and other time-sensitive workflows.
+
+Business hours configurations include:
+
+- Schedule blocks for each day of the week specifying start and end times
+- Timezone in IANA format (e.g., America/Los_Angeles)
+- Exceptions for holidays or special dates
+
+One business hours configuration is marked as primary and serves as the default schedule for your organization. The primary business hours cannot be deleted.
+
+## List business hours 
+
+Returns a list of all business hours configurations for your organization.
+
+### Responses 
+
+200 
+
+Business hours
+
+ get /api/v1/business-hours
+
+https://organization.gladly.com/api/v1/business-hours
+
+### Response samples 
+
+application/json
+
+- {
+
+- "id": "bh_WmeA3Y51Q5ayCAaZ1AotIA",
+- "version": 1,
+- "createdAt": "2024-01-15T09:00:00Z",
+- "updatedAt": "2024-01-15T09:00:00Z",
+- "name": "Default Hours",
+- "primary": true,
+- "officeHours": 
+
+{
+
+- "timezone": "America/Los_Angeles",
+- "monday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "tuesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "wednesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "thursday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "friday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+]
+
+}
+
+}
+
+## Create business hours 
+
+Creates a new business hours configuration for your organization.
+
+##### Request Body schema: application/json
+
+Business hours configuration to create
+
+| name required | string Name of the business hours configuration (max 200 characters) |
+| --- | --- |
+| primary | boolean Default: false Whether this should be the primary business hours configuration |
+| officeHours required | object (OfficeHours) |
+
+### Responses 
+
+Business hours created
+
+400 
+
+Validation error
+
+### Request samples 
+
+Content type
+
+application/json
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "id": "bh_WmeA3Y51Q5ayCAaZ1AotIA",
+- "version": 1,
+- "createdAt": "2024-01-15T09:00:00Z",
+- "updatedAt": "2024-01-15T09:00:00Z",
+- "name": "Default Hours",
+- "primary": true,
+- "officeHours": 
+
+{
+
+- "timezone": "America/Los_Angeles",
+- "monday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "tuesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "wednesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "thursday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "friday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "saturday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "sunday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "exceptions": 
+
+[
+
+- {
+
+- "name": "New Year's Day",
+- "start": "2024-01-01T00:00:00Z",
+- "stop": "2024-01-02T00:00:00Z",
+- "scheduleBlocks": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+]
+
+}
+
+]
+
+}
+
+## Get business hours 
+
+Returns a single business hours configuration by its unique ID.
+
+##### path Parameters
+
+businessHoursId
+
+ required 
+
+ Example: bh_WmeA3Y51Q5ayCAaZ1AotIA
+
+ID of the business hours configuration
+
+### Responses 
+
+200 
+
+Business hours
+
+404 
+
+Business hours not found
+
+ get /api/v1/business-hours/{businessHoursId}
+
+https://organization.gladly.com/api/v1/business-hours/{businessHoursId}
+
+### Response samples 
+
+- 200
+- 404
+
+Content type
+
+application/json
+
+- "id": "bh_WmeA3Y51Q5ayCAaZ1AotIA",
+- "version": 1,
+- "createdAt": "2024-01-15T09:00:00Z",
+- "updatedAt": "2024-01-15T09:00:00Z",
+- "name": "Default Hours",
+- "primary": true,
+- "officeHours": 
+
+{
+
+- "timezone": "America/Los_Angeles",
+- "monday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "tuesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "wednesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "thursday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "friday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "saturday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "sunday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "exceptions": 
+
+[
+
+- {
+
+- "name": "New Year's Day",
+- "start": "2024-01-01T00:00:00Z",
+- "stop": "2024-01-02T00:00:00Z",
+- "scheduleBlocks": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+]
+
+}
+
+]
+
+}
+
+## Update business hours 
+
+Updates an existing business hours configuration. The `version` field must match the current version of the business hours to prevent conflicting updates.
+
+##### path Parameters
+
+businessHoursId
+
+ required 
+
+ Example: bh_WmeA3Y51Q5ayCAaZ1AotIA
+
+ID of the business hours configuration
+
+##### Request Body schema: application/json
+
+Updated business hours configuration
+
+| version required | integer Current version of the business hours (for optimistic concurrency) |
+| --- | --- |
+| name required | string Name of the business hours configuration (max 200 characters) |
+| primary | boolean Whether this should be the primary business hours configuration |
+| officeHours required | object (OfficeHours) |
+
+### Responses 
+
+200 
+
+Business hours updated
+
+400 
+
+Validation error
+
+404 
+
+Business hours not found
+
+409 
+
+Version conflict
+
+ put /api/v1/business-hours/{businessHoursId}
+
+https://organization.gladly.com/api/v1/business-hours/{businessHoursId}
+
+### Request samples 
+
+Content type
+
+application/json
+
+- "version": 1,
+- "name": "Updated Business Hours",
+- "primary": false,
+- "officeHours": 
+
+{
+
+- "timezone": "America/New_York",
+- "monday": 
+
+[
+
+- {
+
+- "start": "08:00",
+- "stop": "18:00"
+
+}
+
+],
+- "tuesday": 
+
+[
+
+- {
+
+- "start": "08:00",
+- "stop": "18:00"
+
+}
+
+],
+- "wednesday": 
+
+[
+
+- {
+
+- "start": "08:00",
+- "stop": "18:00"
+
+}
+
+],
+- "thursday": 
+
+[
+
+- {
+
+- "start": "08:00",
+- "stop": "18:00"
+
+}
+
+],
+- "friday": 
+
+[
+
+- {
+
+- "start": "08:00",
+- "stop": "18:00"
+
+}
+
+]
+
+}
+
+### Response samples 
+
+Content type
+
+application/json
+
+- "id": "bh_WmeA3Y51Q5ayCAaZ1AotIA",
+- "version": 1,
+- "createdAt": "2024-01-15T09:00:00Z",
+- "updatedAt": "2024-01-15T09:00:00Z",
+- "name": "Default Hours",
+- "primary": true,
+- "officeHours": 
+
+{
+
+- "timezone": "America/Los_Angeles",
+- "monday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "tuesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "wednesday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "thursday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "friday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "saturday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "sunday": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+],
+- "exceptions": 
+
+[
+
+- {
+
+- "name": "New Year's Day",
+- "start": "2024-01-01T00:00:00Z",
+- "stop": "2024-01-02T00:00:00Z",
+- "scheduleBlocks": 
+
+[
+
+- {
+
+- "start": "09:00",
+- "stop": "17:00"
+
+}
+
+]
+
+}
+
+]
+
+}
+
+## Delete business hours 
+
+Deletes a business hours configuration. The primary business hours configuration cannot be deleted.
+
+##### path Parameters
+
+businessHoursId
+
+ Example: bh_WmeA3Y51Q5ayCAaZ1AotIA
+
+ID of the business hours configuration
+
+### Responses 
+
+204 
+
+Business hours deleted
+
+400 
+
+Cannot delete primary business hours
+
+404 
+
+Business hours not found
+
+ delete /api/v1/business-hours/{businessHoursId}
+
+https://organization.gladly.com/api/v1/business-hours/{businessHoursId}
+
+### Response samples 
+
+- 400
+- 404
+
+Content type
+
+application/json
+
+# Communications
+
+Communications API enables you to programmatically send messages to your customers. These messages are non-routable and non-searchable.
+
+## Send SMS 
+
+To send an SMS message to a customer specified by a mobile phone number.
+
+Gladly can send outbound SMS messages globally. By default, your organization is set up to only allow access to your home country. To send SMS messages to other countries, please contact Gladly Support with a P4 designation.
+
+Please be aware that:
+
+##### Request Body schema: application/json
+
+### Responses 
+
+200 
+
+the customer and conversation item ID
+
+400 
+
+Invalid field(s) in request body
+
+ post /api/v1/communications/sms
+
+https://organization.gladly.com/api/v1/communications/sms
+
+### Request samples 
+
+Content type
+
+application/json
+
+- "customer": 
+
+{
+
+- "mobileNumber": "+14152223000"
+
+},
+- "from": "+14152223316",
+- "body": "hello, this is a sample SMS message!"
+
+### Response samples 
+
+- "customerId": "gHufx-U3QqOmhvFuViceTw",
+- "conversationItemId": "pOVVdzweSumI4bFxjlT8LA"
+
+## Send email 
+
+Used to send an email messages to a customer specified by an email address.
+
+Any items created using this API will not be considered part of a conversation, and are non-routable and non-searchable aside from the email address specified as part of the payload.
+
+##### Request Body schema: application/json
+
+Array of objects
+
+Email addresses to send the email to. Currently, only one email address is supported. The email address and name will be used to find or create the customer.
+
+Email address to send the email from. This must be a configured email address in your organization.
+
+Content of the email.
+
+### Responses 
+
+200 
+
+the customer and conversation item ID
+
+400 
+
+Invalid field(s) in request body
+
+ post /api/v1/communications/email
+
+https://organization.gladly.com/api/v1/communications/email
+
+### Request samples 
+
+- "to": 
+
+[
+
+- {
+
+- "email": "jane.doe@example.com",
+- "name": "Jane Doe"
+
+}
+
+],
+- "from": "no-reply@gladly.com",
+- "subject": "This is a sample email message!",
+- "body": 
+
+{
+
+- "html": " This is a sample email message! Best regards, The Support Team ",
+- "text": "This is a sample email message!\\n\\nBest regards,\\nThe Support Team"
+
+}
+
+### Response samples 
+
+- "customerId": "gHufx-U3QqOmhvFuViceTw",
+- "conversationItemId": "pOVVdzweSumI4bFxjlT8LA"
+
+## Conversation
+
+A Conversation in Gladly contains the timeline of activity for a customer including communications to and from your organization along with other internal and external activity. Conversations API enables you to interact with the customer conve

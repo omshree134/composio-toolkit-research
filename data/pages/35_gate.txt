@@ -1,0 +1,110 @@
+https://mailchimp.com/developer/integration-partner-program/
+
+> This page is for Integration Partner Program.
+
+> For clean Markdown of any page, append .md to the page URL.
+> For a complete documentation index, see https://mailchimp.com/developer/llms.txt.
+
+# Mailchimp Integration Partner Program
+
+# Become a Mailchimp Integration Partner
+
+Unlock exclusive benefits and get your Mailchimp integration in front of millions of customers.
+
+Apply now![](https://mailchimp.com/developer/_fern-files/mailchimp.docs.buildwithfern.com/87bcca5575220b4dcb08958cf0e806b1be04394da0899e492f1d0f1bd2be4938/assets/Integrations-Hero.png)
+
+## Benefits to give you a leg up on the competition
+
+We offer Integration Partners extra support and invaluable opportunities to boost their business with Mailchimp.
+
+1
+
+#### Reach millions of users
+
+Get your business in front of over 14 million active Mailchimp users with a listing in the Mailchimp Marketplace.
+
+2
+
+#### Get timely support
+
+Keep moving forward with 24/7 premium email support and 24/5 (Monday–Friday) live chat assistance.
+
+3
+
+#### Access partner branding
+
+Use the Mailchimp Integration Partner badge to promote your integration through digital channels.
+
+> The Mailchimp API is comprehensive, reliable, and easy to use. It enables us to offer a robust integration that helps our mutual customers scale their businesses.
+
+Jayadev R, Product Manager, Automate.io
+
+![Automate.io](https://images.ctfassets.net/cxsachrr7h0p/20jgWj0K2qcybz2PBWw9a6/b899e20b28c1664515cd7084f276d1dd/automate_logo.png?w=160&h=160&fm=png)
+
+> When we first started Join It in 2016, integrating with Mailchimp and publishing in the Integrations Directory helped us find our first customers! Mailchimp was an obvious choice because it’s so ubiquitous among our audience of SMBs.
+
+Mitch Colleran, CEO/Founder, Join It
+
+![Join It](https://images.ctfassets.net/cxsachrr7h0p/1C3yz9TxO86F7RLu6fYbUV/2ff2ae27b6b5334a227625d06e0278a8/joinit_logo.png?w=160&h=160&fm=png)
+
+> Since being featured in Mailchimp’s Integrations Directory, we’ve seen a 3x increase in the number of signups coming our way. We’re excited to see where the future takes us.
+
+Daniel Zieliński, Technology Partnerships, LiveChat
+
+![LiveChat](https://images.ctfassets.net/cxsachrr7h0p/1NJqIgGMvwIWrUZG8cCxid/3fa9440f13ed2ef4483c33a539af137f/livechat_logo.png?w=160&h=160&fm=png)
+
+Mailchimp Marketplace
+
+## See what others have built
+
+Find inspiration amongst the 300+ Mailchimp integrations already developed by our partners.
+
+Browse the Marketplace
+
+![](https://mailchimp.com/developer/_fern-files/_img/f210b139ee83a74e85d6fa5f81cba48f3c06e212894e1ec9176b25bdf01eeb5e.webp)
+
+![Mailmunch](https://mailchimp.com/developer/_fern-files/mailchimp.docs.buildwithfern.com/0eb2161b131736618b6bf99442741a7fc60e01bf20aac2124e959fc1d72fdff2/assets/Mailmunch_logo.png)
+
+Marketing
+
+#### Mailmunch
+
+Automatically syncs exit intent and other opt-in forms with Mailchimp.
+
+![Canva](https://mailchimp.com/developer/_fern-files/mailchimp.docs.buildwithfern.com/2c0a6960c86e463afec5f2bae58268ab7453f25c3072a8704547882e252a453a/assets/canva_logo.png)
+
+Design
+
+#### Canva
+
+Integrates Canva artwork and images directly with Mailchimp’s campaign builder.
+
+![Integromat](https://mailchimp.com/developer/_fern-files/mailchimp.docs.buildwithfern.com/f87223dd55ca259ec2acc5dc6247ce7bd59cfa18ee85ef2aed69f89dac56c201/assets/Integromat_logo.png)
+
+Connector Services
+
+#### Integromat
+
+Inserts Mailchimp into automation workflows connecting over 650 apps and services.
+
+Integration Partner Program
+
+## Start building
+
+Learn the basics of integrating your software with Mailchimp, including authentication flows, typical architecture, and common API endpoints.
+
+Read the documentation
+
+To become a partner, your integration must:
+
+- Be built on the current version of the Mailchimp Marketing API
+- Support OAuth 2 authentication
+- Have had 25+ active users within the past 90 days
+
+See the full requirements in the application
+
+## It’s easy to apply
+
+And it’s free. Two things everyone loves.
+
+Apply now

@@ -1,0 +1,13 @@
+https://developer.brex.com/docs/partner_onboarding
+
+## Steps
+
+- Once your application is approved, you'll receive credentials for the staging environment using SendSafely. Please store these securely since they expire in 7 days.
+- You'll need to provide us with your company name, counterparty address, and the name, email and title of the person signing the agreement. After you share this with us, you'll receive a Unilateral API Access Agreement from Brex.
+- If you need access to an account on staging, provide us with an email address and we'll provision a staging account for you and invite you to it.
+- Once you've built your demo, share it with us in a video and we'll generate production credentials for you. You'll receive the production credentials via SendSafely too.
+
+## Staging environment
+
+- We can remove data from the staging environment at any time, so please do not use this in anything that's critical or a production use-case.
+- We'll do our best to provide high availability in the staging environments, but we can't make any guarantees. If you report issues that are not ephermal, please reach out to us.

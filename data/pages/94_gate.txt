@@ -1,0 +1,111 @@
+https://docs.consensus.app/api-plans-and-access
+
+> ## Documentation Index
+> 
+> Fetch the complete documentation index at: https://docs.consensus.app/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# API plans and access
+
+> What each Consensus plan includes on the API: monthly calls, papers per request, pagination, full-text excerpts, complete text, citations, and rate limits.
+
+The API is self-serve on every Consensus plan. Your plan sets how many calls you get each month, how many papers each request can return, and which features you can use.
+
+## Get a key
+
+1. Open the dashboard
+
+Sign in to Consensus and go to consensus.app/api-mcp, or click your profile icon and choose API & MCP Dashboard.
+
+2. Create a key
+
+Click Create API key, name it, and copy it. If you already have a key, open Keys and clients and click New key. The full key is shown once.
+
+3. Send it on every request
+
+Pass the key in the `x-api-key` header. Requests without a valid key return `401`.
+
+## What each plan includes
+
+| | Free | Pro | Teams | Deep | Enterprise |
+| --- | --- | --- | --- | --- | --- |
+| Included calls per month | 30 | 500 | 500 | 2,000 | Custom |
+| Max calls with additional usage | 30 | 1,000 | 1,000 | 10,000 | Custom |
+| Max papers per request (`page_size`) | 20 | 300 | 300 | 750 | 1,000 |
+| Pagination past the first page | No | Yes | Yes | Yes | Yes |
+| Full-text excerpts | No | Yes | Yes | Yes | Yes |
+| Complete text of open-access papers** | No | Yes | Yes | Yes | Yes |
+| Institutional full-text links (`institutional_access_url`)* | No | Yes | Yes | Yes | Yes |
+| Citations and references (beta)*** | No | Yes | Yes | Yes | Yes |
+| Rate limit | 1 request/second | 1 request/second | 1 request/second | 1 request/second | Custom |
+
+* Returned on the first 50 search results and on Thread citations when you've selected your institution in Consensus settings. An organization key uses the institution of the person who created it.
+
+** `GET /v1/papers/full_text`, at 1 credit per paper returned.
+
+*** `GET /v1beta/papers/citations` and `GET /v1beta/papers/references`, at 1 credit per 100 papers returned. Both are in beta, so their request and response schemas may change in the coming days.
+
+Every plan can use every search filter. Compare plans at consensus.app/pricing.
+
+## How calls are counted
+
+- One call per 100 papers returned, rounded up, with a minimum of one call per request. A request that returns 20 papers is 1 call; 150 papers is 2 calls.
+- A Thread is charged by the amount of work the agent does. `mode` controls the effort: a `deep` run does more work than a `pro` run, so it costs more. A failed run costs nothing. While a Thread runs, its maximum possible cost counts as used. If that doesn't fit under your plan's limit, creating the Thread or adding a follow-up returns `429`.
+- One credit per full text returned. Complete text costs 1 credit for each paper whose Markdown comes back, and a credit counts the same as a call. Papers that come back blocked or not found cost nothing. A paper charged to you in the last 24 hours, through the API or MCP, normally comes back free.
+- One credit per 100 citing or cited papers returned. `GET /v1beta/papers/citations` and `GET /v1beta/papers/references` are charged by the papers on the page, rounded up, with a minimum of 1 credit per request.
+- API and MCP share one monthly pool. Searches from your API key and from your MCP connection draw down the same allowance.
+- Usage resets on the 1st of each month. Track it in the Usage tab of the API & MCP Dashboard.
+
+### Additional usage
+
+Pro, Teams, and Deep can keep making calls past the included amount, up to the plan's maximum, at $0.05 per call. Additional usage is off by default; turn it on in the API & MCP Dashboard. Free plans stop at 30 calls.
+
+## Page size and pagination
+
+- `page_size` defaults to 20. A larger value is capped to your plan's maximum rather than rejected, so check the `page_size` echoed in the response.
+- Pages are zero-indexed. Requesting `page=1` or later needs a paid plan; on Free it returns `403`.
+- A query returns at most 1,000 results in total. `(page + 1) × page_size` can't exceed 1,000 on any plan. With `page_size=250`, pages 0–3 cover the full 1,000. To go wider, split the topic into narrower queries or tighter filters.
+
+## Rate limits
+
+Every self-serve plan allows one request per second per account. A faster request returns `429` with a `retry-after` header; wait that long and retry. Enterprise accounts can have custom limits.
+
+The Threads endpoints follow the same one-request-per-second limit, except `GET /v1/threads/{thread_id}`, which allows up to three requests per second. That limit is shared across all of your account's Threads. While a Thread is running, poll it every `poll_after_seconds`: 5 seconds for `pro`, 20 for `deep`.
+
+`GET /v1/papers/full_text`, `GET /v1beta/papers/citations`, and `GET /v1beta/papers/references` each allow one request per second on every plan, Enterprise included.
+
+## Errors
+
+| Status | Meaning | What to do |
+| --- | --- | --- |
+| `401` | Missing, invalid, or revoked key | Check the `x-api-key` header, or create a new key |
+| `402` | Billing is past due | Resolve payment in your account; calls resume after |
+| `403` `feature_not_allowed` | Pagination or full-text excerpts on a Free plan | Upgrade to a paid plan |
+| `403` `feature_not_allowed` on a Thread with `skill` | Skills aren't enabled for your account yet | Leave `skill` unset |
+| `403` `feature_not_allowed` on `/v1/papers/full_text` | Complete text on a Free plan | Upgrade to a paid plan |
+| `403` `feature_not_allowed` on `/v1beta/papers/citations` or `/references` | Citations and references on a Free plan | Upgrade to a paid plan |
+| `409` on a follow-up | The Thread's latest interaction is still running | Poll the Thread until its status is `idle` or `failed`, then retry |
+| `429` "used all included searches" | Monthly calls used up | Turn on additional usage, upgrade, or wait for the 1st |
+| `429` "Too many requests" | More than one request per second | Wait for `retry-after`, then retry |
+
+## Enterprise
+
+Enterprise adds custom call volumes and rate limits and up to 1,000 papers per request. An Enterprise contract covers search only: complete text, citations and references, and Threads are billed per credit at the standard rate, on top of the contract. Enterprise keys authenticate the same way as every other key: send them in the `x-api-key` header on requests to `api.consensus.app`.
+
+> [!NOTE]
+> 
+> `Authorization: Bearer` is for the MCP server (`mcp.consensus.app/mcp`), not the REST API. See MCP API key access.
+
+For Enterprise access, contact sales. Setting Consensus up behind an AI gateway or in Microsoft 365 Copilot? See the Enterprise guides.
+
+## Related
+
+> [card] Get started
+> 
+> Your first request, and a real response with full-text excerpts.
+
+> [card] MCP plans and access
+> 
+> The same plans on the MCP server, with its per-plan result and field limits.
+
+This documentation is built and hosted on Mintlify, a developer documentation platform.

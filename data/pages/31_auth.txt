@@ -1,0 +1,34 @@
+https://developers.google.com/google-ads/api/docs/oauth/overview
+
+Use OAuth 2.0 to access Google Ads API | Google for Developers
+
+0 to access Google Ads API
+
+## Page Summary
+
+- Google Ads API utilizes the OAuth 2.0 protocol for authentication and authorization, allowing your app to access user accounts without handling login information.
+- In addition to OAuth 2.0 credentials, a developer token is also required to make Google Ads API calls.
+- While all Google-supported OAuth 2.0 scenarios work, this guide focuses on the most common ones for Google Ads API developers.
+- The recommended OAuth 2.0 approach depends on your specific application scenario, such as integrating with existing Google APIs, managing your own accounts, or managing accounts on behalf of other users.
+
+Note: You should configure your OAuth credentials using the same Google Cloud project where you have enabled the Google Ads API and requested an appropriate API access level for the Google Ads API to work correctly.
+
+Just like other Google APIs, Google Ads API uses the OAuth 2.0 protocol for authentication and authorization. OAuth 2.0 enables your Google Ads API client app to access a user's Google Ads account without having to handle or store the user's login info.
+
+Broadly speaking, all the OAuth 2.0 authorization scenarios that Google supports also work with Google Ads API. However, this guide focuses on the scenarios that are most common for Google Ads API developers.
+
+| Scenario | Recommended approach |
+| --- | --- |
+| My app already uses one or more Google APIs. I have already built support for OAuth 2.0 workflows for my app, and just need to add Google Ads API functionality to my existing app. | Make sure your authorized user or your service account has access to the Google Ads accounts you are making API calls to. For more information, see the Google Ads access model. See the multi-user authentication workflow or the service account workflow depending on the approach you are using with the rest of the Google APIs that your app is using. |
+| I am building an app that manages Google Ads accounts that I already have access to. If I need to manage new Google Ads accounts in the future, I will gain access to those accounts by linking them under my Google Ads manager account. OR Someone will invite me to manage those accounts. | Use the service account workflow. If your organizational policies or account setup prevent you from using service accounts, use the single-user authentication workflow instead. |
+| I am building an app that manages Google Ads accounts on behalf of other users. My app will build a user screen that lets the signed-in users connect to their Google Ads accounts and authorize my app to manage those accounts on their behalf. | Use multi-user authentication. |
+
+To review and revoke access for third-party applications connected to your Google Account, visit your Google Account permissions page.
+
+ Access model overview arrow_forward 
+
+No recommendations at this time.
+
+Try signing in to your Google account.
+
+Last updated 2026-11-13 UTC.

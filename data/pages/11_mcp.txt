@@ -1,0 +1,167 @@
+https://support.zendesk.com/hc/en-us/articles/11400026079130-Connecting-external-AI-agents-to-the-Zendesk-MCP-server-or-Zendesk-AI-agents-EAP
+
+Connecting external AI agents to the Zendesk MCP server or Zendesk AI agents (EAP) – Zendesk help
+
+Zendesk Bridge provides a way to establish governed connections between the Zendesk MCP Server or Zendesk AI agents and external AI agents your organization uses, including Claude, ChatGPT, Microsoft Copilot, Gemini, or AI agents you build yourself. After you connect an external AI agent to Zendesk and assign tools to it, the agent can perform Zendesk actions, such as creating and updating tickets, looking up users and organizations, searching your help center, applying macros, and more.
+
+| Support | Team, Professional, or Enterprise |
+| --- | --- |
+
+ Summary: ◀▼ 
+
+ Connect external AI agents to your support account and control which tools, data, and AI agents they can access. Configure a governed connection, then link the agent using MCP for tools or A2A for task delegation. You and your team can use plain-language requests to find information or propose ticket and business-rule changes, with human confirmation required before changes are made. Monitor agent activity in transaction logs and the observability dashboard. 
+
+ Zendesk Bridge and external AI agents are currently in an early access program (EAP). During the EAP, Zendesk Bridge and external AI agents are available without charge. However, plan packaging and pricing might change when the feature becomes generally available. To participate, join the External AI EAP.
+
+Zendesk Bridge provides a way to establish governed connections between the Zendesk MCP Server or Zendesk AI agents and external AI agents your organization uses, including Claude, ChatGPT, Microsoft Copilot, Gemini, or AI agents you build yourself. After you connect an external AI agent to Zendesk and assign tools to it, the agent can perform Zendesk actions, such as creating and updating tickets, looking up users and organizations, searching your help center, applying macros, and more. 
+
+This article describes how to connect external AI agents to your Zendesk account. Connecting is a two-step process:
+
+1. In Zendesk, configure a connection to an external AI agent that defines what you'll allow the external agent to do in your Zendesk account.
+2. In your external agent's AI platform, connect your external AI agent to Zendesk with an MCP server URL specified in the connection you configured.
+
+ Note: This article describes Zendesk Bridge, which connects external AI agents to the Zendesk MCP server and Zendesk AI agents. If you're trying to connect Zendesk to an external MCP server, see Using the Zendesk MCP client to access MCP tools in action flows and advanced action flows.
+
+## Configuring a connection for an external AI agent
+
+Configuring a connection defines what you allow the agent to do; it doesn't connect the external AI agent. You must connect the agent using the agent's AI platform.
+
+You can configure a "Bring your own provider" connection for your own custom AI agent or other third-party agents. However, you must create a separate OAuth client in Admin Center before configuring this connection. For instructions, see Registering your application with Zendesk. When creating the client, leave Allowed scopes blank.
+
+Alternatively, you can configure connections using pre-built providers for the following common external AI agents: 
+
+- Antigravity
+- ChatGPT
+- Claude Code
+- Claude
+- Codex
+- Lovable
+- Notion
+- Pi
+- Slack
+- Visual Studio Code
+
+If you use a pre-built provider, a global OAuth client is created for you. “Global” means Zendesk has approved the client for use across customer accounts. There is no client secret for each account. Each user authorizes your app for their own Zendesk account, and your app stores tokens for that account. See Set up a global OAuth client.
+
+ Note: For the EAP, you can only have one connection of each supported built-in provider. For example, if you use the ChatGPT provider to configure a connection to a ChatGPT agent, you cannot use the provider to configure connection to a different ChatGPT agent. Consider using a custom connection instead.
+
+To configure a connection to an external AI agent
+
+1. In Admin Center, click ![](https://zen-marketing-documentation.s3.amazonaws.com/docs/en/icon_ai.png) AI in the sidebar, then select External AI.
+2. Click Add connection in the upper right side of the page.
+3. Under Select connection type, click Use a pre-built provider or Bring your own provider and click Next.
+
+- For Use a pre-built provider, select one of the following pre-built connections for common AI agents and then click Next.
+- For Bring your own provider, you must create a separate OAuth client in Admin Center first. For instructions, see Registering your application with Zendesk. When creating the client, leave Allowed scopes blank.
+4. On the Connection details page, enter the following information and then click Next.
+
+- Provider: Select the name of an AI provider or enter your own.
+- Authentication: Only available if you selected the Bring your own provider option. Select the OAuth client you created for the external AI agent.
+- Connection name: A unique name for the external AI agent. The name is used to track the agent in the observability dashboard and in transaction logs.
+- Description: Enter a description or click View examples and click Use this under an example description.
+
+This value describes what the external AI agent should be able to access and do in Zendesk as well as anything it shouldn't be able to do or access. Copilot uses the description to suggest the right Zendesk tools and AI agents.
+- Under Select who should have access, select whether only admins or selected agent groups can use this connection. To define a new group, click Create group.
+- Select Send an onboarding email to everyone with access to this connection.
+
+Example:
+
+![](https://zen-marketing-documentation.s3.amazonaws.com/docs/en/bridge_connection_details.png)
+5. On the Tools and Zendesk AI agents page, click Add tools and Add AI agents to select the tools and Zendesk AI agents that the external AI agent can use in your account. 
+
+You can select your own tools or accept the tools suggested by an AI-powered assistant based on the description you entered of what your external agent should do in Zendesk.
+
+If you're using a pre-built provider, you can connect up to 150 tools and AI agents to the external AI agent. Above the list of tools, you'll see a value such as `0/150`, where the first number reflects the number of tools you've added to the external agent and the second number reflects the maximum number of tools you can add to the external agent.
+
+In addition to tools, you can add Zendesk AI agents that your external AI agent can use to delegate complex, specialized tasks. As part of the EAP, you can add a Monitoring agent by Zendesk to investigate monitoring data in your account. Rather than call individual Zendesk tools for this task, your external AI agent can use the Monitoring agent. To learn more, see Using the Monitoring agent by Zendesk with external AI agents.
+
+Example:
+
+![](https://zen-marketing-documentation.s3.amazonaws.com/docs/en/bridge_tools_and_agents_example.png)
+6. Click Next.
+7. Review the external AI agent's connection and configuration details.
+8. Click Save.
+
+After configuring a connection to an external AI agent, connect your external AI agent to Zendesk.
+
+## Connecting the external AI agent to Zendesk
+
+After configuring a connection to an external AI agent in your account, you can connect your external AI agent to Zendesk. There are two types of connections depending on what you want to use:
+
+- To use tools, connect to the Zendesk MCP server
+- To delegate tasks to a Zendesk AI agent, connect to the Zendesk agent using the Agent2Agent (A2A) protocol
+
+To connect an external AI agent to Zendesk
+
+1. In Admin Center, click ![](https://zen-marketing-documentation.s3.amazonaws.com/docs/en/icon_ai.png) AI in the sidebar, then select External AI.
+2. Select the connection for the agent and click the Setup tab.
+3. If you want your agent to use tools, copy the MCP server URL under Tools.
+
+Example: `https://example.zendesk.com/mcp`
+
+If available, click the link to open the detailed setup instructions and copy the command line interface (CLI) command to add the MCP server URL to your external agent. For example, the Claude CLI command looks as follows:
+
+`claude
+ mcp add --scope user --client-id ' '
+ --transport http zendesk ' '`
+
+A CLI command provides you with an alternative way of adding the MCP server URL to your external agent.
+4. If you want your agent to delegate tasks to a Zendesk AI agent, copy the agent card URL under AI agents.
+
+Copy the URL for the A2A protocol version that your external AI agent platform supports:
+
+| A2A protocol version | Agent card URL |
+| --- | --- |
+| 1.0.0 | `{your_zendesk_url}/headless/registry/agents/supervisor/agent-card.json` |
+| 0.3.0 | `{your_zendesk_url}/headless/registry/agents/supervisor/agent.json` |
+
+The agent card is a public JSON document that describes the Monitoring agent, including: 
+
+- its endpoint (https://{subdomain}.zendesk.com/a2a/agents/supervisor/rpc)
+- its skills — analyze-and-recommend (why did a metric move, and what to do next) and evaluate-alerts (which anomalies and alerts are active) 
+- its security requirements (OAuth 2.0 with read and write scopes).
+5. Use the URL or URLs you copied to connect your external AI agent to Zendesk.
+
+The exact steps to connect and authenticate vary depending on your external agent's AI platform. Use your platform’s documentation for those steps.
+
+If you configured a connection to a custom agent, use the client ID, client secret, and redirect URL from the OAuth client you created in Zendesk to create a separate OAuth flow in your custom agent.
+6. Test the connection with a simple request, such as looking up a ticket by ticket ID.
+
+For example, in Claude Code, run `/mcp` in your terminal and enter a request such as "Use zendesk to show ticket 522325288." Claude Code prompts you to confirm that you want to use a specific Zendesk tool. After confirming that you do, Claude Code should retrieve and display the ticket from your Zendesk account.
+
+## Using the external AI agent to interact with Zendesk
+
+Admins and agents with permission to access the external AI agent can use the agent to interact with Zendesk. You describe what you need in plain language without needing to know the tool names, APIs, or how the tool catalog is organized.
+
+Interactions with external AI agents fall into two categories:
+
+- Getting information: The external AI agent searches, reads, and analyzes Zendesk data, such as pulling a list of a customer's open tickets or finding patterns in recurring issues. The agent can delegate analysis of gathered data to a Zendesk AI agent, which can then review the data and return a result. Requests like this don't make any changes to your data in Zendesk.
+- Making changes: The external AI agent creates or updates Zendesk objects and business rules, such as tickets or triggers. The agent proposes the change and asks for human confirmation before making any changes. 
+
+For tested and ready-to-use prompts for common scenarios, such as creating a process and rolling it out across multiple instances, see Using Zendesk playbooks with external AI agents.
+
+Use the transaction log and observability dashboard to monitor external AI agent activity. During the EAP, A2A delegations to the Monitoring agent aren't fully visible in either interface. See Monitoring external AI agents in Zendesk.
+
+## Article Q&A
+
+ Click to view 
+
+ How do I set up an external AI agent to work with my Zendesk account? 
+
+ In Admin Center, go to AI > External AI, add a connection, choose a pre-built provider or bring your own provider, and define its access, tools, and any Zendesk AI agents it can use. Save the connection, then connect the agent in its AI platform using the MCP server URL or agent card URL from the connection’s Setup tab. Setup and platform authentication are separate steps. Zendesk Bridge and external AI agents are free during the EAP, but packaging and pricing may change when generally available. 
+
+ What do I need to configure a custom provider, and can I create multiple connections for a built-in provider? 
+
+ For a custom or third-party agent, create a separate OAuth client in Admin Center before configuring the connection, and leave Allowed scopes blank. When connecting the custom agent, use the OAuth client’s client ID, client secret, and redirect URL to create a separate OAuth flow. During the EAP, you can have only one connection for each supported built-in provider; use a custom connection if you need to connect another agent of the same provider. 
+
+ How do I choose between the MCP server and the A2A agent connection? 
+
+ Use the Zendesk MCP server when you want the external agent to use Zendesk tools. Use the Zendesk AI agent connection with the Agent2Agent (A2A) protocol when you want it to delegate tasks to a Zendesk AI agent. Copy the relevant URL from the connection’s Setup tab; for A2A, choose the agent card URL for the protocol version your platform supports. The platform’s documentation explains how to connect and authenticate. 
+
+ What can my external AI agent do, and will it change Zendesk data without my approval? 
+
+ Admins and agents who have permission to access the connection can describe requests in plain language. The external agent can search, read, and analyze Zendesk data without changing it. For changes, such as creating or updating tickets or triggers, it proposes the change and asks for human confirmation before making it. 
+
+ How can I monitor my external AI agent, and are all of its activities visible? 
+
+ Use the transaction log and observability dashboard to monitor external AI agent activity. During the EAP, A2A delegations to the Monitoring agent by Zendesk are not fully visible in either interface.

@@ -1,0 +1,111 @@
+https://help.salesforce.com/s/articleView?id=000391959&language=en_US&type=1
+
+Benefits of Using a Partner Development Org and Demo Environment | Salesforce Help
+
+# Benefits of Using a Partner Development Org and Demo Environment
+
+Publish Date: Nov 12, 2026
+
+Description
+
+Audience: All Partner Types
+
+ There are several benefits to leveraging a Partner Developer Edition (PDE) org versus a Developer Edition (DE) org. They include a higher API call limit, more storage, and a greater number of licenses available for your team. Check out the charts below to understand the difference in capabilities and number of licenses available between the Developer Edition and Partner Developer Edition orgs. 
+
+Resolution
+
+### Partner Developer Org vs Developer Org: Key Attributes 
+
+Compare the key benefits you receive with a Partner Developer Edition Org versus a Developer Edition Org. The comparison is shown in the table below: 
+
+| | Developer Edition Org | Partner Developer Edition Org (Super-sized DE org) |
+| --- | --- | --- |
+| Purpose | Initial Development, Prototyping | Application development, Initial testing |
+| Price | Free | Free for Salesforce Partners |
+| Sign-up | Developer Site > | Environment Hub > |
+| Sandbox Orgs | Not available | 0 |
+| File Storage | 20 MB | 1 GB |
+| Data Storage | 5 MB | 250 MB |
+| Total API Request Allocation | 15,000 (Total calls per 24 hours period) | 50,000 (Total calls per 24 hours period) |
+| Expires | After 1 year of inactivity | After 1 year of inactivity |
+| Edition Upgrade | Spin up a Partner Developer Org via Environment Hub | Not applicable |
+| Feature/license/limit requests | Not possible | Submit a case |
+| Supports Managed Beta Testing | Yes | Yes |
+
+### Partner Developer Org vs Developer Org: License Comparison
+
+Compare the user licenses available in a Partner Developer Edition Org vs an Developer Edition Org. The comparison is shown in the table below:
+
+| User License Type | Developer Edition Org | Partner Developer Edition Org (Super-sized DE org) |
+| --- | --- | --- |
+| Analytics Cloud Integration User | 2 | 2 |
+| Chatter External | 500 | 500 |
+| Chatter Free | 5,000 | 5,000 |
+| Chatter Only | 0 | 20 |
+| Customer Community | 5 | 20 |
+| Customer Community Login | 5 | 200 |
+| Customer Community Plus | 5 | 20 |
+| Customer Community Plus Login | 5 | 200 |
+| Partner App Subscription | 2 | 0 |
+| Partner Community | 5 | 20 |
+| Partner Community Login | 5 | 380 |
+| Salesforce | 2 | 20 |
+| Salesforce Platform | 3 | 20 |
+| Service Cloud | 0 | 20 |
+
+### Partner Demo Environment: Attribute Comparison by Edition Type 
+
+Compare demo environment edition types by their key attributes. The comparison is shown in the table below:
+
+| | Enterprise Edition | Professional Edition | Partner Enterprise Edition | Partner Professional Edition | Consulting Partner Edition |
+| --- | --- | --- | --- | --- | --- |
+| Purpose | Used to test/demo AppExchange solutions | Used to test/demo AppExchange solutions | Used to test/demo AppExchange solutions | Used to test/demo AppExchange solutions | Enterprise Edition Org used for demoing |
+| Price | Free for Salesforce Partners | Free for Salesforce Partners | Free for Salesforce Partners | Free for Salesforce Partners | Free for Salesforce Partners |
+| Sign up process | Environment Hub | Environment Hub | Environment Hub | Environment Hub | Environment Hub |
+| Sandbox Orgs | 25 Developer 1 Partial Copy | 10 Developer | 60 Developer 2 Partial Copy 1 Full | 20 Developer | 25 Developer 1 Partial Copy |
+| Data Storage | 10 GB* | 10 GB* | 20 GB* | 10 GB* | 12 GB* |
+| File Storage | 1 GB | 11 GB | 67 GB | 13 GB | 5 GB |
+| API Call Limit (per 24 hours) | 100,000 | 100,000 | 100,000 | 100,000 | 100,000 |
+| Expires | 1 Year | 30 Days | 1 Year | 1 Year | 1 Year |
+| Supports Managed Beta Testing | Yes | Yes | Yes | Yes | No |
+| Platform Encryption is enabled for encryptable custom managed field | Yes | No | No | No | No |
+
+*Orgs are allocated additional file storage based on the number of standard user licenses.
+
+### Partner Demo Environments: User License Comparison by Edition Type 
+
+Compare user licenses available by Demo Environment edition types. The comparison is shown in the table below:
+
+| User License Type | Enterprise Edition | Professional Edition | Partner Enterprise Edition | Partner Professional Edition | Consulting Partner Edition |
+| --- | --- | --- | --- | --- | --- |
+| Analytics Cloud Integration User | 0 | 2 | 2 | 2 | 2 |
+| Chatter External | 500 | 500 | 500 | 500 | 500 |
+| Chatter Free | 5000 | 5000 | 5000 | 5000 | 5000 |
+| Chatter Only | 0 | 0 | 20 | 0 | 10 |
+| Customer Community | 0 | 0 | 20 | 0 | 20 |
+| Customer Community Login | 0 | 0 | 200 | 0 | 1000 |
+| Customer Community Plus | 0 | 0 | 20 | 0 | 20 |
+| Customer Community Plus Login | 0 | 0 | 20 | 0 | 20 |
+| Partner App Subscription | 0 | 0 | 0 | 0 | 10 |
+| Partner Community | 0 | 0 | 20 | 0 | 20 |
+| Partner Community Login | 0 | 0 | 200 | 0 | 1,000 |
+| Salesforce | 5 | 5 | 20 | 20 | 35 |
+| Salesforce Platform | 0 | 0 | 20 | 0 | 5 |
+
+### Frequently Asked Questions (FAQs)
+
+ Q: What is the difference between the different org options in Environment Hub? A: When creating an org using Environment Hub, you need to select a purpose for the org: Development, Test/Demo, and Trialforce Source Organization. 
+
+Development: Use this option to create an org for building, packaging, and uploading an app or component. This option allows you to create a Partner Developer Edition (PDE) org which has more user licenses, additional storage, and other partner-oriented features than a standard Developer Edition org. PDE orgs should never be shared with customers or prospects. 
+
+Test/Demo: Use this option to create an org to test for compatibility in other Salesforce editions or for demoing an app or component to prospects. These orgs should not be shared with customers or prospects outside of demos. 
+
+Trialforce Source Org: Use this option to create a Trialforce Source Org (TSO) for generating trial templates. TSOs created from the Environment Hub don’t support customer branding 
+
+ Q: How can I tell when an org will expire? A: Here are a few ways to find the expiration date:
+
+1. Setup > Company Settings > Company Information > Review the “Expiration Date” column in the different “Licenses” tables. 
+2. From Setup Menu > Developer Console > Query Editor > Enter Select TrialExpirationDate from Organization > Execute. 
+3. Install the free Org Expiry Notifier app published by Salesforce Labs.
+
+1-800-667-6389

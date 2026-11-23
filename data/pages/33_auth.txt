@@ -1,0 +1,446 @@
+https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/getting-started?view=li-lms-2026-10
+
+# Campaign Management Getting Started - LinkedIn | Microsoft Learn
+
+Warning
+
+Deprecation Notice: The Marketing Version 202601 (Marketing January 2026) will be sunset on January 15, 2027. We recommend that you migrate to the latest versioned APIs to avoid disruptions. For information on all the supported versions, refer to the migrations documentation. If you haven’t yet migrated and have questions, submit a request on the LinkedIn Developer Support Portal.
+
+## OAuth 2.0 and Permission Scopes
+
+All LinkedIn API endpoints have access limitations called permission "Scopes", which define what your app can do on a user's behalf.
+
+OAuth 2.0 Scopes are a part of the authentication process and define USER ACCESS (r_basicprofile, r_ads, rw_ads) to LinkedIn PRODUCTS (Consumer, Marketing, Learning) and SERVICES (Posts, Ad Accounts, Campaign management.)
+
+Marketing APIs require the `rw_ads` scope. Other APIs require additional permission scopes which are documented in topic-specific pages. To learn more, see Marketing-Frequently Asked Questions.
+
+### Map Campaign Ad Account ID to Application
+
+1. From Campaign Manager, copy the nine-digit Ad "Account ID".
+2. Open the Developer Portal and select your application.
+3. From the "Products" tab click "View Ad Accounts".
+
+![Ad Account ID](https://learn.microsoft.com/en-us/linkedin/media/view-ad-accounts.png)
+
+1. Click "Add Ad Account" and paste the Ad Account ID, then save.
+
+![Add Ad Account](https://learn.microsoft.com/en-us/linkedin/media/ad-account-mapping.png)
+
+This particular Ad Account is now mapped to the selected application. Repeat for any other Ad Accounts you need to add for this or any other applications.
+
+Note
+
+This step is only required for a developer application with development tier access of the Advertising API. For more information on Advertising API tiers and how to gain access to them, see Increasing Access.
+
+## Create an Ad Account
+
+### Ad Account
+
+#### Sample Request
+
+```http
+POST https://api.linkedin.com/rest/adAccounts
+
+```
+
+#### Sample Request Body
+
+```json
+{
+    "currency": "USD",
+    "name": "Company ABC",
+    "notifiedOnCampaignOptimization": true,
+    "notifiedOnCreativeApproval": true,
+    "notifiedOnCreativeRejection": true,
+    "notifiedOnEndOfCampaign": true,
+    "reference": "urn:li:organization:101202303",
+    "type": "BUSINESS"
+}
+
+```
+
+A successful response returns a `201 Created` HTTP status code and the ID of the account in the `x-restli-id` response header. Also retrieve the Ad Account ID later through the API or UI. To learn more about working with Ad Accounts, see Accounts.
+
+## Create a Campaign Group
+
+Campaign Groups give advertisers a way to manage status, budget, and performance across multiple related campaigns. Creating Campaign Groups is optional. Campaigns can still be created on their own without an associated Campaign Group.
+
+Use the following API to create a Campaign Group:
+
+### Ad Campaign Groups
+
+#### Sample request
+
+Note
+
+This API doesn't support `ENTERPRISE` accounts.
+
+```https
+POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/adCampaignGroups
+
+```
+
+#### Sample Response
+
+```json
+{
+    "account": "urn:li:sponsoredAccount:502616245",
+    "name": "CampaignGroup1",
+    "runSchedule": {
+        "end": 9876543210123,
+        "start": 1234567890987
+    },
+    "status": "ACTIVE",
+    "totalBudget": {
+        "amount": "60000.00",
+        "currencyCode": "USD"
+    }
+}
+
+```
+
+## Find Target Audience
+
+Before creating a campaign, you must define the right audience by specifying targeting criteria. The targeting criteria can also be updated after the campaign is created.
+
+LinkedIn offers a collection of APIs to discover audiences for your campaign. For a campaign to run, the target audience must have at least 300 members. This ensures that there's enough impression data for the system to properly assess its effectiveness. To learn more, see Audience Counts API and Ads Targeting.
+
+First, explore the targeting criteria that's available on the LinkedIn Campaign Management platform. The following example uses the `adTargetingFacets` API to discover the available ad targeting facets. Facets are targeting types such as industries, locations, or seniority level. Each facet contains entities that reflect the individual values which can be fetched through the `adTargetingEntities` API.
+
+For example, the `locations` facet includes entities such as Canada and the United States.
+
+### Ad Targeting Facets
+
+#### Sample Request
+
+```http
+GET https://api.linkedin.com/rest/adTargetingFacets
+
+```
+
+### Response
+
+The API response shows the available targeting facets. Each facet record contains the name of the facet, the type, and the Finder methods available to query for more information and discover the facet's entities.
+
+```json
+{
+    "elements": [
+        {
+            "facetName": "seniorities",
+            "availableEntityFinders": [
+                "AD_TARGETING_FACET"
+            ],
+            "entityTypes": [
+                "SENIORITY"
+            ],
+            "$URN": "urn:li:adTargetingFacet:seniorities"
+        },
+        {
+            "facetName": "locations",
+            "availableEntityFinders": [
+                "AD_TARGETING_FACET"
+            ],
+            "entityTypes": [
+                "GEO"
+            ],
+            "$URN": "urn:li:adTargetingFacet:locations"
+        },
+        {
+            "facetName": "industries",
+            "availableEntityFinders": [
+                "AD_TARGETING_FACET",
+                "TYPEAHEAD",
+                "SIMILAR_ENTITIES"
+            ],
+            "entityTypes": [
+                "INDUSTRY"
+            ],
+            "$URN": "urn:li:adTargetingFacet:industries"
+        },
+        ...
+    ]
+}
+
+```
+
+Next, drill down into a facet to discover its entities. Entities can be included or excluded from your targeting.
+
+Use the following API to discover the entities within a facet. The example below fetches possible seniority levels.
+
+### Ad Targeting Entities
+
+#### Sample request
+
+```http
+GET http://api.linkedin.com/rest/adTargetingEntities?q=adTargetingFacet&queryVersion=QUERY_USES_URNS&facet=urn:li:adTargetingFacet:seniorities
+
+```
+
+#### Sample Response
+
+```json
+{
+    "elements": [
+        {
+            "urn": "urn:li:seniority:1",
+            "facetUrn": "urn:li:adTargetingFacet:seniorities",
+            "name": "Unpaid"
+        },
+        {
+            "urn": "urn:li:seniority:2",
+            "facetUrn": "urn:li:adTargetingFacet:seniorities",
+            "name": "Training"
+        },
+        {
+            "urn": "urn:li:seniority:3",
+            "facetUrn": "urn:li:adTargetingFacet:seniorities",
+            "name": "Entry"
+        },
+        {
+            "urn": "urn:li:seniority:4",
+            "facetUrn": "urn:li:adTargetingFacet:seniorities",
+            "name": "Senior"
+        },
+        {
+            "urn": "urn:li:seniority:5",
+            "facetUrn": "urn:li:adTargetingFacet:seniorities",
+            "name": "Manager"
+        },
+        ...
+    ]
+}
+
+```
+
+For more information, see Ad Targeting Facets & Entities.
+
+Once you have settled on a target audience, you'll need to look up the size of the audience you're targeting using the Audience Counts API. Target audiences must have at least 300 members to run a campaign against that audience.
+
+This API takes in query parameters that define your desired targeting criteria.
+
+Note
+
+The parameter `q=targetingCriteria` is always required as it represents the Finder `targetingCriteria` request.
+
+The following sample targeting request estimates the audience count of members in Canada and the United States while excluding members who are in entry-level positions.
+
+### Audience Counts
+
+#### Sample request
+
+```http
+GET https://api.linkedin.com/rest/audienceCounts?q=targetingCriteria&target.includedTargetingFacets.locations[0]=urn:li:geo:101174742&target.includedTargetingFacets.locations[1]=urn:li:geo:103644278&target.excludingTargetingFacets.seniorities[0]=urn:li:seniority:3
+
+```
+
+#### Sample Response
+
+The API returns a list of `AudienceCount` results based on the `targetingCriteria` parameters input above. The following example shows the data that's returned. Values are rounded estimates.
+
+```json
+{
+    "elements": [
+        {
+            "total": 170000000,
+            "active": 0
+        }
+    ],
+    "paging": {
+        "count": 10,
+        "links": [],
+        "start": 0
+    }
+}
+
+```
+
+For more information, see Audience Counts.
+
+## View Ad Budget Pricing
+
+The last thing you'll do before creating your campaign is to discover how you should bid. The Ad Budget Pricing API returns pricing metrics such as minimum, maximum, and suggested bids. The Ad Budget Pricing API offers insight into these metrics given the targeting criteria that you specify.
+
+The following sample request returns the pricing based on our targeting criteria of members living in the United States and Canada, while excluding members in an entry-level position. The suggested bid returned is for the specified `dailyBudget` of USD 100.
+
+### Ad Budget Pricing
+
+#### Sample request
+
+```http
+GET https://api.linkedin.com/rest/adBudgetPricing?account=urn:li:sponsoredAccount:502616245&bidType=CPM&campaignType=TEXT_AD&matchType=EXACT&q=criteria&target.includedTargetingFacets.locations[0]=urn:li:geo:101174742&target.includedTargetingFacets.locations[1]=urn:li:geo:103644278&target.excludingTargetingFacets.seniorities[0]=urn:li:seniority:3&dailyBudget.amount=100&dailyBudget.currencyCode=USD
+
+```
+
+#### Sample Response
+
+```json
+{
+    "elements": [
+        {
+            "suggestedBid": {
+                "default": {
+                    "amount": "2.00",
+                    "currencyCode": "USD"
+                },
+                "min": {
+                    "amount": "2.00",
+                    "currencyCode": "USD"
+                },
+                "max": {
+                    "amount": "2.73",
+                    "currencyCode": "USD"
+                }
+            },
+            "dailyBudgetLimits": {
+                "default": {
+                    "amount": "25.00",
+                    "currencyCode": "USD"
+                },
+                "min": {
+                    "amount": "10.00",
+                    "currencyCode": "USD"
+                },
+                "max": {
+                    "amount": "1000000.00",
+                    "currencyCode": "USD"
+                }
+            },
+            "bidLimits": {
+                "min": {
+                    "amount": "2",
+                    "currencyCode": "USD"
+                },
+                "max": {
+                    "amount": "200.0",
+                    "currencyCode": "USD"
+                }
+            }
+        }
+    ],
+    "paging": {
+        "count": 10,
+        "start": 0,
+        "links": []
+    }
+}
+
+```
+
+To learn more, see Ad Budget Pricing.
+
+## Create a Campaign
+
+Now that you know your target audience and bid amounts, create your campaign.
+
+Campaigns can be created with a variety of types such as `SPONSORED_UPDATES`, `SPONSORED_INMAILS`, AND `TEXT_AD`. This example shows how to create a simple text ad campaign.
+
+### Ad Campaigns
+
+#### Sample request
+
+```https
+POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/adCampaigns
+
+```
+
+#### Sample Response
+
+A successful response returns a `201 Created` HTTP status code and the ID in the `x-restli-id` response header.
+
+```json
+{
+    "account": "urn:li:sponsoredAccount:502616245",
+    "audienceExpansionEnabled": false,
+    "costType": "CPC",
+    "creativeSelection": "OPTIMIZED",
+    "dailyBudget": {
+        "amount": "100",
+        "currencyCode": "USD"
+    },
+    "locale": {
+        "country": "US",
+        "language": "en"
+    },
+    "name": "Text Ad Campaign",
+    "offsiteDeliveryEnabled": false,
+    "runSchedule": {
+        "end": 9876543210123,
+        "start": 1234567890987
+    },
+    "targetingCriteria": {
+        "include": {
+            "and": [
+                {
+                    "or": {
+                        "urn:li:adTargetingFacet:locations": [
+                            "urn:li:geo:103644278",
+                            "urn:li:geo:101174742"
+                        ]
+                    }
+                }
+            ]
+        },
+        "exclude": {
+            "or": {
+                "urn:li:adTargetingFacet:seniorities": [
+                    "urn:li:seniority:3"
+                ]
+            }
+        }
+    },
+    "type": "TEXT_AD",
+    "unitCost": {
+        "amount": "2",
+        "currencyCode": "USD"
+    }
+}
+
+```
+
+To learn more about working with campaigns, see Create and Manage Campaigns.
+
+## Create an Ad Creative
+
+Next, you'll create an Ad Creative defining how the ad should appear on LinkedIn. There are several creative types in LinkedIn Campaign Management:
+
+- Text Ads: Appears in various parts of LinkedIn.com.
+- Sponsored Content: Appears in the homepage feed of members within the targeted audience.
+- Sponsored InMail: A message delivered to a LinkedIn member’s InMail.
+- Sponsored Video: Contains user-generated video content.
+- Sponsored Carousel Ad: Displays multiple images in succession in a single ad unit, each with its own description and destination link.
+- Event Ads: Promotes LinkedIn Events to a defined audience. Displayed in a member’s LinkedIn feed, these ads highlight important event details and drive interest and RSVPs.
+
+In this example, we'll show you how to create a text ad and associate it with a campaign in the same request by specifying the `type` field as a `TEXT_AD` and the `campaign` field with a campaign's URN.
+
+### Ad Creatives
+
+#### Sample Request
+
+```https
+POST https://api.linkedin.com/rest/adAccounts/{adAccountID}/creatives
+
+```
+
+#### Sample Response
+
+A successful response returns a `201 Created` HTTP status code and the ID in the `x-restli-id` response header.
+
+```json
+{
+    "campaign": "urn:li:sponsoredCampaign:123456",
+    "status": "ACTIVE",
+    "type": "TEXT_AD",
+    "variables": {
+        "clickUri": "https://www.linkedin.com",
+        "data": {
+            "com.linkedin.ads.TextAdCreativeVariables": {
+                "text": "This is a test ad description that links to LinkedIn",
+                "title": "This is Test Ad!"
+            }
+        }
+    }
+}
+
+```
+
+To learn more about working with creatives, see Ad Creatives.

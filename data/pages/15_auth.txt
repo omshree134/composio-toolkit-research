@@ -1,0 +1,106 @@
+https://docs.usepylon.com/pylon-docs/developer/api/authentication
+
+Authentication | Pylon
+
+# Authentication
+
+How to authenticate with Pylon's API
+
+The Pylon API uses Bearer authentication. This means you’ll need to pass your API token in the header of your request:
+
+```
+Authorization: Bearer <token>
+```
+
+Generate an API token in the Pylon dashboard.
+
+### API regions
+
+Pylon’s API is available in two regions. Use the base URL that matches where your Pylon tenant is hosted:
+
+- US region: https://api.usepylon.com
+- EU region: https://api.eu.usepylon.com
+
+Both regions use the same API endpoints and authentication. Configure your integration to use the region where your Pylon tenant is hosted.
+
+You can tell a token's region from its prefix:
+
+| Prefix | Region |
+| --- | --- |
+| `pylon_api_eu_` | EU |
+| `pylon_api_` | US |
+
+Tokens created before prefixes were introduced have no prefix. Sending a token to the other region's API returns `401` with the `wrong_region_token` error code, and the message names the correct URL.
+
+Once you've created a token, call the `/me` endpoint to retrieve details about your organization and confirm your token works.
+
+## Create an API token
+
+Only Admins can create and manage API tokens.
+
+1. Go to Settings > Integrations & dev > API. On the Tokens tab, click Create API Token.
+2. Enter a Name.
+3. Choose who the token acts as:
+
+- Leave Act as user or bot (optional) empty to give the token its own identity. Pick a Role to control what it can access, and optionally upload an icon.
+- Or select a teammate or bot. The token uses that user's current role and permissions.
+4. Optionally, add an IP allowlist (see below).
+5. Click Create and copy the token. Pylon shows it only once.
+
+Tokens don't expire, and their access is controlled only by the role. There are no separate scopes.
+
+### Roles
+
+A token with its own identity uses the role you pick when you create it. You can change the role later with Edit. Older tokens that have no role act as Admin.
+
+A token that acts as a user or bot has no role of its own. It always uses that user's current role, so changing the user's role changes what the token can do.
+
+See Roles and user management for what each role allows.
+
+### Who actions are attributed to
+
+- Token with its own identity: actions show up under the token's name and icon.
+- Token that acts as a user or bot: actions are attributed to that user or bot.
+
+### Bots
+
+Bots are identities for automation, so API activity is attributed to the bot instead of to a teammate. Bots can't sign in to Pylon.
+
+To create one, go to Settings > Workspace > Users, open the Bots tab, and click New Bot. Give it a name, an avatar, and a role. Then select the bot under Act as user or bot when you create a token.
+
+### IP allowlist
+
+Add IP addresses (for example `203.0.113.10`) or CIDR blocks (for example `203.0.113.0/24`) to restrict where the token can be used. You can add up to 20 entries. If the list is empty, the token works from any IP.
+
+Pylon checks the public IP address your requests come from, so add the public egress IPs or ranges of the servers that call the API. Private addresses such as `10.0.0.0/8` or `192.168.0.0/16` never match.
+
+A request from an address that isn't on the list returns `401` with the `invalid_api_token` error code.
+
+## Manage tokens
+
+The Tokens tab shows each token's Acts as, Token preview, Role, Created by, Last used, and Created values. From the … menu on a token you can:
+
+- Edit: change the name, role, or IP allowlist.
+- Duplicate Token: create a new token with the same settings.
+- Rotate: generate a new token value. The current token stops working immediately.
+- Delete: permanently revoke the token. Calls using it stop working immediately.
+- View Activity: open the token's request logs.
+
+## Review API request logs
+
+Only Admins can view request logs. Go to Settings > Integrations & dev > API and open the Logs tab, or choose View Activity from a token's … menu to see only that token's requests.
+
+Filter by token, or choose All tokens, and by a date range of up to 90 days. The range defaults to the last 7 days. Each request shows when it was made, the token, who it acted as, the method, endpoint, response status, source IP, user agent, and request ID. Requests made with a token that was since deleted still appear.
+
+Requests rejected for authentication or rate limits aren't logged, and older requests may not show a token.
+
+### When tokens are revoked automatically
+
+When a user is deactivated, Pylon deletes:
+
+- every API token that user created, and
+- every API token that acts as that user.
+
+Before you deactivate someone who created tokens your integrations rely on, create replacement tokens from another Admin's account.
+
+An Admin who has created Admin-role tokens can't be moved to a different role until those tokens are deleted.

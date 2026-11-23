@@ -1,0 +1,84 @@
+https://support.airtable.com/articles/6292134965-getting-started-with-airtable-s-web-api
+
+Getting started with Airtable's Web API | Airtable Help Center
+
+# Getting started with Airtable's Web API
+
+| Plan availability | All plan types with varying call limitations |
+| --- | --- |
+| Permissions | Generally, workspace Owner or base Creator permissions are useful for working with Airtable's Web API. Enterprise Scale and Business customers will also find that having admin permissions is necessary to access certain information via API calls. |
+| Platform(s) | Web/Browser, Mac app, and Windows app |
+
+# API record limits
+
+You can access the documentation for the Web API here, or directly from your base by clicking on the Help button in the upper right-hand corner while you are logged in on a laptop or desktop. This will bring up a list of additional resources. You will find a link to the API documentation at the bottom of that list.
+
+When you list records with Airtable's API, you won't necessarily get all of them at once. Instead, you will receive them in pages of up to 100 records at a time. As soon as a table has more than 100 records, you will need to make multiple requests, one per page.
+
+If your table has 501 records, the results will be spread across 6 pages, and therefore 6 HTTP requests are needed to fully capture all of that table's records. Your first request might look something like this with your base's app id `appxxx` and the table name:
+
+`https://api.airtable.com/v0/appxxx/TableName`
+
+You will get the first page of records (under the "records" key), but if there is another page, you'll also get an "offset" that would look something like this:
+
+`"offset": "itrSJ1l4jlPyxEG6c/recxxx"`
+
+To fetch the next page (in other words, the next 100 records), you'll include that offset as a query parameter. For example:
+
+`https://api.airtable.com/v0/appxxx/TableName?offset=itrSJ1l4jlPyxEG6c%2Frecxxx`
+
+This will give you the records from the next page. If there's another page, you'll repeat the process—grab the offset and put it in the offset query parameter. When the response doesn't include an offset anymore, you know you've reached the last page and can stop.
+
+You can use the `pageSize` parameter to change the number from 100 to a smaller number like 50, but 100 is the maximum and most users do not change this.
+
+# FAQs
+
+What can I do with the Airtable Web API?
+
+Consult the Web API Scopes documentation where you'll find a list of the various Web API endpoints and how each one functions.
+
+How do I get started with Airtable’s Web API?
+
+We recommend that you start with the Web API introduction here.
+
+Is there a Web API rate limit?
+
+Yes, the Web API has a rate limit of 5 requests per second, per base. This limit is the same across all pricing tiers and increased rate limits are not currently available. For more information, see the "Rate Limits" section of the API documentation.
+
+Are there API call limits?
+
+Yes. These vary by plan type:
+
+- Free plan - 1000 calls per workspace per month
+- Team plan - 100,000 calls per workspace per month
+- Business and Enterprise plans - Unlimited API calls (Still subject to other limits such as the rate limits discussed above)
+
+When I fetch records with Airtable’s Web API, some of my fields are missing. Why is that?
+
+Returned records do not include any fields with "empty" values, e.g. `""`, `[]`, or `false`. If you need to get the names of all fields in your table, you can create one record with all fields populated, and make a request to fetch that record.
+
+Can I get information about my base, such as the base schema, with the Web API?
+
+Yes. The base schema scope is covered here.
+
+Can I create a new base using the Web API?
+
+Yes. The "Create base" endpoint (POST /v0/meta/bases) is available on all plans — Free, Team, Business, and Enterprise Scale— when you authenticate with a Personal Access Token (PAT) or OAuth token. You can use it to create a new base in any workspace where you have the appropriate permissions.
+
+For more information about the Web API and authentication methods, see the Airtable Web API documentation.
+
+Legacy API key caveat: If you're still using the deprecated API key authentication method, the Create base endpoint is restricted to Enterprise accounts with the Enterprise API feature enabled. Airtable phased out API key auth in favor of PATs and OAuth, so migrating to one of those methods will remove this restriction.
+
+Why does “GET /v0/meta/bases” returns an empty list {"bases":[]} when my PAT has schema.bases:read?
+
+A correct scope with an empty result usually means the token can't see any bases, not that your request is malformed. For enterprise users, the most common cause is an org-level setting — "Block API access to organization-owned bases and workspaces" in the admin panel — which prevents your PAT from accessing organization-owned bases until you're on the allowlist. Importantly, this block returns an empty list rather than an error, which can look like a scope or query problem. A telltale sign: when editing your token's access, if the only option is "All Resources" and you can't add an individual base, your org's API restriction is likely in effect. To resolve it, ask an internal Airtable admin to add you (or your service account) to the allowlist for that setting (see Settings – Airtable admin panel). Also confirm the bases you expect to see are ones your user account can actually access, since the token can only return those
+
+Is there an endpoint to read a single table's schema?
+
+The only schema endpoint is GET /v0/meta/bases/{baseId}/tables, which returns the schema for every table in the base (requiring the schema.bases:read scope). There is no dedicated "get one table's schema" GET endpoint. On a large base this response can be big and slow, so to avoid timeouts:
+
+- Cache the schema instead of fetching it on every run. Table schemas change rarely compared to data. Fetch the base schema once, cache it, and refetch only on a schedule or when a write actually fails due to a schema mismatch — this removes the per-run cost entirely.
+- Parse out the one table you need from the response client-side. You still download the whole-base schema, but combined with caching the frequency is low.
+- Handle the request robustly: set generous timeouts and use retry with backoff, and stay within the 5 requests/second per-base limit.
+
+If reading a single table's schema cheaply is important to your workflow, let support know so it can be added to the feature request for a per-table schema endpoint.

@@ -1,0 +1,535 @@
+https://neo4j.com/pricing/
+
+Cloud & self-hosted graph database platform pricing | Neo4j
+
+# Neo4j pricing
+
+## Graph database pricing plans
+
+Deploy Neo4j AuraDB on any cloud provider of your choice.
+
+## Graph database pricing plans
+
+The best way to run Neo4j on premises in your private cloud, or public cloud infrastructure.
+
+### AuraDB Free
+
+Learn and Explore Graphs 
+
+ $0 
+
+- No credit card or other payment method required
+- Start learning with access to all graph tools
+
+### AuraDB Professional
+
+Build Production-Ready Apps 
+
+Starting at
+
+ $0.09/GB/hour* (minimum 1GB instance) 
+
+- Up to 128GB memory and 2TB storage per instance
+- Scalable on demand
+- Daily backups, 7-day retention
+- Available on AWS, Azure, and Google Cloud
+- Advanced instance-level metrics
+
+### AuraDB Business Critical
+
+Scale Apps for Enterprise Use
+
+ $0.20/GB/hour* (minimum 2GB instance) 
+
+- Up to 2TB memory (AWS & GCP), 512GB (Azure), and 5TB storage per instance
+- Highly available, multi-zone, with 99.95% uptime SLA
+- Supports multiple databases per instance
+- Fine-grained access controls (RBAC, PBAC, ABAC), instance-level SSO, and IP filtering
+- Daily backups with 30-day retention and hourly point-in-time restore
+- Read-only secondaries and change data capture (CDC)
+- Pay-as-you-go and prepaid consumption billing options
+- 24x7 support
+
+### AuraDB Virtual Dedicated Cloud
+
+Deploy applications, using all capabilities of AuraDB Business Critical, but in a dedicated environment
+
+## Contact us about AuraDB Virtual Dedicated Cloud
+
+- VPC isolation and dedicated infrastructure
+- Up to 2TB memory (AWS & GCP), 512GB (Azure), and 5TB storage per instance
+- Hourly backups with 60-day retention
+- Enhanced 24x7 support and services
+
+ Also available via cloud marketplaces for simplified billing Amazon Web Services Microsoft Azure Google Cloud 
+
+## Simple pricing, predictable cost
+
+![pricing_money-flower](https://dist.neo4j.com/wp-content/uploads/20240806062501/pricing_money-flower.svg)
+
+### Simple, transparent pricing
+
+Pay for provisioned database capacity — no extras for storage, compute, IO, network, or backups. With hourly metering, costs are simple to model and predict.
+
+### Scale seamlessly, on demand
+
+Easily add or reduce capacity with a few clicks to meet your changing needs, without any service interruption.
+
+### Pause database, save 80% costs
+
+Pause your database when not in use and save 80% of running costs. Your data and backups are stored securely. Resume with just a click.
+
+### Capacity-based consumption pricing
+
+Included in your price: Storage, IO, Backup, and Data Transfer.
+
+## AuraDB Free
+
+### Database administration
+
+ DB Instance Size ^Limits on node and relationship counts 
+
+ DB Instance Storage ^Limits on node and relationship counts 
+
+ Multiple databases per instance Not Included 
+
+ Availability Zone (AZ) Configuration Single-zone 
+
+ Service Availability SLA Not Included 
+
+ DB Instance Control Auto-pause/resume 
+
+ Automated Rolling Updates Included 
+
+ Database Monitoring Not Included 
+
+ API to Provision and Manage Instances Included 
+
+ Backup Frequency | Retention With Point-in-Time Recovery Not Included 
+
+### Performance and scalability
+
+ Pipelined and Parallel Runtime Not Included 
+
+### Security
+
+ Industry Standard Compliance Trust Center 
+
+ RBAC and Fine-Grained Access Control Not Included 
+
+ Security Log Forwarding Not Included 
+
+ IP Filtering Not Included 
+
+ Property-Based Access Control Not Included 
+
+### Productivity and visualization
+
+ Neo4j Bloom/Visualization Library Bloom Basic 
+
+### AI and analytics
+
+ Access to Neo4j Professional Services Not Included 
+
+## AuraDB Professional
+
+### Database administration
+
+ DB Instance Size Up to 128GB (RAM) 
+
+ DB Instance Storage Up to 2TB 
+
+ Availability Zone (AZ) Configuration Single-zone 
+
+ DB Instance Control Included 
+
+ Backup Frequency | Retention With Point-in-Time Recovery Daily | 7 days 
+
+### Performance and scalability
+
+ Pipelined and Parallel Runtime Pipelined runtime only 
+
+### Security
+
+ Industry Standard Compliance Trust Center 
+
+ RBAC and Fine-Grained Access Control Not Included 
+
+### Productivity and visualization
+
+ Payment Methods Pay as you go with credit card 
+
+ Customer Support Best Effort 
+
+ Access to Neo4j Professional Services Not Included 
+
+## AuraDB Business Critical
+
+### Database administration
+
+ DB Instance Size Up to 2TB RAM (AWS & GCP), 512GB (Azure)† 
+
+ DB Instance Storage Up to 5TB† 
+
+ Multiple databases per instance Included 
+
+ Availability Zone (AZ) Configuration Multi-zone 
+
+ Service Availability SLA 99.95% uptime 
+
+ Backup Frequency | Retention With Point-in-Time Recovery Daily | 30 days 
+
+ Query Log forwarding Included 
+
+†Evaluating AuraDB and need more? Contact us
+
+### Performance and scalability
+
+ Block Format Included 
+
+ Query Log Analyzer Included 
+
+ Advanced Metrics 
+
+ In addition, includes integrations with third party monitoring tools such as Datadog, Grafana 
+
+ Pipelined and Parallel Runtime Included 
+
+### Security
+
+ Industry Standard Compliance Trust Center 
+
+ Encryption (at rest and in transit) Included 
+
+ RBAC and Fine-Grained Access Control Included 
+
+ Security Log Forwarding Included 
+
+ Private Endpoints Not Included 
+
+ IP Filtering Included 
+
+ Property-Based Access Control Included 
+
+### Productivity and visualization
+
+ Aura Console Included 
+
+ Neo4j Data Importer Included 
+
+ Neo4j Bloom/Visualization Library Included 
+
+### AI and analytics
+
+ Capacity-Based Consumption-Pricing Model Included 
+
+ Payment Methods Pay as you go with credit card and prepaid contract terms 
+
+### Customer support and success
+
+ Customer Support 24x7 Premium, One-Hour Response 
+
+ Access to Neo4j Professional Services Included 
+
+## AuraDB Virtual Dedicated Cloud
+
+### Database administration
+
+ DB Instance Size Up to 2TB RAM (AWS & GCP), 512GB (Azure)† 
+
+ DB Instance Storage Up to 5TB† 
+
+ Availability Zone (AZ) Configuration Multi-zone 
+
+ Service Availability SLA 99.95% uptime 
+
+ Backup Frequency | Retention With Point-in-Time Recovery Hourly | 60 days 
+
+†Evaluating AuraDB and need more? Contact us
+
+### Performance and scalability
+
+ Block Format Included 
+
+ Advanced Metrics 
+
+ In addition, includes integrations with third party monitoring tools such as Datadog, Grafana 
+
+ Pipelined and Parallel Runtime Included 
+
+### Security
+
+ Industry Standard Compliance Trust Center 
+
+ RBAC and Fine-Grained Access Control Included 
+
+### Productivity and visualization
+
+ Customer Support 24x7 Premium, One-Hour Response 
+
+## See all plan details
+
+Free
+
+### Database administration
+
+^Limits on node and relationship counts
+
+Up to 128GB (RAM)
+
+Up to 2TB RAM (AWS & GCP), 512GB (Azure)†
+
+Up to 2TB RAM (AWS & GCP), 512GB (Azure)†
+
+DB Instance Storage ^Limits on node and relationship counts Up to 2TB Up to 5TB† Up to 5TB†
+
+Backup Frequency | Retention With Point-in-Time Recovery Not Included Daily | 7 days Daily | 30 days Hourly | 60 days
+
+### Performance and scalability
+
+Industry Standard Compliance Trust Center Trust Center Trust Center Trust Center
+
+### Customer support and success
+
+Customer Support Community Best Effort 24x7 Premium, One-Hour Response 24x7 Premium, One-Hour Response
+
+### Are you an educator or startup?
+
+Learn more about Neo4j for Educators. Get tools/training for your students.
+
+Interested in building solid data foundations for your startup? Learn more about Neo4j for Startups.
+
+### Community Edition
+
+GPL3-licensed with community support. For projects that don’t need automatic HA, horizontal scalability, or beyond-basic security
+
+- Fully featured, best-in-class native graph database
+- GQL-compliant Cypher graph query language
+- Fully ACID transactions
+- Fully compatible with Neo4j Graph Data Science community edition
+
+### Enterprise Edition 
+
+Enterprise-grade availability and security with scale-up and scale-out options. Run in your private cloud or public cloud infrastructure.
+
+- Includes all features from community edition
+- Unlimited horizontal read scaling with replication
+- Fine-grained access controls
+- High availability and advanced manageability
+- Available as an operational cluster or stand-alone data science environment
+- Support for analytical queries using Parallel Runtime
+- Change Data Capture
+- Federated scale-out across multiple databases
+
+### Infinigraph Edition
+
+AI-ready graph scale with no code changes or compromises 
+
+- Includes all features from Enterprise edition
+- Unlimited horizontal scaling with automatic sharding
+- Graph Data Science included with license
+
+## Two ways to get started graphing
+
+Neo4j Desktop: Code, Query, Visualize
+
+Code, query, manage, and visualize with desktop. Includes tools and an unlimited free developer license for Neo4j Graph Database Enterprise Edition for Developers.
+
+Community Edition: Free, Community-Supported
+
+Start using Neo4j for free, upgrade to a commercial license when you are ready for enterprise-class features and support.
+
+## Community
+
+ Community 
+
+### Server architecture
+
+ Native graph processing and storage Included 
+
+ ACID transactions Included 
+
+ Auto reuse of deleted space Included 
+
+### Indexing
+
+ Full text indexing and search Included 
+
+### Client, drivers, and connectivity
+
+ Neo4j Desktop and Browser Included 
+
+ Neo4j Enterprise Studio Not Included 
+
+ High-throughput load balancing Included 
+
+### Graph Data Science
+
+ Parallelization <= 4 cpus. 
+
+ Consistent 24x7 performance with auto cache reheating Not Included 
+
+### Scalability and performance
+
+## Enterprise
+
+### Graph Data Science
+
+ Consistent 24x7 performance with auto cache reheating Included 
+
+## Infinigraph
+
+### Graph Data Science
+
+## See all plan details
+
+Vector indexing Included Included Included
+
+### Client, drivers, and connectivity
+
+Neo4j Desktop and Browser Included Included Included
+
+Neo4j Enterprise Studio Not Included Included Included
+
+Bolt binary protocol Included Included Included
+
+### Graph Data Science
+
+Parallelization <= 4 cpus. Unlimited Unlimited
+
+### High availability & operations
+
+Autonomous clustering Not Included Included Included
+
+Consistent 24x7 performance with auto cache reheating Not Included Included Included
+
+### Security
+
+### Scalability and performance
+
+### Fabric
+
+ * Sales tax may be applied to all orders shipping to MA, NY, TN, TX or WA, and this amount will be updated and added to your order total once you have entered your shipping address. If you are located elsewhere, your jurisdiction may require you to report this purchase and pay the appropriate taxes directly. 
+
+### Are you an educator or startup?
+
+Learn more about Neo4j for Educators. Get tools/training for your students.
+
+Interested in building solid data foundations for your startup? Learn more about Neo4j for Startups.
+
+## Graph analytics pricing plans
+
+Unlock insights from connected data to improve decisions on any cloud, any data—no ETL required. Apply 65+ ready-to-use graph algorithms, cutting costs by 70% and boosting accuracy by 50-80%. Compare our offerings and start extracting insights from your data today.
+
+## Graph analytics pricing plans
+
+Unlock insights from connected data to improve decisions on any cloud, any data—no ETL required. Apply 65+ ready-to-use graph algorithms, cutting costs by 70% and boosting accuracy by 50-80%. Compare our offerings and start extracting insights from your data today.
+
+### Aura Graph Analytics
+
+ $0.40/GB/hour 
+
+Unlock insights from connected data to improve decisions on any cloud, any data—no ETL required.
+
+- Up to 512 GB (RAM)
+- Pay-as-you-go and prepaid consumption billing
+- Unlimited concurrent sessions; Spin up and down as needed
+- Works with any data source including AuraDB, relational databases, CSVs – no ETL required
+- Native integration with AuraDB (not included)
+- Available on Azure, AWS, and Google Cloud
+- Scale compute up or down independently with serverless architecture
+
+### AuraDS Enterprise
+
+Run graph data science on persistent, dedicated infrastructure, with premium support, security, and negotiable contracts. 
+
+- 8-384GB (RAM)
+- Custom pricing and sales contracts
+- Pause instances when not in use, pay 80% less
+- Includes Neo4j AuraDB
+- Premium 24x7 support
+- Pay with committed spend from AWS, Azure, and Google Cloud
+- Private marketplace offers for AWS, Azure, and Google Cloud
+- Dedicated virtual private cloud (VPC)
+- Customer managed keys
+
+### Graph Data Science community
+
+Open source for small projects, learning, experimentation, and prototyping.
+
+### Graph Data Science enterprise
+
+A self-hosted offer with annual licensing is available on-premises or in the cloud.
+
+- Premium support included
+- Pay with committed spend from AWS, Azure, and Google Cloud
+- Read replicas
+- Hybrid clusters
+
+## Virtual Graph pricing
+
+Create zero-ETL knowledge graphs in Aura from your data warehouse on the cloud provider of your choice with Neo4j Virtual Graph.
+
+### Virtual Graph Standard
+
+- Up to 128GB per instance
+- Scalable on demand
+- 200 GB monthly data ingress included*
+- Aura roles and projects
+- Neo4j RBAC read-only, warehouse RBAC
+- Instance level SSO
+- IP filtering
+- Available on Azure, AWS, and Google Cloud
+- Advanced instance-level metrics
+- Pay-as-you-go and prepaid billing options
+- 24x7 support
+
+### Virtual Graph Dedicated
+
+- Includes all features from standard
+- 500 GB monthly data ingress included*
+- VPC isolation and dedicated infrastructure
+- Private Link
+- Prepaid billing
+- 24x7 support
+
+## Pricing frequently asked questions
+
+- How do the different Neo4j AuraDB plans compare?
+
+- Free: Start with a free plan to learn and explore graph data.
+- Professional: Build high-performance applications with a production-ready cloud database.
+- Business Critical: Ideal for mission-critical applications requiring a highly available database, robust enterprise controls, and 24/7 support. Perfect for running production workloads in a fully managed, secure, and flexible environment where uninterrupted access and security are essential.
+- Virtual Dedicated Cloud: Ideal for customers needing highly customized, dedicated infrastructure with Virtual Private Cloud (VPC) and specific networking requirements. It offers a highly available database, robust security controls, and premium 24/7 support.
+
+For more details on AuraDB capabilities, visit Neo4j AuraDB.
+- How does Neo4j AuraDB Professional differ from the free plan?
+
+The free plan places limits on the number of nodes and relationships. It is suitable for small projects, learning, and prototyping. In contrast, AuraDB Professional offers enhanced performance and best-effort support, making it ideal for building high-performance, production-ready applications.
+- Is there a free trial for the paid plans?
+
+Neo4j provides free trials on the AuraDB Professional tier as part of the paid plans, allowing users to explore the features and benefits before committing. The AuraDB Professional trial is available only in certain geographies for now. Contact sales@neo4j.com or sign up directly.
+- Can you use AuraDB on multiple cloud providers and marketplaces?
+
+AuraDB is available on AWS, Microsoft Azure, and Google Cloud. You can deploy AuraDB in over 60 global cloud regions. You can easily access and deploy AuraDB Professional through the following marketplaces:
+
+- AuraDB on AWS Marketplace
+- AuraDB on Azure Marketplace
+- AuraDB on Google Cloud Marketplace
+- What are the differences between Neo4j graph analytics product offerings?
+
+Neo4j offers several ways to run its 65+ graph algorithms for tasks like community detection, node similarity, and centrality. The right choice depends on where your data lives and how much of the infrastructure you want to manage.
+
+- Neo4j Aura Graph Analytics (fully managed, pay-as-you-go): runs algorithms in on-demand sessions, with no infrastructure to manage. It’s available in every Aura tier, from Free (at no cost) to Virtual Dedicated Cloud, with limits on session size, concurrent sessions, and maximum session duration that vary by tier. See the tier comparison.
+- AuraDB Professional Graph Analytics Plugin (fully managed, no extra charge): a built-in plugin that runs algorithms directly on your AuraDB Professional database. Best suited to experimentation and non-production use.
+- Neo4j Graph Analytics (self-managed): runs in a dedicated analytics environment separate from your database, so you can scale and manage it independently based on your analytics needs.
+- Neo4j Graph Data Science (self-managed): runs alongside your Neo4j database and shares its compute resources, so you deploy and manage both together.
+- Neo4j Graph Analytics for Snowflake (fully managed, pay-as-you-go via Snowflake Marketplace): deployed in your Snowflake environment, it runs algorithms on demand directly on data in your Snowflake tables. See pricing on Snowflake Marketplace.
+
+- US: 1-855-636-4532
+- Sweden: +46 171 480 113
+- UK: +44 20 3868 3223
+- France: +33 (0) 1 88 46 13 20
+- Singapore: +65 6859 0336
+- Australia: +61 2 8395 2895
+- India: +91 6827 521 210

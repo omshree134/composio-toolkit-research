@@ -1,0 +1,21 @@
+https://support.getharvest.com/hc/en-us/articles/360048180732-The-Harvest-API
+
+The Harvest API – Harvest Help Center
+
+# The Harvest API 
+
+Your Harvest subscription includes API access for all accounts (including free and trial accounts) which can be used to manage your Harvest account. Our API documentation provides all of the details necessary to get started.
+
+## Common API questions
+
+### How do I get access to the API?
+
+All Harvest accounts are able to access the Harvest API. API permissions will mirror account permissions; Administrators can access all API calls, Managers can access the projects and people they manage, and Members can only access their own data. Harvest will check your permissions on each request and actions that are not available to you in the UI will return HTTP 401 on the API.
+
+### Do you provide example code?
+
+We provide links to Harvest API libraries in our API code samples documentation. Presently, wrappers are offered in Ruby, PHP (including Drupal), Python and Java.
+
+### Does Harvest throttle API requests?
+
+Yes — details on throttling (including limits) can be found in our API overview documentation.

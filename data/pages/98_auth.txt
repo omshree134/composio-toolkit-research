@@ -1,0 +1,325 @@
+https://api.mermaid.ai/v1/docs
+
+Mermaid API reference
+
+# Mermaid API
+
+Mermaid API validates and renders Mermaid diagrams for programs: agents, LLM tool calls, CI pipelines and products. Validate says whether diagram code is valid and why not; render turns it into SVG, PNG or PDF, with the latest Mermaid unless the call pins an earlier one; generate asks Mermaid AI for diagram code from a prompt, and repair asks it to fix invalid code. The operations below are the contract; this guide is what they do not say by themselves. Mermaid API is part of Mermaid; keys are created in the console. Agents: llms.txt lists every document.
+
+## Beta
+
+Mermaid API is in beta. Request and response fields may be added, renamed or removed; defaults, limits and ceilings may move; the latest Mermaid version bumps without notice, so the same code may render differently over time unless the call pins a version. What does not change: the `/v1` prefix, the error structure, every error code once shipped, and bearer authentication. An endpoint whose request or response takes a new shape gets a `/v2` path beside its `/v1` one, which keeps working unchanged; other breaking changes are announced, not versioned: each is listed in the changelog at the end of this guide with its date and what a caller must do. Every response carries `x-mermaid-api-phase: beta` until general availability. Do not build a production dependency on it yet.
+
+## Authentication
+
+Every `/v1` call except the reference endpoints needs an API key: `Authorization: Bearer `. Keys are created in the console by any Mermaid Chart user, shown once at creation, and have no expiry by default. A key is `. `, the prefix `mmd_` and twelve hex digits; the prefix appears in listings, the secret is stored only as a hash. A refused key is 401 with `www-authenticate: Bearer` and one of `ERR_KEY_MISSING`, `ERR_KEY_UNKNOWN`, `ERR_KEY_REVOKED`, `ERR_KEY_EXPIRED`: fix the key, do not retry. `ERR_KEY_OWNER_DELETED` means Mermaid Chart no longer knows the key's owner: the key works again once it does, within 5 minutes. The examples below take the key from `$MERMAID_API_KEY`.
+
+## Validate
+
+`POST /v1/validate`, a valid diagram:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/validate" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"code": "flowchart TD\n  A[Start] --> B[Done]"}'
+
+```
+
+```json
+{ "valid": true, "diagramType": "flowchart-v2" }
+
+```
+
+## Render
+
+`POST /v1/render` in bytes mode, a PNG written to a file:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/render" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -o diagram.png \
+  -d '{"code": "flowchart TD\n  A[Start] --> B[Done]", "format": "png", "png": {"scale": 2, "background": "white"}}'
+
+```
+
+JSON mode, an SVG with a Mermaid config:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/render" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{"code": "flowchart TD\n  A[Start] --> B[Done]", "format": "svg", "config": {"theme": "forest"}}'
+
+```
+
+```json
+{ "format": "svg", "contentType": "image/svg+xml", "content": "PHN2ZyB4bWxucz0i...", "diagramType": "flowchart-v2", "mermaidVersion": "12.1.0", "requestId": "req-3f2a9c1b7d4e", "cacheStatus": "miss" }
+
+```
+
+An invalid diagram, answered 400:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/render" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"code": "flowchart TD\n  A --> B\n  C ==>> D", "format": "svg"}'
+
+```
+
+```json
+{ "error": { "code": "ERR_DIAGRAM_INVALID", "message": "Parse error on line 3:\n...TD  A --> B  C ==>> D\n---------------------^\nExpecting 'AMP', 'COLON', ..., got 'TAGEND'", "details": { "name": "Error", "line": 3, "column": 4 } } }
+
+```
+
+## Generate
+
+`POST /v1/generate`, one diagram from a prompt, checked with Mermaid's parser before it is returned:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/generate" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Alice says hello to Bob, as a sequence diagram"}'
+
+```
+
+```json
+{ "valid": true, "code": "sequenceDiagram\n  Alice->>Bob: Hello", "diagramType": "sequence" }
+
+```
+
+`POST /v2/generate` answers a list, `diagramCount` diagrams by default 1, up to 5, charged per diagram delivered and never past the count. With `"render": { "format": "svg" }` (or png or pdf, with the format options render takes), each diagram also carries `render`, the bytes as base64 with their `contentType`, or the `error` that kept it from rendering; a rendered diagram costs what a render costs on top, one that failed to render costs nothing:
+
+```bash
+curl -s "https://api.mermaid.ai/v2/generate" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Alice says hello to Bob, as a sequence diagram", "diagramCount": 1}'
+
+```
+
+```json
+{ "valid": true, "diagrams": [{ "code": "sequenceDiagram\n  Alice->>Bob: Hello", "diagramType": "sequence" }] }
+
+```
+
+## Repair
+
+`POST /v1/repair`, invalid code to a repaired diagram, checked with Mermaid's parser under the `config` sent before it is returned. Code the parser already accepts comes back unchanged at the cost of a validate, without asking Mermaid AI, so there is no need to validate first; the balance must still cover a repair's cost for the call to start:
+
+```bash
+curl -s "https://api.mermaid.ai/v1/repair" \
+  -H "Authorization: Bearer $MERMAID_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"code": "flowchart TD\n  A --> B\n  C ==>> D"}'
+
+```
+
+```json
+{ "valid": true, "code": "flowchart TD\n  A --> B\n  C ==> D", "diagramType": "flowchart-v2" }
+
+```
+
+With `render`, as `/v2/generate` takes it, the diagram answered, when valid, also comes back rendered under the `config` sent. A rendered repair costs a repair plus a render; code already valid costs a render when rendered; a failed render costs nothing.
+
+## Stored diagrams
+
+Personal keys can reach their owner's Mermaid Chart projects and stored diagrams: list projects with `GET /v1/projects`, list a project's diagrams without code with `GET /v1/projects/{projectID}/diagrams`, and fetch code, version and an `editUrl` with `GET /v1/diagrams/{diagramID}`. Reads are free. The key owner can reach their team projects too; Mermaid Chart applies their own permissions. Organisation keys receive `ERR_STORE_FORBIDDEN`. Mermaid API keeps no copy of the diagram code.
+
+`POST /v1/diagrams` takes `{ code, title?, projectID? }`: omit `projectID` for the owner's default project and `title` for Mermaid Chart's default title. `PUT /v1/diagrams/{diagramID}` takes `{ code?, title? }`; last write wins, without `If-Match`. Both return `{ id, projectID, title, version, editUrl }`. Code is parsed as validate does before Mermaid Chart is called; invalid code answers 400 `ERR_DIAGRAM_INVALID`, uncharged. Create, update and share use the `store` call class, initially 1 API credit, charged only on success.
+
+`POST /v1/diagrams/{diagramID}/share` takes `{ access?: 'View' | 'Comment' | 'Edit' }`, defaults to View, and returns `{ shareUrl, access }`. Each call mints a new share link, valid 30 days and not revocable before use; its recipient must log in. Mermaid Chart refuses access higher than the key owner has as `ERR_STORE_FORBIDDEN`. Its Basic-tier cap is `ERR_STORE_LIMIT_REACHED`, missing or unreadable diagrams or projects are `ERR_STORE_NOT_FOUND`, and upstream failures are `ERR_STORE_UNAVAILABLE`; none is charged. Personal keys can read, overwrite and share the owner's diagrams: revoke any key you do not trust with them.
+
+## Mermaid config
+
+`config` on validate, render and repair is the standard Mermaid config object, any subset; omitted keys take Mermaid's defaults, so theme, look, layout and every premium theme are set as Mermaid's own documentation says. Three rules:
+
+- Forbidden keys are refused with 422 `ERR_REQUEST_FORBIDDEN_CONFIG` and `details.keys` naming every one: `secure`, `securityLevel`, `startOnLoad`, `suppressErrorRendering`, `dompurifyConfig`. Remove them rather than expecting a silently different render.
+- Size keys are clamped, not refused: `maxTextSize` to 200,000 characters and `maxEdges` to 2,000 (a value that is not a positive integer is 422 `ERR_REQUEST_INVALID`). Raise them within the ceiling for large diagrams you know are legitimate; Mermaid's own defaults apply when unset, and code longer than the effective `maxTextSize` is invalid.
+- Directives cannot override the service: Mermaid's protected keys are pinned by the service, so an `%%{init}%%` directive inside the diagram code cannot change them either.
+
+## Mermaid version
+
+Both endpoints take `mermaidVersion`, the Mermaid version to validate or render with; omitted means the latest. The enum on `ValidateRequest` and `RenderRequest` in the operations below lists the versions the service serves; any other value is 422 `ERR_REQUEST_INVALID`. A pinned version behaves as that Mermaid release does: diagram types and syntax it does not know are invalid. `13.0.0-alpha` is experimental: the newest Mermaid 13 alpha the service carries, which changes as alphas ship (responses name the exact build). It is the only version that renders `ascii`, the diagram as text; a diagram type it cannot draw as text is 422 `ERR_RENDER_FORMAT_UNSUPPORTED` (https://mermaid.js.org/intro/v13-alpha.html lists the types).
+
+## Response headers
+
+| Header | On | Meaning |
+| --- | --- | --- |
+| `x-request-id` | every response | The request id; quote it when reporting a problem. A caller-supplied one (6 to 48 letters, digits, `-`, `_`, `=`) is echoed. |
+| `x-mermaid-api-phase` | every response | The release phase, `beta` during the beta. |
+| `ratelimit-policy` | every response for an accepted key | The burst limit in force, an IETF RateLimit field: `"burst";q=;w= `. Absent while the burst limit is not being enforced. |
+| `ratelimit` | every response for an accepted key | Where the call stands against it: `"burst";r=;t= `. Absent with the policy. |
+| `retry-after` | 429, and a 402 the allowance's reset will cover | Seconds to wait before the next call. |
+| `www-authenticate` | 401 | `Bearer`: the scheme the endpoint takes. |
+| `content-type` | every JSON body | `application/json`. |
+
+## Render cache
+
+A render identical to a recent one is served from the render cache: same diagram code, effective Mermaid config, format, format options and Mermaid version. The cache is shared across callers and keeps a render for 24 hours; a cache hit costs the same as a miss. Beyond that bounded cache nothing of a diagram is persisted after the request: no code, no output, no config; usage records hold metadata only.
+
+## Limits
+
+Every keyed call costs a whole number of API credits, some none, and spends the key owner's balance. A key belongs to a Mermaid Chart user (a personal key, spending their own balance) or to a Mermaid Chart organisation (an organisation key, spending the organisation's); the two balances are separate.
+
+- Allowance, per key owner across all their keys: the API credits per calendar month (UTC) the owner's Mermaid Chart plan gives, the personal allowance for a user and the organisation allowance for an organisation, unless a super admin set another for that owner. Creating several keys does not raise it.
+- Balance: what remains of the allowance this month plus the owner's purchased API credits. A call is charged its cost when the service did the work: a 2xx, or a render refused for invalid diagram code; a generate or repair answered `valid: false` is not charged, a repair of code already valid costs what a validate does, and `/v2/generate` costs its class's cost per diagram delivered, never for more than its `diagramCount`, plus a render's cost for each one rendered, so the balance must cover `diagramCount` diagrams, rendered when asked, for it to start. A refusal or a service failure costs nothing, and a render cache hit costs the same as a miss. The allowance pays first; once it is spent, purchased credits pay, the oldest purchase first. A call whose cost exceeds the whole balance is 402 `ERR_LIMIT_BALANCE` with `cause``balance`, `ownerType`, the allowance `remaining`, the `purchasedRemaining` and the reset in `details`; a call that costs nothing is never refused for balance. Calls in flight at the same time are charged as they finish, so together they may spend a little past the balance.
+- Spend limit, per key owner, set in the console: the most purchased API credits their keys may spend in a calendar month (UTC); none by default, and zero stops calls once the allowance is spent. A call that purchased credits could pay but the spend limit forbids is 402 `ERR_LIMIT_BALANCE` with `cause``spend_limit` and `retry-after` until the first instant of next month, when the spend limit resets and the allowance refills.
+- Burst limit, per key: the calls per rolling minute the owner's Mermaid Chart plan gives, refused or not, unless a super admin set another for the key. Exceeding it is 429 `ERR_LIMIT_BURST` with `retry-after` the seconds until the window clears. The `ratelimit-policy` and `ratelimit` headers on every response for an accepted key say what applies and what remains, so a caller can pace itself before the first 429.
+
+What each Mermaid Chart plan gives:
+
+| Plan | Personal allowance per month | Organisation allowance per month | Burst per key per minute |
+| --- | --- | --- | --- |
+| Basic | 500 | 0 | 20 |
+| Plus | 2,000 | 4,000 | 60 |
+| Premium | 5,000 | 10,000 | 120 |
+| Enterprise | 10,000 | 40,000 | 300 |
+
+A legacy plan gets the limits of the plan it maps to: Individual those of Plus, Pro those of Premium, Team those of Premium, Trial those of Basic.
+
+A change of plan reaches the limits within an hour and applies as a whole: API credits already spent this month still count, so after a downgrade the balance may be zero at once. While Mermaid Chart cannot be asked, the last plan the service knew applies, or Basic for an owner it never looked up. The numbers may change.
+
+What each endpoint costs now, by its call class; a super admin may change a cost or move an endpoint to another class, and this table, each operation's `x-cost` and the balance endpoint follow at once where the change was made and within about a minute everywhere else:
+
+| Endpoint | Call class | API credits |
+| --- | --- | --- |
+| `GET /v1/balance` | `free` | 0 |
+| `POST /v1/diagrams` | `store` | 1 |
+| `GET /v1/diagrams/{diagramID}` | `free` | 0 |
+| `PUT /v1/diagrams/{diagramID}` | `store` | 1 |
+| `POST /v1/diagrams/{diagramID}/share` | `store` | 1 |
+| `POST /v1/generate` | `ai` | 25 |
+| `GET /v1/projects` | `free` | 0 |
+| `GET /v1/projects/{projectID}/diagrams` | `free` | 0 |
+| `POST /v1/render` | `render` | 5 |
+| `POST /v1/repair` | `ai` | 25 |
+| `POST /v1/validate` | `basic` | 1 |
+| `POST /v2/generate` | `ai` | 25 |
+
+The allowance and burst defaults are service configuration and may change during the beta.
+
+`GET /v1/balance` answers the balance before a call has to be refused: `ownerType`, whose balance it is (`user` or `organisation`), the `month`, the `allowance`, what was `spent`, what `remaining`, and `resetAt`, the first instant of next month (UTC). `spendLimit` is the owner's spend limit (`null` with none), `purchasedSpent` the purchased API credits spent this month, and `autoTopUp` the owner's auto top-up setting: `enabled`, and when on the credit `pack` and the `threshold` in API credits. `purchased` gives the API credits left from purchases, `remaining`, `soonestExpiry`, when all of them expire together (`null` with none), and `soonestExpiring`, how many expire then: all of `remaining`; purchased credits last until twelve months after the latest purchase still holding credits, unless Mermaid Chart sets another date. `costs` lists every keyed endpoint with its `method`, `path`, `callClass` and `cost` in API credits, as the table above. Asking costs nothing and is answered even when nothing remains, so an agent can check before each costly step.
+
+```bash
+curl -s "https://api.mermaid.ai/v1/balance" \
+  -H "Authorization: Bearer $MERMAID_API_KEY"
+
+```
+
+## Request size and deadlines
+
+- A request body over 1,048,576 bytes is 413 `ERR_REQUEST_TOO_LARGE`. Diagram code larger than the `maxTextSize` ceiling above is invalid before that.
+- A render gets at most 30 seconds; past that the answer is 504 `ERR_RENDER_TIMEOUT`, at the latest two seconds later. Set the caller's timeout above that.
+- A generate prompt over 10,000 characters, or repair code over 20,000, is 413 `ERR_REQUEST_TOO_LARGE`, and Mermaid AI is not asked. Mermaid AI gets at most 55 seconds; past that the answer is 504 `ERR_AI_TIMEOUT`.
+- Validate has no deadline of its own beyond the size limits: parsing is fast.
+
+## Errors
+
+Every non-2xx response body is `{ "error": { "code", "message", "details"? } }`. `code` is stable and group-prefixed, `ERR_ _ `: branch on it. `message` is for people and may change. `details` is present only where the code documents its shape. By group: `REQUEST` and `DIAGRAM` are the caller's to fix, never retry unchanged; `KEY` needs a different key; `LIMIT` as 429 means wait for `retry-after`, as 402 means the balance is spent: the allowance and purchased credits are both spent (`details.cause` `balance`), with `retry-after` only when no purchased credits are left and the month's reset will refill it, or the owner's spend limit is reached (`spend_limit`), with `retry-after` until next month; `SERVICE`, `RENDER` and `AI` may pass on a retry. The same table is served as JSON at /v1/errors.json.
+
+| Code | Status | Meaning | | |
+| --- | --- | --- | --- | --- |
+| `ERR_STORE_NOT_FOUND` | 404 | Mermaid Chart could not find the project or diagram, or the key owner cannot read it. Not charged. | | |
+| `ERR_STORE_FORBIDDEN` | 403 | Stored diagrams require a personal key, or Mermaid Chart refused the operation for its owner. Not charged. | | |
+| `ERR_STORE_LIMIT_REACHED` | 402 | The Mermaid Chart Basic-tier stored-diagram cap was reached. Upgrade or remove diagrams. Not charged. | | |
+| `ERR_STORE_UNAVAILABLE` | 503 | Mermaid Chart is unavailable or the service credentials or scopes are misconfigured. Retry later; contact support if it persists. Not charged. | | |
+| `ERR_REQUEST_NOT_FOUND` | 404 | No endpoint at that path. Check the path against the OpenAPI document. | | |
+| `ERR_REQUEST_METHOD_NOT_ALLOWED` | 405 | The path exists but not for that method; the message names the methods it allows. | | |
+| `ERR_REQUEST_MALFORMED` | 422 | The request body is empty or not JSON. Send a JSON object. | | |
+| `ERR_REQUEST_INVALID` | 422 | The request body does not match the schema of the endpoint. Fix the fields the details name. Details: An array of schema issues, each with a `path` (the field) and a `message`. | | |
+| `ERR_REQUEST_TOO_LARGE` | 413 | The request body exceeds the size limit. Send less diagram code or config. | | |
+| `ERR_REQUEST_FORBIDDEN_CONFIG` | 422 | The Mermaid config sets keys the service forbids. Remove every key the details name. Details: `{ keys: string[] }`: the forbidden keys the config set. | | |
+| `ERR_KEY_MISSING` | 401 | No API key was presented. Send `Authorization: Bearer `. | | |
+| `ERR_KEY_UNKNOWN` | 401 | No key with that prefix exists, or the secret is wrong. Check the key was copied whole. | | |
+| `ERR_KEY_REVOKED` | 401 | The key was revoked by its owner or a super admin. A super admin, or an admin of the organisation owning it, can restore it; otherwise create a new key in the console. | | |
+| `ERR_KEY_EXPIRED` | 401 | The key is past its expiry. Create a new key in the console. | | |
+| `ERR_KEY_OWNER_DELETED` | 401 | Mermaid Chart no longer knows the account or organisation owning the key. Nothing is charged and the key is kept: it works again, within 5 minutes, once Mermaid Chart knows its owner again. | | |
+| `ERR_IDENTITY_MISSING` | 401 | Console endpoints only: no Mermaid Chart token was forwarded. Not returned under `/v1`. | | |
+| `ERR_IDENTITY_INVALID` | 401 | Console endpoints only: Mermaid Chart rejected the forwarded token. Not returned under `/v1`. | | |
+| `ERR_IDENTITY_UNAVAILABLE` | 503 | Console endpoints only: Mermaid Chart could not be asked about the token; retry later. | | |
+| `ERR_OWNER_UNKNOWN` | 404 | Console endpoints only: the signed-in user has not registered as a key owner yet, is not a member of the organisation whose context was asked for, or a super admin named an owner that does not exist. | | |
+| `ERR_OWNER_KEY_UNKNOWN` | 404 | Console endpoints only: no key of the signed-in owner, or for a super admin no key at all, has that id. | | |
+| `ERR_OWNER_FORBIDDEN` | 403 | Console endpoints only: in an organisation's context, the signed-in user's organisation role does not allow the action: a viewer changes nothing, a member changes only the organisation keys they created, only an admin restores a revoked key, and only the billing admin buys API credits or changes auto top-up; outside an organisation context a key is not restored. | | |
+| `ERR_CALL_CLASS_UNKNOWN` | 404 | Console endpoints only: a super admin named a call class that does not exist. | | |
+| `ERR_CALL_CLASS_EXISTS` | 409 | Console endpoints only: a super admin created a call class under a name already taken. | | |
+| `ERR_CALL_CLASS_IN_USE` | 409 | Console endpoints only: a super admin deleted a call class an endpoint belongs to, or a route declares; it would leave that endpoint unpriced. | | |
+| `ERR_CALL_CLASS_ENDPOINT_UNKNOWN` | 404 | Console endpoints only: a super admin moved or reset an endpoint that is not a keyed endpoint. | | |
+| `ERR_LIMIT_BURST` | 429 | The key made more calls this minute than its burst limit. Wait `retry-after` seconds, then retry. | | |
+| `ERR_LIMIT_BALANCE` | 402 | The call costs more API credits than the key owner's balance holds across all their keys, the user's own on a personal key, the organisation's on an organisation key: what remains of the monthly allowance and of their purchased credits together, or of those purchased credits the owner's monthly spend limit still lets their keys spend. `retry-after`, when present, is the seconds until the allowance and the spend limit reset at the start of next month, UTC: always at the spend limit, and at the balance only when no purchased credits are left and the refilled allowance covers the call. Details: `{ cause: "balance" | "spend_limit", ownerType: "user" | "organisation", remaining: number, purchasedRemaining: number, resetAt: string }`: ` balance`when the balance cannot pay,` spend_limit` when purchased credits could but the spend limit forbids it; whose balance, the API credits left of this month's allowance, those left of unexpired purchases, and when the allowance resets. |
+| `ERR_PAYMENT_SIGNATURE` | 400 | Stripe's webhook only: the event's Stripe signature does not verify, so nothing was credited. | | |
+| `ERR_PAYMENT_UNAVAILABLE` | 503 | Payments are not configured on this service, or Stripe or Mermaid Chart could not be asked for a purchase; nothing was done. Try again later. | | |
+| `ERR_PAYMENT_NO_BILLING_ADMIN` | 409 | Console only: the organisation has no billing admin, nobody paying its Mermaid Chart subscription, so there is no Stripe customer to charge a purchase or an auto top-up to; nothing was done. Subscribe the organisation in Mermaid Chart first. | | |
+| `ERR_PAYMENT_NO_PAYMENT_METHOD` | 409 | Console only: auto top-up cannot be turned on because the owner's Stripe customer has no saved card to charge; auto top-up stays off. Save a card first. | | |
+| `ERR_SERVICE_INTERNAL` | 500 | The service failed. Retry; if it keeps happening, report the `x-request-id`. | | |
+| `ERR_DIAGRAM_INVALID` | 400 | Mermaid's parser rejected the diagram code; `message` is the parser's text. On render this is the status; on validate the same object is `error` inside a 200 with `valid: false`. Fix the code. Details: `{ name: string, line?: number, column?: number }`: the error name and the 1-based position, when known. | | |
+| `ERR_RENDER_TIMEOUT` | 504 | The render exceeded the deadline. A retry may succeed; a simpler diagram will. | | |
+| `ERR_RENDER_FORMAT_UNSUPPORTED` | 422 | The diagram code is valid, but Mermaid cannot draw its diagram type in the asked format (ascii, where Mermaid 13's support grows with each alpha); nothing was charged. Render it as svg instead. Details: `{ diagramType: string }`: the detected diagram type. | | |
+| `ERR_RENDER_FAILED` | 500 | The renderer failed on code the parser accepted, or could not be reached. Retry; if it keeps happening, report the `x-request-id`. | | |
+| `ERR_AI_TIMEOUT` | 504 | Mermaid AI did not answer within the deadline; nothing was charged. A retry may succeed. | | |
+| `ERR_AI_FAILED` | 502 | Mermaid AI failed, answered no usable diagram, or could not be reached; nothing was charged. Retry; if it keeps happening, report the `x-request-id`. | | |
+
+## Changelog
+
+Breaking changes to the beta contract, newest first. An entry is the date the change took effect, what changed, and what a caller must do about it; error codes are never changed or reused, only added.
+
+Selected Auth Type: apiKey
+
+An API key, as issued: shown once at creation.
+
+ Bearer Token : 
+
+Token
+
+Show Password
+
+Client Libraries
+
+## operations 
+
+operations Operations
+
+Server: https://api.mermaid.ai /health
+
+Authentication
+
+ (Collapsed) 
+
+## Variables
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+
+## Cookies
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| Include row in request | undefined Key | undefined Value |
+
+## Headers
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| Include accept in request | accept | application/json More Information |
+| Include row in request | undefined Key | undefined Value |
+
+## Query Parameters
+
+| Enabled | Key | Value |
+| --- | --- | --- |
+| Include row in request | undefined Key | undefined Value |
+
+## Request Body
+
+No Body
+
+| None |
+| --- |
+
+## Code Snippet (Collapsed) 
+
+Shell Curl

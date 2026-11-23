@@ -1,0 +1,178 @@
+https://developer.zendesk.com/documentation/authentication/creating-and-using-oauth-tokens-with-the-api/
+
+# Creating and using OAuth access tokens with the API
+
+Developers typically use OAuth access tokens to authenticate Zendesk API requests on behalf of their users. Creating these tokens involves building an OAuth authorization flow that requires interaction from the user.
+
+You can also create OAuth access tokens on your own behalf without building an authorization flow. If you already have a valid OAuth access token, you can use the API to create additional access tokens. If you don't have one yet, see Getting your first token for one-time browser setup instructions to get your first token.
+
+This guide shows how you can use the API to create OAuth access tokens on your own behalf. The guide also covers how to use OAuth access tokens to authenticate Zendesk API requests.
+
+## Creating an OAuth client
+
+To create an access token, you need an OAuth client. You can use the same OAuth client to create multiple access tokens.
+
+You can create an OAuth client in one of two ways:
+
+- Admin Center
+- Zendesk API request
+
+Note: OAuth clients are scoped to one Zendesk instance. To request a global OAuth client that works with multiple Zendesk instances, see Set up a global OAuth client.
+
+### Using Admin Center
+
+To create an OAuth client using Admin Center, see Registering your application with Zendesk in Zendesk help. You must be signed in as an admin. When creating a client for creating an OAuth token with the API, you don't need to specify any Redirect URLs.
+
+You can optionally configure Allowed scopes for the client. Allowed scopes define the maximum set of scopes the client is permitted to request. If configured, any token created using this client must only include scopes from this list. For the full list of available scopes, see Scopes.
+
+### Using a Zendesk API request
+
+You can also create an OAuth client using a Create Client request.
+
+```bash
+curl https://{subdomain}.zendesk.com/api/v2/oauth/clients.json \
+  -X POST \
+  -H "Authorization: Bearer {access_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client": {
+      "name": "Test client",
+      "identifier": "test_client",
+      "kind": "public",
+      "scope": "tickets:read users:read"
+    }
+  }'
+
+```
+
+The optional `scope` property is a string of space-separated scopes that defines the maximum set of scopes this client is permitted to request. When set, any token created using this client must only include scopes from this list. If omitted, no scope restrictions are applied to the client. For the full list of valid scope values, see Scopes.
+
+Save the client's `id` from the response. You'll use this id to create access tokens using the client.
+
+```json {"highlightLines": [4]}
+{
+  "client": {
+    "url": "https://example.zendesk.com/api/v2/oauth/clients/223443.json",
+    "id": 223443,
+    "user_id": 1905826600027,
+    "name": "Test client",
+    "identifier": "test_client",
+    "kind": "public",
+    "scope": "tickets:read users:read",
+    ...
+  }
+}
+
+```
+
+### Getting an OAuth client's id
+
+When you create an access token, you must specify the OAuth client's id. This differs from the unique identifier you provide when creating the client.
+
+If you already have the client's id, skip to Creating an access token. Otherwise, you can get the id using a List Clients request.
+
+```bash
+curl https://{subdomain}.zendesk.com/api/v2/oauth/clients.json \
+  -H "Authorization: Bearer {access_token}"
+
+```
+
+In the response, find the client with a matching `name` and `identifier`. Save the client's `id`.
+
+```json {"highlightLines": [5, 7, 8]}
+{
+  "clients": [
+    {
+      "url": "https://example.zendesk.com/api/v2/oauth/clients/223443.json",
+      "id": 223443,
+      "user_id": 1905826600027,
+      "name": "Test client",
+      "identifier": "test_client",
+      "kind": "public",
+      ...
+    },
+    ...
+  ],
+  "next_page": null,
+  "previous_page": null,
+  "count": 10
+}
+
+```
+
+## Creating the access token
+
+To create an access token, make a Create Token for Grant Type request. The request body must contain a `token` object with at least the following two parameters:
+
+- `client_id`: The OAuth client's id
+- `scopes`: An array of permission scopes for the access token. For valid scopes, see Scopes in the API reference. If the OAuth client has allowed scopes configured, the `scopes` array must only contain values from that list. Requesting a scope outside the client's allowed scopes fails immediately with a `400 Bad Request` response and an `invalid_scope` error, no token is created.
+- `expires_in`: Number of seconds the access token is valid. Must be more than 300 seconds (5 minutes) and less than 172,800 seconds (2 days). The default value is 30 minutes.
+
+Only admins or agents with the Manage APIs permission can make the request. If the requester's role later changes, the token's access permissions automatically changes to reflect the new role. For example, the token will no longer work with endpoints that are only allowed for admins.
+
+Legacy clients must set token expiration to use the refresh token flow. The refresh token flow "tickets:read" requires an access token that expires. For OAuth clients created before April 30, 2026, there is no default access token expiration. If you are using a legacy client and want to use refresh tokens, you must explicitly pass `expires_in` when creating the token. If you omit it, the access token will not expire, and a refresh token will not be generated.
+
+For clients created on or after April 30, 2026, an `expires_in` value of 30 minutes is applied automatically. You can still specify a custom `expires_in` value or adjust the default `refresh_token_expires_in` value through the API.
+
+```bash
+curl https://{subdomain}.zendesk.com/api/v2/oauth/tokens.json \
+  -X POST \
+  -H "Authorization: Bearer {access_token}" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": {
+      "client_id": 223443,
+      "scopes": [
+        "tickets:read"
+      ]
+    }
+  }'
+
+```
+
+The response includes the access token in the `full_token` property.
+
+```json {"highlightLines": [11]}
+{
+  "token": {
+    "url": "https://example.zendesk.com/api/v2/oauth/tokens/15022151901588.json",
+    "id": 15022151901588,
+    "user_id": 1905826600027,
+    "expires_in": 172800,
+    "client_id": 223443,
+    ...
+    "scopes": [
+      "tickets:read"
+    ],
+    "full_token": "52d7ef4ee01e2c2c75bff572f957cd4f12d6225eee07ea2f01d01a"
+  }
+}
+
+```
+
+Note: There are two distinct scope-related error cases to be aware of:
+
+- Unrecognized scope string: If you specify a scope value that doesn't exist (for example, a typo), the endpoint still creates an access token. However, any API request made with that token will return a `403 Forbidden` error.
+- Scope outside client's allowed scopes: If the OAuth client has allowed scopes configured and you request a scope not included in that list, the endpoint returns `400 Bad Request` with an `invalid_scope` error and no token is created. To resolve this, either update the `scopes` array to only include values from the client's allowed scopes, or edit the client in Admin Center to expand its allowed scopes.
+
+Securely save the access token and treat it as a password. You won't be able to retrieve the full access token again. If you suspect a token has been compromised, revoke it. See Revoking a OAuth access token.
+
+Your OAuth client should implement a fallback mechanism to handle expired access tokens and expired refresh tokens. For example, if the access token expired or encounters an error, you can refresh it. However, if the refresh process fails or there is no refresh token linked to the access token, you must redirect the user to `/oauth/authorizations` to re-authorize your application. If the user has previously authorized a token with the same scopes for your OAuth app, and that token is still valid and has not been removed from the Zendesk system, they will not need to re-authorize the app. If the token expired and was removed, or if the app requests different scopes, the user will be prompted to grant access to the OAuth app. For OAuth clients created before April 30, 2026, Zendesk does not apply a default access token expiration. For clients created on or after April 30, 2026, a 30 minute `expires_in` value is applied automatically.
+
+## Using an access token to authenticate API requests
+
+To authenticate Zendesk API requests, use the access token as a `Bearer` token in the request's Authorization header.
+
+```bash
+curl https://{subdomain}.zendesk.com/api/v2/users.json \
+  -H "Authorization: Bearer {access_token}"
+
+```
+
+Example:
+
+```bash
+curl https://{subdomain}.zendesk.com/api/v2/users.json \
+  -H "Authorization: Bearer 52d7ef4ee01e2c2c75bff572f957cd4f12d6225eee07ea2f01d01a"
+
+```

@@ -1,0 +1,99 @@
+https://paygenthq.ai/help
+
+Help · Paygent
+
+# Help
+
+Connect your agent in about a minute
+
+Paygent is a wallet your AI agents pay from. You add money, connect an agent and give it a daily limit. The agent can ask to pay, and nothing is paid until you approve it with your PIN.
+
+## How it works
+
+1. Open a wallet at paygenthq.ai, confirm your phone and set your approval PIN.
+2. Add money by bank transfer to your wallet account number, direct debit or stablecoin.
+3. Connect an agent with the Paygent connector (steps below). When it connects, you approve it with your PIN and choose its slot: a name, a daily limit and the tools it may use.
+4. Ask your agent to buy something. At the checkout it prepares the payment and asks you. You see who is paid, how much and why, and approve with your PIN on Paygent’s website or phone app.
+5. The agent pays and files the receipt. Every payment is kept in Activity under the agent that made it.
+
+## Connect an agent
+
+Every agent uses the same connector: name `Paygent`, address `https://paygenthq.ai/mcp`. Each agent you approve gets its own slot, up to five.
+
+### Claude
+
+1. In Claude, open Customize, then Connectors, then Add custom connector. Or in your Paygent wallet, open Agents, choose Connect an agent, then Claude: it opens this window filled in.
+2. Name: `Paygent`. URL: `https://paygenthq.ai/mcp`. Choose Add, then Connect.
+3. Claude opens Paygent. Approve with your PIN and choose the slot.
+
+Works in Claude on the web, the desktop app and the phone app.
+
+### ChatGPT
+
+1. Use ChatGPT on the web: chatgpt.com in a browser, not the ChatGPT app.
+2. The first time only: open Settings, then Security and login, and turn on Developer mode.
+3. Open chatgpt.com/plugins and choose Add to open “Create custom MCP server”.
+4. Name: `Paygent`. Server URL: `https://paygenthq.ai/mcp`. Leave Authentication on OAuth, then choose Create.
+5. ChatGPT opens Paygent. Approve with your PIN and choose the slot.
+
+ChatGPT only lets you add a custom MCP connector on the web. The ChatGPT phone and desktop apps cannot add one: on a phone, open chatgpt.com/plugins in your browser, or use a computer.
+
+### Grok
+
+1. Open grok.com/connectors, choose New Connector, then Custom.
+2. Name: `Paygent`. Server URL: `https://paygenthq.ai/mcp`. Choose Add Connector.
+3. Grok opens Paygent. Approve with your PIN and choose the slot.
+
+### Le Chat (Mistral)
+
+1. Open Intelligence, then Connectors, then Add Connector, and choose the Custom MCP Connector tab.
+2. Name: `Paygent`. URL: `https://paygenthq.ai/mcp`.
+3. Le Chat opens Paygent. Approve with your PIN and choose the slot.
+
+### Perplexity
+
+1. Open Settings, then Connectors, and add a custom remote connector.
+2. URL: `https://paygenthq.ai/mcp`. Sign-in method: OAuth.
+3. Perplexity opens Paygent. Approve with your PIN and choose the slot.
+
+Needs Perplexity Pro or higher.
+
+### Gemini
+
+1. On a computer, open Gemini’s Connected Apps (in Gemini: Settings, then Connected Apps) and choose + Custom. Or in your Paygent wallet, open Agents, choose Connect an agent, then Gemini.
+2. MCP Server URL: `https://paygenthq.ai/mcp`. Choose Next, tick “I understand and accept the security and privacy risks of connecting this custom app”, choose Connect, then Agree and continue.
+3. Gemini opens Paygent. Approve with your PIN and choose the slot.
+4. Back in Gemini, choose Connect under “Save your custom app”. In a chat, type `@Paygent` and choose Allow when Gemini asks to use a Paygent action.
+
+Google offers custom apps only to personal accounts in the United States for now. Once added on the website, they work in the Gemini phone app too.
+
+### Another agent
+
+If your agent can add a remote MCP connector with OAuth sign-in, add `https://paygenthq.ai/mcp` as a custom connector named `Paygent`, then approve it on the Paygent page it opens.
+
+## What an agent can do
+
+Paygent gives an agent a fixed set of tools, listed under Settings, Agent tools. You can switch any of them off for each slot on the Agents page.
+
+| What | Tools | Details |
+| --- | --- | --- |
+| See its slot, balance and rules | `get_slot, get_balance, get_spending_rules, get_payment_methods` | What it can still spend today (never your full balance), its daily limit and the ways it can pay. |
+| Check a recipient | `list_banks, resolve_recipient` | Looks up the account name behind a bank account or mobile money number before any money moves. |
+| Ask to pay | `prepare_payment, request_approval, get_payment_status` | Locks the amount and recipient and sends you the request. It waits for your answer. |
+| Pay what you approved | `execute_payment, cancel_payment` | Pays only a request you approved. For a card payment, Paygent enters the card itself; the agent never sees it. |
+| Receipts and history | `attach_receipt, get_receipt, list_transactions` | Files the order confirmation with Paygent’s receipt, and lists this agent’s own payments. |
+
+## What an agent can never do
+
+- Approve its own payment, or see your PINs.
+- Raise its daily limit or switch its tools on.
+- Add money, withdraw, or see your bank details or full balance.
+- Change the recipient or the amount after you approve.
+
+## Stay in control
+
+- Pause an agent to stop it paying while it stays connected. Resuming needs your PIN.
+- Disconnect an agent to remove its access at once. Its payments and receipts stay in your wallet.
+- Paygent warns you on the approval screen when a recipient’s name doesn’t match the merchant, or when it’s your first payment to them.
+
+Need more help? See support or write to support.paygenthq@gmail.com.

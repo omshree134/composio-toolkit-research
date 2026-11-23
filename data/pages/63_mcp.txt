@@ -1,0 +1,193 @@
+https://github.com/netlify/netlify-mcp
+
+# netlify/netlify-mcp
+
+Netlify's Official MCP server
+
+- Stars: 73
+- Forks: 48
+- Watchers: 73
+- Open issues: 23
+- Default branch: main
+- Created: 2025-03-20T16:09:33Z
+
+## Languages
+
+- JavaScript
+- TypeScript
+
+## Top Contributors
+
+- jah2488 (26 contributions)
+- sean-roberts (22 contributions)
+- token-generator-app[bot] (8 contributions)
+- claude (7 contributions)
+- seancdavis (7 contributions)
+- davbree (7 contributions)
+- youvalv (5 contributions)
+- serhalp (4 contributions)
+- claude[bot] (3 contributions)
+- netlify-coding[bot] (3 contributions)
+
+---
+
+## README
+
+# Netlify MCP Server
+
+Netlify MCP Server follows the Model Context Protocol (MCP) to enable code agents to use the Netlify API and CLI—so they can create new projects, build, deploy, and manage your Netlify resources using natural language prompts.
+
+---
+
+## Overview
+
+The Model Context Protocol is an emerging standard protocol for connecting code agents with MCP servers, allowing them to manage resources and perform tasks using natural language. The Netlify MCP Server acts as a bridge, providing API access, CLI tools, prompts, and more for your agents.
+
+You can connect to the Netlify MCP Server using a variety of MCP clients, including:
+
+* Windsurf
+* Cursor
+* Claude
+* Copilot (VSCode)
+* Cline
+* Warp
+* LM Studio
+* See the full list
+
+---
+
+## Use Cases
+
+With Netlify MCP Server, your AI agents can:
+
+* Create, manage, and deploy Netlify projects
+* Modify access controls for enhanced project security
+* Install or uninstall Netlify extensions
+* Fetch user and team information
+* Enable and manage form submissions
+* Create and manage environment variables and secrets
+* and more...
+---
+
+## Prerequisites
+
+* **Node.js 22 or higher**
+ Check with `node --version`
+* **A Netlify account**
+* **An MCP client** (e.g., Windsurf, Cursor, Claude, Copilot)
+
+> **Tip:** Install the Netlify CLI globally for the best experience:
+> `npm install -g netlify-cli`
+
+---
+
+## MCP Configuration
+
+For the production MCP server, use the following configuration:
+
+Editors with one-click install:
+
+Install MCP Server on Cursor
+
+Add MCP Server netlify to LM Studio
+
+Install on VS Code
+
+Install on VS Code Insiders Edition
+
+Install on Goose
+- use the following link in your browser if link fails to render or open: `goose://extension?cmd=npx&arg=-y&arg=%40netlify%2Fmcp&id=netlify&name=Netlify&description=Build%2C%20deploy%2C%20and%20manage%20sites%20with%20Netlify's%20official%20MCP%20server.`
+
+Configuration for MCP config files:
+
+```json
+{
+  "mcpServers": {
+    "netlify": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@netlify/mcp"
+      ]
+    }
+  }
+}
+```
+
+For local development, see Set up local MCP configuration.
+
+---
+
+## Troubleshooting
+
+### Node Version
+
+* Use Node.js 22 or higher for best results.
+* If you use `nvm`, run:
+
+  ```bash
+  nvm install 22
+  nvm use 22
+  ```
+
+### Netlify authentication troubleshooting
+
+* If you run into authentication issues, you can temporarily add a Netlify Personal Access Token (PAT) to your MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "netlify-mcp": {
+      "command": "npx",
+      "args": ["-y", "@netlify/mcp"],
+      "env": {
+        "NETLIFY_PERSONAL_ACCESS_TOKEN": "YOUR-PAT-VALUE"
+      }
+    }
+  }
+}
+```
+
+**Do not commit your PAT to your repository!**
+Once resolved, remove your PAT from the config.
+
+---
+
+## Generating a New Personal Access Token (PAT)
+
+1. In the Netlify dashboard, select your user icon.
+2. Go to **User settings** > **OAuth** > **New access token**.
+3. Copy your token and add it (temporarily) to your MCP config as above.
+4. Restart or refresh your MCP client.
+
+---
+
+## Deployment card (hosted MCP)
+
+Ask an MCP Apps-compatible client: **“Show recent deployments for my project.”**
+The `netlify-open-deployments` tool takes a `siteId` (and optional `deployId`) and
+shows up to five matching deploys with status, branch, labeled creation time,
+errors, and links, plus the project's team and its dashboard link. Filter the
+project list by status. Tools also accept `status`; filtering is applied by Netlify
+before limiting the results. Filters do not apply to a specific `deployId`. The card
+refreshes every five seconds while a displayed deploy is active and stops when
+they finish or after 15 minutes, including time spent hidden. The Refresh button
+checks again manually and starts a new 15-minute window for automatic updates.
+Applying filters also starts a new window.
+Clients without MCP Apps support receive a text summary.
+
+This uses the existing Netlify OAuth connection and adds no environment variables
+or frontend build step. After deploying, refresh the client's MCP tool catalog.
+This first version does not include build logs or multi-project lookup; use the
+card's **Open in Netlify** link for full build details.
+
+To smoke-test in ChatGPT, connect a deployed preview's `/mcp` endpoint, open a
+project with a running deploy, and verify the card updates through completion.
+Also check an empty project, a failed deploy, and the text fallback in a client
+without MCP Apps support.
+
+## Resources
+
+* Model Context Protocol Documentation
+* Official List of MCP Clients
+* Netlify CLI

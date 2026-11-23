@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test and replay runs
+runs/
+pass1_rerun.json
+
+# Environment files
+.env
+*.env
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Draft artifacts
+composio-100-apps-toolkit-research-draft.html

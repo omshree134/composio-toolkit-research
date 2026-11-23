@@ -1,0 +1,554 @@
+[
+ {
+  "n": 1,
+  "app": "Salesforce",
+  "flags": [
+   "claimed jwt not found in cited pages"
+  ]
+ },
+ {
+  "n": 2,
+  "app": "HubSpot",
+  "flags": []
+ },
+ {
+  "n": 3,
+  "app": "Pipedrive",
+  "flags": []
+ },
+ {
+  "n": 4,
+  "app": "Attio",
+  "flags": []
+ },
+ {
+  "n": 5,
+  "app": "Twenty",
+  "flags": []
+ },
+ {
+  "n": 6,
+  "app": "Podio",
+  "flags": []
+ },
+ {
+  "n": 7,
+  "app": "Zoho CRM",
+  "flags": []
+ },
+ {
+  "n": 8,
+  "app": "Close",
+  "flags": []
+ },
+ {
+  "n": 9,
+  "app": "Copper",
+  "flags": []
+ },
+ {
+  "n": 10,
+  "app": "DealCloud",
+  "flags": []
+ },
+ {
+  "n": 11,
+  "app": "Zendesk",
+  "flags": [
+   "claimed api key not found in cited pages"
+  ]
+ },
+ {
+  "n": 12,
+  "app": "Intercom",
+  "flags": []
+ },
+ {
+  "n": 13,
+  "app": "Freshdesk",
+  "flags": [
+   "claimed oauth not found in cited pages",
+   "claimed basic not found in cited pages"
+  ]
+ },
+ {
+  "n": 14,
+  "app": "Front",
+  "flags": []
+ },
+ {
+  "n": 15,
+  "app": "Pylon",
+  "flags": []
+ },
+ {
+  "n": 16,
+  "app": "LiveAgent",
+  "flags": []
+ },
+ {
+  "n": 17,
+  "app": "Plain",
+  "flags": []
+ },
+ {
+  "n": 18,
+  "app": "Help Scout",
+  "flags": [
+   "claimed api key not found in cited pages"
+  ]
+ },
+ {
+  "n": 19,
+  "app": "Gorgias",
+  "flags": [
+   "claimed basic not found in cited pages"
+  ]
+ },
+ {
+  "n": 20,
+  "app": "Gladly",
+  "flags": []
+ },
+ {
+  "n": 21,
+  "app": "Slack",
+  "flags": []
+ },
+ {
+  "n": 22,
+  "app": "Twilio",
+  "flags": []
+ },
+ {
+  "n": 23,
+  "app": "Zoho Cliq",
+  "flags": []
+ },
+ {
+  "n": 24,
+  "app": "Lark (Larksuite)",
+  "flags": []
+ },
+ {
+  "n": 25,
+  "app": "Pumble",
+  "flags": []
+ },
+ {
+  "n": 26,
+  "app": "Discord",
+  "flags": []
+ },
+ {
+  "n": 27,
+  "app": "Telegram",
+  "flags": [
+   "claimed token not found in cited pages"
+  ]
+ },
+ {
+  "n": 28,
+  "app": "WhatsApp Business",
+  "flags": []
+ },
+ {
+  "n": 29,
+  "app": "Aircall",
+  "flags": []
+ },
+ {
+  "n": 30,
+  "app": "Vonage",
+  "flags": []
+ },
+ {
+  "n": 31,
+  "app": "Google Ads",
+  "flags": []
+ },
+ {
+  "n": 32,
+  "app": "Meta Ads",
+  "flags": []
+ },
+ {
+  "n": 33,
+  "app": "LinkedIn Ads",
+  "flags": []
+ },
+ {
+  "n": 34,
+  "app": "GoHighLevel",
+  "flags": []
+ },
+ {
+  "n": 35,
+  "app": "Mailchimp",
+  "flags": []
+ },
+ {
+  "n": 36,
+  "app": "Klaviyo",
+  "flags": []
+ },
+ {
+  "n": 37,
+  "app": "systeme.io",
+  "flags": []
+ },
+ {
+  "n": 38,
+  "app": "Pinterest",
+  "flags": []
+ },
+ {
+  "n": 39,
+  "app": "Threads (Meta)",
+  "flags": []
+ },
+ {
+  "n": 40,
+  "app": "SendGrid",
+  "flags": [
+   "self-serve not supported by cited pages"
+  ]
+ },
+ {
+  "n": 41,
+  "app": "Shopify",
+  "flags": []
+ },
+ {
+  "n": 42,
+  "app": "WooCommerce",
+  "flags": []
+ },
+ {
+  "n": 43,
+  "app": "BigCommerce",
+  "flags": []
+ },
+ {
+  "n": 44,
+  "app": "Salesforce Commerce Cloud",
+  "flags": [
+   "claimed api key not found in cited pages"
+  ]
+ },
+ {
+  "n": 45,
+  "app": "Magento (Adobe Commerce)",
+  "flags": []
+ },
+ {
+  "n": 46,
+  "app": "Squarespace",
+  "flags": []
+ },
+ {
+  "n": 47,
+  "app": "Ecwid",
+  "flags": []
+ },
+ {
+  "n": 48,
+  "app": "Gumroad",
+  "flags": []
+ },
+ {
+  "n": 49,
+  "app": "Amazon Selling Partner",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 50,
+  "app": "fanbasis",
+  "flags": []
+ },
+ {
+  "n": 51,
+  "app": "DataForSEO",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 52,
+  "app": "SE Ranking",
+  "flags": []
+ },
+ {
+  "n": 53,
+  "app": "Ahrefs",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 54,
+  "app": "MrScraper",
+  "flags": []
+ },
+ {
+  "n": 55,
+  "app": "Apify",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 56,
+  "app": "Firecrawl",
+  "flags": []
+ },
+ {
+  "n": 57,
+  "app": "Bright Data",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 58,
+  "app": "Sherlock",
+  "flags": []
+ },
+ {
+  "n": 59,
+  "app": "Waterfall.io",
+  "flags": []
+ },
+ {
+  "n": 60,
+  "app": "Clay",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 61,
+  "app": "GitHub",
+  "flags": []
+ },
+ {
+  "n": 62,
+  "app": "Vercel",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 63,
+  "app": "Netlify",
+  "flags": []
+ },
+ {
+  "n": 64,
+  "app": "Cloudflare",
+  "flags": []
+ },
+ {
+  "n": 65,
+  "app": "Supabase",
+  "flags": []
+ },
+ {
+  "n": 66,
+  "app": "Neo4j",
+  "flags": [
+   "claimed api key not found in cited pages"
+  ]
+ },
+ {
+  "n": 67,
+  "app": "Snowflake",
+  "flags": []
+ },
+ {
+  "n": 68,
+  "app": "MongoDB Atlas",
+  "flags": []
+ },
+ {
+  "n": 69,
+  "app": "Datadog",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 70,
+  "app": "Sentry",
+  "flags": []
+ },
+ {
+  "n": 71,
+  "app": "Notion",
+  "flags": []
+ },
+ {
+  "n": 72,
+  "app": "Airtable",
+  "flags": []
+ },
+ {
+  "n": 73,
+  "app": "Linear",
+  "flags": []
+ },
+ {
+  "n": 74,
+  "app": "Jira",
+  "flags": []
+ },
+ {
+  "n": 75,
+  "app": "Asana",
+  "flags": []
+ },
+ {
+  "n": 76,
+  "app": "Monday.com",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 77,
+  "app": "ClickUp",
+  "flags": []
+ },
+ {
+  "n": 78,
+  "app": "Coda",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 79,
+  "app": "Smartsheet",
+  "flags": []
+ },
+ {
+  "n": 80,
+  "app": "Harvest",
+  "flags": []
+ },
+ {
+  "n": 81,
+  "app": "Stripe",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 82,
+  "app": "Plaid",
+  "flags": []
+ },
+ {
+  "n": 83,
+  "app": "Binance",
+  "flags": [
+   "claimed oauth not found in cited pages",
+   "auth page empty/short"
+  ]
+ },
+ {
+  "n": 84,
+  "app": "Paygent Connect",
+  "flags": []
+ },
+ {
+  "n": 85,
+  "app": "iPayX",
+  "flags": []
+ },
+ {
+  "n": 86,
+  "app": "QuickBooks",
+  "flags": []
+ },
+ {
+  "n": 87,
+  "app": "Xero",
+  "flags": [
+   "mcp page lacks mcp mention"
+  ]
+ },
+ {
+  "n": 88,
+  "app": "Brex",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 89,
+  "app": "Ramp",
+  "flags": []
+ },
+ {
+  "n": 90,
+  "app": "PitchBook",
+  "flags": []
+ },
+ {
+  "n": 91,
+  "app": "NotebookLM",
+  "flags": []
+ },
+ {
+  "n": 92,
+  "app": "Otter AI",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 93,
+  "app": "Fathom",
+  "flags": []
+ },
+ {
+  "n": 94,
+  "app": "Consensus",
+  "flags": [
+   "claimed oauth not found in cited pages"
+  ]
+ },
+ {
+  "n": 95,
+  "app": "Reducto",
+  "flags": []
+ },
+ {
+  "n": 96,
+  "app": "Devin",
+  "flags": []
+ },
+ {
+  "n": 97,
+  "app": "higgsfield",
+  "flags": []
+ },
+ {
+  "n": 98,
+  "app": "Mermaid CLI",
+  "flags": []
+ },
+ {
+  "n": 99,
+  "app": "YouTube Transcript",
+  "flags": []
+ },
+ {
+  "n": 100,
+  "app": "Grain",
+  "flags": []
+ }
+]

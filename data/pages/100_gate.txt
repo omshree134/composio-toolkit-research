@@ -1,0 +1,61 @@
+https://support.grain.com/en/articles/15507288-grain-api
+
+Grain API | Grain
+
+# Grain API
+
+Connect Grain to your own tools and workflows with the Grain public API.
+
+Table of contents
+
+The Grain API lets developers read meeting data, manage recordings, and receive real-time events from Grain programmatically. Use it to build custom integrations, sync data to internal systems, or automate workflows that go beyond what Grain's built-in integrations support.
+
+For the full technical reference, see developers.grain.com.
+
+# What you can do with the API
+
+Read meeting data: retrieve recordings, transcripts, AI notes and action items, participants, tags, teams, and meeting types from your workspace.
+
+Manage recordings: upload external recordings to Grain, update recording metadata, add or remove tags, and control sharing at the user or team level.
+
+Download recordings: export video files and transcripts in multiple formats (JSON, plain text, VTT, SRT) for archiving or processing.
+
+Receive real-time events: register webhooks to receive a payload whenever a new recording is processed in your workspace, so downstream systems stay in sync without polling.
+
+# Authentication
+
+Grain supports three authentication methods depending on your use case.
+
+Personal Access Token (PAT): grants access on behalf of a single user. The token has the same permissions as the user who generated it. Best for personal automations or testing. Available on every plan, including Free. Click here to generate a PAT.
+
+Workspace Access Token (WAT): grants access to all data in the workspace, regardless of which user owns it. Use this for server-side integrations where you need workspace-wide access. Requires admin access to generate and is available on Business and Enterprise plans. Click here to generate a WAT.
+
+OAuth2: the standard flow for building integrations to be used by any Grain user. Users authorize your application directly, and your app receives a token scoped to that user's data. Required if you are building an integration to distribute to others.
+
+# Rate limits
+
+The API allows 300 requests per minute per token. Requests beyond this limit return a `429 Too Many Requests` response. Each response includes rate limit headers so you can track remaining capacity.
+
+# Webhooks
+
+Webhooks let Grain push data to your system when events occur, rather than requiring you to poll for changes. Register a webhook URL in your integration and Grain will send a payload to that URL whenever a registered event occurs, for example, a new recording is processed, a recording's settings change, or a clip is created. See the developer docs for the full list of supported event types.
+
+# API version
+
+The current API version is `2025-10-31`. All requests must include a `Public-Api-Version` header with this value. Grain uses versioning to introduce and deprecate fields without breaking existing integrations.
+
+The v1 (beta) API was sunset in September 2026. Use v2 for all integrations. See the developer docs for migration details.
+
+# FAQ
+
+Do I need a specific Grain plan to use the API? Not for personal API access, which is available on every plan, including Free. Workspace API access is available on Business and Enterprise plans and requires admin access to generate.
+
+Can I access recordings I did not attend? With a Personal Access Token, you can only access recordings within your own permission level. With a Workspace Access Token, you can access all recordings in the workspace.
+
+Can I upload recordings from other platforms into Grain? Yes. The API supports uploading external recordings, which Grain will then transcribe and process as if they were captured natively.
+
+Where do I generate my API token? Personal API tokens are generated in Account settings → Integrations → Personal API. They are available on every plan. Workspace API tokens are generated in Workspace settings → Integrations → API. Only workspace admins on Business and Enterprise plans can generate API tokens for the workspace.
+
+Is there a sandbox environment for testing? No sandbox is available at this time. Test against your live workspace using a Personal Access Token scoped to your own account to limit exposure.
+
+# Next up: AI Transcript Actions

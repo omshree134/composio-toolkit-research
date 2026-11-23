@@ -1,0 +1,33 @@
+https://developers.facebook.com/blog/whats_app/
+
+WhatsApp Platform Blog Articles | Meta for Developers
+
+# Developers blog
+
+![Hero Card Image: Announcing WhatsApp Business Tools MCP: Set up and manage WhatsApp business from your AI agent](https://scontent-ord5-1.xx.fbcdn.net/v/t39.2365-6/800422326_920295790776769_1521649670724825272_n.jpg?_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=e280be&_nc_ohc=-YwVce7U3aMQ7kNvwGuj7vq&_nc_oc=Ado71dKAcQVfO0yUxsQ6VSuvitxCcDuugFXpdFSvf0DzmSOfSAXM1JKSwbVB6JPDkEg&_nc_zt=14&_nc_ht=scontent-ord5-1.xx&_nc_gid=l9Vk57AFjCHV_-0n0_Zpaw&_nc_ss=7820f&oh=00_AQTai4v0sQptj244_1mJ8-pN3DGVA_8Kd-_ZoOSnbB1HiA&oe=6B1E4903)
+
+### Announcing WhatsApp Business Tools MCP: Set up and manage WhatsApp business from your AI agent
+
+Your AI agent can now set up WhatsApp business messaging Getting a WhatsApp Business integration running means moving between the Developer Console, Business Manager, the API reference, and your editor, then pasting an access token somewhere it shouldn't live. It's a lot of setup before you write any real code.WhatsApp Business Tools MCP changes...
+
+![Featured Card Image: Login with Facebook open beta: faster logins, less maintenance](https://scontent-ord5-1.xx.fbcdn.net/v/t39.2365-6/788019534_2744412842642817_2574002562759378207_n.jpg?_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=e280be&_nc_ohc=VxbGqqUhg6gQ7kNvwE8oZGD&_nc_oc=Ado5eczNIA0aHf-6OYWUL6Iw3MPpl-egl0uTLt893oHKbRGgjC2joznrO0rDwb0xdz8&_nc_zt=14&_nc_ht=scontent-ord5-1.xx&_nc_gid=l9Vk57AFjCHV_-0n0_Zpaw&_nc_ss=7820f&oh=00_AQTGaWa5NY_9GgmjwaQWzhqNqxYbGWFs1s7J5Pj9uzozKg&oe=6B1E3EE1)
+
+### Login with Facebook open beta: faster logins, less maintenance
+
+Login with Facebook is entering open beta on August 27, 2026, bringing a wave of improvements focused on one thing: fewer steps and less maintenance. Here is what is available in the open beta, what each feature does, and what it takes to adopt. Please see each section below for integration instructions. 1. Single Sign On (one tap) onAndroidandWeb...
+
+![Featured Card Image: Meta AI Developer Assistant Now Available for Developer Support](https://scontent-ord5-1.xx.fbcdn.net/v/t39.2365-6/763779005_1016910557916091_8272463535393944412_n.jpg?_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=e280be&_nc_ohc=c6Ony43BvQsQ7kNvwGvpxHz&_nc_oc=AdqGztaYdqLL7B56tVgGMP0sxc1B3Ook13o-xhPRw6DygnaBg3NyoeO31qqvAg27SLk&_nc_zt=14&_nc_ht=scontent-ord5-1.xx&_nc_gid=l9Vk57AFjCHV_-0n0_Zpaw&_nc_ss=7820f&oh=00_AQQqlzxrCBrWnx5mUFa-l1P48zMHIqHly4Uo7s9javd1GQ&oe=6B1E5224)
+
+### Meta AI Developer Assistant Now Available for Developer Support
+
+Today, we’re bringing Meta AI Developer Assistant to the developer support experience on developers.facebook.com by rolling out a revamped developer support experience powered by Meta AI Developer Assistant. When you visit developers.facebook.com/support, you’ll find an AI-powered assistant ready to help you troubleshoot issues, navigate compliance...
+
+![Featured Card Image: Introducing Graph API v26.0 and Marketing API v26.0](https://scontent-ord5-2.xx.fbcdn.net/v/t39.2365-6/758915088_1855837279132868_5154866040797328269_n.jpg?_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=e280be&_nc_ohc=YXEhSZoFzFcQ7kNvwGhcGEy&_nc_oc=AdrUMctRaqx3P1HebPMp0kTw11IDlut5EQMB-RmD4RZtzuvJiea6JmPxGmS96SVE3P8&_nc_zt=14&_nc_ht=scontent-ord5-2.xx&_nc_gid=l9Vk57AFjCHV_-0n0_Zpaw&_nc_ss=7820f&oh=00_AQQl_FTm9bN10s2jcApXC3hZmQMcN2iumqoMjhBAaUb8VQ&oe=6B1E6415)
+
+### Introducing Graph API v26.0 and Marketing API v26.0
+
+Graph API v26.0 and Marketing API v26.0 include new capabilities, deprecations, and breaking changes. Review the highlights below and visit the V26.0 changelog for the complete list of changes and details....
+
+### Explore more
+
+#### Products

@@ -1,0 +1,30 @@
+https://docs.waterfall.io/v1/book-demo
+
+> ## Documentation Index
+> 
+> Fetch the complete documentation index at: https://docs.waterfall.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Get API access
+
+> Request an API key or book a call. Our team reviews every access request and helps you plan your integration.
+
+API access is available by approval. Request a key through the email field on the Waterfall website, or book a call to discuss your workflow. A member of our team reviews every access request. We aim to reply within a couple of hours.
+
+> [card] Request an API key
+> 
+> Enter your work email on our homepage to request access.
+
+> [card] Book a call
+> 
+> Talk through your use case, pricing, and integration with our team.
+
+We work with a limited number of customers so we can provide direct support and plan capacity around each team's needs. Before enabling access, we take time to understand what you are building, the data you need, and your expected volume. Customers get a dedicated channel with our founders for questions and integration help.
+
+You can also email support@waterfall.io.
+
+For a useful first conversation, share your use case, input types, expected request volume, and required outputs. For a technical issue, include the endpoint, error code, and any known job ID. Keep API keys out of your message.
+
+Before the call, explore use cases, compare APIs, or prepare a sample using the evaluation guide.
+
+This documentation is built and hosted on Mintlify, a developer documentation platform.

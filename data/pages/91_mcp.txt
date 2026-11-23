@@ -1,0 +1,159 @@
+https://developers.google.com/notebook/docs/mcp
+
+Model Context Protocol (MCP) | Gemini Notebook API | Google for Developers
+
+ Model Context Protocol (MCP)
+
+The Gemini Notebook API provides a remote Model Context Protocol (MCP) server at `https://notebook.googleapis.com/mcp`. Connecting an MCP-compatible agent or IDE to this endpoint exposes tools for creating notebooks and ingesting sources over Streamable HTTP (JSON-RPC 2.0).
+
+## Quickstart prompt for coding agents (Recommended) Copy link to this section: Quickstart prompt for coding agents (Recommended)
+
+Click Show prompt, copy the prompt, and paste it into your coding agent (such as Claude Code or Cursor) to automate Google Cloud setup, OAuth token generation, and MCP server configuration:
+
+ Show prompt Hide prompt 
+
+```
+Help me connect to the remote Gemini Notebook MCP server (`https://notebook.googleapis.com/mcp`). Follow these exact steps:
+
+1. Check if `gcloud` is installed and ask me which Google Cloud PROJECT_ID to use (you can list my projects with `gcloud projects list --limit=10` or check `gcloud config get-value project`).
+2. Enable the Gemini Notebook API on that project:
+   gcloud services enable notebook.googleapis.com --project="$PROJECT_ID"
+3. Authenticate Application Default Credentials (ADC) with a personal Google Account (Google Workspace accounts are not yet supported) that has signed in to https://notebook.google.com at least once, requesting the `notebook` OAuth scope (standard `gcloud auth print-access-token` lacks this scope):
+   gcloud auth application-default login --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/notebook"
+4. Mint an access token:
+   ACCESS_TOKEN=$(gcloud auth application-default print-access-token)
+5. Verify connectivity to `https://notebook.googleapis.com/mcp` using HTTP POST with headers `Authorization: Bearer $ACCESS_TOKEN`, `x-goog-user-project: $PROJECT_ID`, `Content-Type: application/json`, `MCP-Protocol-Version: 2026-07-28`, and `Mcp-Method: tools/list`, sending JSON-RPC `{"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {"_meta": {"io.modelcontextprotocol/protocolVersion": "2026-07-28"}}}`.
+6. Configure the `gemini-notebook-api` remote HTTP MCP server in my current coding environment with URL `https://notebook.googleapis.com/mcp` and headers `Authorization: Bearer <TOKEN>` and `x-goog-user-project: <PROJECT_ID>`:
+   - Claude Code: `claude mcp add gemini-notebook-api --transport http https://notebook.googleapis.com/mcp --header "Authorization: Bearer $ACCESS_TOKEN" --header "x-goog-user-project: $PROJECT_ID"`
+   - Cursor (`.cursor/mcp.json`): add `"gemini-notebook-api": {"url": "https://notebook.googleapis.com/mcp", "headers": {"Authorization": "Bearer ...", "x-goog-user-project": "..."}}` under `"mcpServers"`
+```
+
+## Endpoint and authentication Copy link to this section: Endpoint and authentication
+
+| Setting | Value |
+| --- | --- |
+| Server URL | `https://notebook.googleapis.com/mcp` |
+| Transport | Streamable HTTP (`POST` with `Content-Type: application/json`) |
+| OAuth 2.0 scope | `https://www.googleapis.com/auth/notebook` |
+| Headers | `Authorization: Bearer ACCESS_TOKEN` `x-goog-user-project: PROJECT_ID` (required when using Application Default Credentials) |
+
+Enable the API in your Google Cloud project and generate an access token with the `notebook` scope before configuring your client:
+
+```
+export PROJECT_ID="YOUR_PROJECT_ID"
+
+gcloud services enable notebook.googleapis.com --project="$PROJECT_ID"
+
+gcloud auth application-default login \
+  --scopes="https://www.googleapis.com/auth/cloud-platform,https://www.googleapis.com/auth/notebook"
+
+export ACCESS_TOKEN=$(gcloud auth application-default print-access-token)
+
+```
+
+See Authentication for details on OAuth 2.0 scopes, personal Google Account requirements, and one-time Gemini Notebook sign-in prerequisites.
+
+## Configure an MCP client
+
+Add the remote HTTP MCP server using the `claude mcp add` command:
+
+```
+claude mcp add gemini-notebook-api \
+  --transport http https://notebook.googleapis.com/mcp \
+  --header "Authorization: Bearer $ACCESS_TOKEN" \
+  --header "x-goog-user-project: $PROJECT_ID"
+
+```
+
+Add the server to `.cursor/mcp.json` in your project root (or `~/.cursor/mcp.json` globally):
+
+```
+{
+  "mcpServers": {
+    "gemini-notebook-api": {
+      "url": "https://notebook.googleapis.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+        "x-goog-user-project": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}
+
+```
+
+For any MCP client that supports remote Streamable HTTP servers, configure the endpoint URL and headers:
+
+```
+{
+  "mcpServers": {
+    "gemini-notebook-api": {
+      "url": "https://notebook.googleapis.com/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+        "x-goog-user-project": "YOUR_PROJECT_ID"
+      }
+    }
+  }
+}
+
+```
+
+Note: Access tokens minted using `gcloud auth application-default
+print-access-token` expire after one hour. Refresh the token when it expires.
+
+## Available MCP tools
+
+The MCP server exposes 7 tools corresponding to the REST API methods:
+
+| Tool name | Description | Required arguments | Optional arguments |
+| --- | --- | --- | --- |
+| `create_notebook` | Creates a new notebook. | `notebook` (`{"displayName": "..."}`) | — |
+| `get_notebook` | Gets metadata for a notebook. | `name` (`notebooks/{notebook}`) | — |
+| `list_notebooks` | Lists notebooks accessible to the caller. | — | `pageSize`, `pageToken`, `filter` (`notebook.is_owner = true` or `notebook.is_owner = false`) |
+| `update_notebook` | Updates a notebook's display name. | `notebook` (`{"name": "notebooks/{notebook}", "displayName": "..."}`) | `updateMask` (`displayName`) |
+| `create_source` | Ingests a web URL, YouTube video, plain text, or Markdown source into a notebook. | `parent` (`notebooks/{notebook}`), `source` (`{"displayName": "...", "webContent": {"url": "..."}}` or `{"displayName": "...", "mimeType": "text/markdown", "textContent": {"content": "..."}}`) | — |
+| `get_source` | Gets metadata and processing state (`PROCESSING`, `ACTIVE`, `FAILED`) for a source. | `name` (`notebooks/{notebook}/sources/{source}`) | — |
+| `list_sources` | Lists all sources in a notebook. | `parent` (`notebooks/{notebook}`) | `pageSize`, `pageToken` |
+
+Note: File uploads aren't available as an MCP tool. To upload a file, call the REST `UploadSource` endpoint.
+
+## Direct JSON-RPC example
+
+You can also test the MCP server directly over HTTP using `curl`:
+
+In the following commands, replace `MCP_PROTOCOL_VERSION` with the MCP protocol version. For example, `2026-07-28`.
+
+### 1. List available tools (`tools/list`)
+
+curl -s -X POST "https://notebook.googleapis.com/mcp" \ -H "Authorization: Bearer $ACCESS_TOKEN" \ -H "x-goog-user-project: $PROJECT_ID" \ -H "Content-Type: application/json" \ -H 
+
+"MCP-Protocol-Version: 
+
+ \ -H "Mcp-Method: tools/list" \ -d '{ "jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": { "_meta": {
+
+ "io.modelcontextprotocol/protocolVersion": "
+
+### 2. Call `create_notebook` (`tools/call`)
+
+CREATE_RESP=$(curl -s -X POST "https://notebook.googleapis.com/mcp" \ -H "Authorization: Bearer $ACCESS_TOKEN" \ -H "x-goog-user-project: $PROJECT_ID" \ -H "Content-Type: application/json" \ -H 
+
+"MCP-Protocol-Version: 
+
+ \ -H "Mcp-Method: tools/call" \ -H "Mcp-Name: create_notebook" \ -d '{ "jsonrpc": "2.0", "id": 2, "method": "tools/call", "params": { "name": "create_notebook", "arguments": { "notebook": { "displayName": "MCP Research Notebook" } }, "_meta": {
+
+ "io.modelcontextprotocol/protocolVersion": "
+
+ } } }') echo "$CREATE_RESP" NOTEBOOK_NAME=$(echo "$CREATE_RESP" | python3 -c "import sys, json; print(json.load(sys.stdin)['result']['structuredContent']['name'])")
+
+### 3. Call `create_source` (`tools/call`)
+
+curl -s -X POST "https://notebook.googleapis.com/mcp" \ -H "Authorization: Bearer $ACCESS_TOKEN" \ -H "x-goog-user-project: $PROJECT_ID" \ -H "Content-Type: application/json" \ -H 
+
+"MCP-Protocol-Version: 
+
+ \ -H "Mcp-Method: tools/call" \ -H "Mcp-Name: create_source" \ -d "{ \"jsonrpc\": \"2.0\", \"id\": 3, \"method\": \"tools/call\", \"params\": { \"name\": \"create_source\", \"arguments\": { \"parent\": \"${ NOTEBOOK_NAME}\", \"source\": { \"displayName\": \"Gemini API Docs\", \"webContent\": { \"url\": \"https://ai.google.dev/gemini-api/docs\" } } }, \"_meta\": {
+
+ \"io.modelcontextprotocol/protocolVersion\": \"
+
+Last updated 2026-11-19 UTC.

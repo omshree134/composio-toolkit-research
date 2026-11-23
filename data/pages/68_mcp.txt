@@ -1,0 +1,125 @@
+https://www.mongodb.com/products/tools/mcp-server
+
+MongoDB MCP Server: Connect AI Agents to Your Data | MongoDB
+
+# MongoDB MCP Server
+
+The MongoDB MCP Server gives AI agents the tools they need to explore, query, and manage MongoDB deployments. Run it self-managed locally, or use the Atlas Managed MCP Server.
+
+![Illustration of a database producing charts.](https://images.contentstack.io/v3/assets/blt7151619cb9560896/bltecb41959c6bc40a3/659ec3b1e1b99e2b8b9c0014/Technical_ACTION_CloudSync_Spot.svg)
+
+## Ship better software, faster
+
+Automatically surface critical database context, including configurations, collection schemas, and sample data, directly to your coding agents. They’ll write more accurate MongoDB code and optimized queries while you stay in the flow.
+
+![Illustration of AI Industry](https://images.contentstack.io/v3/assets/blt7151619cb9560896/bltb1db3751a16e4d87/6583027eb0fbcb5117625d4a/General_INDUSTRIES_AI(1)_Spot.svg)
+
+![Illustration of hands typing on a laptop and a superimposed desktop window with some code on it.](https://images.contentstack.io/v3/assets/blt7151619cb9560896/blt47aebde328aa2aba/6a79c4348a15524d3b64b659/General_TECHNOLOGY_Coding_Spot.svg)
+
+## Use with your favorite AI tools
+
+The MongoDB MCP Server integrates with the coding agents and IDEs you already use, such as Cursor or Claude Code, providing the context they need to maximize efficiency.
+
+## Simplify development workflows
+
+No more copy-pasting schemas or switching tools. Explore, code, and manage MongoDB deployments without leaving your development environment.
+
+![Illustration that represents task automation.](https://images.contentstack.io/v3/assets/blt7151619cb9560896/blt5175b2b389b00d2a/6565d1bdec79944928968d5d/Technical_SOFTWARE_Terminal(2)_Spot_(1).svg)
+
+![Illustration of a database with a screwdriver and a power plug, representing database setup.](https://images.contentstack.io/v3/assets/blt7151619cb9560896/bltd33e9d1a7c19be1e/6a79c498b59102e5e3eeb10a/Technical_ACTION_DatabaseSetup_Spot.svg)
+
+## Power your own agents
+
+The MongoDB MCP Server acts as a standard plugin for any MCP-enabled environment. Build autonomous agents that can explore datasets, generate insights, and interact with MongoDB deployments.
+
+## What can you do with the MongoDB MCP Server?
+
+Bring valuable context from MongoDB databases into development environments for data exploration, database operations, and context-aware code generation.
+
+Interact with MongoDB in natural language![](https://webimages.mongodb.com/_com_assets/cms/lt4nw5hu3tn2vh9wb-minus-code.svg?auto=format%252Ccompress)
+
+Connecting the MongoDB MCP Server to your AI development tools lets you use natural language to explore and manage databases while generating accurate application code.
+
+Connect to any MongoDB deployments![](https://webimages.mongodb.com/_com_assets/cms/lt4nwg1iz8y016831-plus-code.svg?auto=format%252Ccompress)
+
+The MCP Server connects to any MongoDB deployment, including Atlas, Community Edition, and Enterprise Advanced. A connection string grants database access, while Atlas service account credentials unlock Atlas-specific tools for cluster management.
+
+Connect to IDEs and CLI coding agents![](https://webimages.mongodb.com/_com_assets/cms/lt4nwg1iz8y016831-plus-code.svg?auto=format%252Ccompress)
+
+Interact with MongoDB in natural language![](https://webimages.mongodb.com/_com_assets/cms/lt4nw5hu3tn2vh9wb-minus-code.svg?auto=format%252Ccompress)
+
+Connecting the MongoDB MCP Server to your AI development tools lets you use natural language to explore and manage databases while generating accurate application code.
+
+Connect to any MongoDB deployments![](https://webimages.mongodb.com/_com_assets/cms/lt4nwg1iz8y016831-plus-code.svg?auto=format%252Ccompress)
+
+### ChatGPT
+
+ChatGPT App for MongoDB Atlas for accessing data and managing the platform.
+
+### Codex
+
+MongoDB Atlas (Managed MCP) and MongoDB (Self-Managed MCP) plugins for querying data and managing databases in Codex.
+
+### Claude
+
+Connector for MongoDB Atlas, enabling accessing your data and managing the platform from Claude.
+
+MongoDB Atlas (Managed MCP) and MongoDB (Self-Managed MCP) plugins for querying data and managing databases in Claude Code.
+
+### Cursor
+
+MongoDB Atlas (Managed MCP) and MongoDB (Self-Managed MCP) plugins for querying data and managing databases in Cursor.
+
+### Grok Build
+
+Plugin for MongoDB Atlas that lets Grok access Atlas data and manage the platform natively.
+
+### Devin
+
+Plugin for MongoDB Atlas that lets your autonomous agent query and manage Atlas seamlessly.
+
+## MongoDB MCP Server use cases
+
+![illustration of hands holding binoculars](https://images.contentstack.io/v3/assets/blt7151619cb9560896/blta96cf8e1d9ce9cca/68c0786e07b4fabe2d38ca53/General_WORKPLACE_PointsOfView_Spot-None_3x.png)
+
+### Interact with your data in natural language
+
+Explore and manage databases using natural language directly in your development environment to build faster and more easily.
+
+The MongoDB MCP Server enables coding agents to query and manage data, helping them iterate faster and build application features more reliably.
+
+### Power agentic systems
+
+Integrate the MongoDB MCP Server with your agentic systems so they can explore and query MongoDB deployments effectively.
+
+## Learning hub
+
+### Use the MongoDB MCP Server
+
+### MongoDB Developer Community
+
+## FAQ
+
+### What is an MCP Server?
+
+An MCP server implements the Model Context Protocol (MCP), introduced by Anthropic in November 2024. MCP is a standard that defines how LLM-based applications connect with diverse data sources and systems, especially for agentic use cases. It enables interoperability and modularity in complex AI ecosystems, making deployment easier, more flexible, and scalable.
+
+### How is the MongoDB MCP Server used?
+
+The MongoDB MCP Server connects any MongoDB deployment (Atlas, Community Edition, or Enterprise Advanced) to AI-powered developer tools like Codex, Claude, or any MCP-enabled agentic system. It brings context from MongoDB databases into developers’ environments, enabling data exploration, database operations, and context-aware code generation via natural language.
+
+Additionally, the MongoDB MCP Server can serve as a building block for AI agents, giving them direct access to MongoDB databases for data retrieval and automated database operations.
+
+The MongoDB MCP Server can be installed locally and self-managed or you can use the Atlas Managed MCP Server.
+
+### Can I use the MongoDB MCP Server with MongoDB Community Edition?
+
+### How can I deploy the MongoDB MCP Server?
+
+You can deploy the MongoDB MCP Server locally using stdio (for IDEs/agents like Claude Code or Cursor) or HTTP. It can also be self-hosted for broader access or packaged and deployed with Docker for easier containerized setups. In addition, for a fully hosted MCP Server, use the Atlas Managed MCP Server.
+
+### Can an AI coding agent provision a database before you sign up for Atlas?
+
+Yes. Atlas Ephemeral Clusters let an AI coding agent provision a free MongoDB Atlas M0 cluster in seconds, with no signup or login required. Use the returned connection string to start building against a live database, then claim the cluster into your Atlas account if you decide to keep developing.
+
+## Get started with the MongoDB MCP Server

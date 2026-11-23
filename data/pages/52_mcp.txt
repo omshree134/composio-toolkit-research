@@ -1,0 +1,289 @@
+https://seranking.com/api/integrations/mcp/
+
+SE Ranking MCP: Setup & Configuration
+
+# MCP Server Documentation
+
+New to SE Ranking MCP? What it does, pricing and use cases
+
+ Whether you’re connecting MCP for the first time or building advanced workflows, the MCP Hub brings every useful resource into one place, so you can start simple and level up at your own pace.
+
+ Setup Use cases Skills library Prompt library Blueprints Video guides
+
+The Model Context Protocol (MCP) server provides a standardized interface that allows any compatible AI model to access your SE Ranking and SE Visible data simply and securely.
+
+MCP server server follows the authenticated remote MCP spec, so it’s centrally hosted and managed. Connect in one click in Claude or ChatGPT, natively in Cursor and other clients, or use the `mcp-remote` module for clients that don’t support remote servers.
+
+## What you can access
+
+Through the MCP server, your AI assistant can work with data from these SE Ranking and SE Visible products*:
+
+- Data API: keyword research, backlinks, domain analysis, SERP, and more
+- Project API: your projects, rank tracking, audits, and competitors
+- Local Marketing API: your locations, local rankings, Google Business Profile, business listings, and reviews
+- SE Visible API: your AI visibility projects, brands, topics, prompts, and sources
+
+*The data available to you depends on your subscription. Not every API endpoint is available through MCP. Setup is the same for every product. Use your SE Ranking account, or an API key generated in the API Dashboard of your SE Ranking or SE Visible account.
+
+## Setup Instructions
+
+### General
+
+Our MCP server supports Streamable HTTP transports. This transport uses OAuth 2.1 with dynamic client registration for authentication at the following address:
+
+```
+https://api.seranking.com/mcp
+```
+
+Jump to your client: Claude · ChatGPT · Codex · Cursor · VS Code · v0 · Windsurf · Zed · Gemini CLI · Others.
+
+### Sub-accounts
+
+If you’re a sub-account on a shared SE Ranking workspace, the Sign in with SE Ranking button won’t connect any tools. API access lives with the master account, not with sub-accounts. Sub-account API keys are on the way; until they’re released, use the workaround below.
+
+To connect a sub-account:
+
+1. Get the API key from your account administrator.
+2. In the connection dialog, choose Enter API keys manually.
+3. Paste the key when prompted.
+
+## Claude
+
+### Claude (Web & Desktop)
+
+Add the official SE Ranking connector and click Connect. In Claude Desktop, you can also find it under Customize → Connectors by searching for SE Ranking.
+
+ ![SE Ranking connector in Claude's connector directory](https://seranking.com/wp-content/uploads/sites/9/2025/09/screenshot-2026-10-06-at-21.21.16-media.png) 
+
+### Claude Code
+
+Two options. Pick one.
+
+Option A: OAuth (recommended) — opens a browser on first connect, stores the token locally, and reuses it across sessions.
+
+```
+claude mcp add --transport http se-ranking https://api.seranking.com/mcp
+```
+
+Then run `/mcp` once you’ve opened a Claude Code session to go through the authentication flow.
+
+Option B: API key — skip the OAuth flow and pass your key as headers. Right for headless environments, CI runners, shared dev boxes, or when the browser handoff is awkward.
+
+```
+claude mcp add --transport http se-ranking https://api.seranking.com/mcp \
+  --header "X-Api-Key: *****"
+```
+
+Grab the key from the API Dashboard in your SE Ranking or SE Visible account. Available tools depend on your subscription.
+
+## ChatGPT
+
+Open the official SE Ranking plugin, click Install plugin, and sign in to authorize. You can also find it in ChatGPT under Plugins by searching for SE Ranking.
+
+ ![SE Ranking plugin in ChatGPT](https://seranking.com/wp-content/uploads/sites/9/2025/09/screenshot-2026-10-06-at-21.37.34-media.png) 
+
+## Codex
+
+The setup steps for the MCP server are the same regardless of whether you use the IDE Extension or the CLI since the configuration is shared.
+
+Configuration via CLI:
+
+Run the following command in Terminal:
+
+```
+codex mcp add se-ranking --url https://api.seranking.com/mcp
+```
+
+This will automatically prompt you to log in with your SE Ranking account and connect it to your Codex.
+
+> Note: If this is the first time you are using an MCP in Codex you will need to enable the rmcp feature for this to work. Add the following into your `~/.codex/config.toml`:
+> 
+> 
+> 
+> Copy
+> 
+> ```
+> [features]
+> experimental_use_rmcp_client = true
+> ```
+
+Configuration through environment variables:
+
+1. Open the `~/.codex/config.toml` file in your preferred editor.
+
+2. Add the following:
+
+[features] experimental_use_rmcp_client = true
+
+`[mcp_servers.se-ranking]
+url = "https://api.seranking.com/mcp"`
+
+3. Run `codex mcp login se-ranking` to move through the authentication flow.
+
+## Cursor
+
+Add the following to `.cursor/mcp.json` (project) or `~/.cursor/mcp.json` (global):
+
+```
+{
+  "mcpServers": {
+    "se-ranking": {
+      "url": "https://api.seranking.com/mcp"
+    }
+  }
+}
+```
+
+Cursor supports Streamable HTTP and OAuth natively. An OAuth window will open on first use to authenticate with your SE Ranking account.
+
+## Visual Studio Code
+
+```
+{
+  "mcpServers": {
+    "se-ranking": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.seranking.com/mcp"]
+    }
+  }
+}
+```
+
+1. `Ctrl+P` / `Cmd+P` and search for MCP: Add Server.
+
+2. Select Command (stdio).
+
+3. Enter the following configuration, and hit enter:
+
+```
+npx -y mcp-remote https://api.seranking.com/mcp
+```
+
+4. Enter the name `SE Ranking` and hit enter.
+
+5. Activate the server using MCP: List Servers, selecting se-ranking, and selecting Start Server.
+
+## v0 by Vercel
+
+To add the MCP to v0, you can install from the connections page.
+
+## Windsurf
+
+1. `Ctrl+,` / `Cmd+,` to open Windsurf settings.
+
+2. Scroll to Cascade > MCP servers.
+
+3. Select Add Server > Add custom server.
+
+4. Add the following:
+
+```
+{
+  "mcpServers": {
+    "se-ranking": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.seranking.com/mcp"]
+    }
+  }
+}
+```
+
+## Zed
+
+`Cmd+,` to open Zed settings. Add the following:
+
+```
+{
+  "context_servers": {
+    "se-ranking": {
+      "source": "custom",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.seranking.com/mcp"],
+      "env": {}
+    }
+  }
+}
+```
+
+## Gemini CLI
+
+Add to `~/.gemini/settings.json`:
+
+```
+{
+  "mcpServers": {
+    "se-ranking": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.seranking.com/mcp"]
+    }
+  }
+}
+```
+
+Save and launch Gemini CLI. Authorize when prompted.
+
+## Others
+
+Hundreds of other tools now support MCP servers. You can configure them to use our MCP server with the following settings:
+
+- Command:`npx`
+- Arguments:`-y mcp-remote https://api.seranking.com/mcp`
+- Environment: None
+
+## FAQ
+
+Why am I seeing an internal server error when trying to connect?
+
+Enter the following in the Terminal to clear saved auth info: `rm -rf ~/.mcp-auth` then try again to connect.
+
+Additionally you may need to update to a newer version of Node if required.
+
+What happens when I connect?
+
+A browser window opens to `seranking.com` where you log in with your SE Ranking account and approve access. After approval, you’re redirected back to your client and the connection is established. If the window doesn’t open automatically, check your client for a URL to paste into a browser manually.
+
+How do I know the connection worked?
+
+- Claude.ai / Desktop: SE Ranking moves out of Not connected and its tools become available in chats.
+- Claude Code: Run /mcp and confirm se-ranking shows as connected and its tools are listed.
+- Cursor, VS Code, Windsurf, Zed: The server appears as connected in the MCP panel and tools are listed.
+- All clients: Try a prompt like “Using SE Ranking MCP, give me traffic for seranking.com in the US.” If it returns real data, it works.
+
+I’m using WSL on Windows, and seeing an error
+
+WSL can have issues with the OAuth redirect. Configure the server in your client’s Windows-side config file instead, or run the setup from PowerShell:
+
+```
+{
+  "mcpServers": {
+    "se-ranking": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://api.seranking.com/mcp"]
+    }
+  }
+}
+```
+
+Does the MCP support Streamable HTTP?
+
+Yes, at the `https://api.seranking.com/mcp` endpoint.
+
+Can I authenticate with my own API key?
+
+Yes. Instead of using the interactive authentication flow, you can pass your API key in the `X-Api-Key` header. See Claude Code, Option B for an example. This works well for headless environments, CI runners, and shared dev boxes.
+
+A key passed this way has the same access as your account. Restricted or read-only API keys aren’t available yet.
+
+No tools appearing after connecting?
+
+- Verify your SE Ranking or SE Visible account has API access at the API Dashboard.
+- Run `/mcp` in Claude Code to check live connection status.
+- Try removing and re-adding the server.
+
+If you need further assistance, contact us at api@seranking.com.
+
+## Resources
+
+## Video: SE Ranking MCP in Action
+
+See the MCP server in action in our live workshops, from first connection to automated workflows.

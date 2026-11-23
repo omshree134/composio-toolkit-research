@@ -1,0 +1,3005 @@
+{
+ "note": "Search bundles collected 22:06-22:07 IST on 2026-11-23 (3 queries per app, 300 searches, all returned results). 3 pages per app (auth, access, MCP) fetched 22:09-22:10 IST (300 files, 298 with real content); the MCP pages for apps 28, 49 and 99 were refetched at 22:14 after the MCP audit. Ad hoc spot checks (Coda, Binance, Sherlock, WhatsApp MCP) were done by hand and are not in these logs. Files are stored in data/search and data/pages; the 'file' fields below use the earlier ev/ and ver/ names.",
+ "entries": [
+  {
+   "type": "search_bundle",
+   "file": "ev/1.json",
+   "app": "Salesforce",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:55.368547"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/2.json",
+   "app": "HubSpot",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:53.708529"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/3.json",
+   "app": "Pipedrive",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:53.792530"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/4.json",
+   "app": "Attio",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:53.500527"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/5.json",
+   "app": "Twenty",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:53.748530"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/6.json",
+   "app": "Podio",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:54.124534"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/7.json",
+   "app": "Zoho CRM",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:54.364536"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/8.json",
+   "app": "Close",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:53.976532"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/9.json",
+   "app": "Copper",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:54.208535"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/10.json",
+   "app": "DealCloud",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:54.048533"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/11.json",
+   "app": "Zendesk",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:55.984554"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/12.json",
+   "app": "Intercom",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:55.676551"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/13.json",
+   "app": "Freshdesk",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:55.872553"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/14.json",
+   "app": "Front",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.244557"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/15.json",
+   "app": "Pylon",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.184556"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/16.json",
+   "app": "LiveAgent",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.336558"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/17.json",
+   "app": "Plain",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.468559"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/18.json",
+   "app": "Help Scout",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.480559"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/19.json",
+   "app": "Gorgias",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:56.252557"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/20.json",
+   "app": "Gladly",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:57.448570"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/21.json",
+   "app": "Slack",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:57.880575"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/22.json",
+   "app": "Twilio",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.160578"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/23.json",
+   "app": "Zoho Cliq",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.064577"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/24.json",
+   "app": "Lark (Larksuite)",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.408580"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/25.json",
+   "app": "Pumble",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.280579"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/26.json",
+   "app": "Discord",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.524582"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/27.json",
+   "app": "Telegram",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.396580"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/28.json",
+   "app": "WhatsApp Business",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.756584"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/29.json",
+   "app": "Aircall",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:58.716584"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/30.json",
+   "app": "Vonage",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:06:59.592593"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/31.json",
+   "app": "Google Ads",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.060598"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/32.json",
+   "app": "Meta Ads",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.392602"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/33.json",
+   "app": "LinkedIn Ads",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.616604"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/34.json",
+   "app": "GoHighLevel",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.672605"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/35.json",
+   "app": "Mailchimp",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.500603"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/36.json",
+   "app": "Klaviyo",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:01.060609"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/37.json",
+   "app": "systeme.io",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.852607"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/38.json",
+   "app": "Pinterest",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:00.808607"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/39.json",
+   "app": "Threads (Meta)",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:01.084610"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/40.json",
+   "app": "SendGrid",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:01.732617"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/41.json",
+   "app": "Shopify",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:02.140621"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/42.json",
+   "app": "WooCommerce",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:02.812628"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/43.json",
+   "app": "BigCommerce",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:02.868629"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/44.json",
+   "app": "Salesforce Commerce Cloud",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:02.624626"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/45.json",
+   "app": "Magento (Adobe Commerce)",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:03.132632"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/46.json",
+   "app": "Squarespace",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:02.940630"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/47.json",
+   "app": "Ecwid",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:03.220633"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/48.json",
+   "app": "Gumroad",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:03.384634"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/49.json",
+   "app": "Amazon Selling Partner",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:03.548636"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/50.json",
+   "app": "fanbasis",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:04.048642"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/51.json",
+   "app": "DataForSEO",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:04.644648"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/52.json",
+   "app": "SE Ranking",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:04.860651"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/53.json",
+   "app": "Ahrefs",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.128654"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/54.json",
+   "app": "MrScraper",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.632659"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/55.json",
+   "app": "Apify",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.292655"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/56.json",
+   "app": "Firecrawl",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.368656"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/57.json",
+   "app": "Bright Data",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.296655"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/58.json",
+   "app": "Sherlock",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:06.320667"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/59.json",
+   "app": "Waterfall.io",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:05.832661"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/60.json",
+   "app": "Clay",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:06.320667"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/61.json",
+   "app": "GitHub",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:06.940673"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/62.json",
+   "app": "Vercel",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.256677"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/63.json",
+   "app": "Netlify",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.464679"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/64.json",
+   "app": "Cloudflare",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.284677"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/65.json",
+   "app": "Supabase",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.520679"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/66.json",
+   "app": "Neo4j",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.452679"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/67.json",
+   "app": "Snowflake",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:07.720682"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/68.json",
+   "app": "MongoDB Atlas",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:08.000685"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/69.json",
+   "app": "Datadog",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:08.924695"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/70.json",
+   "app": "Sentry",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:08.964695"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/71.json",
+   "app": "Notion",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:09.520701"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/72.json",
+   "app": "Airtable",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:10.524712"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/73.json",
+   "app": "Linear",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:11.508723"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/74.json",
+   "app": "Jira",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:10.208709"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/75.json",
+   "app": "Asana",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:10.672714"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/76.json",
+   "app": "Monday.com",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:10.444711"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/77.json",
+   "app": "ClickUp",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:10.612713"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/78.json",
+   "app": "Coda",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:11.036718"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/79.json",
+   "app": "Smartsheet",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:11.580724"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/80.json",
+   "app": "Harvest",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:11.760726"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/81.json",
+   "app": "Stripe",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:11.880727"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/82.json",
+   "app": "Plaid",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:12.640735"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/83.json",
+   "app": "Binance",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:13.044740"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/84.json",
+   "app": "Paygent Connect",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:13.192741"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/85.json",
+   "app": "iPayX",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:13.136741"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/86.json",
+   "app": "QuickBooks",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:14.308753"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/87.json",
+   "app": "Xero",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:13.696747"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/88.json",
+   "app": "Brex",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:14.088751"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/89.json",
+   "app": "Ramp",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:14.120751"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/90.json",
+   "app": "PitchBook",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:14.440755"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/91.json",
+   "app": "NotebookLM",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.520767"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/92.json",
+   "app": "Otter AI",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:14.848759"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/93.json",
+   "app": "Fathom",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.268764"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/94.json",
+   "app": "Consensus",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.532767"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/95.json",
+   "app": "Reducto",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.136762"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/96.json",
+   "app": "Devin",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.852770"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/97.json",
+   "app": "higgsfield",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.892771"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/98.json",
+   "app": "Mermaid CLI",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:15.920771"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/99.json",
+   "app": "YouTube Transcript",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:16.160774"
+  },
+  {
+   "type": "search_bundle",
+   "file": "ev/100.json",
+   "app": "Grain",
+   "queries": 3,
+   "results": {
+    "auth": 6,
+    "gate": 6,
+    "mcp": 6
+   },
+   "written_at": "2026-11-23T22:07:16.080773"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/1_auth.txt",
+   "bytes": 4678,
+   "written_at": "2026-11-23T22:09:42.942373"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/1_gate.txt",
+   "bytes": 6651,
+   "written_at": "2026-11-23T22:09:42.830371"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/1_mcp.txt",
+   "bytes": 3260,
+   "written_at": "2026-11-23T22:09:42.806371"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/2_auth.txt",
+   "bytes": 6885,
+   "written_at": "2026-11-23T22:09:42.778371"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/2_gate.txt",
+   "bytes": 6518,
+   "written_at": "2026-11-23T22:09:42.930372"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/2_mcp.txt",
+   "bytes": 8183,
+   "written_at": "2026-11-23T22:09:42.986373"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/3_auth.txt",
+   "bytes": 1037,
+   "written_at": "2026-11-23T22:09:42.998373"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/3_gate.txt",
+   "bytes": 14179,
+   "written_at": "2026-11-23T22:09:43.170375"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/3_mcp.txt",
+   "bytes": 5548,
+   "written_at": "2026-11-23T22:09:43.202375"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/4_auth.txt",
+   "bytes": 6794,
+   "written_at": "2026-11-23T22:09:43.198375"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/4_gate.txt",
+   "bytes": 7424,
+   "written_at": "2026-11-23T22:09:43.202375"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/4_mcp.txt",
+   "bytes": 21766,
+   "written_at": "2026-11-23T22:09:43.342377"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/5_auth.txt",
+   "bytes": 3325,
+   "written_at": "2026-11-23T22:09:43.454378"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/5_gate.txt",
+   "bytes": 10888,
+   "written_at": "2026-11-23T22:09:43.550379"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/5_mcp.txt",
+   "bytes": 8392,
+   "written_at": "2026-11-23T22:09:43.526379"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/6_auth.txt",
+   "bytes": 4408,
+   "written_at": "2026-11-23T22:09:43.554379"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/6_gate.txt",
+   "bytes": 4058,
+   "written_at": "2026-11-23T22:09:43.706381"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/6_mcp.txt",
+   "bytes": 8001,
+   "written_at": "2026-11-23T22:09:43.790382"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/7_auth.txt",
+   "bytes": 3065,
+   "written_at": "2026-11-23T22:09:43.762382"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/7_gate.txt",
+   "bytes": 19408,
+   "written_at": "2026-11-23T22:09:43.818382"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/7_mcp.txt",
+   "bytes": 6175,
+   "written_at": "2026-11-23T22:09:44.030385"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/8_auth.txt",
+   "bytes": 1629,
+   "written_at": "2026-11-23T22:09:44.002384"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/8_gate.txt",
+   "bytes": 2839,
+   "written_at": "2026-11-23T22:09:44.010384"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/8_mcp.txt",
+   "bytes": 8858,
+   "written_at": "2026-11-23T22:09:44.046385"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/9_auth.txt",
+   "bytes": 959,
+   "written_at": "2026-11-23T22:09:44.262387"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/9_gate.txt",
+   "bytes": 4728,
+   "written_at": "2026-11-23T22:09:44.246387"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/9_mcp.txt",
+   "bytes": 3207,
+   "written_at": "2026-11-23T22:09:44.322388"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/10_auth.txt",
+   "bytes": 2387,
+   "written_at": "2026-11-23T22:09:44.222387"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/10_gate.txt",
+   "bytes": 1462,
+   "written_at": "2026-11-23T22:09:44.450389"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/10_mcp.txt",
+   "bytes": 1272,
+   "written_at": "2026-11-23T22:09:44.494390"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/11_auth.txt",
+   "bytes": 8891,
+   "written_at": "2026-11-23T22:09:44.434389"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/11_gate.txt",
+   "bytes": 2048,
+   "written_at": "2026-11-23T22:09:44.574390"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/11_mcp.txt",
+   "bytes": 14217,
+   "written_at": "2026-11-23T22:09:44.702392"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/12_auth.txt",
+   "bytes": 4073,
+   "written_at": "2026-11-23T22:09:44.786393"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/12_gate.txt",
+   "bytes": 4666,
+   "written_at": "2026-11-23T22:09:44.654391"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/12_mcp.txt",
+   "bytes": 31151,
+   "written_at": "2026-11-23T22:09:44.838393"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/13_auth.txt",
+   "bytes": 50166,
+   "written_at": "2026-11-23T22:09:44.870394"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/13_gate.txt",
+   "bytes": 50166,
+   "written_at": "2026-11-23T22:09:44.994395"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/13_mcp.txt",
+   "bytes": 17772,
+   "written_at": "2026-11-23T22:09:44.998395"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/14_auth.txt",
+   "bytes": 4305,
+   "written_at": "2026-11-23T22:09:45.042396"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/14_gate.txt",
+   "bytes": 1852,
+   "written_at": "2026-11-23T22:09:45.086396"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/14_mcp.txt",
+   "bytes": 28326,
+   "written_at": "2026-11-23T22:09:45.226398"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/15_auth.txt",
+   "bytes": 4892,
+   "written_at": "2026-11-23T22:09:45.298398"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/15_gate.txt",
+   "bytes": 37454,
+   "written_at": "2026-11-23T22:09:45.270398"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/15_mcp.txt",
+   "bytes": 50110,
+   "written_at": "2026-11-23T22:09:45.302398"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/16_auth.txt",
+   "bytes": 2299,
+   "written_at": "2026-11-23T22:09:45.490400"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/16_gate.txt",
+   "bytes": 23069,
+   "written_at": "2026-11-23T22:09:45.562401"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/16_mcp.txt",
+   "bytes": 17798,
+   "written_at": "2026-11-23T22:09:45.466400"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/17_auth.txt",
+   "bytes": 1643,
+   "written_at": "2026-11-23T22:09:45.510401"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/17_gate.txt",
+   "bytes": 4405,
+   "written_at": "2026-11-23T22:09:45.706403"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/17_mcp.txt",
+   "bytes": 10611,
+   "written_at": "2026-11-23T22:09:45.714403"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/18_auth.txt",
+   "bytes": 5231,
+   "written_at": "2026-11-23T22:09:45.678402"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/18_gate.txt",
+   "bytes": 15796,
+   "written_at": "2026-11-23T22:09:45.838404"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/18_mcp.txt",
+   "bytes": 16242,
+   "written_at": "2026-11-23T22:09:45.842404"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/19_auth.txt",
+   "bytes": 677,
+   "written_at": "2026-11-23T22:09:45.866405"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/19_gate.txt",
+   "bytes": 874,
+   "written_at": "2026-11-23T22:09:45.898405"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/19_mcp.txt",
+   "bytes": 9787,
+   "written_at": "2026-11-23T22:09:46.062407"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/20_auth.txt",
+   "bytes": 50087,
+   "written_at": "2026-11-23T22:09:46.066407"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/20_gate.txt",
+   "bytes": 4335,
+   "written_at": "2026-11-23T22:09:46.062407"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/20_mcp.txt",
+   "bytes": 6603,
+   "written_at": "2026-11-23T22:09:46.078407"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/21_auth.txt",
+   "bytes": 8378,
+   "written_at": "2026-11-23T22:09:46.262409"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/21_gate.txt",
+   "bytes": 2743,
+   "written_at": "2026-11-23T22:09:46.186408"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/21_mcp.txt",
+   "bytes": 10307,
+   "written_at": "2026-11-23T22:09:46.286409"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/22_auth.txt",
+   "bytes": 3604,
+   "written_at": "2026-11-23T22:09:46.282409"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/22_gate.txt",
+   "bytes": 12135,
+   "written_at": "2026-11-23T22:09:46.310409"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/22_mcp.txt",
+   "bytes": 6779,
+   "written_at": "2026-11-23T22:09:46.506412"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/23_auth.txt",
+   "bytes": 12584,
+   "written_at": "2026-11-23T22:09:46.470411"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/23_gate.txt",
+   "bytes": 22891,
+   "written_at": "2026-11-23T22:09:46.538412"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/23_mcp.txt",
+   "bytes": 2619,
+   "written_at": "2026-11-23T22:09:46.462411"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/24_auth.txt",
+   "bytes": 11232,
+   "written_at": "2026-11-23T22:09:46.586412"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/24_gate.txt",
+   "bytes": 7714,
+   "written_at": "2026-11-23T22:09:46.730414"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/24_mcp.txt",
+   "bytes": 7447,
+   "written_at": "2026-11-23T22:09:46.774414"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/25_auth.txt",
+   "bytes": 5808,
+   "written_at": "2026-11-23T22:09:46.790415"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/25_gate.txt",
+   "bytes": 4904,
+   "written_at": "2026-11-23T22:09:46.714414"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/25_mcp.txt",
+   "bytes": 2330,
+   "written_at": "2026-11-23T22:09:46.838415"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/26_auth.txt",
+   "bytes": 24904,
+   "written_at": "2026-11-23T22:09:46.954416"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/26_gate.txt",
+   "bytes": 27081,
+   "written_at": "2026-11-23T22:09:47.058418"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/26_mcp.txt",
+   "bytes": 5934,
+   "written_at": "2026-11-23T22:09:46.970417"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/27_auth.txt",
+   "bytes": 2399,
+   "written_at": "2026-11-23T22:09:47.242419"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/27_gate.txt",
+   "bytes": 19611,
+   "written_at": "2026-11-23T22:09:47.150419"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/27_mcp.txt",
+   "bytes": 3430,
+   "written_at": "2026-11-23T22:09:47.198419"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/28_auth.txt",
+   "bytes": 8938,
+   "written_at": "2026-11-23T22:09:47.294420"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/28_gate.txt",
+   "bytes": 1802,
+   "written_at": "2026-11-23T22:09:47.310420"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/28_mcp.txt",
+   "bytes": 3847,
+   "written_at": "2026-11-23T22:14:46.221678"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/29_auth.txt",
+   "bytes": 2104,
+   "written_at": "2026-11-23T22:09:47.514422"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/29_gate.txt",
+   "bytes": 8468,
+   "written_at": "2026-11-23T22:09:47.594423"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/29_mcp.txt",
+   "bytes": 4785,
+   "written_at": "2026-11-23T22:09:47.514422"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/30_auth.txt",
+   "bytes": 26108,
+   "written_at": "2026-11-23T22:09:47.590423"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/30_gate.txt",
+   "bytes": 13849,
+   "written_at": "2026-11-23T22:09:47.678424"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/30_mcp.txt",
+   "bytes": 866,
+   "written_at": "2026-11-23T22:09:47.898427"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/31_auth.txt",
+   "bytes": 3172,
+   "written_at": "2026-11-23T22:09:47.818426"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/31_gate.txt",
+   "bytes": 23533,
+   "written_at": "2026-11-23T22:09:47.806426"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/31_mcp.txt",
+   "bytes": 27576,
+   "written_at": "2026-11-23T22:09:47.838426"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/32_auth.txt",
+   "bytes": 1752,
+   "written_at": "2026-11-23T22:09:48.026428"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/32_gate.txt",
+   "bytes": 5616,
+   "written_at": "2026-11-23T22:09:47.978427"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/32_mcp.txt",
+   "bytes": 7809,
+   "written_at": "2026-11-23T22:09:48.054428"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/33_auth.txt",
+   "bytes": 14499,
+   "written_at": "2026-11-23T22:09:48.134429"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/33_gate.txt",
+   "bytes": 2609,
+   "written_at": "2026-11-23T22:09:48.150429"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/33_mcp.txt",
+   "bytes": 21778,
+   "written_at": "2026-11-23T22:09:48.350431"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/34_auth.txt",
+   "bytes": 15862,
+   "written_at": "2026-11-23T22:09:48.218430"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/34_gate.txt",
+   "bytes": 7515,
+   "written_at": "2026-11-23T22:09:48.370432"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/34_mcp.txt",
+   "bytes": 15727,
+   "written_at": "2026-11-23T22:09:48.378432"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/35_auth.txt",
+   "bytes": 2990,
+   "written_at": "2026-11-23T22:09:48.438432"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/35_gate.txt",
+   "bytes": 4128,
+   "written_at": "2026-11-23T22:09:48.538434"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/35_mcp.txt",
+   "bytes": 3172,
+   "written_at": "2026-11-23T22:09:48.646435"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/36_auth.txt",
+   "bytes": 7601,
+   "written_at": "2026-11-23T22:09:48.574434"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/36_gate.txt",
+   "bytes": 3599,
+   "written_at": "2026-11-23T22:09:48.622435"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/36_mcp.txt",
+   "bytes": 18975,
+   "written_at": "2026-11-23T22:09:48.762436"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/37_auth.txt",
+   "bytes": 6255,
+   "written_at": "2026-11-23T22:09:48.738436"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/37_gate.txt",
+   "bytes": 9030,
+   "written_at": "2026-11-23T22:09:48.834437"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/37_mcp.txt",
+   "bytes": 8058,
+   "written_at": "2026-11-23T22:09:48.890437"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/38_auth.txt",
+   "bytes": 23266,
+   "written_at": "2026-11-23T22:09:49.058439"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/38_gate.txt",
+   "bytes": 5902,
+   "written_at": "2026-11-23T22:09:48.970438"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/38_mcp.txt",
+   "bytes": 2524,
+   "written_at": "2026-11-23T22:09:49.078439"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/39_auth.txt",
+   "bytes": 4572,
+   "written_at": "2026-11-23T22:09:49.094440"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/39_gate.txt",
+   "bytes": 5806,
+   "written_at": "2026-11-23T22:09:49.202441"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/39_mcp.txt",
+   "bytes": 12170,
+   "written_at": "2026-11-23T22:09:49.234441"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/40_auth.txt",
+   "bytes": 2675,
+   "written_at": "2026-11-23T22:09:49.262441"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/40_gate.txt",
+   "bytes": 1011,
+   "written_at": "2026-11-23T22:09:49.370443"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/40_mcp.txt",
+   "bytes": 50708,
+   "written_at": "2026-11-23T22:09:49.446444"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/41_auth.txt",
+   "bytes": 3714,
+   "written_at": "2026-11-23T22:09:49.458444"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/41_gate.txt",
+   "bytes": 50453,
+   "written_at": "2026-11-23T22:09:49.454444"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/41_mcp.txt",
+   "bytes": 1216,
+   "written_at": "2026-11-23T22:09:49.654446"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/42_auth.txt",
+   "bytes": 13857,
+   "written_at": "2026-11-23T22:09:49.730447"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/42_gate.txt",
+   "bytes": 9956,
+   "written_at": "2026-11-23T22:09:49.618445"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/42_mcp.txt",
+   "bytes": 16965,
+   "written_at": "2026-11-23T22:09:49.758447"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/43_auth.txt",
+   "bytes": 33640,
+   "written_at": "2026-11-23T22:09:49.786447"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/43_gate.txt",
+   "bytes": 6896,
+   "written_at": "2026-11-23T22:09:49.946449"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/43_mcp.txt",
+   "bytes": 4723,
+   "written_at": "2026-11-23T22:09:50.066450"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/44_auth.txt",
+   "bytes": 3365,
+   "written_at": "2026-11-23T22:09:49.950449"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/44_gate.txt",
+   "bytes": 6379,
+   "written_at": "2026-11-23T22:09:50.002450"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/44_mcp.txt",
+   "bytes": 15445,
+   "written_at": "2026-11-23T22:09:50.210452"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/45_auth.txt",
+   "bytes": 3598,
+   "written_at": "2026-11-23T22:09:50.114451"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/45_gate.txt",
+   "bytes": 2888,
+   "written_at": "2026-11-23T22:09:50.250452"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/45_mcp.txt",
+   "bytes": 30906,
+   "written_at": "2026-11-23T22:09:50.358454"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/46_auth.txt",
+   "bytes": 3952,
+   "written_at": "2026-11-23T22:09:50.338453"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/46_gate.txt",
+   "bytes": 8125,
+   "written_at": "2026-11-23T22:09:50.474455"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/46_mcp.txt",
+   "bytes": 4029,
+   "written_at": "2026-11-23T22:09:50.418454"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/47_auth.txt",
+   "bytes": 9354,
+   "written_at": "2026-11-23T22:09:50.558456"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/47_gate.txt",
+   "bytes": 2357,
+   "written_at": "2026-11-23T22:09:50.602456"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/47_mcp.txt",
+   "bytes": 523,
+   "written_at": "2026-11-23T22:09:50.694457"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/48_auth.txt",
+   "bytes": 50755,
+   "written_at": "2026-11-23T22:09:50.818459"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/48_gate.txt",
+   "bytes": 50755,
+   "written_at": "2026-11-23T22:09:50.758458"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/48_mcp.txt",
+   "bytes": 3428,
+   "written_at": "2026-11-23T22:09:50.822459"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/49_auth.txt",
+   "bytes": 7329,
+   "written_at": "2026-11-23T22:09:50.918459"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/49_gate.txt",
+   "bytes": 1247,
+   "written_at": "2026-11-23T22:09:50.938460"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/49_mcp.txt",
+   "bytes": 4799,
+   "written_at": "2026-11-23T22:14:46.425681"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/50_auth.txt",
+   "bytes": 6958,
+   "written_at": "2026-11-23T22:09:51.042461"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/50_gate.txt",
+   "bytes": 11511,
+   "written_at": "2026-11-23T22:09:51.090461"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/50_mcp.txt",
+   "bytes": 3714,
+   "written_at": "2026-11-23T22:09:51.158462"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/51_auth.txt",
+   "bytes": 5015,
+   "written_at": "2026-11-23T22:09:51.238463"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/51_gate.txt",
+   "bytes": 6074,
+   "written_at": "2026-11-23T22:09:51.254463"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/51_mcp.txt",
+   "bytes": 13387,
+   "written_at": "2026-11-23T22:09:51.350464"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/52_auth.txt",
+   "bytes": 5605,
+   "written_at": "2026-11-23T22:09:51.370465"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/52_gate.txt",
+   "bytes": 5605,
+   "written_at": "2026-11-23T22:09:51.498466"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/52_mcp.txt",
+   "bytes": 9266,
+   "written_at": "2026-11-23T22:09:51.462466"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/53_auth.txt",
+   "bytes": 1416,
+   "written_at": "2026-11-23T22:09:51.610467"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/53_gate.txt",
+   "bytes": 4202,
+   "written_at": "2026-11-23T22:09:51.542466"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/53_mcp.txt",
+   "bytes": 3197,
+   "written_at": "2026-11-23T22:09:51.626467"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/54_auth.txt",
+   "bytes": 2746,
+   "written_at": "2026-11-23T22:09:51.698468"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/54_gate.txt",
+   "bytes": 6072,
+   "written_at": "2026-11-23T22:09:51.698468"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/54_mcp.txt",
+   "bytes": 34802,
+   "written_at": "2026-11-23T22:09:51.906470"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/55_auth.txt",
+   "bytes": 17159,
+   "written_at": "2026-11-23T22:09:51.838470"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/55_gate.txt",
+   "bytes": 10295,
+   "written_at": "2026-11-23T22:09:51.874470"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/55_mcp.txt",
+   "bytes": 18850,
+   "written_at": "2026-11-23T22:09:51.978471"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/56_auth.txt",
+   "bytes": 4393,
+   "written_at": "2026-11-23T22:09:51.998471"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/56_gate.txt",
+   "bytes": 13353,
+   "written_at": "2026-11-23T22:09:52.078472"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/56_mcp.txt",
+   "bytes": 50119,
+   "written_at": "2026-11-23T22:09:52.354475"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/57_auth.txt",
+   "bytes": 9735,
+   "written_at": "2026-11-23T22:09:52.222474"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/57_gate.txt",
+   "bytes": 50109,
+   "written_at": "2026-11-23T22:09:52.262474"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/57_mcp.txt",
+   "bytes": 2577,
+   "written_at": "2026-11-23T22:09:52.290474"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/58_auth.txt",
+   "bytes": 5358,
+   "written_at": "2026-11-23T22:09:52.510477"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/58_gate.txt",
+   "bytes": 10917,
+   "written_at": "2026-11-23T22:09:52.438476"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/58_mcp.txt",
+   "bytes": 5045,
+   "written_at": "2026-11-23T22:09:52.494477"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/59_auth.txt",
+   "bytes": 1451,
+   "written_at": "2026-11-23T22:09:52.650478"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/59_gate.txt",
+   "bytes": 1603,
+   "written_at": "2026-11-23T22:09:52.602478"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/59_mcp.txt",
+   "bytes": 8734,
+   "written_at": "2026-11-23T22:09:52.658478"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/60_auth.txt",
+   "bytes": 1379,
+   "written_at": "2026-11-23T22:09:52.714479"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/60_gate.txt",
+   "bytes": 32938,
+   "written_at": "2026-11-23T22:09:52.770480"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/60_mcp.txt",
+   "bytes": 11450,
+   "written_at": "2026-11-23T22:09:52.938482"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/61_auth.txt",
+   "bytes": 10037,
+   "written_at": "2026-11-23T22:09:52.886481"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/61_gate.txt",
+   "bytes": 4117,
+   "written_at": "2026-11-23T22:09:52.946482"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/61_mcp.txt",
+   "bytes": 50163,
+   "written_at": "2026-11-23T22:09:53.034483"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/62_auth.txt",
+   "bytes": 11964,
+   "written_at": "2026-11-23T22:09:53.118484"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/62_gate.txt",
+   "bytes": 2306,
+   "written_at": "2026-11-23T22:09:53.174484"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/62_mcp.txt",
+   "bytes": 14058,
+   "written_at": "2026-11-23T22:09:53.158484"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/63_auth.txt",
+   "bytes": 28223,
+   "written_at": "2026-11-23T22:09:53.210485"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/63_gate.txt",
+   "bytes": 8213,
+   "written_at": "2026-11-23T22:09:53.390486"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/63_mcp.txt",
+   "bytes": 5227,
+   "written_at": "2026-11-23T22:09:53.430487"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/64_auth.txt",
+   "bytes": 8325,
+   "written_at": "2026-11-23T22:09:53.462487"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/64_gate.txt",
+   "bytes": 5099,
+   "written_at": "2026-11-23T22:09:53.378486"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/64_mcp.txt",
+   "bytes": 5377,
+   "written_at": "2026-11-23T22:09:53.622489"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/65_auth.txt",
+   "bytes": 17872,
+   "written_at": "2026-11-23T22:09:53.662489"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/65_gate.txt",
+   "bytes": 14736,
+   "written_at": "2026-11-23T22:09:53.682490"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/65_mcp.txt",
+   "bytes": 31531,
+   "written_at": "2026-11-23T22:09:53.754490"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/66_auth.txt",
+   "bytes": 5119,
+   "written_at": "2026-11-23T22:09:53.858492"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/66_gate.txt",
+   "bytes": 17035,
+   "written_at": "2026-11-23T22:09:53.830491"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/66_mcp.txt",
+   "bytes": 2301,
+   "written_at": "2026-11-23T22:09:53.938493"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/67_auth.txt",
+   "bytes": 13231,
+   "written_at": "2026-11-23T22:09:54.066494"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/67_gate.txt",
+   "bytes": 7607,
+   "written_at": "2026-11-23T22:09:53.994493"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/67_mcp.txt",
+   "bytes": 50322,
+   "written_at": "2026-11-23T22:09:54.118495"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/68_auth.txt",
+   "bytes": 6025,
+   "written_at": "2026-11-23T22:09:54.198495"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/68_gate.txt",
+   "bytes": 34430,
+   "written_at": "2026-11-23T22:09:54.162495"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/68_mcp.txt",
+   "bytes": 7386,
+   "written_at": "2026-11-23T22:09:54.330497"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/69_auth.txt",
+   "bytes": 1193,
+   "written_at": "2026-11-23T22:09:54.274496"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/69_gate.txt",
+   "bytes": 4591,
+   "written_at": "2026-11-23T22:09:54.382497"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/69_mcp.txt",
+   "bytes": 8671,
+   "written_at": "2026-11-23T22:09:54.450498"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/70_auth.txt",
+   "bytes": 19925,
+   "written_at": "2026-11-23T22:09:54.490499"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/70_gate.txt",
+   "bytes": 4075,
+   "written_at": "2026-11-23T22:09:54.606500"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/70_mcp.txt",
+   "bytes": 2881,
+   "written_at": "2026-11-23T22:09:54.558499"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/71_auth.txt",
+   "bytes": 23932,
+   "written_at": "2026-11-23T22:09:54.662500"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/71_gate.txt",
+   "bytes": 11459,
+   "written_at": "2026-11-23T22:09:54.746501"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/71_mcp.txt",
+   "bytes": 14051,
+   "written_at": "2026-11-23T22:09:54.842502"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/72_auth.txt",
+   "bytes": 3155,
+   "written_at": "2026-11-23T22:09:54.822502"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/72_gate.txt",
+   "bytes": 6673,
+   "written_at": "2026-11-23T22:09:54.862503"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/72_mcp.txt",
+   "bytes": 5718,
+   "written_at": "2026-11-23T22:09:54.970504"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/73_auth.txt",
+   "bytes": 9452,
+   "written_at": "2026-11-23T22:09:55.038504"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/73_gate.txt",
+   "bytes": 5335,
+   "written_at": "2026-11-23T22:09:55.054505"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/73_mcp.txt",
+   "bytes": 17030,
+   "written_at": "2026-11-23T22:09:55.106505"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/74_auth.txt",
+   "bytes": 5162,
+   "written_at": "2026-11-23T22:09:55.194506"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/74_gate.txt",
+   "bytes": 11609,
+   "written_at": "2026-11-23T22:09:55.270507"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/74_mcp.txt",
+   "bytes": 9455,
+   "written_at": "2026-11-23T22:09:55.222507"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/75_auth.txt",
+   "bytes": 4718,
+   "written_at": "2026-11-23T22:09:55.306507"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/75_gate.txt",
+   "bytes": 1329,
+   "written_at": "2026-11-23T22:09:55.370508"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/75_mcp.txt",
+   "bytes": 5039,
+   "written_at": "2026-11-23T22:09:55.458509"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/76_auth.txt",
+   "bytes": 3205,
+   "written_at": "2026-11-23T22:09:55.510509"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/76_gate.txt",
+   "bytes": 3838,
+   "written_at": "2026-11-23T22:09:55.550510"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/76_mcp.txt",
+   "bytes": 1595,
+   "written_at": "2026-11-23T22:09:55.530510"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/77_auth.txt",
+   "bytes": 3367,
+   "written_at": "2026-11-23T22:09:55.638511"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/77_gate.txt",
+   "bytes": 1280,
+   "written_at": "2026-11-23T22:09:55.790513"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/77_mcp.txt",
+   "bytes": 4177,
+   "written_at": "2026-11-23T22:09:55.690511"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/78_auth.txt",
+   "bytes": 50055,
+   "written_at": "2026-11-23T22:09:55.778512"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/78_gate.txt",
+   "bytes": 50055,
+   "written_at": "2026-11-23T22:09:55.846513"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/78_mcp.txt",
+   "bytes": 26854,
+   "written_at": "2026-11-23T22:09:55.934514"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/79_auth.txt",
+   "bytes": 3504,
+   "written_at": "2026-11-23T22:09:55.982515"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/79_gate.txt",
+   "bytes": 2784,
+   "written_at": "2026-11-23T22:09:56.054516"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/79_mcp.txt",
+   "bytes": 4137,
+   "written_at": "2026-11-23T22:09:56.070516"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/80_auth.txt",
+   "bytes": 9313,
+   "written_at": "2026-11-23T22:09:56.154517"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/80_gate.txt",
+   "bytes": 1221,
+   "written_at": "2026-11-23T22:09:56.210517"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/80_mcp.txt",
+   "bytes": 8574,
+   "written_at": "2026-11-23T22:09:56.270518"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/81_auth.txt",
+   "bytes": 5777,
+   "written_at": "2026-11-23T22:09:56.286518"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/81_gate.txt",
+   "bytes": 3654,
+   "written_at": "2026-11-23T22:09:56.314518"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/81_mcp.txt",
+   "bytes": 10127,
+   "written_at": "2026-11-23T22:09:56.494520"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/82_auth.txt",
+   "bytes": 4961,
+   "written_at": "2026-11-23T22:09:56.530521"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/82_gate.txt",
+   "bytes": 26704,
+   "written_at": "2026-11-23T22:09:56.458520"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/82_mcp.txt",
+   "bytes": 8810,
+   "written_at": "2026-11-23T22:09:56.618522"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/83_auth.txt",
+   "bytes": 114,
+   "written_at": "2026-11-23T22:09:59.798556"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/83_gate.txt",
+   "bytes": 1367,
+   "written_at": "2026-11-23T22:09:56.730523"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/83_mcp.txt",
+   "bytes": 2047,
+   "written_at": "2026-11-23T22:09:56.774523"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/84_auth.txt",
+   "bytes": 7428,
+   "written_at": "2026-11-23T22:09:56.786524"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/84_gate.txt",
+   "bytes": 3087,
+   "written_at": "2026-11-23T22:09:56.986526"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/84_mcp.txt",
+   "bytes": 5617,
+   "written_at": "2026-11-23T22:09:57.006526"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/85_auth.txt",
+   "bytes": 9815,
+   "written_at": "2026-11-23T22:09:57.026526"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/85_gate.txt",
+   "bytes": 9815,
+   "written_at": "2026-11-23T22:09:57.338530"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/85_mcp.txt",
+   "bytes": 2640,
+   "written_at": "2026-11-23T22:09:57.310529"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/86_auth.txt",
+   "bytes": 6944,
+   "written_at": "2026-11-23T22:09:57.198528"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/86_gate.txt",
+   "bytes": 9341,
+   "written_at": "2026-11-23T22:09:57.418530"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/86_mcp.txt",
+   "bytes": 18692,
+   "written_at": "2026-11-23T22:09:57.534532"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/87_auth.txt",
+   "bytes": 2619,
+   "written_at": "2026-11-23T22:09:57.586532"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/87_gate.txt",
+   "bytes": 7786,
+   "written_at": "2026-11-23T22:09:57.582532"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/87_mcp.txt",
+   "bytes": 111,
+   "written_at": "2026-11-23T22:09:58.542543"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/88_auth.txt",
+   "bytes": 2944,
+   "written_at": "2026-11-23T22:09:57.754534"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/88_gate.txt",
+   "bytes": 1151,
+   "written_at": "2026-11-23T22:09:57.798535"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/88_mcp.txt",
+   "bytes": 11095,
+   "written_at": "2026-11-23T22:09:57.994537"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/89_auth.txt",
+   "bytes": 15935,
+   "written_at": "2026-11-23T22:09:58.006537"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/89_gate.txt",
+   "bytes": 8477,
+   "written_at": "2026-11-23T22:09:58.230539"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/89_mcp.txt",
+   "bytes": 1265,
+   "written_at": "2026-11-23T22:09:58.222539"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/90_auth.txt",
+   "bytes": 2868,
+   "written_at": "2026-11-23T22:09:58.458542"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/90_gate.txt",
+   "bytes": 2868,
+   "written_at": "2026-11-23T22:09:58.402541"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/90_mcp.txt",
+   "bytes": 5138,
+   "written_at": "2026-11-23T22:09:58.574543"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/91_auth.txt",
+   "bytes": 5866,
+   "written_at": "2026-11-23T22:09:58.670544"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/91_gate.txt",
+   "bytes": 2214,
+   "written_at": "2026-11-23T22:09:58.850546"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/91_mcp.txt",
+   "bytes": 8595,
+   "written_at": "2026-11-23T22:09:58.738545"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/92_auth.txt",
+   "bytes": 33072,
+   "written_at": "2026-11-23T22:09:58.930547"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/92_gate.txt",
+   "bytes": 33072,
+   "written_at": "2026-11-23T22:09:58.974547"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/92_mcp.txt",
+   "bytes": 13277,
+   "written_at": "2026-11-23T22:09:59.078548"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/93_auth.txt",
+   "bytes": 1462,
+   "written_at": "2026-11-23T22:09:59.130549"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/93_gate.txt",
+   "bytes": 10274,
+   "written_at": "2026-11-23T22:09:59.202550"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/93_mcp.txt",
+   "bytes": 1378,
+   "written_at": "2026-11-23T22:09:59.290551"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/94_auth.txt",
+   "bytes": 9423,
+   "written_at": "2026-11-23T22:09:59.410552"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/94_gate.txt",
+   "bytes": 7153,
+   "written_at": "2026-11-23T22:09:59.410552"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/94_mcp.txt",
+   "bytes": 20129,
+   "written_at": "2026-11-23T22:09:59.514553"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/95_auth.txt",
+   "bytes": 11838,
+   "written_at": "2026-11-23T22:09:59.586554"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/95_gate.txt",
+   "bytes": 5728,
+   "written_at": "2026-11-23T22:09:59.662555"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/95_mcp.txt",
+   "bytes": 24110,
+   "written_at": "2026-11-23T22:09:59.746556"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/96_auth.txt",
+   "bytes": 8710,
+   "written_at": "2026-11-23T22:09:59.802556"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/96_gate.txt",
+   "bytes": 4068,
+   "written_at": "2026-11-23T22:09:59.850557"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/96_mcp.txt",
+   "bytes": 9680,
+   "written_at": "2026-11-23T22:10:00.146560"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/97_auth.txt",
+   "bytes": 1983,
+   "written_at": "2026-11-23T22:10:00.006559"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/97_gate.txt",
+   "bytes": 11548,
+   "written_at": "2026-11-23T22:09:59.978558"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/97_mcp.txt",
+   "bytes": 8774,
+   "written_at": "2026-11-23T22:10:00.074559"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/98_auth.txt",
+   "bytes": 26099,
+   "written_at": "2026-11-23T22:10:00.286562"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/98_gate.txt",
+   "bytes": 8168,
+   "written_at": "2026-11-23T22:10:00.174561"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/98_mcp.txt",
+   "bytes": 8165,
+   "written_at": "2026-11-23T22:10:00.278562"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/99_auth.txt",
+   "bytes": 16497,
+   "written_at": "2026-11-23T22:10:00.374563"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/99_gate.txt",
+   "bytes": 6421,
+   "written_at": "2026-11-23T22:10:00.390563"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/99_mcp.txt",
+   "bytes": 29980,
+   "written_at": "2026-11-23T22:14:46.609683"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/100_auth.txt",
+   "bytes": 1516,
+   "written_at": "2026-11-23T22:10:00.546565"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/100_gate.txt",
+   "bytes": 4283,
+   "written_at": "2026-11-23T22:10:00.710566"
+  },
+  {
+   "type": "fetch",
+   "file": "ver/100_mcp.txt",
+   "bytes": 4598,
+   "written_at": "2026-11-23T22:10:00.610565"
+  }
+ ]
+}

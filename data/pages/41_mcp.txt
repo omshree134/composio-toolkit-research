@@ -1,0 +1,30 @@
+https://shopify.dev/docs/api/shopify-mcp.md
+
+# Shopify MCP
+
+Coming soon:
+
+Shopify MCP isn't publicly available yet. This page shows where its documentation will live.
+
+Shopify MCP is a remote Model Context Protocol (MCP) server that lets merchants build and run a Shopify store through the AI agent of their choice. Partners can integrate Shopify MCP to offer the same capabilities inside their own agents and platforms.
+
+---
+
+## What Shopify MCP can do
+
+Shopify MCP exposes GraphQL Admin API queries and mutations, so an agent can read and update a store's data on the merchant's behalf. It also includes tools for common jobs, such as:
+
+- Signing up for Shopify and creating a store
+- Setting up and customizing a theme
+- Adding and managing products
+
+---
+
+## Shopify MCP and Shopify AI Toolkit
+
+Shopify MCP and the Shopify AI Toolkit complement each other:
+
+- Shopify MCP acts on a store. Use it when you want an agent to set up or manage a store for you.
+- Shopify AI Toolkit helps you build. It connects AI coding tools to Shopify's developer docs, API schemas, code validation, and Shopify CLI, so they can help you build apps, themes, and storefronts across the platform.
+
+---

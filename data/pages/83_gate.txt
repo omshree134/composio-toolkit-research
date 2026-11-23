@@ -1,0 +1,39 @@
+https://www.binance.com/en/binance-api
+
+Binance APIs
+
+# Binance API
+
+Unlimited Opportunities with One Key.
+
+Trading Connectivity
+
+We offer access to Spot, Margin, Futures, and Options API trading for over 300 digital and fiat currencies. API trading provides a testing environment, API documentation, and sample code in multiple programming languages. Suitable for all your trading needs.
+
+User
+
+ETH Staking
+
+Link Program
+
+Binance Link Program enables enterprise clients to build their business with Binance technology while earning commission from trading fees by leveraging Binance's liquidity and market depth.
+
+Binance Ecosystem
+
+Liquidity & Trading Integration
+
+Link Client
+
+1. How to create API key?
+
+2. Is there an API Documentation?
+
+3. Does Binance provide a Testing or Demo environment?
+
+Yes, you can utilize Binance Spot Testnet or Binance Demo to test your use case, for free.
+
+4. Can I use other languages(such as Python or Java) with Binance API?
+
+Yes. Binance API is compatible with multiple programming languages, such as Python, Java, Node.js, DotNET, Ruby, and more. However, all third-party libraries not listed in our API library are unofficial and not affiliated with Binance and we are not responsible for any loss or damage arising out of or in connection with such uses.
+
+5. Where can I find more information?

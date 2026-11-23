@@ -1,0 +1,224 @@
+https://docs.helpscout.com/article/1779-connect-your-ai-agent-with-help-scout-to-search-conversations-and-pull-reports
+
+Connect your AI Agent to Help Scout via MCP - Help Scout Support
+
+# Connect your AI Agent to Help Scout via MCP
+
+Help Scout MCP gives AI assistants secure, official access to Help Scout data. You can connect Claude, ChatGPT, Cursor, and your own internal AI tools directly to Help Scout to pull up conversations, customer details, mailbox data, and Docs content. This integration is available on the Standard, Plus, and Pro plans — any plan that includes Help Scout API access. Report tools require Plus or Pro. Access is read-only for new connections, and each team member connects with their own Help Scout credentials, ensuring your AI Agent only accesses data that the specific user is permitted to see.
+
+#### What's Covered
+
+- Before You Get Started
+- Add the Connector in Claude
+- Add the Connector in ChatGPT
+- Turn On Knowledge Base Tools
+- What You Can Ask
+- What's Available via the MCP
+- Limitations
+- How Your Data Is Handled
+- Common Questions
+- Report a Security Issue
+- Get Help
+
+## Before You Get Started
+
+Keep the following requirements and details in mind before setting up the connector:
+
+- Your Help Scout account must have API access, which is included on the Standard, Plus, and Pro plans.
+- Log in to Help Scout with your own credentials during setup. AI Agents only access data that your specific user account is permitted to see. For more details on user permissions, see User Roles and Permissions.
+- Adding the connector may require an admin. On Claude Team and Enterprise plans, only a Claude Owner can add custom connectors. On ChatGPT Business, Enterprise, and Education workspaces, your workspace admin needs to approve Developer mode first. If that's not you, you'll need their help before you can connect.
+- The connector is read-only. AI Agents can find and summarize information in your account, but they cannot create, send, edit, or delete data. If your account took part in the MCP beta, see Limitations below.
+- To allow AI Agents to search your Docs knowledge base, you need a Docs API key.
+- On HIPAA-enabled accounts, your BAA with Help Scout doesn't cover your AI provider. See HIPAA accounts below before connecting.
+
+## Add the Connector in Claude
+
+Help Scout isn't listed in Claude's connector directory yet; it's added as a custom connector using a server URL. How you add it depends on your Claude plan.
+
+### Team and Enterprise plans
+
+Only a Claude Owner can add a custom connector. Ask your Owner to:
+
+1. Go to Organization settings > Connectors.
+2. Click Add, hover over Custom, then select Web.
+
+Set the remote MCP server URL to `https://mcp.helpscout.net/mcp` .
+
+1. Leave Advanced settings empty. The OAuth Client ID and Client Secret fields are optional; the connector registers itself. Don't enter a Help Scout App ID or secret from My Apps here; those are for the Help Scout API and won't work for the connector.
+3. Click Add.
+
+Once the connector is added, each team member connects individually:
+
+1. Go to Customize > Connectors.
+2. Find Help Scout in the list — it has a Custom label.
+3. Click Connect, then log in to Help Scout and approve access.
+
+### Pro and Max plans
+
+Follow these steps to connect Help Scout to Claude:
+
+1. In Claude, go to Customize > Connectors > Add > and click Add custom connector.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60c9b7b2a449be9e8e0dc8/file-ZdoM6ytpka.png)
+
+2. Name the connector Help Scout.
+
+Set the remote MCP server URL to `https://mcp.helpscout.net/mcp` .
+
+1. Leave Advanced settings empty. The OAuth Client ID and Client Secret fields are optional; the connector registers itself. Don't enter a Help Scout App ID or secret from My Apps here; those are for the Help Scout API and won't work for the connector.
+3. Click Add.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60cab0b2a449be9e8e0dce/file-jSfFTI87Gs.png)
+
+5. Log in to Help Scout on the authorization page and approve access.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60cafdd2bbb1875618f028/file-YFzyFcvRSu.png)
+
+Your Help Scout tools are now available in your Claude conversations. To confirm the connection is working, ask Claude: "Run the Help Scout health check".
+
+To disconnect the integration, remove the Help Scout connector from the Claude Settings > Connectors page.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60cb5f4ed8088998b83010/file-ojFu1LvnxB.png)
+
+## Add the Connector in ChatGPT
+
+ChatGPT adds custom MCP connectors through developer mode, so you'll see a standard warning when you turn it on. That warning applies to custom connectors in general, not to anything specific to Help Scout. To get things set up:
+
+1. In ChatGPT, go to Settings > Security and login and turn on Developer mode. On Business, Enterprise, and Education workspaces, your workspace admin needs to approve it first.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60da2d3ff44d5afe7a640b/file-uKlemkUKpB.png)
+
+2. Go to Plugins (or open chatgpt.com/plugins) and click the + button to add a new connector.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60db013ff44d5afe7a6411/file-Rx1nhG8CEI.png)
+
+3. Enter Help Scout as the name, add a short description (for example, "Search Help Scout conversations, customers, and Docs"), and set the MCP server URL to https://mcp.helpscout.net/mcp.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60db4a4ed8088998b83061/file-H0bYFBpg3p.png)
+
+4. Click Create.
+5. Log in to Help Scout when prompted and approve access.
+
+To confirm everything is working, ask ChatGPT: "Run the Help Scout health check".
+
+To disconnect later, remove the Help Scout connector from your Plugins page.
+
+## Turn On Knowledge Base Tools
+
+Inbox tools connect automatically when you authorize the integration. Enabling Docs tools requires an additional step because the Docs API uses its own API key.
+
+First, retrieve your Docs API key:
+
+1. In Help Scout, navigate to Your Profile > Security and Access. To learn more about managing your profile settings, see Manage Your User Profile.
+2. Copy your Docs API key.
+
+Note: If you do not see an API key on the Security and Access page, you need the Docs: Create new, edit settings & Collections permission. Ask your Account Owner or an Administrator to grant this permission.
+
+Next, add the key during the Claude connection process:
+
+1. On the Help Scout authorization page, paste your key into the Help Scout Docs API Key (optional) field.
+
+![](https://d33v4339jhl8k0.cloudfront.net/docs/assets/524448053e3e9bd67a3dc68a/images/6a60cd38d2bbb1875618f02c/file-E2waM3kJTe.png)
+
+2. Approve access.
+
+Note: If you already connected without a key, remove the Help Scout connector, and add it again to paste your key on the authorization page. If the key is missing or invalid, other tools continue to function while Docs tools remain unavailable.
+
+## What You Can Ask
+
+You can ask Claude to perform various actions using plain English. Here are some examples to help you get started:
+
+- "Show me all open conversations in the Support inbox"
+- "What did customer@example.com last contact us about?"
+- "Search for conversations mentioning 'refund request'"
+- "Summarize conversation #12345, the opening question and the latest reply"
+- "Search our docs for 'how to reset password'"
+- "Show me the happiness report for January 2026"
+
+#### Getting better results
+
+Your AI Agent works best with specific, scoped questions.
+
+- Name the inbox, customer, or date range instead of asking broadly. "Active conversations in Support from this week" works better than "show me conversations."
+- For long threads, ask for a summary if you just need the gist. It's faster than pulling the whole history.
+- If a broad question doesn't return what you expected, narrow it. Search or list first, then ask about the specific conversation you want.
+
+## What's Available via the MCP
+
+Once connected, Claude can work with the following areas of your account:
+
+- Conversations: Conversations: List, search, and summarize conversations, including threads, tags, custom fields, and attachment details such as file names. Your AI Agent can't open attachment files.
+- Customers: Retrieve customer profiles, email addresses, phone numbers, conversation history, and organization details.
+- Inboxes and saved replies: Browse inboxes, folders, and saved replies.
+- Users and teams: View account users and team configurations.
+- Workflows: View active workflows configured on your account.
+- Reports: Pull company, conversation, productivity, and happiness reports, and drill down into the underlying conversations. For more details on report metrics, see Understanding Reports in Help Scout.
+- Docs: Search and read knowledge base articles, sites, and collections (requires a Docs API key).
+
+## Limitations
+
+The connector has the following limitations:
+
+- Read-only access. Connections created today are read-only; your AI Agent can find and summarize information, but it can't reply to customers, add notes, change tags, or edit Docs articles. A small number of accounts from the MCP beta program kept write tools when the connector became generally available. Write actions for all accounts are on the roadmap. There's no date to share yet. To see what your assistant can actually do, open the Help Scout connector in your AI client and review its tool list. You can turn off individual tools from the same screen.
+- Reports require Plus or Pro. The Help Scout reporting API isn't available on Standard, so report tools won't return data on that plan. Every other tool works normally. On Plus and Pro, reports cover all-time history.
+- Docs tools. Requires a Docs API key and the appropriate user permissions.
+
+## How Your Data Is Handled
+
+You connect through Help Scout's OAuth sign-in: you log in on Help Scout's own page, so the connector never sees or stores your Help Scout password.
+
+- The connector acts as your Help Scout user, so your AI Agent only accesses data you're permitted to view. Inbox permissions are what actually restrict access. Filtering a search by tag or folder is just a query choice. A differently worded question can still reach conversations outside that filter.
+- Requests are handled in real time, and nothing you ask for is stored on Help Scout's end. The only things kept are your session tokens and, if you added one, your Docs API key, both of which are encrypted at rest. The connector holds no AI provider credentials and makes no model calls of its own.
+- When your AI Agent retrieves something, that content becomes part of your conversation with it. What happens to it from there, including whether it's used to train a model, is governed by your AI provider's terms, not Help Scout's. Check your plan with your provider for specifics.
+- The connector doesn't remove sensitive information. Anything a customer pasted into a conversation, including credentials shared by mistake, reaches your AI Agent. Treat anything shared in a support conversation as something to rotate, not something to keep secret from your own tools.
+- There's no Help Scout setting to turn MCP off account-wide. Any User or Administrator can connect their own AI Agent, and Help Scout's permissions determine what it can access on their behalf. Light Users can't connect because they don't have API access. If you want to block connections centrally, that control lives with your AI platform: Claude Team and Enterprise admins can allowlist or block connectors by URL, and ChatGPT Business, Enterprise, and Edu workspaces already require an admin to enable custom connectors before anyone can add one. Check your plan's admin settings if this matters to your organization.
+
+For Help Scout's broader security practices, see Security at Help Scout.
+
+### HIPAA Accounts
+
+HIPAA support is available on the Pro plan and requires a signed BAA. The connector follows the same rules as any other integration, see HIPAA and Integrations. In short: data leaving Help Scout is governed by whoever receives it, and if PHI could reach your AI Agent, you'll need a BAA with that provider too.
+
+One difference from other integrations: you can't see or revoke individual connections in Help Scout the way you can with installed apps. Any User or Administrator can connect their own AI Agent, and it inherits their inbox permissions. On Plus and Pro, you can stop a specific user from connecting by turning off their Access API permission, or by changing them to a Light User. Either one blocks all API use for that person, not just the connector. Central control is managed through your AI platform's admin settings, as described in the last bullet above.
+
+#### Revoking access
+
+Removing the connector from your AI client stops it from making new requests, but it doesn't reliably cancel the credential on Help Scout's side. Some clients send a revocation request when you disconnect. Some don't. Without one, an access token stays valid for up to 2 hours, and its refresh token for up to 30 days.
+
+The reliable way to cut off access immediately is to deactivate the Help Scout user who authorised it. That revokes everything tied to their login. One exception: a Docs API key is a separate credential and keeps working until you revoke it in Help Scout, even after the user is deactivated.
+
+If you need to cut off access urgently, during a security incident, for example, deactivate the user in Help Scout. If you need help, contact our support team.
+
+## Common Questions
+
+### I visited the MCP server URL directly and got an error. Is something broken?
+
+No, that's expected. `https://mcp.helpscout.net/mcp` isn't a page to browse; it's an endpoint your AI client talks to. Visiting it directly returns an authorization error because no client credentials are attached. If your AI Agent is connected and working, this doesn't affect it.
+
+### I was connecting my AI Agent and got sent to this page. What happened?
+
+You were setting up the connector with an older server URL that no longer accepts new connections. Use https://mcp.helpscout.net/mcp instead.
+
+See Add the Connector in Claude or Add the Connector in ChatGPT for the steps.
+
+### I tried to add the connector again and got "a server with that URL already exists."
+
+This happens if the connector is already added in your AI client. Check your existing connectors list first. If you need to reconnect (for example, to add a Docs API key), remove the existing Help Scout connector before adding it again rather than adding a second one.
+
+### Some of my team can connect, but others get "Could not identify Help Scout user. Try again."
+
+First, check whether the affected users are Light Users. Light Users don't have API access, so they can't connect. To give them access, change them to a User. For more details, see About Light Users (https://docs.helpscout.com/article/1464-light-users).
+
+If they aren't Light Users, check whether your account uses Custom Permissions. If so, the affected users likely don't have Access API enabled. Go to Settings → Users → [User] → Permissions and turn it on. This is Help Scout's own permission for using the API, not an MCP-specific setting, but the connector needs it to identify who's signing in.
+
+## Report a Security Issue
+
+If you find a security vulnerability in the Help Scout MCP server, reach out to us to report it. We investigate all security reports.
+
+In-scope issues include vulnerabilities in the MCP server, weaknesses in the OAuth sign-in flow, credential storage issues, or unauthorized data access. Out-of-scope issues include documented tool behaviors, AI model decisions, denial of service, and vulnerabilities in third-party dependencies.
+
+## Get Help
+
+If you have questions about the connector or need assistance with setup, reach out to our support team and we'd be happy to help you get connected.
+
+ Updated on October 16, 2026

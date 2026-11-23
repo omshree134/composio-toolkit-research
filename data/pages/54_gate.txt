@@ -1,0 +1,139 @@
+https://mrscraper.com/pricing
+
+MrScraper Pricing: Start Free, Plans From $99/Month
+
+# Scrape Smarter. Scale Faster. 
+
+MrScraper turns websites into clean, structured data with AI-powered scraping, APIs, proxies, and automation - without the maintenance headache.
+
+ Choose your plan 
+
+ Compare usage and support at a glance. 
+
+## Essential 
+
+ $99 /month 
+
+## Enterprise 
+
+ Contact Us 
+
+Included tokens 200,000 tokens 500k+ tokens 
+
+Max Pages Scraped 200,000 Custom 
+
+Concurrent requests 20 200 
+
+Priority email support
+
+Dedicated account manager
+
+## What Our Customers Say
+
+Teams use MrScraper to automate data extraction, keep information fresh, and build reliable data workflows at scale.
+
+![Blockdaemon logo](https://mrscraper.com/images/stories/blockdaemon-dark.webp)
+
+David Meslar
+
+Director of Marketing Blockdaemon
+
+> “MrScraper's API integration has been a huge win for Blockdaemon. Its seamless data extraction from multiple sources and automated updates have saved our team significant time and effort, streamlining our workflows.” 
+
+![Cube logo](https://mrscraper.com/images/stories/cube-dark.webp)
+
+Simon Torring
+
+Co-Founder at Cube
+
+> “MrScraper is a reliable and quality-minded data provider. We appreciate MrScraper's fast customer service and rapid innovations that help us deliver best-in-class market insights” 
+
+![Bustem logo](https://mrscraper.com/images/stories/bustem-dark.webp)
+
+Bustem
+
+CEO
+
+> “MrScraper has been a complete game-changer for us. We plug their API and scraping tech directly into our internal system, and it lets us scan marketplaces + social media at scale to surface bad actors fast. It gives us real-time visibility so we can protect our client's brands and customers with confidence.” 
+
+## AI-Powered
+
+ Extract structured web data with intelligent scraping workflows. 
+
+## Built for Reliability
+
+ Use proxies, reruns, APIs, and monitoring to keep data flowing. 
+
+## Time Saving
+
+ Automate recurring collecting and send results into your workflow. 
+
+## Need a custom plan?
+
+ Get a plan tailored for higher-volume token usage, dedicated requirements, or enterprise-grade data workflows. 
+
+ Higher token volumes Custom integrations Enterprise requirements 
+
+## Frequently Asked Questions
+
+Everything you need to know about plans, billing, and getting started with MrScraper.
+
+ What do I get on the Free plan? 
+
+ Free costs nothing - no credit card required. It's the fastest way to try scraping, proxies and AI extraction before upgrading. 
+
+ Can I change plans later? 
+
+ Yes. Upgrade from Free to Essential anytime from your account's billing settings, or move to Enterprise by booking a call. 
+
+ How do I get my API Token? 
+
+ Sign in to the dashboard, open your account settings, and copy the token from the API Token page. Every API request authenticates with it, and the getting-started guide in the docs walks through your first call. 
+
+ Can I use MrScraper without coding? 
+
+ Yes. The visual scraper and AI Mode let you point at a page, describe the data you want, and get structured results without writing code. The API and SDKs are there when you want to automate further. 
+
+ Why is my scrape not returning any data? 
+
+ The usual causes are a page that loads its content with JavaScript, selectors that no longer match, or the site blocking the request. Re-run with rendering enabled, let AI Mode re-detect the fields, or route the run through the built-in proxies. 
+
+ What’s the difference between AI Mode and Manual Mode? 
+
+ AI Mode reads the page and extracts the fields you describe in plain language - the fastest way to a working scraper. Manual Mode gives you exact control with your own selectors and spends fewer tokens on predictable, high-volume runs. 
+
+ When should I use a proxy? 
+
+ Use one when a site limits how often one address can visit, or serves different content per country. Location-based proxies let you see each page as it appears in the region you choose. 
+
+ Does MrScraper provide built-in proxies? 
+
+ Yes. Residential proxies with country-level targeting are built into the platform - enable them per scraper, with no third-party setup. Bandwidth is billed separately from plan tokens, from $1.5/GB. 
+
+ Can I schedule scrapers to run automatically? 
+
+ Yes. Any scraper can run on a schedule, from once a minute to specific days of the week, and each run can deliver its results onward automatically. 
+
+ Can I use MrScraper to track product reviews or sentiment? 
+
+ Yes. Point a scraper at product or review pages and extract ratings, review text, and dates into structured rows, then schedule it so the dataset stays fresh for sentiment analysis. 
+
+ How can I extract job listings with specific criteria? 
+
+ Scrape the job board’s search or listing pages and describe the fields you need - title, company, location, salary. Filters in the target URL carry over, so the scraper only collects listings that match your criteria. 
+
+ How can I lower my scraping costs? 
+
+ Tokens are charged on the data a scrape extracts, so collect only the fields you need, prefer Manual Mode for stable high-volume jobs, and schedule runs at the frequency the data actually changes. 
+
+ Can MrScraper send my data automatically? 
+
+ Yes. Results can go straight to webhooks, SQL databases, AWS S3, Zapier, n8n, or email, so scraped data lands in your workflow without manual exports. 
+
+ Why do some runs fail or hit rate limits? 
+
+ Some sites limit how often they can be visited, and some only show their content once JavaScript has run. Enable the built-in residential proxies, lower the run frequency, and let the browser render the full page - most failed runs clear up with those three. 
+
+ My scheduled scrapes didn’t run - what can I check? 
+
+ Check that the schedule is still enabled, your token balance isn't exhausted (extra usage is $1 per 1,000 tokens), and the target page still matches the scraper's setup. The run history shows each attempt's result - if it still looks wrong, contact support from the dashboard.

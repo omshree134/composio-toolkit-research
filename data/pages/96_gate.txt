@@ -1,0 +1,98 @@
+https://docs.devin.ai/api-reference/overview
+
+> ## Documentation Index
+> 
+> Fetch the complete documentation index at: https://docs.devin.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# API Overview
+
+> Learn how to programmatically interact with Devin using our REST APIs
+
+The Devin API enables you to integrate Devin into your applications, automate workflows, and build powerful tools. Use service users with role-based access control for secure, auditable API access.
+
+## Getting started
+
+> [card] Teams quick start
+> 
+> For teams and standard organizations. Create a service user and make your first API call in minutes.
+
+> [card] Enterprise quick start
+> 
+> For enterprise customers with RBAC, multi-org support, and advanced permissions.
+
+> [!TIP]
+> 
+> Which path should I choose? Most customers should start with the Teams quick start. Choose Enterprise if you manage multiple organizations or need custom roles and RBAC.
+
+## API structure
+
+The API is organized into two scopes:
+
+### Organization API
+
+Base URL: `https://api.devin.ai/v3/organizations/*`
+
+For managing resources within a single organization — sessions, knowledge, playbooks, secrets, and more. This is where most integrations start.
+
+### Enterprise API
+
+Base URL: `https://api.devin.ai/v3/enterprise/*`
+
+For cross-organization management — analytics, audit logs, user management, billing, and infrastructure. Available to enterprise customers.
+
+Both scopes use service user credentials (`cog_` prefix). See Authentication for setup.
+
+## Session attribution
+
+Service users are separate identities from human users, but you can create sessions on behalf of any user in your organization using the `create_as_user_id` parameter. This means sessions appear in that user's session list and count toward their usage — just like they created it themselves.
+
+```bash
+curl -X POST "https://api.devin.ai/v3/organizations/$DEVIN_ORG_ID/sessions" \
+  -H "Authorization: Bearer $DEVIN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "Fix the login bug in issue #42",
+    "create_as_user_id": "user_abc123"
+  }'
+
+```
+
+> [!TIP]
+> 
+> Coming from personal API keys? In v1/v2, personal API keys automatically created sessions as your user. With v3, use a service user + `create_as_user_id` for the same behavior — with the added benefit of RBAC, audit trails, and centralized key management. The service user's role must include `ImpersonateOrgSessions` permission.
+
+> [!NOTE]
+> 
+> You can also authenticate directly as your user with a Personal Access Token — no service user or `create_as_user_id` needed. Sessions are automatically attributed to you.
+
+You can find user IDs with the List organization users endpoint (beta, organization-scoped service user) or the enterprise List users endpoint. Both return only users with direct role assignments. For users whose membership comes from IDP groups, use List organization IDP group users or its enterprise equivalent.
+
+## Legacy APIs (v1 and v2)
+
+The v1 and v2 APIs continue to work during the deprecation period but do not receive new features. We recommend migrating to the current API for role-based access control, session attribution, and new capabilities.
+
+- v1 API documentation — session management with legacy API keys
+- v2 API documentation — enterprise management with legacy API keys
+- Migration guide — step-by-step migration from v1/v2
+
+---
+
+## Error handling
+
+All APIs use standard HTTP status codes:
+
+- `200 OK`: Successful request
+- `201 Created`: Resource created successfully
+- `400 Bad Request`: Invalid request parameters
+- `401 Unauthorized`: Missing or invalid API key
+- `403 Forbidden`: Insufficient permissions
+- `404 Not Found`: Resource not found
+- `429 Too Many Requests`: Rate limit exceeded
+- `500 Internal Server Error`: Server error
+
+## Support
+
+For questions about the API or to report issues, email support@cognition.ai.
+
+This documentation is built and hosted on Mintlify, a developer documentation platform.

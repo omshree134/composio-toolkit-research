@@ -1,0 +1,235 @@
+{
+ "meta": {
+  "labels": "auth: O=OAuth2, K=API key/token, B=Basic (OAuth used only for hosted MCP/CLI/bank-side is ignored). access: S=self-serve, T=tiered (free to test, approval/paid for production), G=gated. mcp_official: 1 if a vendor-published MCP server was found, else 0. null = not checkable from public pages.",
+  "labeler": "single AI reviewer reading the saved pages in data/pages; no human labeling has happened",
+  "labeled_at": "2026-11-23 22:10-22:12 IST (sample 22:10, holdout 22:11)",
+  "sample_seed": "random.seed(42), 2 apps per category",
+  "holdout_seed": "random.seed(7), 12 apps not in sample"
+ },
+ "rows": [
+  {
+   "n": 2,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 1,
+   "group": "sample",
+   "auth": "O",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 15,
+   "group": "sample",
+   "auth": "K",
+   "access": "G",
+   "mcp_official": 1
+  },
+  {
+   "n": 14,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 24,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 23,
+   "group": "sample",
+   "auth": "O",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 32,
+   "group": "sample",
+   "auth": "OK",
+   "access": "T",
+   "mcp_official": 1
+  },
+  {
+   "n": 39,
+   "group": "sample",
+   "auth": "OK",
+   "access": "T",
+   "mcp_official": 0
+  },
+  {
+   "n": 42,
+   "group": "sample",
+   "auth": "KB",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 47,
+   "group": "sample",
+   "auth": "OK",
+   "access": "T",
+   "mcp_official": 0
+  },
+  {
+   "n": 51,
+   "group": "sample",
+   "auth": "B",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 60,
+   "group": "sample",
+   "auth": "K",
+   "access": "T",
+   "mcp_official": 1
+  },
+  {
+   "n": 62,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 64,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 74,
+   "group": "sample",
+   "auth": "OB",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 79,
+   "group": "sample",
+   "auth": "OK",
+   "access": "T",
+   "mcp_official": 1
+  },
+  {
+   "n": 90,
+   "group": "sample",
+   "auth": "K",
+   "access": "G",
+   "mcp_official": 1
+  },
+  {
+   "n": 81,
+   "group": "sample",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 99,
+   "group": "sample",
+   "auth": "K",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 94,
+   "group": "sample",
+   "auth": "K",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 7,
+   "group": "holdout",
+   "auth": "O",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 9,
+   "group": "holdout",
+   "auth": "KO",
+   "access": "S",
+   "mcp_official": 0
+  },
+  {
+   "n": 10,
+   "group": "holdout",
+   "auth": "OK",
+   "access": null,
+   "mcp_official": 1
+  },
+  {
+   "n": 12,
+   "group": "holdout",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 17,
+   "group": "holdout",
+   "auth": "KO",
+   "access": null,
+   "mcp_official": 1
+  },
+  {
+   "n": 26,
+   "group": "holdout",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 0
+  },
+  {
+   "n": 35,
+   "group": "holdout",
+   "auth": "KO",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 53,
+   "group": "holdout",
+   "auth": "KO",
+   "access": "G",
+   "mcp_official": 1
+  },
+  {
+   "n": 58,
+   "group": "holdout",
+   "auth": "",
+   "access": "S",
+   "mcp_official": 0
+  },
+  {
+   "n": 65,
+   "group": "holdout",
+   "auth": "OK",
+   "access": "S",
+   "mcp_official": 1
+  },
+  {
+   "n": 82,
+   "group": "holdout",
+   "auth": "K",
+   "access": "T",
+   "mcp_official": 1
+  },
+  {
+   "n": 86,
+   "group": "holdout",
+   "auth": "O",
+   "access": null,
+   "mcp_official": 1
+  }
+ ]
+}

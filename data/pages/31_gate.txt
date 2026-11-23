@@ -1,0 +1,266 @@
+https://developers.google.com/google-ads/api/docs/api-policy/developer-token
+
+Developer token | Google Ads API | Google for Developers
+
+ Developer token
+
+## Page Summary
+
+- A developer token is required to make calls to the Google Ads API and is a 22-character alphanumeric string obtained from the API Center page of your Google Ads manager account.
+- Each developer token has an access level (Test, Basic, or Standard) which determines the number of API calls and the environment (test or production) it can be used in.
+- Generally, a company only needs one developer token, but individual developers and companies creating new tools can apply for a new one if necessary.
+- Both companies and individual developers can apply for a developer token, providing specific details during the application process.
+- Applying for a developer token involves selecting or creating a Google Ads manager account and then completing the API Access form in the API Center.
+
+The developer token is a 22-character long alphanumeric string that was used to connect your app to the Google Ads API. Developer tokens were sunset on September 9, 2026. This guide summarizes the changes and lists the frequently asked questions about this migration to assist the existing developers.
+
+Key Point: New to the Google Ads API? You no longer need a developer token or a Google Ads manager account to get started. API access is now managed directly in your Google Cloud project: enabling the API grants Test access (15,000 operations per day on test accounts), and you can apply on the Google Ads API Overview page for Explorer access (automated review and approval in most cases, for up to 2,880 operations per day on production accounts). Follow the Make your first call quickstart or connect an AI assistant with the Google Ads MCP server.
+
+## What's changing? Copy link to this section: What's changing?
+
+We introduced several changes to the Google Ads API onboarding experience and API access management as part of the developer token sunset. This section highlights the key changes.
+
+### API access levels are associated with Google Cloud projects Copy link to this section: API access levels are associated with Google Cloud projects
+
+We sunset developer tokens on September 9, 2026. Your current and active developer token access level was automatically transferred to your Google Cloud projects based on API activity in the 90 days preceding the sunset. You can continue sending developer tokens in your API call headers, but this is optional and ignored by the API servers. Your existing code will continue working without any changes. Your API access levels are determined by the Google Cloud project you used to generate your OAuth credentials.
+
+- If your app uses the user authentication workflow, then this is the project that owns your OAuth client ID and secret.
+- If you use the service account workflow, then this is the project that owns your service account.
+
+### A new signup experience for the Google Ads API
+
+Note: If you are a developer who needs access to the App Conversion Tracking API, you should continue to sign up for a developer token from the API Center page instead.
+
+You can sign up for access to Google Ads API directly in the Google Cloud Console without requiring a Google Ads manager account. Don't sign up for a developer token from the API Center page or attempt to apply for API access from the API Center page in your Google Ads manager account as these processes have been transitioned to Google Cloud Console and won't be processed if initiated from the API Center page.
+
+### A new API access management experience
+
+We have sunset all the new signup and API access management functionality such as applying for API access and managing API access levels in the API Center page in Google Ads manager accounts. These functionalities are available in the Google Ads API Overview page in Google Cloud Console instead.
+
+You can still access the API Center page to refer to your historical developer details. This page will completely sunset in the future.
+
+### New error codes
+
+In v25 and later, the Google Ads API throws an `AuthorizationError.CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION` error if you try to use a Google Cloud project with Test access to make calls to a production account. Older API versions (v24 and earlier) throw an `AuthorizationError.ACTION_NOT_PERMITTED` error instead. If you run into this error, navigate to the Google Ads API Overview page for your Google Cloud project and apply for Explorer access.
+
+### Brand verification is required for Basic and Standard access
+
+For new Basic and Standard access applications, you must complete brand verification for your Google Cloud project. Existing access holders are not required to complete brand verification, though it is encouraged.
+
+Basic access applications are automated and will be reviewed within minutes after brand verification and submission.
+
+Because of these process updates, all pending Basic access applications are closed as part of this transition. Affected applicants receive an email with details and should re-apply for Basic access from the Google Ads API Overview page.
+
+### New API contact emails
+
+As we prepare for decommissioning the API Center page, we will transition to using the list of owner and editor users in your Google Cloud project as the sole channel for administrative and mandatory compliance communications. To ensure a smooth transition, we will temporarily continue to send Mandatory Service Announcements (MSAs) to the email address listed in your API Center. We will keep you updated as we finalize the transition of our communication channels.
+
+## What to do if you are an existing developer
+
+Review your Google Cloud project's API access levels: If you are an existing developer, we urge you to review the Google Ads API Overview page of your Google Cloud projects to ensure that they have the same API access level as your existing developer token. Follow the instructions in this guide to address any discrepancies that you may find.
+
+Review your API contact email address: Visit the IAM (Identity and Access Management) page for your Google Cloud project. Verify that your active Ads developers and account managers are assigned appropriate owner or editor roles in your Google Cloud project. We will start sending Mandatory Service Announcements (MSAs) to these email addresses to notify you about any future changes to the Google Ads API. We will continue sending MSAs to the contact email address listed in your API Center for a temporary period, and we will inform you whenever this process updates.
+
+Fix your app code: We encourage you to update your app to stop sending a developer token as part of your API calls. We have published updated versions of the client libraries, the Google Ads MCP server, and the Google Ads API Developer Assistant that let you make API calls without setting a developer token. We will start rejecting developer tokens in API calls in a future major version of the Google Ads API. If your app uses these libraries, update your app dependencies to use the latest version.
+
+Contact the Google Ads API support if you need further assistance or have more questions.
+
+## Known issues
+
+This section documents all the known issues related to the sunset of developer tokens.
+
+### Users are not given Explorer access or Basic access even after completing Brand verification
+
+We are aware of an issue where some users with brand verified projects are rejected when applying for Basic access. The users will receive a rejection email that says "Basic Access requires a successfully verified OAuth brand profile. Your application could not be approved because you haven't completed brand verification for your project." Similarly, some users signing up for Explorer access are also rejected with a rejection email that says "At this time, we are unable to grant Explorer Access to your Google Cloud project because it does not meet the eligibility criteria required for direct production account access under our Google Ads API Policies and Terms of Service."
+
+#### Root cause
+
+Your Google Cloud project may be on Google Cloud Free Trial program or has a suspended or disabled billing account.
+
+#### How to verify
+
+Check your Google Cloud billing status. If your billing project shows as "Free trial account" or is in a suspended or disabled state, you are affected by this issue.
+
+#### Status
+
+We have identified the root cause and are working on a fix for this issue.
+
+#### Temporary workaround
+
+There are several workarounds to resolve this issue. Select the most suitable option for your use case.
+
+Upgrade your Google Cloud project to a paid tier
+
+Upgrade your Google Cloud project to a paid tier. Wait for a few minutes and try applying for Basic access again.
+
+Remove billing for your Google Cloud project
+
+Warning: Removing billing will turn off all other paid Google Cloud services running in that project and may have other undesired effects. Use this workaround only if you plan to use this project exclusively for your Google Ads API integration or if you are comfortable temporarily pausing other cloud services.
+
+If you don't have other services running in your Google Cloud project, remove billing for your Google Cloud project. Wait for a few minutes and try applying for Basic access again.
+
+Use a different Google Cloud project
+
+If you have another Google Cloud project that is brand verified, use that project to apply for Basic access.
+
+### Projects with newly approved Basic or Explorer access levels receive an AUTHORIZATION_ERROR
+
+We are aware of an issue where some users who upgraded their Google Cloud project's access level to approved Basic or Explorer access levels after September 9, 2026 receive an `AUTHORIZATION_ERROR` when making Google Ads API calls to production accounts.
+
+#### Root cause
+
+Google Ads API is not honoring API access level upgrades that were completed from the Google Cloud Console for some projects.
+
+#### How to verify
+
+You are affected by this issue if all of the following conditions are true:
+
+1. You have a developer token with Test access level.
+2. You used your Google Cloud project and developer token to make Google Ads API API calls prior to September 9, 2026.
+3. You upgraded your Google Cloud project's access level to Explorer, Basic or Standard access after September 9, 2026.
+4. Your API calls to a production account are failing with an `AUTHORIZATION_ERROR`. API calls to test accounts are successful.
+
+#### Status
+
+We have a fix for this issue and are working on rolling it out to our servers. Once the fix is live, your API calls will start working again.
+
+#### Temporary workaround
+
+You can use a new Google Cloud project to apply for Explorer access.
+
+## Frequently asked questions
+
+The following section provides answers to frequently asked questions about the developer token sunset and API access levels.
+
+### What happens to API access levels?
+
+API access levels are still enforced in the Google Ads API. However, these are granted to your Google Cloud Console project instead of your developer token. When you make API calls, your API access levels are determined by the Google Cloud project you used to generate your OAuth credentials.
+
+- If your app uses the user authentication workflow, then this is the project that owns your OAuth client ID and secret.
+- If you use the service account workflow, then this is the project that owns your service account.
+
+### How were the projects identified for transferring API access levels?
+
+If you already had an approved developer token prior to September 9, 2026, its access levels have been transferred to your Google Cloud projects as follows:
+
+- We examined the API call logs for the last 90 days to identify which Cloud projects were used to make API calls with your approved developer token.
+- We assigned the developer token's API access levels to all the identified Cloud projects.
+
+### Can I have multiple Cloud projects with various access levels after this change?
+
+Yes, you can have multiple Google Cloud projects with different API access levels. For example, you can have one Google Cloud project with Basic access and another Google Cloud project with Standard access.
+
+#### Example
+
+As an example, assume that you have 4 developer tokens and 6 Cloud projects with the following details:
+
+- Developer Token 1: `abcdefghijkl1234567890` has Standard access. It has been used with project IDs: `1234567890`, `5678912345`, `45678912345`.
+- Developer Token 2: `xyzabcdefghi6789012345` has Basic access. It has been used with project IDs: `1231235678`.
+- Developer Token 3: `asdfgflkjhjz7654321012` has Basic access, but it has never been used to make an API call. It was approved within 90 days prior to September 9, 2026.
+- Developer Token 4: `qwertypoiuyu6543298790` had Standard access, but it hasn't been used in the last 90 days. Project ID `9876564900` was used with this developer token more than 90 days ago.
+- Cloud project: Cloud project ID: `7171234567` has never been used with any of the developer tokens to make an API call.
+
+The API access levels will transfer from the developer tokens to the Google Cloud projects as follows:
+
+| Developer token | Project ID | Access level | Explanation |
+| --- | --- | --- | --- |
+| `abcdefghijkl1234567890` | `1234567890` | Standard access | The developer token and project ID are associated with each other. |
+| `abcdefghijkl1234567890` | `5678912345` | Standard access | The developer token and project ID are associated with each other. |
+| `abcdefghijkl1234567890` | `45678912345` | Standard access | The developer token and project ID are associated with each other. |
+| `xyzabcdefghi6789012345` | `1231235678` | Basic access | The developer token and project ID are associated with each other. |
+| `asdfgflkjhjz7654321012` | ` -- ` | ` -- ` | The developer token's API access wasn't transferred to any project since it was never used to make an API call. |
+| `qwertypoiuyu6543298790` | `9876564900` | Test access | The developer token's API access was revoked because of inactivity for 90 days. The project's API access level defaults to Test access. |
+| ` -- ` | `7171234567` | Test access | This is a new project that hasn't been used with any developer token. The project's API access level defaults to Test access. |
+
+### I have more than one approved developer token. Which project will you transfer API access levels?
+
+The access levels of each approved developer token are transferred to the Google Cloud projects associated with that developer token. See an example.
+
+### I use multiple Google Cloud projects. Which project will you transfer API access levels?
+
+If you used multiple Google Cloud projects with your approved developer token in the last 90 days, then all those projects will receive the same API access levels as your developer token. See an example.
+
+### API access levels were assigned to a project I no longer use. How do I fix this issue?
+
+If Google Ads API access is assigned to a Google Cloud project you no longer use, no additional action is needed from your side. Google will revoke the API access for the unused project after 90 days of inactivity.
+
+### API access levels were not assigned to my Google Cloud project. How do I fix this issue?
+
+Your Google Cloud project didn't inherit your developer token's access level, likely because you never used your developer token and the Cloud project to make an API call, or your developer token's API access expired because of inactivity. To fix the issue, apply for the appropriate API access level for that project from the Google Ads API Overview page. See an example.
+
+### Where can I see my project's API access levels?
+
+You can see your Google Cloud project's API access level from the Google Ads API Overview page.
+
+### How do I apply for higher API access levels?
+
+You can apply for higher API access levels for your Google Cloud project from the Google Ads API Overview page.
+
+### What happens to my pending API access application?
+
+Any pending Basic access applications that you initiated from your Google Ads manager account's API Center prior to September 9, 2026 will be closed. You should re-apply for Basic access from your Google Cloud project's Google Ads API Overview page. If you are affected by this change, you will receive an email with the necessary instructions.
+
+Any pending Standard access applications that you initiated from your Google Ads manager account's API Center as of September 9, 2026 will be reviewed as usual. If approved, the Google Cloud project associated with your developer token will be granted Standard access.
+
+### Can I re-associate my approved developer token with a new Google Cloud project?
+
+Prior to September 9, 2026, the Google Ads API team supported reassociating a developer token with a new Google Cloud project on a case-by-case basis. This is no longer supported as of September 9, 2026, since we have sunset developer tokens. If you need to use a new Google Cloud project, you should apply for the appropriate API access from your Google Cloud project's Google Ads API Overview page.
+
+### I have an approved developer token, but I never used it. Can I use this developer token?
+
+No, you cannot use this developer token. There are two possibilities:
+
+1. Your developer token access might be revoked for inactivity: Under Google policies, Google may revoke your API token if it's not used consecutively for 90 days. If you haven't used your developer token in a while, its access levels were likely revoked because of inactivity. If this is the case, reapply for API access for your Google Cloud project from the Google Ads API Overview page. See an example.
+2. Your developer token was approved within 90 days prior to September 9, 2026, but you never used it: Since you never used your approved developer token with a Google Cloud project prior to September 9, 2026, its access levels weren't transferred to the Cloud project. As a result, you cannot use your developer token any longer. We will throw a `CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION` error if you attempt to make an API call to a production account with this developer token. To fix the error, apply for the appropriate API access from your Google Cloud project's Google Ads API Overview page. See an example.
+
+In both these cases, you can apply for Explorer access and Basic access level applications and get them automatically reviewed; you no longer need to work with Google's Compliance team to complete the review process. If you need Standard access, you need a manual review. However, you can share your approved developer token details when applying for Standard access, so that the Compliance team can review your new Standard access application accordingly.
+
+### Can I stop sending developer tokens as part of my API requests?
+
+Yes, you can stop sending developer tokens as part of your API requests. If you use a client library, you may need to upgrade to its latest version. Check the library's change logs to confirm if it supports making API calls without specifying a developer token.
+
+### I was part of the Cloud managed access level pilot program. How am I affected?
+
+The Cloud managed access level pilot program was introduced as a way for Google Cloud developers to make API calls without sending a developer token as part of the API request. Now that we have sunset developer tokens, this program will be discontinued.
+
+Your active developer token's access levels have been transferred to your Google Cloud project, so your existing code should continue to work without any changes. If you need to use a new Google Cloud project, you should apply for API access from your Google Cloud project's Google Ads API Overview page.
+
+### My developer token was part of an allowlist. How am I affected?
+
+Google may run pilot programs that give some developers access to experimental features. The access to these features are sometimes provided by adding your developer token to an allowlist. If you were part of such a pilot program, then no action is required from your side.
+
+We have updated all the pilot programs to use Google Cloud projects instead of developer tokens as the allowlisting mechanism and transferred the developer token's allowlist status to the associated Google Cloud projects. Your existing code should continue to work without any changes. If you continue facing issues, reach out to your Google Account manager who enrolled you into the pilot program.
+
+### I have an approved developer token, and I want to use it with a new Google Cloud project. Is that allowed?
+
+No, you cannot use a new Google Cloud project with your approved developer token. Since you never used your approved developer token with the new Google Cloud project prior to September 9, 2026, its access levels weren't transferred to the Cloud project. We will throw an `CLOUD_PROJECT_NOT_APPROVED_FOR_PRODUCTION` error if you attempt to make an API call with this developer token, since developer tokens are no longer used to determine your API access levels. To fix the error, apply for the appropriate API access from your Google Cloud project's Google Ads API Overview page. See an example.
+
+### My developer token was leaked externally. Do I need to reset my developer token?
+
+No, you don't need to reset the developer token in this case. Since we transferred your developer token's API access levels to your Google Cloud project, an unauthorized user can no longer use your developer token with their own Google Cloud project.
+
+### What happens to the API Center?
+
+The existing API Center page within the Google Ads manager account is deprecated and will be removed in the near future. If you already have a developer token, you can still log into your Google Ads manager account and view the details. However, these are provided only for your reference. Don't perform any tasks related to developer token access levels, such as applying for higher API access levels from this page.
+
+If you need to apply for higher API access levels, you should do it from your Google Cloud project's Google Ads API Overview page.
+
+### Do I still need a Google Ads manager account to use the Google Ads API?
+
+You no longer need a Google Ads manager account to use the Google Ads API. You need a manager account only if you need to link to and manage multiple accounts using the API.
+
+### I am a new developer. How do I sign up for Google Ads API?
+
+Follow the instructions on the Getting Started guide to sign up for Google Ads API. Don't sign up for a developer token from the API Center of your Google Ads manager account; these applications won't be processed. The API Center will be sunset in the near future.
+
+### What IAM permissions are required to manage API access levels?
+
+You need quota management permissions for your Google Cloud project to manage Google Ads API access levels. The necessary permissions are included by default for the following roles: Owner, Editor, Quota Administrator, and Service Usage Admin. See the quota permissions documentation for more information.
+
+You can check the IAM page for your Google Cloud project to see your assigned roles. Work with your Google Cloud project administrator to grant the necessary IAM roles for your Google Cloud project.
+
+No recommendations at this time.
+
+Try signing in to your Google account.
+
+Last updated 2026-11-13 UTC.

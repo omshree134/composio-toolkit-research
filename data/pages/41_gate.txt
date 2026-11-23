@@ -1,0 +1,167 @@
+https://www.shopify.com/legal/api-terms
+
+Shopify API License and Terms of Use - Shopify
+
+# Shopify API License and Terms of Use
+
+## What we value
+
+By using our API, you’re part of the Shopify platform. These are the values that we feel keep our platform strong.
+
+These values aren’t legally binding. To get the complete picture of our legal requirements, read the Shopify API License and Terms of Use
+
+### Respect our merchants
+
+When you’re granted a Shopify API license, you get access to millions of merchants who might be looking for an app just like yours. You’ll still own your app, but Shopify owns the platform. As owners of the platform, we put reasonable limits on the use of the merchant data it allows you to access.
+
+Only request the merchant data you need to provide your service, nothing more. Get merchants’ permission to do so, and follow our rules for deleting personal customer data. If your public app captures customer data via a Shopify online store or POS, sync it back to the merchant’s Shopify store, or let them do it manually.
+
+You’ll also need your own privacy policy that describes how you handle merchant data.
+
+### Build responsibly
+
+Make sure your developer system meets internet security standards. Don’t do anything criminal, irresponsible or sketchy, or disrupt or overburden our systems. Use only your Shopify API credentials to access the API. Stay within the limits we set for API calls, and keep your app up to date with API changes. Use the API to develop and operate your app, not for anything else.
+
+### Play by the rules
+
+Don’t monitor the API for benchmarking purposes. Use Shopify Checkout for payments and don’t divert to any other web checkout or payment processing (unless you have our permission). Don’t build apps intended to move merchants off of Shopify, remove Shopify branding, or attempt to substantially reproduce our products or services.
+
+Don’t use the API for any purpose other than providing an application to merchants or as otherwise permitted by these Terms. And if you’re not sure where you stand, reach out to us.
+
+Keep reading to accept the full Shopify API License & Terms of Use.
+
+Last updated on: October 7, 2026
+
+Thank you for being a part of the Shopify Developer community.
+
+By accessing or using the Shopify API, you agree to this Shopify API License and Terms of Use (“Terms”) with Shopify Inc. and its affiliates (“we”, “our”, “us” or “Shopify”). Please read these Terms carefully, as they are a legally binding agreement. Shopify reserves the right to update and change the Terms by posting updates and changes here: shopify.com/legal/api-terms. If a significant change is made, we will provide reasonable notice by email, posting a notice on the Shopify Partner Blog, in the Partner Dashboard or the Merchant Store Admin. We may update these Terms from time to time, so please check back for any changes that may impact you. In the event of any conflict or inconsistency between the Terms, the Partner Program Agreement or the Shopify Terms of Service, the Terms will govern to the extent necessary to resolve any such conflict or inconsistency.
+
+## 1. Definitions
+
+“Application” or “App” means the software application, website, interface, integration or any other means you use to access the Shopify API using the API Credentials, including but not limited to a Custom Application or a Public Application.
+
+“API Client” means the unique Application configuration (including API Credentials) generated through the Partner Account.
+
+“API Credentials” means the credentials that allow you to make authenticated requests to the Shopify API.
+
+“Custom Application” means an Application that accesses the Shopify API via an API Client and is made available to a single Merchant.
+
+“Customer” means any individual that visits or transacts via the Merchant Store.
+
+“Customer Data” means information (including Personal Information) relating to a Customer, including order information, payment information, or account information.
+
+“Checkout Kit” means the Shopify API (including mobile SDK libraries) that enable Developers to embed Shopify Checkout.
+
+“Dev Dashboard” means the internal administrative page available at: https://dev.shopify.com/dashboard/ that allows Partners and Merchants to create and manage Applications and Developer Stores.
+
+“Developer” means an individual or entity that develops, owns or operates one or more Application(s) that accesses or uses the Shopify API.
+
+“Developer Documentation” means Shopify’s development requirements, guidelines, specifications and technical documentation set out at https://shopify.dev/docs, including all subordinate pages and linked resources, as may be updated from time to time.
+
+“Development Store” means a store that is used for (a) testing purposes, or (b) for the development and transfer of a Merchant Store by a Partner to a Merchant.
+
+“Merchant” means an individual or business that uses the Service to sell products or services.
+
+“Merchant Agreement” means the agreement entered into between a Developer and the Merchant governing the Merchant’s use of the Developer’s services, including, if applicable, the installation and use of an Application.
+
+“Merchant Data” means information (including Personal Information) relating to a Merchant or Merchant Store, including business, financial and product information and any Customer Data.
+
+“Merchant Store” means the Merchant’s commerce presence hosted by Shopify, including their online store and Point of Sale (POS). For clarity, a Merchant may have more than one Merchant Store.
+
+“Merchant Store Admin” means the password protected internal administration page of the Merchant Store.
+
+“Partner” means an individual or entity that has agreed to the terms of the Shopify Partner Program Agreement (available at: shopify.com/partners/terms, or other written agreement with Shopify relating to access to the Shopify API or participation in the Partner Program.
+
+“Partner Account” means a Shopify Partner Program account.
+
+“Partner Dashboard” means the internal administrative page available at: partners.shopify.com/organizations that allows Partners to manage their Partner Account, along with the Go-to-Market Tools surface and any other Shopify administrative page accessed via partners.shopify.com. For the purposes of this agreement, the Dev Dashboard is considered a part of the Partner Dashboard.
+
+“Partner Program” means the resources made available by Shopify to Partners. For the avoidance of doubt, the Partner Program includes the Channel Program, Experts Marketplace Program and Tiered Partner Program, to the extent that Partner is invited to participate in those programs.
+
+“Personal Information” means any information relating to a natural person who can be identified, directly or indirectly, in particular by reference to an identifier such as a name, a phone number, an email address, an identification number, location data, an online identifier, or any other information specific to that natural person.
+
+“Platform Service Partner” means a Developer that uses the Shopify API primarily to provide services or Applications to Shopify (“ Platform Services”), rather than directly to Merchants.
+
+“Pop-Up Implementation” means an implementation of Shopify Checkout where the payment interface opens in a separate browser window. Without limiting the foregoing, the following implementation types do not constitute a Pop-Up Implementation: any implementation that is surfaced through (i) an in-line frame HTML element (even if served from a different domain), (ii) a JavaScript SDK, or (iii) a direct API integration.
+
+“Public Application” means an Application that accesses the Shopify API via an API Client and that is made available either via a URL or through the Shopify App Store or Shop App (defined in the Partner Program Agreement), and that is not a Custom Application.
+
+“Private API Credentials” means the API Credentials generated through the Merchant Store Admin that provide access via the Shopify API to the specific Merchant Store to which such credentials relate.
+
+“Sensitive Personal Information“ means Personal Information that can reveal racial or ethnic origin, political opinions, religious or philosophical beliefs, trade union membership, genetic data, sexual orientation or sex life. Sensitive Personal Information also includes biometric data that can uniquely identify a natural person, payment information (including payment card or bank account numbers), and government identifiers that uniquely identify a natural person such as a social insurance number or passport number.
+
+“Service” means the Shopify hosted commerce platform available via www.shopify.com and any associated websites, products or services offered by Shopify.
+
+“Shopify API(s)” means all software, including routines, data structures, object classes, protocols, programs, templates, libraries and interfaces, application programming interfaces (APIs), software development kits (SDKs), developer tools, Model Context Protocol (MCP) servers, technical documentation, Updates and other related materials, whether tangible or intangible, in whatever form or medium that are made available by Shopify at https://developers.shopify.com or as otherwise provided to you.
+
+“Shopify App Store” is where Merchants can view and install Apps on their Merchant Store, and is available through apps.shopify.com.
+
+“Shopify Checkout" means Shopify’s checkout experience that allows Customers to enter their shipping information and payment details after adding item(s) to their cart and before placing an order. For clarity, Shopify Checkout includes Shopify’s accelerated checkout (“Shop Pay”) and checkouts that occur through the Shopify Checkout API.
+
+“Shopify Related Entity/ies” means any entity that directly or indirectly controls, is controlled by, or is under common control with, Shopify; where “control” means the possession, directly or indirectly, of the power to direct or cause the direction of the management policies of another, whether through the ownership of voting securities, by contract, as trustee or executor, or otherwise.
+
+“Shopify Trademarks” means the trademarks, logos, service marks and trade names of Shopify Inc. and any Shopify Related Entities, whether registered or unregistered, including the word mark SHOPIFY and the “S” and shopping bag design.
+
+“Updates” means bug fixes, updates, upgrades, enhancements, modifications and new releases or versions of the Shopify API.
+
+## 2. Using the Shopify API
+
+1. Access to the Shopify API.
+
+1. You may not use the Shopify API and may not accept the Terms if (a) you are not of legal age to form a binding contract with Shopify, or (b) you are a person barred from using or receiving the Shopify API under the applicable laws of the United States or the country in which you are resident or from which you use the Shopify API.
+2. If you are accessing or using the Shopify API on behalf of an entity, you represent and warrant that you have the authority to bind that entity to the Terms and by accepting the Terms, you are doing so on behalf of that entity (and all references to “you” in the Terms refer to that entity).
+3. Except in the case of Private API Credentials or unauthenticated Checkout Kit access, in order to access and use the Shopify API, Developer must obtain an API Client by registering for a Partner Account and agreeing to and complying with the terms and conditions of the Partner Program Agreement shopify.com/partners/terms or other written agreement with Shopify relating to Developer’s access to and use of the Shopify API and participation in the Partner Program.
+4. If you are accessing and using the Shopify API by Private API Credentials, you may only do so with the express authorization of the account owner for the applicable Merchant Store, and only for the purposes of providing your Application’s service to the Merchant to whom the Private API Credentials relate.
+5. Except as permitted herein, (A) you must keep the API Credentials and all login information for your Shopify Account and Partner Account secure, (B) you may not share the API Credentials with any third party other than a third party that is a service provider acting on your behalf, and (C) you will not access the Shopify API by any means other than the API Credentials you receive in accordance with Section 2.1.3 or 2.1.4 above. API Credentials are the exclusive property of Shopify, and your access to and use of API Credentials is in Shopify’s sole discretion.
+6. You are not permitted to use a service provider in connection with providing your Application’s service unless they sign an agreement with you to (A) protect any Merchant Data received from Shopify (that is at least as protective as Shopify’s terms and policies), (B) limit their use of Merchant Data solely for the purpose of providing their services to your Application (and not for their own purpose or any other purpose), and (C) keep the Merchant Data secure and confidential. You must ensure that any service provider complies with these Terms and any other applicable Shopify terms and policies, and you acknowledge and agree that any act or omission by a service provider amounting to a breach of these Terms will be deemed to be a breach by you. If requested, you will provide a list of your service providers to Shopify or the Merchant.
+7. Access to certain Shopify APIs may require Shopify’s prior written approval, and/or a separate written agreement between Developer and Shopify.
+2. API License. Subject to the Terms, Shopify grants you a worldwide, non-exclusive, royalty-free, non-transferable, non-sublicensable, revocable and limited license to use and make calls to the Shopify API solely in connection with developing, implementing and distributing your Application that interoperates or integrates with the Service, and solely in the manner described in the Terms and in the Developer Documentation, including the technical documentation contained in the Shopify API.
+3. API Restrictions. When using the Shopify API, you will (and will ensure that your employees, agents and service providers will):
+
+1. only use the Shopify API (including SDKs) to develop and distribute Applications or content for your use or a Merchant’s or Shopify's use with the Services;
+2. restrict disclosure of the API Credentials, or any part thereof, to your agents, employees, or services providers, who must require access to use, maintain, implement, correct or update your Application in accordance with the Terms, and who are subject to confidentiality obligations at least as protective as those contained herein;
+3. not distribute, sell, lease, rent, lend, transfer, assign or sublicense any rights granted by the Terms to any third party;
+4. not use or access the Shopify API or the Service in order to monitor the availability, performance, or functionality of the Shopify API, the Service or any portion thereof or for any similar benchmarking purposes;
+5. not remove or destroy any copyright notices, proprietary markings or confidentiality notices placed upon, contained within or associated with the Shopify API;
+6. not engage in any activity that interferes with, disrupts, harms, damages, or accesses in an unauthorized manner the servers, security, networks, data, applications or other properties or services of Shopify or any third party. For the avoidance of doubt, interference with any Service feature used in connection with Shopify Checkout without Shopify's express written authorization is prohibited;
+7. not circumvent technological measures or access authorization requirements intended to prevent or restrict database access, or manufacture tools or products to that effect;
+8. not modify, translate, reverse engineer, disassemble, reconstruct, decompile, copy, scrape, mine, or create derivative works of the Shopify API, Merchant Data, any Merchant Store, the Services, or any aspect or portion thereof, except as authorized by Shopify in writing or to the extent that this restriction is expressly prohibited by applicable law;
+9. not bypass Shopify API restrictions for any reason, including automating administrative functions of the Merchant Store Admin;
+10. not, except as authorized by Shopify in writing, use Shopify Confidential Information or access to the Shopify API to substantially replicate products or services offered by Shopify or any Shopify Related Entity, including the Shopify API and Services. Subject to the preceding sentence and the parties’ other rights and obligations under the Terms (including confidentiality obligations and any restrictions on use of Merchant Data), each party agrees that the other party may develop and publish applications that are similar to or otherwise compete with such party’s applications;
+11. not develop Applications that excessively burden the Shopify system, distribute spyware, adware or other commonly objectionable programs;
+12. not develop an Application whose primary purpose is to migrate Merchants off of Shopify;
+13. not access or use the Shopify API to develop or distribute the Application in any way in furtherance of criminal, fraudulent, or other unlawful activity, or otherwise to violate the Shopify Acceptable Use Policy;
+14. not use the Shopify API to conduct any systematic or automated data collection activities (including scraping, data mining, data extraction and data harvesting) or to build any commerce or product index, and, in any event, not request more than the minimum amount of data from a Shopify API needed by your Application to provide the intended Application functionality, or any data outside any permissions granted by the Merchant or Shopify;
+15. not falsify or alter any unique identifier in, or assigned to your Application, or otherwise obscure or alter the source of queries coming from an Application;
+16. not include code in any Application which performs any operations not related to the services provided by, or the development, maintenance, operation or distribution of, the Application, whether or not Developer has obtained Merchant consent to do so, and whether or not the Application obtains consent from the end user to do so. For the avoidance of doubt, this prohibited activity includes embedding or incorporating code into any Application which utilizes the resources (including CPU resources) of another computer, including for the purposes of cryptocurrency mining;
+17. automatically sync to the Merchant Store Admin the Customer Data set out in the guidelines here: https://shopify.dev/docs/apps/build/compliance/api-terms-compliance (the " API Compliance Guidelines") that is collected by the Application on the Merchant Store, along with any updates to such data made by the Application on behalf of the Merchant (collectively, the " Applicable Customer Data"). If a Partner is unable to sync Applicable Customer Data to the Merchant Store Admin using the Shopify APIs Customer resource, the Partner will meet this requirement by providing functionality that enables the Merchant to manually sync their Customer Data with the Merchant Store Admin;
+
+In all cases, the types of Customer Data listed in the API Compliance Guidelines only apply to data collected or updated by the App on behalf of Merchants with respect to individuals who visit or process a transaction on the merchant’s online store and POS.
+
+ This requirement (a) only applies to Public Applications, (b) applies to all Applicable Customer Data collected by the Public Application from the date that it is installed by the Merchant, and (c) does not apply to Sensitive Personal Information relating to Customers;
+18. not, except with Shopify’s express written authorization, (i) use an alternative to Shopify Checkout for checkout or payment processing for Shopify Merchants, or register any transactions through the Shopify API in connection with such activity, or (ii) use Shopify Checkout in any manner other than a Pop-up Implementation;
+19. not, except with Shopify’s prior written consent, develop or distribute any Application that has as its primary purpose the transfer, sharing, selling, disclosing or otherwise providing of Merchant Data to any third party. In addition, any such third party must be bound by these Terms or another written agreement acceptable to Shopify addressing the use of Merchant Data. For the purposes of this section, the "primary purpose" of the Application shall be determined by Shopify in its sole discretion;
+20. not make Custom Applications available to or for use by more than one Merchant. For the avoidance of doubt, this means that Custom Applications may not be installed by more than one Merchant. For clarity, a Merchant may have more than one Merchant Store. In the event of any breach of this provision, and in addition to all other rights and remedies available to Shopify under these Terms and under applicable law, Shopify will have the right to: (a) take any action it deems necessary including but not limited to immediately terminating some or all Developer's rights under these Terms, and (b) determine, in its sole discretion, that the Application is deemed to be a Public Application and subject to both these Terms and the Partner Program Agreement available at https://www.shopify.com/partners/terms;
+21. integrate with Shopify's Consent Tracking API (also referred to as the "Customer Privacy API") or, when using Checkout Kit, collect and pass end user consent through the designated Storefront API directive when interacting with the cart;
+22. automatically sync to the Merchant Store Admin the available Order Data set out in the API Compliance Guidelines here: https://shopify.dev/docs/apps/build/compliance/api-terms-compliance, along with any updates to such data made by the Application on behalf of the Merchant (collectively, the "Applicable Order Data"). If a Partner is unable to automatically sync Applicable Order Data to the Merchant Admin using the Shopify APIs, the Partner will meet this requirement by providing functionality that enables the Merchant to manually sync their Order Data with the Merchant Admin.
+
+In all cases, the types of Order Data listed in the API Compliance Guidelines apply to data collected or updated by the App on behalf of Merchants (including where data is transferred through the App to Partner or a third party to facilitate an order in accordance with these Terms), with respect to Order Data that originates from the Merchant's online store and POS or a Merchant's product listing on a third party platform.
+
+Additionally, this requirement (a) only applies to Public Applications, (b) applies to all Applicable Order Data collected by the Public Application from the date that it is installed by the Merchant, and (c) does not apply to Sensitive Personal Information relating to Customers;
+23. when using Checkout Kit, only receive Merchant Data, including checkout event data, if you (a) have an active Partner Account, (b) have authenticated your usage with Shopify, and (c) either have an App that is installed by the given Merchant or prior written consent from Shopify;
+24. not use any information derived from the Shopify API, Merchant Data, any Merchant Store, the Services, or any aspect or portion thereof (including any anonymous, aggregate, or derived forms of data), to: (i) create, develop, train, fine tune, or improve any machine learning or artificial intelligence systems, models, or technologies, including large language models; or (ii) reproduce substantial portions of a source’s product pages, catalogs or content feeds beyond limited previews used for product discovery, or route purchases through a checkout not authorized by Shopify or the relevant merchant, except with: (a) Shopify's prior written consent, or (b) solely with respect to Merchant Data or a specific Merchant Store, the relevant Merchant's consent.
+4. API Limits. Shopify may set and enforce limits on your use of the Shopify API (limiting the number of requests that you may make or the number of Merchants you may serve), in our sole discretion. You agree to, and will not attempt to circumvent such limitations, including those documented at https://shopify.dev/api/usage/rate-limits. If you would like to use any Shopify API beyond these limits, you must obtain Shopify's express written consent (and Shopify may decline such request or condition acceptance on your agreement to additional terms and/or charges for that use). To seek such approval, contact us via the Partner Dashboard.
+5. Open Source Software. To the extent some of the software packages, libraries, or components required by or included in the Shopify API are or may become licensed under an open source software license ("Open Source Components"), the Open Source Components are not subject to any license or other terms that, when used as expressly permitted in these Terms, would require any Developer software or documentation incorporating, used with, or distributed with the Shopify API to be disclosed or distributed in source code form, licensed for the purpose of making derivative works, or be redistributable at no charge.
+6. Feedback. If you provide any feedback (including identifying potential errors and improvements) to Shopify concerning the Shopify API or any aspects of the Service ("Feedback"), you hereby assign to Shopify all right, title, and interest in and to the Feedback, and Shopify is free to use, reproduce, disclose, and otherwise exploit the Feedback without attribution, payment or restriction, including to improve the Shopify API or the Service and to create other products and services. Shopify will treat any Feedback as non-confidential and non-proprietary. You will not submit any Feedback that you consider confidential or proprietary.
+7. Platform Service Partners. Platform Service Partners may require a separate written agreement between Developer and Shopify, which may include different terms, service levels, and compliance requirements. You grant Shopify a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute any deliverables provided to Shopify in connection with Platform Services. You represent and warrant that you have all necessary rights to provide any deliverables to Shopify, and that you have the authority to grant the foregoing license.
+8. Shop Functionality.
+
+1. “Shop Functionality” means Shop and Shop Pay features made available through the Shopify API. For those features, “Developer” includes any individual or entity accessing or using them, whether or not through an Application.
+2. “Shop User Data” means information about Shop or Shop Pay users that Shopify makes available through Shop Functionality, including information derived from it. You may use or disclose Shop User Data only as agreed by the user to whom that Shop User Data relates and in compliance with applicable law. For purposes of Section 6.1.1, Shopify authorizes access to Shop User Data through Shop Functionality as permitted by this Section. For clarity: (i) Sections 6.1.2 and 6.1.3 of these Terms do not require a Merchant Agreement or Merchant-facing documents if you solely use Shop Functionality; and (ii) Sections 6.1.1, 6.2.1 and 6.2.6 of these Terms do not prohibit access to or use of Shop User Data, or communications with users, necessary for your permitted use of Shop Functionality.
+3. When using Shop Functionality for payments, you must comply with the transaction and exposure limits set by the user. You must use payment credentials only within the scope, validity period and usage limits specified by Shopify in the Developer Documentation, or otherwise communicated by Shopify. You must: (i) comply, and ensure service providers involved in those payments comply, with card-network rules and payment-card security standards applicable to your or their activities; and (ii) ensure that purchases you initiate or facilitate through the Shop Functionality comply with applicable law.
+
+## 3. Changes to the Shopify API
+
+1. Updates. Shopify reserves the right to require Developer to install or update any and all software to continue using the Shopify API and the Service. You acknowledge that Shopify may make Updates to the Shopify API from time to time, and at its sole discretion. You must implement and use the most current version of the Shopify API and make any changes to your Application that are required as a result of such Update, at your sole cost and expense. Updates may adversely affect the manner in which your Application accesses or communicates with the Shopify API. Your continued access or use of the Shopify API following an update or modification will constitute binding acceptance of the Update.
+2. Access and Use. We may change or discontinue the availability of some or all of the Shopify API at any time for any reason with or without notice. Such changes may include removal of features, or the requirements of fees for previously free features. We may also impose limits on certain features and services or restrict your access to some or all of the Shopify API. Your continued use of the Shopify API following a subsequent release will be deemed your acceptance of modifications.
+3. Beta Services. From time to time, Shopify may, in its sole discretion, invite you to use, on a trial basis, pre-release or beta features that are in development and not yet available to the public (“Beta Services”). Beta Services may be subject to additional terms and conditions, which Shopify will provide to you prior to your use of the Beta Services. Such Beta Services and all associated conversations and materials relating thereto will be considered Confidential Information of Shopify and subject to the confidentiality provisions in these Terms. Shopify makes no representations or warranties that the Beta Services will function. Shopify may discontinue the Beta Services at any time in its sole discretion. Shopify will have no liability for any harm or damage 

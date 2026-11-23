@@ -1,0 +1,74 @@
+https://docs.ahrefs.com/mcp/docs/introduction.md
+
+# What is Ahrefs MCP
+
+Ahrefs MCP lets AI agents securely access the Ahrefs API and enrich their answers with real Ahrefs data.
+MCP (Model Context Protocol) is a standard that allows AI tools to connect with third-party APIs in a secure, consistent way. In our case, it connects AI tools with Ahrefs, enabling things like this:
+
+![](https://docs.ahrefs.com/mcp/images/mcp1-2.jpg)
+
+## Connect to Ahrefs MCP
+
+Ahrefs provides a hosted MCP server that allows users with a Lite plan or higher to connect their Ahrefs account to supported AI tools. Once connected, your setup is synced and available across all devices linked to your personal or company account.
+
+> INFO
+> See our Ahrefs MCP use cases and prompt ideas for real examples and prompting tips to help you get the most from your MCP connection.
+
+### Connection URL
+
+- Streamable HTTP: `https://api.ahrefs.com/mcp/mcp`
+
+Most popular AI tools support connecting to the remote MCP directly. If you run into issues, check out our step-by-step setup guides:
+
+- Claude Web / Desktop
+- Claude Mobile
+- Claude Code
+- Copilot Studio
+- ChatGPT Web
+- Lovable
+- n8n
+- Manus
+- Mistral's Le Chat
+- OpenClaw
+
+## API limits and usage
+
+The remote MCP server is available on paid plans starting from Lite.
+
+- Each plan has a maximum number of rows per request that an AI agent can access.
+- Each plan also comes with a limited amount of monthly API units. The higher your plan tier, the more units are included. Enterprise customers can purchase additional unit add-ons if needed.
+- When a third-party app makes an API call on your behalf, it consumes API units from your monthly allowance — the same way as direct API usage.
+
+You can track your current usage in Account settings → Limits and usage.
+
+![](https://docs.ahrefs.com/mcp/images/mcp2.jpg)
+
+See the Ahrefs pricing page for details on plan limits.
+
+## Keys and authorization
+
+When you connect Ahrefs MCP to an AI agent:
+
+- You’ll see an authorization consent screen.
+- Once approved, the connection will appear in your account with a dedicated API key (tagged with `MCP` scope).
+- New keys created through OAuth for MCP or Ahrefs Connect default to a monthly limit of 200,000 API units per key.
+- Workspace admins can change or remove this limit in the API keys report.
+
+Manually created keys have no per-key limit by default. Workspace plan limits still apply to all keys.
+
+You can also:
+
+- Manually generate an MCP key in your account and use it in your AI agent’s configuration.
+- Enterprise customers may also connect with their API keys.
+
+![](https://docs.ahrefs.com/mcp/images/mcp3-2.jpg)
+
+For details on how API units are calculated per call, see API pricing and unit consumption guide.
+
+## Terms of use
+
+{/* Legal terms live in a snippet so they are never AI-translated, see ../snippets/terms-of-use.mdx */}
+
+Using the external MCP endpoint via custom scripts, bridges, or standalone HTTP/JSON-RPC clients is unsupported and not permitted. The external MCP server is not a general-purpose programmatic API.
+
+For supported programmatic access to Ahrefs data, please use the Ahrefs public API.

@@ -1,0 +1,146 @@
+https://www.netlify.com/partners/
+
+Netlify Partners
+
+# AI is redefining the web. Grow your business shaping its future.
+
+Earn revenue by helping teams build and scale on Netlify - whether you create content, deliver projects, or build integrations.
+
+Apply now
+
+### Ecosystem Partners
+
+Earn by guiding builders on how to get started with Netlify.
+
+---
+
+Best for
+
+Creators, publishers, educators, freelancers, AI builders, and agencies who shape how teams choose tools to build and ship on the web.
+
+What you do
+
+Teach, recommend, and influence how teams use AI. When teams choose Netlify based on that guidance, you earn.
+
+How you earn
+
+- 20% revenue share
+for up to 12 months on eligible self-serve new business
+
+Apply now
+
+### Certified Partners
+
+Turn hands-on delivery into compounding revenue.
+
+---
+
+Best for
+
+Agencies, consultancies, and freelancers that help customers go from prototype to production, and support them as they scale.
+
+What you do
+
+Design, deploy, and operate production-ready systems on Netlify, covering architecture, agent workflows, reliability, and optimization.
+
+How you earn
+
+- Self-serve: 20% revenue share
+for up to 24 months on new business, renewals, and expansion
+- Enterprise: 20% revenue share
+for up to 24 months on new business, renewals, and expansion
+
+Apply now
+
+## Frequently asked questions
+
+#### What is Netlify Partners?
+
+Netlify Partners is designed for partners who help customers build, deploy, and scale modern web applications with Netlify. This includes agencies, consultancies, technology partners, platforms, and builders who influence, recommend, or build on Netlify as part of their workflows or products, increasingly powered by AI-native products and features like Agent Runners and the Netlify AI Gateway.
+
+#### Who can join Netlify Partners?
+
+All partners start as Ecosystem Partners. This includes creators, publishers, educators, freelancers, AI builders, technology partners, and teams who influence how builders explore tools and get started. Partners that go on to deliver hands-on implementation and operate production systems can later qualify as Certified Partners. Certified Partners include agencies, consultancies, and technology partners that help customers move from first AI use to reliable, production-ready systems on Netlify. If you help teams build, ship, or scale on the modern, AI-powered web, you are likely a good fit.
+
+#### Do I need to be a Netlify customer to join?
+
+No. You do not need to be an existing Netlify customer to join as an Ecosystem Partner. Ecosystem Partners can participate through education, influence, integrations, or guidance without running production workloads on Netlify. Certified Partners, however, are required to be active Netlify customers. Certification is based on demonstrated, real-world experience deploying and operating production systems on Netlify.
+
+#### Is Netlify Partners exclusive?
+
+No. There are no exclusivity requirements. Netlify believes in open ecosystems and partners are free to work with other platforms.
+
+#### How does AI fit into the Netlify ecosystem?
+
+AI is a core part of how developers and teams build on Netlify. Through primitives like Agent Runners and the Netlify AI Gateway, partners can help customers build AI-powered workflows, developer tools, internal applications, and customer-facing experiences on top of Netlify’s platform.
+
+#### Can partners build and commercialise AI-powered solutions on Netlify?
+
+Absolutely yes! Many partners build AI-native products, platforms, and services on Netlify using Agent Runners and the AI Gateway. These solutions may be commercialised directly by the partner, offered as value-added services, or used to drive adoption and expansion of Netlify with shared customers.
+
+#### How is partner attribution handled?
+
+Partner impact is measured across referral, recommendation, and influence. Netlify uses PartnerStack to support tracking, attribution, and reporting across different partner models. Depending on the partnership type, attribution may include tracked referrals and partner-assisted conversions rather than simple link-based clicks.
+
+#### What is the difference between Ecosystem Partners and Certified Partners?
+
+Ecosystem Partners represent the starting point for all partners, including technology partners. They focus on education, guidance, integrations, and early influence as teams discover and explore Netlify. Certified Partners are Ecosystem Partners that have progressed to offer deeper delivery. Certification is based on demonstrated production experience on Netlify, including successfully deploying and operating real customer workloads. This includes agencies, consultancies, and technology partners that deliver hands-on implementation, operate production systems, and support customers as they scale.
+
+#### How do I know which partner path is right for me?
+
+All partners begin as Ecosystem Partners. If your role today is educating or helping builders get started, this is a great place to start. Partners that go on to deliver hands-on implementation, operate production workloads, or support customers as they scale AI-powered systems on Netlify can qualify to become Certified Partners.
+
+#### How do partners generate revenue with Netlify?
+
+Revenue models vary by partner type:
+
+- Ecosystem Partners: Earn a 20% revenue share for up to 12 months on eligible self-serve new business.
+- Certified Partners: Earn a 20% revenue share on self-serve revenue for up to 24 months, and a 20% revenue share on eligible enterprise revenue, including renewals and expansion, for up to 24 months.
+
+Certified Partners may also generate services revenue directly by designing, deploying, and operating Netlify-based systems for customers.
+
+#### How should partners represent Netlify?
+
+Partners should represent Netlify accurately and transparently, making it clear how Netlify fits into their offering or recommendations. Partners should not position themselves as Netlify or imply ownership of the Netlify brand.
+
+#### Can partners create content or integrations around Netlify?
+
+Yes! Partners are encouraged to create content, integrations, templates, and workflows that showcase how Netlify is used in real-world scenarios.
+
+#### Are there brand guidelines for partners?
+
+Approved brand assets and usage guidelines are available to partners through PartnerStack to ensure consistent and accurate representation.
+
+#### What support does Netlify provide to partners?
+
+Netlify provides onboarding, enablement resources, documentation, marketing assets, and access to partner support depending on partner type and engagement level.
+
+#### How do partners track their impact?
+
+Partners can view attribution, engagement, and performance insights through PartnerStack.
+
+#### How do I get started?
+
+You can apply to Netlify Partners through the sign-up form. Once approved, you’ll start as an Ecosystem Partner and receive onboarding guidance and access to relevant partner resources, through PartnerStack.
+
+#### Who can become a Netlify Ecosystem Partner?
+
+Ecosystem Partners is for content creators, bloggers, freelancers, agencies, developers, and SaaS products or platforms. Applications are reviewed and approved by the Netlify Partner Team.
+
+#### What is a Netlify Certified Partner, and how do I qualify?
+
+Certified Partners are high-performing partners that consistently deliver results for customers on Netlify. To qualify, you need to meet the following:
+
+- Be an existing Ecosystem Partner in good standing
+- Refer 3 or more new Pro customers per year, OR refer 1 or more new Enterprise customers per year
+- Complete required partner training
+
+Certified Partners unlock extended revenue share (up to 24 months on both self-serve and enterprise revenue), plus access to deeper enablement and co-selling support from the Netlify partner team.
+
+#### What policies do Netlify Partners need to follow?
+
+In addition to our Netlify Partner Program agreement, all Netlify Partners must comply with Netlify’s Acceptable Use Policy, Self-Serve Subscription Agreement, and Privacy Policy.
+
+## Ready to grow together?
+
+Apply now

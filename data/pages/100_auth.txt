@@ -1,0 +1,54 @@
+https://developers.grain.com/
+
+Overview — Grain Developers
+
+# Overview
+
+## Quick Start
+
+The Grain API lets you read and manage recordings, highlights, uploads, and more. This page gets you from zero to your first successful request!
+
+### 1. Create a Personal Access Token
+
+A Personal Access Token (PAT) authenticates requests as you, with the same access you have in Grain. Generate one here:
+
+https://grain.com/app/settings/integrations?tab=api
+
+See Authentication for the other ways to authenticate.
+
+### 2. Make Your First Request
+
+Every request needs a token in the `Authorization` header and a `Public-Api-Version` header (see Versions). Here's Token Info, using an example token:
+
+```bash
+curl -X GET \
+  -H "Authorization: Bearer grain_pat_example123" \
+  -H "Public-Api-Version: 2026-10-01" \
+  https://api.grain.com/_/public-api/v2/token-info
+```
+
+```json
+{
+  "type": "personal_access_token",
+  "scope": "personal",
+  "user_id": "7890-abcd-ef01-2222-3456-7890ffff",
+  "name": "Luke Skywalker",
+  "expires_at": null
+}
+```
+
+Swap in your own token and you're set.
+
+## Next Steps
+
+- Authentication — authentication methods, use the one that best suits your use case
+- Versions — Grain's Public-Api-Version header explained
+- Rate Limits — request limits and the headers returned with each response
+- Endpoints — the full API reference
+
+On this page
+
+- Quick Start
+- 1. Create a Personal Access Token
+- 2. Make Your First Request
+- Next Steps

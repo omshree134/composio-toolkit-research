@@ -1,0 +1,83 @@
+https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp
+
+Back
+
+Higgsfield MCP connects Higgsfield to AI agents. Connect once and generate images, videos, characters, and audio from Claude or any MCP-compatible agent, without leaving your agent. The main difference from generating on the web: MCP always uses credits. Unlimited access and free generations apply only on higgsfield.ai, so anything generated through MCP, CLI, Canvas, Supercomputer, or other automated tools deducts credits at standard rates.
+
+## What is Higgsfield MCP?
+
+MCP (Model Context Protocol) is an open protocol that lets AI agents connect to external services and call their tools. Higgsfield MCP is a connector that lets you generate images, videos, characters, and audio from Higgsfield directly inside Claude or another MCP-compatible agent. It isn't the Higgsfield API: MCP connects to your existing account and uses your existing plan credits, with no API key required. For building generation into your own product with per-request billing, see What is the Higgsfield API, and how do I get started?
+
+Because MCP connects programmatically, using Higgsfield through it falls under the Developer Terms in the Terms of Use. In short: keep your connection secure, and you're responsible for anything an agent generates through your account.
+
+MCP connector URL: https://mcp.higgsfield.ai/mcp
+
+## How is MCP different from the web?
+
+The most important difference is credit behavior: everything generated through MCP deducts credits, regardless of your plan.
+
+How is MCP different from the web?
+
+| Criteria | Web (higgsfield.ai) | MCP |
+| --- | --- | --- |
+| Unlimited model access | Yes, where included in plan | No, always deducts credits |
+| Free generations | Yes, where included in plan | No |
+| Credit cost | Standard rates | Standard rates |
+| Generations appear in Assets | Yes | Yes |
+| Access to models | Yes | Yes |
+
+## Do Unlimited models and free generations work through MCP?
+
+No. Unlimited access and free generations apply only on higgsfield.ai: they're intended for manual use, not for automated or programmatic generation. Anything generated through MCP, CLI, Canvas, Supercomputer, or other automated tools deducts credits at standard rates. To generate on a model where your plan includes Unlimited access without spending credits, do it on the web at higgsfield.ai.
+
+## What can I do through MCP?
+
+- Image and video generation across the Higgsfield model lineup, with results saved to your Assets.
+- Marketing Studio: paste a product link and get ready video ads built on a set of presets.
+- Ad Multiplier: turn a reference ad and your product or character images into new versions of the same ad with a different product, location, hook, or CTA.
+- Genjutsu: Motion Transfer, Object Swap, and Restyle for video.
+- Upscale: raise the resolution and quality of your images and videos. How Upscale works on the website is covered in How do I use Upscale?
+- Soul characters: train a character from photos and reuse it across generations.
+- Higgsfield Audio and credit balance checks.
+- Asset Library: browse your past generations and use them as references.
+
+For the full list of operations and how to phrase requests to your agent, see How do I connect Higgsfield to Claude, ChatGPT, or another AI agent?
+
+## Got any questions left?
+
+Do I need a separate API key to use Higgsfield MCP?
+
+No. MCP connects through OAuth authorization, no API key is needed. API keys belong to the Higgsfield API, a separate developer product. See What is the Higgsfield API, and how do I get started?
+
+I have Unlimited access to a model, but MCP charged credits for it. Is that a bug?
+
+No, that's expected. Unlimited access and free generations apply only on higgsfield.ai, so generating through MCP always uses credits at standard rates.
+
+Does MCP work in other agents besides Claude?
+
+Yes. Any MCP-compatible agent can connect using the same server URL: https://mcp.higgsfield.ai/mcp. In ChatGPT, use the official Higgsfield Plugin instead: see How do I connect Higgsfield to Claude, ChatGPT, or another AI agent? Third-party agents are governed by their own terms, and you're responsible for how they use your Higgsfield account.
+
+Where do my MCP generations appear?
+
+In your Assets on higgsfield.ai, tagged with the MCP source. For details and troubleshooting, see How do I connect Higgsfield to Claude, ChatGPT, or another AI agent?
+
+Share Feedback
+
+Was this article helpful?
+
+Yes No
+
+## Related articles
+
+- What is the Higgsfield API, and how do I get started?A developer API with 50+ generation models and pay-as-you-go billing in US dollars.
+- How do I access Higgsfield via CLI?Connect coding agents to Higgsfield via CLI and Skills, no API key required.
+- What external integrations does Higgsfield support?See every official Higgsfield plugin, from Figma to DaVinci Resolve, and what each offers.
+
+by Higgsfield
+
+Contents
+
+```json
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"Higgsfield","url":"https://higgsfield.ai/","logo":{"@type":"ImageObject","name":"Higgsfield logo","url":"https://higgsfield.ai/icon.png"},"sameAs":["https://x.com/higgsfield","https://www.instagram.com/higgsfield.ai/","https://www.tiktok.com/@higgsfield.ai90","https://discord.com/invite/higgsfield","https://www.linkedin.com/company/higgsfield/"],"@id":"https://higgsfield.ai/#organization"},{"@type":"WebPage","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp","name":"What is Higgsfield MCP, and how is it different from the web?","description":"Learn what Higgsfield MCP is, how it connects to AI agents, and why it always deducts credits unlike generating on the website.","breadcrumb":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp#breadcrumb"},"publisher":{"@id":"https://higgsfield.ai/#organization"},"url":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp"},{"@type":"BreadcrumbList","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp#breadcrumb","itemListElement":[{"@type":"ListItem","item":"https://higgsfield.ai/creator-hub/help-center","name":"Help Center","position":1},{"@type":"ListItem","item":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp","name":"What is Higgsfield MCP, and how is it different from the web?","position":2}]},{"@type":"TechArticle","@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp#article","author":{"@id":"https://higgsfield.ai/#organization"},"dateModified":"2026-11-18T21:08:50Z","datePublished":"2026-08-01T19:17:08Z","description":"Learn what Higgsfield MCP is, how it connects to AI agents, and why it always deducts credits unlike generating on the website.","headline":"What is Higgsfield MCP, and how is it different from the web?","mainEntityOfPage":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp"},"publisher":{"@id":"https://higgsfield.ai/#organization"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do I need a separate API key to use Higgsfield MCP?","acceptedAnswer":{"@type":"Answer","text":"No. MCP connects through OAuth authorization, no API key is needed. API keys belong to the Higgsfield API, a separate developer product. See What is the Higgsfield API, and how do I get started?"}},{"@type":"Question","name":"I have Unlimited access to a model, but MCP charged credits for it. Is that a bug?","acceptedAnswer":{"@type":"Answer","text":"No, that's expected. Unlimited access and free generations apply only on higgsfield.ai, so generating through MCP always uses credits at standard rates."}},{"@type":"Question","name":"Does MCP work in other agents besides Claude?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any MCP-compatible agent can connect using the same server URL: https://mcp.higgsfield.ai/mcp. In ChatGPT, use the official Higgsfield Plugin instead: see How do I connect Higgsfield to Claude, ChatGPT, or another AI agent? Third-party agents are governed by their own terms, and you're responsible for how they use your Higgsfield account."}},{"@type":"Question","name":"Where do my MCP generations appear?","acceptedAnswer":{"@type":"Answer","text":"In your Assets on higgsfield.ai, tagged with the MCP source. For details and troubleshooting, see How do I connect Higgsfield to Claude, ChatGPT, or another AI agent?"}}],"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp#faq","isPartOf":{"@id":"https://higgsfield.ai/creator-hub/help-center/integrations/what-is-higgsfield-mcp"}}]}
+
+```

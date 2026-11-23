@@ -1,0 +1,627 @@
+https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp
+
+Snowflake-managed MCP server | Snowflake Documentation
+
+# Snowflake-managed MCP server¶
+
+## Overview¶
+
+Model Context Protocol (MCP) is an open-source standard that lets AI agents securely interact with business applications and external data systems, such as databases and content repositories. MCP lets enterprise businesses reduce integration challenges and quickly deliver outcomes from models. Since its launch, MCP has become foundational for agentic applications, providing a consistent and secure mechanism for invoking tools and retrieving data.
+
+The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts without needing to deploy separate infrastructure. You can configure the MCP server to serve Cortex Analyst, Cortex Search, and Cortex Agents as tools, along with custom tools and SQL executions on the standards-based interface. MCP clients discover and invoke these tools, and retrieve data required for the application. With managed MCP servers on Snowflake, you can build scalable enterprise-grade applications while maintaining access and privacy controls. The MCP server on Snowflake provides:
+
+- Standardized integration: Unified interface for tool discovery and invocation, in compliance with the rapidly evolving standards.
+- Comprehensive authentication: Snowflake OAuth by default, with optional External OAuth so MCP clients can authenticate against your organization’s identity provider.
+- Robust governance: role-based access control (RBAC) for the MCP server and tools to manage tool discovery and invocation.
+
+For information about the MCP lifecycle, see Lifecycle. For an example of an MCP implementation, see the Getting Started with Managed Snowflake MCP Server Quickstart.
+
+The Cortex AI Cookbook has recipes that build on the managed MCP server:
+
+- Snowflake-managed MCP or the Cortex Agents REST API: choose between MCP and the REST API, with identity, grant, topology, and rollout practices for MCP servers. Start here.
+- Long-running Cortex Agent runs over managed MCP: keep agent runs inside an MCP client’s per-call time limit.
+- LangChain agents on Cortex AI Gateway with MCP tools and traces: connect an external agent framework to an MCP server with a programmatic access token.
+
+For information about sharing MCP servers with other accounts, see Share Snowflake-managed MCP servers.
+
+## MCP server security recommendations¶
+
+Important
+
+When you configure hostnames for MCP server connections, use hyphens (`-`) instead of underscores (`_`). MCP servers have connection issues with hostnames containing underscores. For an example, see MCP server URL.
+
+Using multiple MCP servers without verifying tools and descriptions could lead to vulnerabilities such as tool poisoning or tool shadowing. Snowflake recommends verifying third-party MCP servers before using them. This includes any MCP server from another Snowflake user or account. Verify all tools offered by third-party MCP servers.
+
+We recommend using OAuth as the authentication method. Using hardcoded tokens can lead to token leakage.
+
+When using a Programmatic Access Token (PAT), set it to use the least-privileged role allowed to work with MCP. This will help prevent leaking a secret with access to a highly-privileged role.
+
+Configure proper permissions for the MCP server and tools following the least-privilege principle. Access to the MCP Server does not give access to the tools. Permission needs to be granted for each tool.
+
+Tool results leave Snowflake. The answer, any data it contains, generated SQL, and citations go to the MCP client and, through the client, to its model provider, under that party’s terms. A tool returns only what the calling role can read, so decide what each tool may return before you expose it.
+
+Avoid configurations that can create recursive loops. For example, an external client calling a Cortex Agent tool through MCP, which in turn invokes another MCP server that calls back into a Cortex Agent, can produce expensive, unbounded loops. Snowflake enforces a maximum recursion depth of 10 invocations. Ensure your agent and tool configurations don’t create circular invocation paths.
+
+## Create an MCP server object¶
+
+Create an object, specifying the tools and other metadata. MCP clients that connect with the server, after requisite authentication, are able to discover and invoke these tools.
+
+1. Navigate to the database and schema where you want to create the MCP server.
+2. Create the MCP server by using the following syntax: 
+
+Copy code
+
+```
+CREATE [ OR REPLACE ] MCP SERVER [ IF NOT EXISTS ] <server_name>
+  FROM SPECIFICATION $$ <specification_yaml> $$;
+
+```
+
+For business data applications that require governed orchestration, Snowflake recommends exposing a Cortex Agent as the client-facing MCP tool. Configure the agent with the Cortex Analyst, Cortex Search, and custom tools that it needs, and then expose the agent through the MCP server. This configuration gives the external MCP client one governed interface and lets the agent select the appropriate resources for each request.
+
+The following example exposes only a Cortex Agent:
+
+```
+CREATE OR REPLACE MCP SERVER <database_name>.<schema_name>.<server_name>
+  FROM SPECIFICATION $$
+  tools:
+    - title: "Governed business data agent"
+      name: "business_data_agent"
+      type: "CORTEX_AGENT_RUN"
+      identifier: "<database_name>.<schema_name>.<agent_name>"
+      description: "Use this agent for governed business data questions."
+  $$;
+
+```
+
+When an MCP client sends a question, the client selects the agent based on its name and description. The MCP server passes the question to the agent. The agent then selects and orchestrates its configured Cortex Analyst, Cortex Search, or custom tools and returns the response to the client.
+
+Use precise, domain-specific names and descriptions when you expose multiple agents. This information helps the MCP client select the correct agent.
+
+Expose Cortex Analyst or Cortex Search directly when you want the external MCP client to select those resources independently. A directly exposed Cortex Analyst tool generates SQL and returns the statement to the client. A SQL execution tool runs queries without Cortex Agent orchestration.
+
+### Configure tool types¶
+
+Snowflake currently supports the following tool types:
+
+- CORTEX_AGENT_RUN: Cortex Agent tool
+- CODING_AGENT: Coding Agent tool, with no stored agent object. Snowflake adds `code_toolset_all` on every run
+- CORTEX_SEARCH_SERVICE_QUERY: Cortex Search Service tool
+- CORTEX_ANALYST_MESSAGE: Cortex Analyst tool
+- SYSTEM_EXECUTE_SQL: SQL execution
+- GENERIC: tool for UDFs and stored procedures
+
+#### Configure tool annotations¶
+
+For `GENERIC` and `CORTEX_AGENT_RUN` tools, you can override the default MCP tool annotations that Snowflake returns to clients. These hints let clients distinguish tools that are read-only, destructive, idempotent, or able to interact with external entities.
+
+Add an `annotations` object to the tool definition and specify any of the following Boolean fields:
+
+- `readOnlyHint`: The tool doesn’t modify its environment.
+- `destructiveHint`: The tool might perform destructive updates. This hint applies only when `readOnlyHint` is `false`.
+- `idempotentHint`: Repeated calls with the same arguments have the same effect as one call.
+- `openWorldHint`: The tool might interact with external entities.
+
+You can omit fields that you don’t want to override. By default, `GENERIC` and `CORTEX_AGENT_RUN` tools use `readOnlyHint: false`, `destructiveHint: true`, `idempotentHint: false`, and `openWorldHint: true`.
+
+Important
+
+Tool annotations are client-facing hints, not security controls. Snowflake doesn’t validate that a tool behaves as its annotations claim. Use RBAC and least-privilege access to control the operations that the underlying UDF, stored procedure, or Cortex Agent can perform.
+
+The following examples show how to configure different tool types:
+
+For the Agent tool, your client passes a message to the agent. The agent processes the request and returns a response. Use the following code to specify the tool configuration.
+
+```
+tools:
+  - title: "Governed business data agent"
+    name: "business_data_agent"
+    type: "CORTEX_AGENT_RUN"
+    identifier: "<database_name>.<schema_name>.<agent_name>"
+    description: "Answers governed business data questions by using configured Cortex Analyst and Cortex Search resources."
+    annotations:
+      openWorldHint: false
+
+```
+
+The full agent tool response is available to MCP clients. See `content_cel_filter` to learn how clients can control which parts they retrieve.
+
+To route questions across several agents from one tool, set `identifier` to a router agent or a Snowflake CoWork profile. A profile is a router agent, so both work the same way. See Route questions between agents with the agent router and Call the profile from an MCP client.
+
+A coding agent tool runs a Cortex coding agent without a stored agent object. Add a tool with type `CODING_AGENT` to the MCP server specification. Snowflake adds the `code_toolset_all` tool on every run. That tool gives the agent a managed sandbox where it can write and run code. The sandbox stays attached to the conversation thread. See Coding Agent.
+
+Omit `identifier`. There is no stored agent to point at.
+
+`config` is optional. It can include any field of the Cortex Agents run request, such as `model`, `instructions`, `tools`, `tool_resources`, and `skills`.
+
+You can put other tools in `config`. Snowflake appends `code_toolset_all` after those tools. Do not also add `code_execution`. A run can include `code_toolset_all` or `code_execution`, but not both.
+
+The appended tool uses the default permission policy, `always_ask`. A state-modifying tool such as `write`, `edit`, or `bash` then waits for approval, and the MCP call ends before that tool runs. Set `tool_resources.code_toolset_all.permission_policy.type` to `always_allow` when the call should run those tools in one request. `always_allow` removes the approval gate: the agent runs any command and modifies any resource its role can reach. Use it only in a trusted automation. See Sandbox permission policy. To let the caller answer the prompt instead, see Answer a permission prompt.
+
+```
+tools:
+  - title: "Coding agent"
+    name: "ask_coding_agent"
+    type: "CODING_AGENT"
+    description: "Ask the coding agent. code_toolset_all gives the agent a managed sandbox where it can write and run code. That sandbox stays attached to the conversation thread."
+    config:
+      model: "claude-sonnet-4-6"
+      instructions:
+        response: "Write and run code when that answers the question."
+      tool_resources:
+        code_toolset_all:
+          permission_policy:
+            type: always_allow
+
+```
+
+Using the Analyst tool, your client can generate SQL from natural language text. Use the following code to specify the tool configuration.
+
+The Snowflake-managed MCP server only supports using semantic views with Cortex Analyst. It does not support semantic models.
+
+```
+tools:
+  - name: "revenue-semantic-view"
+    type: "CORTEX_ANALYST_MESSAGE"
+    identifier: "database1.schema1.Semantic_View_1"
+    description: "Semantic view for all revenue tables"
+    title: "Semantic view for revenue"
+
+```
+
+Using the Search tool, your client can perform unstructured search on its data.
+
+```
+tools:
+  - name: "product-search"
+    type: "CORTEX_SEARCH_SERVICE_QUERY"
+    identifier: "database1.schema1.Cortex_Search_Service1"
+    description: "cortex search service for all products"
+    title: "Product Search"
+
+```
+
+For the SQL execution tool, your client can execute SQL queries on Snowflake. You can optionally configure the following options:
+
+- `read_only`: When set to `true`, only read operations (SELECT queries) are allowed. Defaults to `true`. If the `CORTEX_MCP_SERVER_FORCE_SQL_EXEC_READ_ONLY` account parameter is set to `TRUE`, the SQL execution tool is always read-only, regardless of this setting.
+- `query_timeout`: Maximum time in seconds for query execution.
+- `warehouse`: The warehouse to use for query execution. If not specified, the default warehouse is used.
+
+Snowflake generally recommends exposing a Cortex Agent as the only client-facing tool on a given MCP server used for governed business questions. Exposing `SYSTEM_EXECUTE_SQL` on the same server allows the MCP client to bypass the agent’s semantic views, verified queries, and orchestration; if direct SQL is required, expose it through a separate MCP server with a dedicated least-privileged role.
+
+Use the following code to specify the tool configuration:
+
+```
+tools:
+  - title: "SQL Execution Tool"
+    name: "sql_exec_tool"
+    type: "SYSTEM_EXECUTE_SQL"
+    description: "A tool to execute SQL queries against the connected Snowflake database."
+    config:
+      read_only: true
+      query_timeout: 600
+      warehouse: "<warehouse_name>"
+
+```
+
+For your custom tools, you must provide the user-defined function (UDF) or stored procedure signature in the tool configuration. The custom tool enables you to invoke UDFs and stored procedures as tools through the MCP server.
+
+You can specify the following in the tool configuration:
+
+- `type`: `function` for UDF, `procedure` for stored procedure
+- `warehouse`: The warehouse to use. If you don’t specify a warehouse, the default warehouse is used.
+- `query_timeout`: Maximum time in seconds for tool execution.
+- `input_schema`: Corresponds to the function signature.
+
+```
+tools:
+  - name: "my_custom_tool"
+    identifier: "db.schema.my_function"
+    type: "GENERIC"
+    description: "Custom tool description"
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    config:
+      type: "function"
+      query_timeout: 120
+      warehouse: "WAREHOUSE"
+      input_schema:
+        type: "object"
+        properties:
+          query:
+            type: "string"
+
+```
+
+Use the following examples to create and configure custom tools using UDFs and stored procedures:
+
+The following examples demonstrate creating UDFs that can be used as custom tools:
+
+```
+-- create a simple udf
+CREATE OR REPLACE FUNCTION MULTIPLY_BY_TEN(x FLOAT)
+RETURNS FLOAT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+HANDLER = 'multiply_by_ten'
+AS
+$$
+def multiply_by_ten(x: float) -> float:
+  return x * 10
+$$;
+
+SHOW FUNCTIONS LIKE 'MULTIPLY_BY_TEN';
+
+-- test return json/variant
+CREATE OR REPLACE FUNCTION CALCULATE_PRODUCT_AND_SUM(x FLOAT, y FLOAT)
+RETURNS VARIANT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+HANDLER = 'calculate_values'
+AS
+$$
+import json
+
+def calculate_values(x: float, y: float) -> dict:
+  """
+  Calculates the product and sum of two numbers and returns them in a dictionary.
+  The dictionary is converted to a VARIANT (JSON) in the SQL return.
+  """
+  product = x * y
+  sum_val = x + y
+
+  return {
+      "product": product,
+      "sum": sum_val
+  }
+$$;
+
+-- test return list/array
+CREATE OR REPLACE FUNCTION GET_NUMBERS_IN_RANGE(x FLOAT, y FLOAT)
+RETURNS ARRAY -- Use ARRAY to explicitly state a list is being returned
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+HANDLER = 'get_numbers'
+AS
+$$
+def get_numbers(x: float, y: float) -> list:
+  """
+  Returns a list of integers between x (exclusive) and y (inclusive).
+  Assumes x < y.
+  """
+  # Ensure x and y are treated as integers for range generation
+  start = int(x) + 1
+  end = int(y) + 1 # range() is exclusive on the stop value
+
+  # Use a list comprehension to generate the numbers
+  # The Python list will be converted to a Snowflake ARRAY.
+  return list(range(start, end))
+$$;
+
+```
+
+The following examples demonstrate creating stored procedures that can be used as custom tools:
+
+```
+-- create a simple stored procedure
+CREATE OR REPLACE PROCEDURE MULTIPLY_BY_TEN_SP(x FLOAT)
+RETURNS FLOAT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'multiply_by_ten'
+AS
+$$
+# The handler logic is identical to the UDF for a scalar return
+def multiply_by_ten(x: float) -> float:
+      return x * 10
+$$;
+
+-- test return json/variant
+CREATE OR REPLACE PROCEDURE CALCULATE_VALUES_SP(x FLOAT, y FLOAT)
+RETURNS VARIANT
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'calculate_values'
+AS
+$$
+# The handler logic is identical to the UDF for a VARIANT return
+def calculate_values(x: float, y: float) -> dict:
+      """
+      Calculates the product and sum of two numbers and returns them in a dictionary.
+      The dictionary is converted to a VARIANT (JSON) in the SQL return.
+      """
+      product = x * y
+      sum_val = x + y
+
+      return {
+          "product": product,
+          "sum": sum_val
+      }
+$$;
+
+-- test return list/array
+CREATE OR REPLACE PROCEDURE GET_NUMBERS_SP(x FLOAT, y FLOAT)
+RETURNS ARRAY
+LANGUAGE PYTHON
+RUNTIME_VERSION = '3.13'
+PACKAGES = ('snowflake-snowpark-python')
+HANDLER = 'get_numbers'
+AS
+$$
+def get_numbers(x: float, y: float) -> list:
+      """
+      Returns a list of integers between x (exclusive) and y (inclusive).
+      The Python list will be converted to a Snowflake ARRAY.
+      """
+      # Ensure x and y are treated as integers for range generation
+      start = int(x) + 1
+      end = int(y) + 1 # range() is exclusive on the stop value
+
+      # Use a list comprehension to generate the numbers
+      return list(range(start, end))
+$$;
+
+```
+
+The following examples demonstrate configuring custom tools for UDFs and stored procedures:
+
+```
+CREATE MCP SERVER my_mcp_server
+  FROM SPECIFICATION $$
+    tools:
+      - title: "Custom Tool 1"
+        identifier: "EXAMPLE_DATABASE.AGENTS.MULTIPLY_BY_TEN"
+        name: "multiply_by_ten"
+        type: "GENERIC"
+        description: "Multiplies input value by ten and returns the result."
+        config:
+          type: "function"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "A number to be multiplied by ten"
+                type: "number"
+      - title: "Custom Tool 2"
+        identifier: "EXAMPLE_DATABASE.AGENTS.CALCULATE_PRODUCT_AND_SUM"
+        name: "calculate_product_and_sum"
+        type: "GENERIC"
+        description: "Calculates the product and sum of two numbers and returns them in a JSON object."
+        config:
+          type: "function"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "First number"
+                type: "number"
+              y:
+                description: "Second number"
+                type: "number"
+      - title: "Custom Tool 3"
+        identifier: "EXAMPLE_DATABASE.AGENTS.GET_NUMBERS_IN_RANGE"
+        name: "get_numbers_in_range"
+        type: "GENERIC"
+        description: "Returns a list of integers between two numbers."
+        config:
+          type: "function"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "Start number (exclusive)"
+                type: "number"
+              y:
+                description: "End number (inclusive)"
+                type: "number"
+      - title: "Custom Tool 4"
+        identifier: "EXAMPLE_DATABASE.AGENTS.MULTIPLY_BY_TEN_SP"
+        name: "multiply_by_ten_sp"
+        type: "GENERIC"
+        description: "Multiplies input value by ten and returns the result."
+        config:
+          type: "procedure"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "A number to be multiplied by ten"
+                type: "number"
+      - title: "Custom Tool 5"
+        identifier: "EXAMPLE_DATABASE.AGENTS.CALCULATE_PRODUCT_AND_SUM_SP"
+        name: "calculate_product_and_sum_sp"
+        type: "GENERIC"
+        description: "Calculates the product and sum of two numbers and returns them in a JSON object."
+        config:
+          type: "procedure"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "First number"
+                type: "number"
+              y:
+                description: "Second number"
+                type: "number"
+      - title: "Custom Tool 6"
+        identifier: "EXAMPLE_DATABASE.AGENTS.GET_NUMBERS_IN_RANGE_SP"
+        name: "get_numbers_in_range_sp"
+        type: "GENERIC"
+        description: "Returns a list of integers between two numbers."
+        config:
+          type: "procedure"
+          warehouse: "COMPUTE_SERVICE_WAREHOUSE"
+          input_schema:
+            type: "object"
+            properties:
+              x:
+                description: "Start number (exclusive)"
+                type: "number"
+              y:
+                description: "End number (inclusive)"
+                type: "number"
+  $$;
+
+```
+
+### Serve every agent the caller can use¶
+
+Use `selection: "all"` to let the MCP client choose from every agent the user can access, up to 50 per user. New agents appear as soon as you grant USAGE on them, with no change to the server. Because grants alone decide which agents each user sees, grant USAGE on an agent only to the roles that should use it from MCP clients. To choose which agents are offered, or to write their tool names and descriptions, list them in `tools` instead.
+
+To serve every Cortex Agent that the caller’s role can use, without listing each agent in `tools`, add a `tool_config` entry to the specification:
+
+```
+CREATE OR REPLACE MCP SERVER <database_name>.<schema_name>.<server_name>
+  FROM SPECIFICATION $$
+  tool_config:
+    - type: "CORTEX_AGENT_RUN"
+      selection: "all"
+  $$;
+
+```
+
+On each `tools/list` request, Snowflake generates one `CORTEX_AGENT_RUN` tool for each active Cortex Agent in the account that the caller’s role has the USAGE privilege on. Temporary agents aren’t included. Snowflake checks privileges again on every request, so a granted or revoked agent shows up on the client’s next `tools/list` request.
+
+Each generated tool is built from the agent:
+
+- Name:`sf_` followed by the lowercase database, schema, and agent names, separated by hyphens. For example, the agent `PROD_DB.AGENTS.SALES_AGENT` becomes `sf_prod_db-agents-sales_agent`.
+- Title: The display name from the agent’s profile, followed by the database and schema, for example `Sales Bot (PROD_DB.AGENTS)`. If the agent has no display name, the title is the agent name.
+- Description: The agent’s comment, followed by a line with the agent’s fully qualified name.
+- Arguments: The same arguments as an explicit agent tool. See Call an agent tool.
+
+Snowflake skips an agent in these cases:
+
+- The database, schema, or agent name must be enclosed in double quotes, or contains `$`.
+- The generated name would be longer than 64 characters.
+- An explicit tool in `tools` already runs the agent, or already uses the generated name.
+
+To serve a skipped agent, add it to `tools` as an explicit `CORTEX_AGENT_RUN` tool. Explicit tools are listed before generated tools. If the specification has a `tool_config` entry, explicit tool names can’t start with `sf_`.
+
+A server lists at most 50 generated tools for a caller, and explicit tools don’t count toward this limit. To find agents, Snowflake examines at most 1,000 agents per request. A client can still call a generated tool by name when the agent didn’t fit in the list. The `instructions` that the server returns from `initialize` and `server/discover` tell the client about the limit and the skipped agents.
+
+If the caller’s role can’t use the agent, or the agent doesn’t exist, a call to a generated tool name returns `Unknown tool: `.
+
+Help the client pick the right agent. The client chooses an agent based on each tool’s name and description. If a user can access several agents that cover similar topics, the client might not always pick the best one. To help it choose, give each agent a clear comment, or list a smaller set as explicit `CORTEX_AGENT_RUN` tools with your own names and descriptions.
+
+Set a comment on each agent. The generated description is the agent’s comment, followed by the line `Snowflake Cortex Agent: `. An agent without a comment has only that line, which doesn’t tell the client what the agent is for. In the comment, say what the agent answers, what data it covers, and when not to use it. Snowflake truncates a comment that is too long, so put the most important information first. The display name in the agent’s profile sets the title, not the description, so it doesn’t replace the comment.
+
+For example, the agent `SALES_DB.AGENTS.REVENUE_AGENT` has this comment:
+
+```
+Answers questions about quarterly revenue, bookings, and pipeline by region. Don't use it for support tickets or product usage.
+
+```
+
+The client receives this description:
+
+```
+Answers questions about quarterly revenue, bookings, and pipeline by region. Don't use it for support tickets or product usage.
+
+Snowflake Cortex Agent: SALES_DB.AGENTS.REVENUE_AGENT
+
+```
+
+For an MCP server in a Snowflake Native App, Snowflake generates tools only for agents that have the same owner as the MCP server. See Use Cortex Agents and MCP servers in an app.
+
+### Manage MCP server objects¶
+
+After you create an MCP server, use the following commands to inspect or remove it:
+
+1. To show MCP servers, use the following commands:
+
+Copy code
+
+```
+SHOW MCP SERVERS IN DATABASE <database_name>;
+SHOW MCP SERVERS IN SCHEMA <schema_name>;
+SHOW MCP SERVERS IN ACCOUNT;
+
+```
+
+The following shows the output of the command:
+
+```
+|               created_on               |       name        | database_name | schema_name |    owner     |           comment            |
+------------------------------------------+-------------------+---------------+-------------+--------------+------------------------------
+| Fri, 23 Jun 1967 07:00:00.123000 +0000 | TEST_MCP_SERVER   | TEST_DATABASE | TEST_SCHEMA | ACCOUNTADMIN | [NULL]                       |
+| Fri, 23 Jun 1967 07:00:00.123000 +0000 | TEST_MCP_SERVER_2 | TEST_DATABASE | TEST_SCHEMA | ACCOUNTADMIN | Test MCP server with comment |
+
+```
+2. To describe an MCP server, use the following command:
+
+Copy code
+
+```
+DESCRIBE MCP SERVER <server_name>;
+
+```
+
+The following shows the output of the command:
+
+```
+|      name       | database_name | schema_name |    owner     | comment |     server_spec        |               created_on               |
+------------------------------------------------------------------------------------------------------+-------------------------------------
+| TEST_MCP_SERVER | TEST_DATABASE | TEST_SCHEMA | ACCOUNTADMIN | [NULL]  | {"version":1,"tools":[{"name":"product-search","identifier":"db.schema.search_service","type":"CORTEX_SEARCH_SERVICE_QUERY"}]} | Fri, 23 Jun 1967 07:00:00.123000 +0000 |
+
+```
+3. To drop an MCP server, use the following command:
+
+Copy code
+
+```
+DROP MCP SERVER <server_name>;
+
+```
+
+There’s no ALTER command for a Snowflake-managed MCP server. To change its specification, run `CREATE OR REPLACE MCP SERVER` with the full new specification. Replacing a server drops every grant on it, so put the `GRANT USAGE ON MCP SERVER` statements in the same script as the `CREATE OR REPLACE` statement and run them together.
+
+## MCP server URL¶
+
+To connect to the MCP server, use the URL endpoint with the following format:
+
+```
+https://<account_url>/api/v2/databases/{database}/schemas/{schema}/mcp-servers/{name}
+
+```
+
+For information about formatting your account URL, see Account identifiers.
+
+Use the account URL that combines your organization name and account name. If the account name contains underscores, replace each underscore with a hyphen; Snowflake accepts this form automatically, and MCP clients have connection issues with hostnames that contain underscores. For example, for the organization `acme` and the account `marketing_test_account`:
+
+- Use: `https://acme-marketing-test-account.snowflakecomputing.com/api/v2/databases/ /schemas/ /mcp-servers/ `
+- Don’t use: `https://acme-marketing_test_account.snowflakecomputing.com/api/v2/databases/ /schemas/ /mcp-servers/ `
+
+## Access control¶
+
+### Required privileges¶
+
+You can use the following privileges to manage access to the MCP server and the underlying tools.
+
+| Privilege | Object | Description |
+| --- | --- | --- |
+| CREATE | MCP SERVER | Required to create the MCP server |
+| OWNERSHIP | MCP SERVER | Required to update the object configuration |
+| MODIFY | MCP SERVER | Provides drop and describe on the MCP server. Doesn’t allow `tools/list` or `tools/call`; those require USAGE |
+| USAGE | MCP SERVER | Required to connect with the MCP server, discover tools (`tools/list`), and call tools (`tools/call`) |
+| USAGE | Cortex Search Service | Required to invoke the Cortex Search tool in the MCP server |
+| SELECT | Semantic View | Required to invoke the Cortex Analyst tool in the MCP server |
+| USAGE | Cortex Agent | Required to invoke the Cortex Agent as a tool in the MCP server |
+| USAGE | User-defined function (UDF) or stored procedure | Required to invoke the UDF or stored procedure as a tool in the MCP server |
+
+### Access requirements for the SQL execution tool¶
+
+To invoke the SQL execution tool (`SYSTEM_EXECUTE_SQL`), the role used to connect to the MCP server needs the following, in addition to USAGE on the MCP server:
+
+- The SNOWFLAKE.CORTEX_USER or SNOWFLAKE.CORTEX_AGENT_USER database role. The SQL execution tool runs through the Cortex Agents API, so calls from a role that has neither database role fail with an authorization error.
+- USAGE on the warehouse that runs the queries. The tool uses the `warehouse` set in the tool configuration, or, if no warehouse is set, the default warehouse of the user who connects.
+- Privi

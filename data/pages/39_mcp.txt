@@ -1,0 +1,228 @@
+https://www.outstand.so/mcp/threads
+
+Model Context Protocol (MCP)
+
+# Threads MCP Server
+
+A Threads MCP server gives an AI agent tools for Threads, so a model can publish to your account instead of only drafting posts. Point Claude, Cursor, or any MCP client at Outstand's server and the agent can post text with optional media, chain a multi-post thread, repost, quote, reply to comments, and read views and engagement. Everything goes through Meta's official Threads API over an OAuth connection you approve once.
+
+Official Threads APIManaged Keys included$19/month, 3,000 posts included
+
+Get started free → View documentation
+
+Calling it from your own code instead of an agent? The same account works through our Threads API.
+
+server url
+
+`https://mcp.outstand.so/mcp` Copy
+
+```
+claude mcp add -t http \
+  -H "Authorization: Bearer ost_your_key" \
+  outstand https://mcp.outstand.so/mcp
+
+```
+
+Copy
+
+Works with Claude Desktop, Claude Code, Cursor, Windsurf, ChatGPT, and any MCP client.
+
+✓ Live since March 2026 - 33 tools across 12 platforms, $19/month, 3,000 posts included
+
+01 / Quick start
+
+## First post in minutes.
+
+The server URL is `https://mcp.outstand.so/mcp`. Paste it into your client and connect Threads.
+
+1. 01Create an Outstand account. There is no Meta developer app to register and no tokens to manage.
+2. 02Connect Threads through the hosted OAuth link.
+3. 03Add https://mcp.outstand.so/mcp to your MCP client using one of the snippets below.
+4. 04Ask your agent to post. For a thread, give it the posts in order and it publishes the first and chains the rest as replies.
+
+### Claude Code
+
+bash Copy
+
+```
+claude mcp add -t http \
+  -H "Authorization: Bearer ost_your_key" \
+  outstand https://mcp.outstand.so/mcp
+
+```
+
+### Claude Desktop
+
+json Copy
+
+```
+// claude_desktop_config.json
+{
+  "mcpServers": {
+    "outstand": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.outstand.so/mcp",
+        "--header",
+        "Authorization: Bearer ost_your_key"
+      ]
+    }
+  }
+}
+
+```
+
+### Cursor
+
+json Copy
+
+```
+// .cursor/mcp.json
+{
+  "mcpServers": {
+    "outstand": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.outstand.so/mcp",
+        "--header",
+        "Authorization: Bearer ost_your_key"
+      ]
+    }
+  }
+}
+
+```
+
+### Any client with a custom connector (ChatGPT, Claude web, Cursor)
+
+text Copy
+
+```
+# Add a custom connector in your client's settings and paste
+# this URL, then sign in once in the browser. No API key to copy.
+
+https://mcp.outstand.so/mcp
+
+```
+
+Works with Claude Desktop, Claude Code, Cursor, Windsurf, ChatGPT, and any other MCP client. Full client setup guide.
+
+02 / Tools
+
+## What your agent can do.
+
+The tools that apply to Threads, out of 33 on the server.
+
+- `create_post` Publish or schedule a Threads post, including a chained multi-post thread.
+- `repost_post` Repost a published post, or quote it with your own commentary.
+- `create_reply` Reply to a comment on a post published through Outstand.
+- `get_replies` Read replies on a post published through Outstand.
+- `get_post_analytics` Fetch views, likes, replies, reposts, and quotes for a published post.
+- `list_posts` List posts, filterable by account, status, and date range.
+- `get_post` Fetch a single post and its per-platform publish status.
+- `delete_post` Delete a post record in Outstand, cancelling it if it is still scheduled.
+- `request_media_upload_url` Start a media upload and get a signed URL for an image or video.
+- `confirm_media_upload` Confirm an upload once the bytes are transferred and get the public URL to attach.
+- `list_social_accounts` List connected social accounts, so the agent can find your Threads account.
+- `get_account_metrics` Fetch follower count and engagement for a connected Threads account.
+- `get_auth_url` Generate an OAuth URL to connect a new Threads account.
+- `get_account_usage` Read current billing-period post usage.
+
+03 / The landscape
+
+## Does Threads have an official MCP server?
+
+No. Meta does not publish an MCP server for Threads.
+
+Threads is also the thinnest ecosystem of any major network here. Where Instagram and X have dozens of community servers of varying quality, Threads has very few, and most of what exists is experimental. That cuts both ways: there is less to evaluate, and less risk of installing something abandoned, but there is also almost nothing to fall back on.
+
+Outstand's is a hosted server on Meta's official Threads API. You connect with a normal OAuth consent screen, the server calls the documented publishing endpoints, and Threads gets the same tool surface as every other network you post to. If you are building agent workflows on Threads now, being early is most of the point.
+
+04 / Comparison
+
+## Choosing a Threads MCP.
+
+Three realistic ways to give an agent Threads access, and what each one actually costs you.
+
+| Approach | Setup time | Auth | Reliability | Compliance |
+| --- | --- | --- | --- | --- |
+| Self-hosted open-source | Hours, and you are likely maintaining it yourself | Your own Meta app and Threads API tokens | Few maintained projects exist for Threads at all | Official API if it uses the Threads API rather than scraping |
+| Directory-listed community server | Varies | Usually your own Meta app credentials | Very thin ecosystem. Most listings are experiments | Check the source before trusting it with an account |
+| Hosted API-based (Outstand) | A few minutes: sign in, approve OAuth, paste the URL | Hosted OAuth link flow. Managed Keys included, no Meta app | Maintained against the official API, token refresh handled | Official Threads API. No scraping, no session cookies |
+
+05 / Auth
+
+## Authentication
+
+Connecting Threads is an OAuth link flow: Outstand opens Meta's consent screen, you approve, and the connection is done. There is no Meta developer app to register and no Threads API token to store yourself. Managed Keys are included on every plan and cover Threads.
+
+Your agent can start this itself by calling get_auth_url and handing you the link. Bring your own OAuth app if you want your brand on the consent screen, but nothing about Threads requires it.
+
+06 / Worth knowing
+
+## Threads specifics.
+
+- ✓Text-first: media is optional on Threads, unlike Instagram, so an agent can post text on its own.
+- ✓Real threads work here. Pass a sequence of posts and the first publishes as the root while the rest chain as replies to it.
+- ✓Reposts and quote posts both work through repost_post. Pass a quote to add commentary, or leave it out for a plain repost.
+- ✓Visibility can be restricted to specific countries, which the API supports per post.
+- ✓delete_remote_post really deletes on Threads. It needs the threads_delete scope, removes only content the connected account created, and Threads allows up to 100 deletes per day per account.
+
+07 / Scope
+
+## What this MCP doesn't do.
+
+This is a publishing server, not a listening one. It does not scrape the Threads feed, pull follower lists, or monitor other accounts, and there is nothing ads-related in scope. Analytics cover the posts you published through Outstand: views, likes, replies, reposts, and quotes.
+
+08 / FAQ
+
+## Frequently asked questions.
+
+### Does Threads have an official MCP server?
+
+No. Meta has not shipped an MCP server for Threads, and the third-party ecosystem is very thin compared with Instagram or X. Most of what exists is experimental, which is why a maintained hosted server on the official API is worth more here than on a crowded platform.
+
+### Can Claude post to Threads?
+
+Yes. Add https://mcp.outstand.so/mcp to Claude, connect your Threads account, and Claude can post, chain a thread, repost, quote, and reply. The same connector works in Cursor, Windsurf, ChatGPT, and any other MCP client.
+
+### Does it use the official Threads API?
+
+Yes. Every action goes through Meta's Threads API over an OAuth connection you approved. Nothing is scraped and no session cookie is involved.
+
+### Can it post images and videos?
+
+Yes, though media is optional on Threads rather than required. Upload an image or video, or pass a public URL, and the agent attaches it to the post. Text-only posts work fine too.
+
+### Can it post a real thread, not just one post?
+
+Yes. Give the agent the posts in order: the first publishes as the root post and the rest are chained as replies to it, which is how Threads models a thread natively. This is one of the few networks where chained multi-post publishing works end to end.
+
+### Can it schedule Threads posts?
+
+Yes. create_post takes a scheduled time, so an agent can queue a Threads post up to 30 days ahead. Scheduling runs in Outstand, and a scheduled post can be cancelled with delete_post before it goes out.
+
+### What does it cost?
+
+The MCP server is included with every Outstand account at no extra cost. Pricing is $19/month, 3,000 posts included, and posts published by an agent draw on the same quota as posts published through the REST API.
+
+Every claim on this page is restated, dated, and citable on the facts page.
+
+## Other platforms
+
+LinkedIn MCP server YouTube MCP server Instagram MCP server Facebook MCP server X (Twitter) MCP server TikTok MCP server Pinterest MCP server Bluesky MCP server
+
+## Connect Threads, publish your first post in minutes
+
+Sign in, approve Threads once, paste the server URL into your client. Then just ask your agent to post.
+
+Get started free → All MCP tools
+
+https://mcp.outstand.so/mcp
+
+```json
+{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.outstand.so"},{"@type":"ListItem","position":2,"name":"MCP Server","item":"https://www.outstand.so/mcp"},{"@type":"ListItem","position":3,"name":"Threads MCP Server","item":"https://www.outstand.so/mcp/threads"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Threads have an official MCP server?","acceptedAnswer":{"@type":"Answer","text":"No. Meta has not shipped an MCP server for Threads, and the third-party ecosystem is very thin compared with Instagram or X. Most of what exists is experimental, which is why a maintained hosted server on the official API is worth more here than on a crowded platform."}},{"@type":"Question","name":"Can Claude post to Threads?","acceptedAnswer":{"@type":"Answer","text":"Yes. Add https://mcp.outstand.so/mcp to Claude, connect your Threads account, and Claude can post, chain a thread, repost, quote, and reply. The same connector works in Cursor, Windsurf, ChatGPT, and any other MCP client."}},{"@type":"Question","name":"Does it use the official Threads API?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every action goes through Meta's Threads API over an OAuth connection you approved. Nothing is scraped and no session cookie is involved."}},{"@type":"Question","name":"Can it post images and videos?","acceptedAnswer":{"@type":"Answer","text":"Yes, though media is optional on Threads rather than required. Upload an image or video, or pass a public URL, and the agent attaches it to the post. Text-only posts work fine too."}},{"@type":"Question","name":"Can it post a real thread, not just one post?","acceptedAnswer":{"@type":"Answer","text":"Yes. Give the agent the posts in order: the first publishes as the root post and the rest are chained as replies to it, which is how Threads models a thread natively. This is one of the few networks where chained multi-post publishing works end to end."}},{"@type":"Question","name":"Can it schedule Threads posts?","acceptedAnswer":{"@type":"Answer","text":"Yes. create_post takes a scheduled time, so an agent can queue a Threads post up to 30 days ahead. Scheduling runs in Outstand, and a scheduled post can be cancelled with delete_post before it goes out."}},{"@type":"Question","name":"What does it cost?","acceptedAnswer":{"@type":"Answer","text":"The MCP server is included with every Outstand account at no extra cost. Pricing is $19/month, 3,000 posts included, and posts published by an agent draw on the same quota as posts published through the REST API."}}]}]}
+
+```

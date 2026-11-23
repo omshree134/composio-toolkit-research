@@ -1,0 +1,214 @@
+https://reducto.ai/pricing
+
+Reducto Pricing | Agentic document platform for parsing and extraction
+
+# Choose the plan that best fits your needs
+
+## Standard
+
+Pay-as-you-go for early-stage teams
+
+Free$150 in free usage
+
+Core Functionality
+
+- Parse API
+- Extract API
+- Edit API
+- Split API
+- 30+ Supported File Types
+- Up to 5 seats for Reducto Studio
+- No Page Limits
+
+After your free $150, standard rates apply.
+
+## Growth
+
+Built for scaling teams
+
+Custom pricing
+
+Everything in Standard, plus:
+
+- Volume Discounts
+- Zero Data Retention Agreement
+- Business Associate Agreement
+- Premium Rate Limits and Priority Requests
+- Priority Slack/Teams and Email Support
+- EU/AU Data Residency Endpoints
+- Unlimited Studio Seats
+
+## Enterprise
+
+Built for full control & custom needs
+
+Custom pricing
+
+Everything in Growth, plus:
+
+- VPC and On-Prem Deployments
+- Custom MSA
+- Custom SLA
+- Custom Rate Limits and Throughput
+- Custom Processing Pipelines
+- Dedicated On-Call Support
+- Role-Based Access Control
+- SSO and SAML Authentication
+
+Reducto Office SDK
+
+Open, edit and render Word documents in your own app. $0.10 per session, pay as you go. A session is one document open for up to 60 minutes.
+
+Migration credits
+
+If you're using another document processor, we'll give you up to $5,000 in credits to migrate your workload to Reducto.
+
+### Features list
+
+Choose the plan that best fits your needs
+
+#### Features list
+
+Choose the plan that best fits your needs
+
+#### Standard
+
+$150 in free credits included
+
+#### Growth
+
+Built for scaling teams
+
+#### Enterprise
+
+Built for full control & custom needs
+
+| Endpoint | Per 1,000 pages | | |
+| --- | --- | --- | --- |
+| r-1 Parse | $10 | Custom | Custom |
+| r-1 mini Parse | $1 | Custom | Custom |
+| Extract | $20 | Custom | Custom |
+| Deep Extract | $40 | Custom | Custom |
+| Split | $20 | Custom | Custom |
+| Deep Split | $40 | Custom | Custom |
+| Classify | $7.50 | Custom | Custom |
+| Edit | $60 or $15 for pre-filled pages | Custom | Custom |
+
+Custom rates for Growth and Enterprise include volume discounts per-endpoint. For full details on how Reducto measures API usage across products, see our documentation here.
+
+| Throughput | | | |
+| --- | --- | --- | --- |
+| Concurrent pages, r-1 | 500 | Up to 2,000 | Custom |
+| Concurrent pages, r-1 mini US limits. EU limits are half. Limits may vary by region. | 50 | Up to 1,000 | Custom |
+
+| Parsing |
+| --- |
+| Tables |
+| Forms |
+| Images |
+| Graphs |
+| Equation |
+| Advanced chart extraction |
+
+| Extraction |
+| --- |
+| Layout |
+| Bounding Box Support |
+| Structured Schema |
+| Extraction Citations |
+| Deep Extract |
+
+| Scanning |
+| --- |
+| Table Summarization |
+| Multilingual OCR |
+| Automatic Page Rotation |
+| Custom Webhooks |
+| Enrichment VLM |
+| Spreadsheet Table Clustering |
+| Document Splitting |
+
+| Exclusive | | | |
+| --- | --- | --- | --- |
+| Studio Seats | Up to 5 | Unlimited | Unlimited |
+| Volume Discounts | | | |
+| Premium Rate Limits and Priority Requests | | | |
+| Priority Slack/Teams and Email Support | | | |
+| EU/AU Data Residency Endpoints | | | |
+
+| Advanced Security |
+| --- |
+| Business Associate Agreement |
+| Zero Data Retention Agreement |
+| VPC and On-Prem Deployments |
+| Custom MSA |
+| Custom SLA |
+| Custom Rate Limits and Throughput |
+| Custom Processing Pipelines |
+| Dedicated On-Call Support |
+| Role-Based Access Control |
+| SSO and SAML Authentication |
+
+| File Type Support |
+| --- |
+| PDF & Image Formats PDF PNG JPEG/JPG GIF BMP TIFF PCX PPM APNG PSD CUR DCX FTEX PIXAR |
+| Spreadsheets CSV XLSX XLSM XLS XLTX XLTM QPW |
+| Presentations & Text Documents PPTX PPT DOCX DOC DOTX WPD TXT HTML |
+
+## Calculate your pricing
+
+Pick the endpoints you'll use and your expected monthly volume. We'll give you an estimate.
+
+10,000 pages / month
+
+0 1M
+
+on Batch processing (−20% on Parse and Extract)
+
+Processors Price per 1,000 pages
+
+on Parse r-1 Highest accuracy and lowest latency model for frontier performance.$10
+
+on Parse r-1 mini Industry-leading accuracy to cost ratio for parsing large workloads$1
+
+on Extract Schema-based JSON extraction, parsing included$20
+
+on Deep Extract Agentic extraction for the hardest documents$40
+
+on Split Split combined files into documents$20
+
+on Deep Split Agentic loop for near-perfect accuracy$40
+
+on Classify Categorize documents (first 5 pages)$7.5
+
+on Deep Classify Higher accuracy on difficult documents$15
+
+on Edit Standalone — can't be combined with other products. $15 / 1k for fully prefilled pages.$60
+
+Options on OCR data return (r-1 mini)$1 on Prompted blocks & custom regions$5 / 1k blocks
+
+Estimate for 10,000 pages / month
+
+Standard includes $150 of free usage, then list rates apply.
+
+Estimate at list rates, not a quote. Extract, Split, and Classify include parsing at no extra cost.
+
+## Free credits and startup pricing
+
+If you're an early-stage team building document processing into your product, our Startup Program gives you free credits and discounted Growth pricing to get to production faster.
+
+- Free credits to test production document workflows
+- Startup pricing on our Growth tier
+- Priority support and a dedicated Slack channel
+
+Startup Program Eligibility
+
+- Under $15M in funding
+- Under $3M in annual revenue
+- Under 50 employees
+
+## Questions, answered.
+
+### How does usage-based pricing work?
+
+Reducto uses per-product pricing based on what you process. Standard rates start at $1 per 1,000 pages for r-1 mini Parse, $10 per 1,000 pages for r-1 Parse, and $20 per 1,000 pages for Extract, with parsing included. Standard accounts include $150 in free credits. For current rates and usage details, see our Usage and Pricing.

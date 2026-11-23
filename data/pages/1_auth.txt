@@ -1,0 +1,150 @@
+https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm
+
+Authorization Through External Client Apps or Connected Apps and OAuth 2.0 | REST API Developer Guide | Salesforce Developers
+
+Skip Navigation
+
+## REST API Developer Guide
+
+![control-j is the search shortcut](https://developer.salesforce.com/ns-assets/control.svg)
+
+j
+
+Introduction to REST API
+
+About REST API
+
+Supported Editions and Required Permissions
+
+REST Resources and Requests
+
+REST API Architecture
+
+Authorization Through External Client Apps or Connected Apps and OAuth 2.0
+
+Send REST Requests with cURL
+
+Valid Date and DateTime Formats
+
+Status Codes and Error Responses
+
+API End-of-Life Policy
+
+Generating an OpenAPI 3.0 Document for sObjects REST API (Beta)
+
+DID THIS ARTICLE SOLVE YOUR ISSUE?Let us know so we can improve!
+
+Share your feedback
+
+Summer '26 (API version 67.0)
+
+Spring '26 (API version 66.0)
+
+Winter '26 (API version 65.0)
+
+Summer '25 (API version 64.0)
+
+Spring '25 (API version 63.0)
+
+Winter '25 (API version 62.0)
+
+Summer '24 (API version 61.0)
+
+Spring '24 (API version 60.0)
+
+Winter '24 (API version 59.0)
+
+Summer '23 (API version 58.0)
+
+Spring '23 (API version 57.0)
+
+Winter '23 (API version 56.0)
+
+Summer '22 (API version 55.0)
+
+Spring '22 (API version 54.0)
+
+Winter '22 (API version 53.0)
+
+Summer '21 (API version 52.0)
+
+Spring '21 (API version 51.0)
+
+Winter '21 (API version 50.0)
+
+Summer '20 (API version 49.0)
+
+Spring '20 (API version 48.0)
+
+Winter '20 (API version 47.0)
+
+Summer '19 (API version 46.0)
+
+Spring '19 (API version 45.0)
+
+Winter '19 (API version 44.0)
+
+Summer '18 (API version 43.0)
+
+Spring '18 (API version 42.0)
+
+Winter '18 (API version 41.0)
+
+Summer '17 (API version 40.0)
+
+Spring '17 (API version 39.0)
+
+Winter '17 (API version 38.0)
+
+Summer '16 (API version 37.0)
+
+Spring '16 (API version 36.0)
+
+Winter '16 (API version 35.0)
+
+Summer '15 (API version 34.0)
+
+Spring '15 (API version 33.0)
+
+Winter '15 (API version 32.0)
+
+Spring '14 (API version 30.0)
+
+Summer '26 (API version 67.0)
+
+Latest
+
+# Authorization Through External Client Apps or Connected Apps and OAuth 2.0
+
+For a client application to access REST API resources, it must be authorized as a safe visitor. To implement this authorization, use either an external client app or a connected app and an OAuth 2.0 authorization flow.
+
+Important
+
+Creating connected apps is restricted as of Spring ‘26. You can continue to use existing connected apps during and after Spring ‘26. However, we recommend using external client apps instead. If you must continue creating connected apps, contact Salesforce Support.
+
+See New connected apps can no longer be created in Spring ‘26 for more details.
+
+## Configure an External Client App or a Connected App
+
+Both external client apps and connected apps request access to REST API resources on behalf of the client application. For an external client app or connected app to request access, it must be integrated with your org’s REST API using the OAuth 2.0 protocol. OAuth 2.0 is an open protocol that authorizes secure data sharing between applications through the exchange of tokens.
+
+For instructions to configure an external client app, see Create an External Client App or Enable OAuth Settings for API Integration in Salesforce Help. For more information about connected apps, see Connected Apps in Salesforce Help.
+
+## Apply an OAuth Authorization Flow
+
+OAuth authorization flows grant a client app restricted access to REST API resources on a resource server. Each OAuth flow offers a different process for approving access to a client application, but in general the flows consist of three main steps.
+
+1. To initiate an authorization flow, a connected app on behalf of a client app requests access to a REST API resource.
+2. In response, an authorizing server grants access tokens to the external client app or connected app.
+3. A resource server validates these access tokens and approves access to the protected REST API resource.
+
+After reviewing and selecting an OAuth authorization flow, apply it to your external client app or connected app. For details about each supported flow, see OAuth Authorization Flows in Salesforce Help.
+
+## More Resources
+
+Salesforce offers the following resources to help you navigate connected apps and OAuth:
+
+- Salesforce Help: External Client Apps
+- Salesforce Help: Authorize Apps with OAuth
+- Salesforce Help: OpenID Connect Token Introspection
+- Trailhead: Build Integrations Using External Client Apps

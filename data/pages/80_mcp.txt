@@ -1,0 +1,165 @@
+https://support.getharvest.com/hc/en-us/articles/46293697226381-Harvest-MCP
+
+Harvest MCP – Harvest Help Center
+
+# Harvest MCP 
+
+The Harvest MCP (Model Context Protocol) connection lets you work with your Harvest data through an AI assistant, using plain language instead of clicking through the app. Once it's connected, you can start and stop timers, log hours, review your time, and check on project budgets just by asking — for example, "Start a timer on the Acme website project" or "How many hours did I track for Acme last week?"
+
+This article explains what the Harvest MCP can do, how to get set up, and what to keep in mind while you use it.
+
+## What is the MCP?
+
+MCP is an open standard that lets AI assistants connect securely to the tools you already use. The Harvest MCP is the connection that gives an MCP-compatible assistant — such as Claude — controlled access to your Harvest account, so it can carry out time tracking tasks on your behalf.
+
+You stay in charge throughout. The assistant acts as you, sees only what your Harvest role lets you see, and can only do the things your permissions allow.
+
+## Before you begin
+
+To use the Harvest MCP, you'll need:
+
+- An active Harvest account.
+- An MCP-compatible AI assistant or client (for example, the Claude desktop or web app).
+
+You connect the Harvest MCP from within your MCP client, then sign in to Harvest and authorise the connection when prompted. Once you've authorised it, the assistant can begin helping you with the tasks below.
+
+## Setting up the MCP
+
+For Claude:
+
+- Within Claude, navigate to Customize > Connectors > + > Add custom connector
+- Set the name equal to 'Harvest'
+- Set the Remote MCP server URL to: https://api.harvestapp.com/mcp
+- Click Add
+
+For Claude Code:
+
+- Use the command below
+
+```auto
+claude mcp add --transport http harvest --scope user https://api.harvestapp.com/mcp
+```
+
+For Cursor:
+
+- Navigate to Settings > Tools & MCPs > New MCP Server
+- Add the snippet from below
+
+```
+{
+  "mcpServers": {
+    "harvest": {
+      "url": "https://api.harvestapp.com/mcp"
+    }
+  }
+}
+```
+
+For ChatGPT:
+
+- Ensure Developer Mode is active: Navigate to Settings > Apps & Connectors > Advanced Settings and toggle on Developer Mode
+- Navigate to Settings > Apps > create a new app
+- Enter the link: https://api.harvestapp.com/mcp
+- Authenticate and save
+
+## What you can do
+
+### Track time as you work
+
+- Start a timer on any project and task, with optional notes.
+- Stop the timer that's currently running.
+- Check what's running at any moment, so you always know whether the clock is going.
+
+Time entries record start and end clock times, not just a total duration, so the assistant can tell you when work happened as well as how long it took. Starting a new timer will stop any timer you already have running for the same day, so you won't accidentally double-track. Timers running from a previous day aren't stopped automatically — in that case, just ask the assistant to stop the old timer before starting a new one.
+
+### Log, edit, and delete time entries
+
+- Log past time when you already know how long something took — handy for catching up at the end of the day or week.
+- Edit an existing entry to change the hours, notes, project, task, or date.
+- Delete a time entry you no longer need.
+- Review your time entries for any date range, or filter them by project.
+
+If you're an admin or manager, you can also log time on behalf of a teammate, as long as your role allows it.
+
+### Report on time, budgets, and utilization
+
+- Run a time report for a date range, grouped by project, by client, or by person. Each total is split into billable and non-billable hours, with overall totals — useful both for billing and for tracking utilization. You can optionally include teammates with zero hours so utilization figures stay complete.
+- Check a project's budget, including how much has been used and the billable rates that apply. The report tells you whether the budget is scoped to the current calendar month or to the whole life of the project, so the usage figure is never ambiguous.
+
+### Manage projects and clients
+
+- Create a project under an existing client, and update its settings — rename it or change its billing setup. When you change a bill rate, the assistant echoes back the rate it actually applied, so a dropped or mistyped rate is caught up front.
+- Archive a finished project, or browse and search your projects — filtered to active or archived, or searched by name or code.
+- Create, update, and browse clients to keep your client list current. You can find clients whether they're active or archived, or search them by name.
+
+### Manage tasks
+
+- Create, rename, or archive account-level tasks.
+- Attach a task to a project so time can be logged against it, or detach one you no longer need on that project.
+- Find tasks by name, including deactivated ones if you need them.
+
+### Manage your team and project assignments
+
+- See your team members across the account.
+- Read who's assigned to a project, along with their billable rates.
+- Assign or unassign teammates to and from a project, so the right people can track time against it.
+
+### Create and review invoices
+
+- Read your invoices — status, amounts, and full line items.
+- Create a draft invoice from scratch with line items you specify, or generate one automatically from uninvoiced billable time and expenses on the projects you choose.
+
+The assistant only ever creates draft invoices — reviewing and sending an invoice always happens in Harvest itself.
+
+### Read your invoices — status, amounts, and full line items. 
+
+Note that invoice payment records aren't exposed yet: payment-level notes (for example, a check number you record when marking an invoice paid) and the invoice PDF link aren't available through the MCP. To pull payments and their notes in the meantime, use the REST API: `GET /v2/invoices/:invoice_id/payments`. You can ask your assistant to submit feedback if you'd like these added.
+
+### Log and manage expenses
+
+- Log a new expense, and update an existing one.
+- Browse expense categories, and list or view the expenses already on your account.
+
+### Submit timesheets for approval
+
+- Submit a timesheet for approval over a date range, without leaving the assistant.
+
+### Check what your account allows
+
+The assistant can read your account's settings — for example, whether approvals are switched on, how time is rounded, and which features are enabled — and use that to validate a request before acting, rather than guessing.
+
+### Requesting new capabilities
+
+If you'd like to use the MCP for something that isn't currently possible, ask your AI to submit feedback and the Harvest team will consider it for a future update.
+
+## How permissions work
+
+The Harvest MCP respects the same permissions you already have in Harvest. A few things follow from that:
+
+- You can act on your own time entries, but you can't edit time that belongs to someone else.
+- Whether you can view another teammate's time depends on your role. If your role doesn't allow it, the request will simply be declined.
+- Money figures — such as budget amounts and costs — appear only if your role is allowed to see them.
+
+In short, the assistant can't do anything in Harvest that you couldn't do yourself.
+
+## Example prompts
+
+Here are a few ways you might phrase requests:
+
+- "Start a timer on Internal — Admin for answering emails."
+- "Stop my timer."
+- "Log 2.5 hours to the Acme redesign under Design for today."
+- "Change yesterday's 3 hours on Acme to 4 hours."
+- "Show me my time entries for last week."
+- "Give me a time report for May, grouped by client."
+- "How much of the Acme retainer budget have we used this month?"
+
+You don't need to phrase things in any particular way — describe what you want in your own words, and the assistant will work out which action to take.
+
+## Seeing an "Authorization failed" error? 
+
+This is usually a transient hiccup during the OAuth handshake rather than a real failure. Try connecting again — in most cases the second attempt succeeds. If it keeps failing, confirm the Harvest connection is still authorised in your MCP client, then contact us with a screenshot and the exact error.
+
+## Need a hand?
+
+If something isn't working as expected, your first stop is the MCP client you're using to make sure the Harvest connection is still authorised. If you have questions about your Harvest account or your permissions, contact us — we're always happy to help.

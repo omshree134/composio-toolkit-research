@@ -1,0 +1,177 @@
+https://www.hostsherlock.com/api/quickstart
+
+API Quickstart · HostSherlock
+
+# Your first check in five minutes.
+
+ Send one address. Get back whether it is deliverable, whether the domain has working mail, whether it is a disposable or role address, and a confidence score. Here is the whole path, from key to production, in five steps. 
+
+ An emailsherlock account A terminal & curl or an SDK About 5 minutes 
+
+Five steps · ~5 min
+
+ 1 Get an API key 2 Install the SDK 3 Run your first check 4 Read the result 5 Move to production 
+
+Need a key?
+
+Sign in and create one in your API keys settings. It is shown once. Start at step one.
+
+## Get an API key
+
+ Sign in and create a key in your API keys settings. The key is shown once and cannot be recovered, so copy it straight away. There are two key types: a sandbox key (prefix es_test_) returns deterministic fixtures and spends nothing, so you can build against it first; a live key (prefix es_live_) verifies real addresses. The free tier gives you 100 live verifies a month. See sandbox testing for the test addresses. 
+
+ Export it as an environment variable so it never touches your code. Every example below reads ES_KEY from the environment and sends it in the X-API-Key header. 
+
+ shell · ~/.zshrc Copy 
+
+```
+export ES_KEY="4f8c92a17b3d…"
+```
+
+ ! Never ship a key to the browser or commit it to git. A leaked key spends your credits. Keep it server-side and rotate it from the settings page if it is exposed. 
+
+02 Step
+
+## Install the SDK
+
+ Pick your language. Each SDK is a thin wrapper over one HTTPS endpoint, all open source. If you would rather not add a dependency, curl works everywhere and needs nothing. 
+
+ shell · npm Copy 
+
+```pane
+# node 18+ · ESM or CommonJS
+npm install @emailsherlock/node
+```
+
+```pane
+# python 3.9+
+pip install emailsherlock-sdk
+```
+
+```pane
+# go 1.21+
+go get github.com/Emailsherlock1/go
+```
+
+```pane
+# php 8.1+
+composer require emailsherlock/client
+```
+
+```pane
+# no SDK needed, curl is enough
+curl --version
+```
+
+## Run your first check
+
+ One address in, one result out, typically in under a second. The call on the right is complete and copy-paste ready. Swap the address for one of your own. 
+
+ The body is a single field, email. The response is one result object with the verdict and every signal behind it. The same shape comes back from the batch endpoint, one per address. 
+
+ shell Copy 
+
+```pane
+curl https://api.emailsherlock.com/v1/credits \
+  -H "X-API-Key: $ES_KEY"
+
+```
+
+```pane
+import { Emailsherlock } from '@emailsherlock/node';
+
+const es = new Emailsherlock(process.env.ES_KEY);
+
+const result = await es.credits({  });
+
+```
+
+```pane
+from emailsherlock import Emailsherlock
+
+es = Emailsherlock(api_key=os.environ["ES_KEY"])
+
+result = es.credits()
+
+```
+
+```pane
+import emailsherlock "github.com/Emailsherlock1/go"
+
+es := emailsherlock.New(os.Getenv("ES_KEY"))
+
+result, err := es.Credits(ctx, )
+
+```
+
+```pane
+<?php
+use Emailsherlock\Client;
+
+$es = new Client(getenv('ES_KEY'));
+
+$result = $es->credits([]);
+
+```
+
+Response 200 OK
+
+ application/json Copy 
+
+```
+{
+    "plan": "Free",
+    "sandbox": false
+}
+```
+
+## Read the result
+
+ The result field is the verdict. The booleans and the score are the signals behind it, so you can branch on whichever matters to your flow. 
+
+| email string The address you sent. |
+| --- |
+| result string The verdict for this address. One of valid invalid catch_all disposable role unknown. |
+| deliverable boolean · nullable Proven deliverability: true only after the mailbox accepted RCPT TO, false only when the address provably fails (bad syntax, no MX, hard reject). Null means unproven, not bad: disposable, role and catch_all short-circuit before the SMTP probe. |
+| reason string · nullable Why the pipeline decided. greylisted, smtp_timeout, smtp_unreachable, smtp_throttled, probe_suppressed, probe_budget_exhausted and verification_pending all leave the address unproven. smtp_throttled means our own per-MX rate limit refused the connection, so nothing was asked of the mail server and a retry a few minutes later usually gets an answer. probe_suppressed means we have undertaken not to open a connection to that target at all, so a retry returns the same thing until that changes; nothing was asked of the mail server, so the lookup is refunded. The one exception is a target on our curated trap registry (spam_trap_type = known_trap_domain), which is billed. Read spam_trap_type for that, not the decision object: a target our heuristic flagged (reputation_heuristic) comes back review + spam_trap just the same and is refunded. probe_budget_exhausted belongs to the anonymous web tool, which runs on a shared daily probe budget; an API key is never subject to it, so you will not see it here. Null on results cached before reasons existed. One of bad_syntax no_mx mailbox_accepts mailbox_not_found disposable_provider role_address catch_all_domain accept_all_provider greylisted smtp_timeout smtp_unreachable smtp_throttled probe_suppressed probe_budget_exhausted verification_pending blocked_domain spam_trap . |
+| mx boolean DNS found a mail route for the domain. This is a pure DNS answer, not a connection test: reachability of the host is never probed here. True also covers the RFC 5321 fallback where the domain publishes no MX at all and its A record acts as the implicit mail exchanger, so true is not proof that MX records exist. On a cached_recent result stored before this flag was recorded per address, true may be inferred from the presence of a stored mail host rather than observed, so read it together with reason when reason is no_mx. False means no MX and no A record, or that the check stopped before the DNS lookup (bad syntax, or a degraded response), so false is not proof that the domain cannot receive mail. |
+| mx_record string · nullable The primary mail exchanger resolved during this check. On the A-record fallback described under mx, this is the bare domain rather than a published MX host. Null when freshness is cached_recent, because the host list is not stored alongside the cached verdict, and null when nothing was resolved. A null here therefore does not contradict mx being true, and is not evidence that the domain has no mail route. |
+| disposable boolean Throwaway / temporary-mail provider. |
+| role boolean Role address such as info@ or sales@. |
+| catch_all boolean Host accepts mail for any local part. |
+| free_email boolean · nullable The domain is a freemail provider (gmail.com, web.de, ...). Null when the domain is not classified yet. |
+| relay boolean The address sits on a relay / forwarding / alias-masking service (SimpleLogin, Apple Hide My Email, Cloudflare Email Routing, ...). The address is deliverable and reaches a real person, it is just masked, so this never changes the verdict or decision. Use it to apply your own policy on masked senders. |
+| relay_provider string · nullable Name of the relay provider when relay is true, null otherwise. |
+| parked boolean The address is on a parked or for-sale domain. Informational only: it never changes the verdict, but a parked domain rarely runs a real mailbox. |
+| spam_trap boolean The mail host is a known or suspected spam trap. Informational only: it never changes the verdict, and it is never a hard block. But sending to a trap hurts your sender reputation, so the recommendation drops to review. See spam_trap_type for how it was identified. |
+| spam_trap_type string · nullable How the trap was identified: known_trap_domain (the mail host is on our curated trap registry) or reputation_heuristic (it matched a conservative parked + spam-list heuristic). Null when spam_trap is false. One of known_trap_domain reputation_heuristic . |
+| suggested_correction string · nullable A corrected address when the domain looks like a typo of a high-volume domain (gmial.com -> [email protected]). Null when nothing looks mistyped. Advisory only: it never changes the verdict, so show it as a "did you mean" hint and let the sender decide. |
+| smtp_diagnosis string · nullable Enhanced scan only: the granular mailbox state read from the SMTP reply (mailbox_full, mailbox_disabled, mailbox_not_found, greylist_deferred, policy_block, accepted). Null on Quick / Standard scans, which do not run the deep probe. Explains the verdict, never overrides it. One of accepted mailbox_full mailbox_disabled mailbox_not_found greylist_deferred policy_block . |
+| score number · nullable 0-1 confidence, higher is safer to send to. |
+| freshness string How recent the underlying data is. One of fresh cached_recent cached_stale_refreshed. |
+| checked_at string · nullable When the underlying verification ran (ISO 8601). On cached results this is the original check, not the request time. |
+| domain object · nullable Domain-level intelligence. Null when we hold no crawl data for the domain: either it has not been crawled yet, or it is itself a public suffix (co.uk, github.io, a dynamic-DNS root such as kozow.com), which we do not crawl as one domain because unrelated owners share it. |
+| decision object |
+| degraded boolean Email-Guard only: true when your monthly remote-decision quota is used up and the Verify API declined to run a remote check. The SDK falls back to its local checks (syntax + the bundled disposable list) until the quota resets at the start of next month. false on every normal response. See docs/decisions/email-guard.md. |
+
+ i Results are facts, not opinions. A role or catch_all address is not "bad". Whether it is safe enough to send to stays your call. Branch on result (stable enum) and score, and the X-Credits-Remaining header tells you what is left. 
+
+## Move to production
+
+ Your first call already hit the live API, so there is no key or endpoint to swap. Four things separate a demo from a production integration. 
+
+Scrub lists with `/v1/verify/jobs/{id}`
+
+Send up to 100 addresses in one call instead of looping single checks. Same result object, one per address.
+
+Watch your credits
+
+On any paid plan, verify spends no credits and is unlimited subject to fair use. Without a subscription, a free account gets a monthly allowance of standard verifies, tracked by X-Validations-Remaining. A single call past the allowance costs one credit. A batch spends what is left of the allowance on its first addresses and pays for the rest, one credit per address; when your credits cannot cover that you get a 402 and nothing is charged. A verify job on the free plan costs one credit per address from the start. Deep verify always spends credits, tracked by X-Probe-Credits-Remaining.
+
+Back off on `429`
+
+Read the Retry-After header and wait that many seconds rather than a fixed sleep. Every response also carries X-RateLimit-Reset.
+
+Keep the key server-side
+
+Read it from an environment variable, as every example here does. A missing or invalid key returns 401.

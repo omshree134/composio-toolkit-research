@@ -1,0 +1,95 @@
+https://github.com/partners/technology-partners
+
+GitHub Partner Program | Technology Partners · GitHub
+
+# Technology Partners
+
+Bring your solution into the workflows where developers build, secure, and ship software.
+
+## Build with GitHub
+
+Create integrations across the GitHub platform and bring your product into the workflows developers use every day.
+
+### Extend your product
+
+Connect your solution to GitHub through apps, GitHub Actions, APIs, security integrations, and MCP servers.
+
+### Reach more developers
+
+Make your integration discoverable to GitHub's global developer community and help shared customers build, secure, and ship software.
+
+## How to qualify
+
+### What we look for in a GitHub Technology Partner Program applicant
+
+![copilot head and cubes](https://images.ctfassets.net/8aevphvgewt8/6ozbNHKa6rn7zyJm4wi7Wi/63ee52935364116ce978fa704b0a1b71/harness-wallpaper.webp?fm=webp)
+
+What we look for in a GitHub Technology Partner Program applicant
+
+Is an established technology company with a commercially available product.
+
+Provides or plans to provide a GitHub integration that delivers clear value to shared customers.
+
+Has the technical resources to build, secure, support, and maintain the integration.
+
+Integration paths
+
+## Choose the integration model that fits your product and the experience you want to create.
+
+### GitHub Apps and Marketplace
+
+Build a GitHub App and make your solution discoverable through GitHub Marketplace.
+
+### GitHub Actions
+
+Automate build, test, security, deployment, and operational tasks in customer repositories.
+
+### MCP
+
+List your MCP server in the GitHub MCP Registry and make it available across supported GitHub experiences.
+
+### GitHub Advanced Security
+
+Connect your solution to code scanning, vulnerability management, security information and event management (SIEM), and security reporting workflows.
+
+### Secret scanning
+
+Help prevent credential leaks by joining GitHub's secret scanning partner program.
+
+## Technology Partner benefits
+
+### Technology Partner benefits 
+
+![Decorative background featuring the GitHub invertocat logo on a geometric cube.](https://images.ctfassets.net/8aevphvgewt8/NkXLATNf4pI6xG50kdP0a/d0420c49189313a2a8e4d7115e1f937e/67977d9dac0cf6bc4f8b12cd3a64c4867b87c2f1a9fffa39fc77255b7c0247c3-1920x1080.webp?fm=webp)
+
+### GitHub Enterprise Server licenses
+
+Request five complimentary licenses for integration development and testing.
+
+![Decorative background featuring the GitHub invertocat logo on a geometric cube.](https://images.ctfassets.net/8aevphvgewt8/NkXLATNf4pI6xG50kdP0a/d0420c49189313a2a8e4d7115e1f937e/67977d9dac0cf6bc4f8b12cd3a64c4867b87c2f1a9fffa39fc77255b7c0247c3-1920x1080.webp?fm=webp)
+
+### Partner branding
+
+Use approved GitHub partner branding to show your relationship with GitHub.
+
+![Decorative background featuring the GitHub invertocat logo on a geometric cube.](https://images.ctfassets.net/8aevphvgewt8/NkXLATNf4pI6xG50kdP0a/d0420c49189313a2a8e4d7115e1f937e/67977d9dac0cf6bc4f8b12cd3a64c4867b87c2f1a9fffa39fc77255b7c0247c3-1920x1080.webp?fm=webp)
+
+### Early access
+
+Join select beta and early access programs, build with new GitHub capabilities, and prepare for product launches.
+
+![Decorative background featuring the GitHub invertocat logo on a geometric cube.](https://images.ctfassets.net/8aevphvgewt8/NkXLATNf4pI6xG50kdP0a/d0420c49189313a2a8e4d7115e1f937e/67977d9dac0cf6bc4f8b12cd3a64c4867b87c2f1a9fffa39fc77255b7c0247c3-1920x1080.webp?fm=webp)
+
+### Partner events and recognition
+
+Connect with GitHub teams and other partners through webinars, Partner Kickoff, GitHub Universe experiences, and the Partner of the Year awards.
+
+“
+
+> Atlassian’s partnership with GitHub boosts developer productivity by bringing personalized context directly into their IDE through the GitHub Copilot extension.
+
+Sarah Hughes Head of Corporate Development & Product Partnerships, Atlassian
+
+### Join the GitHub Technology Partner Program
+
+Tell us about your business and start building with the world’s leading developer platform.

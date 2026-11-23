@@ -1,0 +1,15 @@
+https://docs.datadoghq.com/api/latest/authentication
+
+Authentication - Datadog API
+
+# Authentication
+
+All requests to Datadog’s API must be authenticated. Requests that write data require reporting access and require an `API key`. Requests that read data require full access and also require an `application key`.
+
+Note: All Datadog API clients are configured by default to consume Datadog US site APIs. If you are on the Datadog EU site, set the environment variable `DATADOG_HOST` to `https://api.datadoghq.eu` or override this value directly when creating your client.
+
+Manage your account’s API and application keys in Datadog, and see the API and Application Keys page in the documentation.
+
+## Validate API key→
+
+GET`https://api.datadoghq.com/api/v1/validate``https://api.us3.datadoghq.com/api/v1/validate``https://api.us5.datadoghq.com/api/v1/validate``https://api.datadoghq.eu/api/v1/validate``https://api.ap1.datadoghq.com/api/v1/validate``https://api.ap2.datadoghq.com/api/v1/validate``https://api.uk1.datadoghq.com/api/v1/validate``https://api.ddog-gov.com/api/v1/validate``https://api.us2.ddog-gov.com/api/v1/validate`

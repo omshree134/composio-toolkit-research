@@ -1,0 +1,48 @@
+https://open.larksuite.com/document/server-docs/getting-started/server-api-list
+
+Server API list - Server API - Documentation - Lark Developer
+
+# Server API list
+
+Server-side APIs can help you access and modify data in the Lark system. For how to call server-side APIs, please read: How to call server-side APIs
+
+- Unlimited: Core features including Authentication and Authorization, Event Subscription, and Contacts are free to use, regardless of your Lark plan.
+- Basic: This covers most Lark features. Usage is tallied, and heavy users may need to consider a higher-tier Lark plan to avoid restrictions.
+- Advanced: Pricing for these APIs is usage-based. To access them, you'll need to buy a dedicated quota package.
+- For all the details, read Policy Update: Adjusting API Call Limits for Custom Apps.
+
+| API name | Description | Billing type | Custom app | Store app |
+| --- | --- | --- | --- | --- |
+| ![](https://lf-package-sg.larksuitecdn.com/obj/lark-static-sgsaas/lark/open/doc/frontend/images/31dafaca1b39955beda5239fff26f1eb.svg) No data | | | | |
+
+| Contacts | | |
+| --- | --- | --- |
+| Obtain the Contacts permission scope GET /open-apis/contact/v3/scopes | This API is used to obtain the range of contacts data that an app is authorized to access, including the department list, user list, and user group list.If the access range is all employees, all the first-level departments of the company will be returned. Otherwise, the departments that the administrator selected when setting the access range (excluding sub-departments of selected departments) will be returned. | Unlimited |
+| Create a user POST /open-apis/contact/v3/users | This API is used to create a user in Contacts when a new employee is employed. After a user is created, only data within the data scope will be returned. For the relationship between data scopes and fields, refer to App scopes. | Unlimited |
+| Modify user information in part PATCH /open-apis/contact/v3/users/:user_id | This API is used to update a user's fields in Contacts. Parameters that are not specified will not be updated. | Unlimited |
+| Update UserID PATCH /open-apis/contact/v3/users/:user_id/update_user_id | - | Unlimited |
+| Obtain single user's information GET /open-apis/contact/v3/users/:user_id | This API is used to obtain the information of a single user in Contacts. | Unlimited |
+| Obtain multiple users' information GET /open-apis/contact/v3/users/batch | - | Unlimited |
+| Obtain the list of users directly under a department GET /open-apis/contact/v3/users/find_by_department | This API is used to obtain the list of users directly under a department based on the department ID. | Unlimited |
+| Obtain user ID via email or mobile number POST /open-apis/contact/v3/users/batch_get_id | This API is used to obtain user ID information via mobile number or email. The supported ID types are open_id, user_id, and union_id, which can be specified by using the query parameters. | Unlimited |
+| Delete User DELETE /open-apis/contact/v3/users/:user_id | This API is used to delete a user from Contacts when an employee is terminated. FAQs. | Unlimited |
+| Restore deleted users POST /open-apis/contact/v3/users/:user_id/resurrect | This API is used to restore deleted users (members who have left the organization). This API is applicable to custom apps only. Store apps are not authorized to send API requests. | Unlimited |
+| Fully Update User Information PUT /open-apis/contact/v3/users/:user_id | This API is used to update a user's fields in Contacts. FAQs. | Unlimited |
+| Add User Group POST /open-apis/contact/v3/group | This API is used to create a user group. Note that the app's contact scope must be "All employees" so as to create a user group. Click to learn about the range of contacts data that an app can access. | Unlimited |
+| Update User Group PATCH /open-apis/contact/v3/group/:group_id | - | Unlimited |
+| Get User Group GET /open-apis/contact/v3/group/:group_id | This API is used to query the basic information of a user group by user group ID. You can query a common user group or a dynamic user groupsMake sure that the app's contact scope includes the user group or is "All employees". Click to learn about the range of contacts data that an app can access. | Unlimited |
+| List User Group GET /open-apis/contact/v3/group/simplelist | This API is used to query the user group list of a company. You can query common user groups or dynamic user groups respectively.If the app's contact scope is "All employees", you can obtain all user groups in the company. If not, you can only obtain the user groups in the app's contact scope. Click to learn about the range of contacts data that an app can access. | Unlimited |
+| Delete User Group DELETE /open-apis/contact/v3/group/:group_id | - | Unlimited |
+| Add User Group Member POST /open-apis/contact/v3/group/:group_id/member/add | - | Unlimited |
+| Batch add user group members POST /open-apis/contact/v3/group/:group_id/member/batch_add | This API is used to batch add members to a user group (member type can only be users currently). If the app's contact scope is "All employees", you can add any member to any user group. If not, you can only add members in the contact scope to the user groups in the contact scope. Click to learn about the range of contacts data that an app can access. | Unlimited |
+| List User Group Member GET /open-apis/contact/v3/group/:group_id/member/simplelist | This API is used to query the member list of a user group (member type can be user or department)，supports normal user groups and dynamic user groups. If the app's contact scope is "All employees", you can query the member list of any user group in the company. If not, you can only query the member list of the user groups in the app's contact scope. Click to learn about the range of contacts data that an app can access. | Unlimited |
+| Remove User Group Member POST /open-apis/contact/v3/group/:group_id/member/remove | - | Unlimited |
+| Batch remove user group members POST /open-apis/contact/v3/group/:group_id/member/batch_remove | This API is used to batch remove members to a user group (members type can only be user currently). If the app's contact scope is "All employees", you can remove any member to any user group. If not, you can only remove members in the contact scope to the user groups in the contact scope. Click to learn about the range of contacts data that an app can access. | Unlimited |
+| Obtain Custom User Fields GET /open-apis/contact/v3/custom_attrs | Obtain customer user field configuration of a company | Unlimited |
+| Create Workforce Type POST /open-apis/contact/v3/employee_type_enums | This API is used to add a workforce type. | Unlimited |
+| Update Workforce Type PUT /open-apis/contact/v3/employee_type_enums/:enum_id | Update the custom workforce type. | Unlimited |
+| Fetch Workforce Type GET /open-apis/contact/v3/employee_type_enums | This API is used to obtain an employee's workforce type. | Unlimited |
+| Delete Workforce Type DELETE /open-apis/contact/v3/employee_type_enums/:enum_id | This API is used to delete custom workforce types. | Unlimited |
+| Create a department POST /open-apis/contact/v3/departments | This API is used to create a department in contacts. | Unlimited |
+| Modify department information in part PATCH /open-apis/contact/v3/departments/:department_id | This API is used to update any department field in contacts. | Unlimited |
+| Update department information in whole PUT /open-apis/contact/v3/departments/:department_id | This API is used to update all information of the current department. | Unlimited |

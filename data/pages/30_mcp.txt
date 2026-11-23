@@ -1,0 +1,23 @@
+https://developer.vonage.com/en/mcp-server/overview
+
+Vonage MCP Server Overview | Vonage MCP Server Documenation
+
+# Vonage MCP Server
+
+The Vonage MCP Server enables AI agents and developer tools to discover, describe, and use Vonage capabilities via the Model Context Protocol.
+
+IDE & Claude Desktop integration
+
+#### Ready to Start Building ?
+
+Experience seamless connectivity, real-time messaging, and crystal-clear voice and video calls—all at your fingertips.
+
+Conceptual Guides
+
+High-level guides that clarify core Vonage API concepts, ideal for gaining a deeper understanding before planning your implementation.
+
+- Introduction to the Vonage MCP Servers
+
+How-to Guides
+
+Step-by-step, practical guides to connect MCP servers and use them from your IDE or AI assistant.

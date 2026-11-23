@@ -1,0 +1,23 @@
+https://developers.gorgias.com/reference/authentication
+
+Authentication
+
+# Authentication
+
+The Gorgias API supports two authentication methods:
+
+1. 🔐 Private app → API key
+2. 👥 Public app → OAuth2
+
+Using OAuth2 is mandatory for public apps.
+
+For testing purposes, you can perform requests directly from the API Reference using your API keys.
+
+1. Go to any endpoint (e.g: " Retrieve your account")
+2. Use your email (username) and your API key
+
+![956](https://files.readme.io/b4d37dc-Screen_Shot_2021-11-18_at_9.33.50_AM.png "Screen Shot 2021-11-18 at 9.33.50 AM.png")
+
+Updated about 1 year ago 
+
+Updated about 1 year ago

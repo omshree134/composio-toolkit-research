@@ -1,0 +1,25 @@
+https://docs.ahrefs.com/api/docs/api-keys-creation-and-management.md
+
+# API keys creation and management
+
+You'll need an API key to send requests via Ahrefs API v3. Provide it in the Authorization header when making requests: `Authorization: Bearer YOUR_API_KEY`.
+
+## Creating API keys
+
+Create and manage existing API keys in Account settings / API keys. Note that only workspace owners and admins have access to this section.
+
+You can create up to 1,000 API keys. When creating or editing a key, choose an expiration date between today and 10 years from today. After that date, the key becomes inactive. You can see the expiration date for each key and who created it on this page.
+
+A key will also be invalidated if the user who created it is removed from the workspace.
+
+![](https://docs.ahrefs.com/api/images/API%20keys1.png)
+
+## Controlling usage
+
+To control the monthly usage of API units in your workspace, limit the usage of particular API keys in Account settings / API keys.
+
+![](https://docs.ahrefs.com/api/images/API%20keys2.png)
+
+If your subscription plan allows pay-as-you-go charges, you can also limit the maximum number of API units that can be added on a pay-as-you-go basis or disable pay-as-you-go API units altogether in Account settings / Limits & usage.
+
+![Limits & usage](https://docs.ahrefs.com/api/images/Limits%20&%20usage%202.png)

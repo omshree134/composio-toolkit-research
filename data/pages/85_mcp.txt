@@ -1,0 +1,113 @@
+https://www.ipayx.ai/mcp
+
+iPayXProtocol
+
+Home FX Audit MCP Developers Pricing
+
+ENFR
+
+Log inSign up
+
+ENFR
+
+MCP Compatible
+
+Streamable HTTP
+
+OpenAPI 3.1
+
+FINTRAC MSB
+
+# Connect iPayX to your AI agent
+
+One MCP server. Claude, ChatGPT, Grok, Perplexity, DeepSeek, Qwen, MiniMax, Copilot, Cursor, n8n — real-time forensic FX audit.
+
+MCP Server URL
+
+`https://mcp.ipayx.ai/mcp` Copy
+
+No account or API key required. Transaction audits and forensic reports share 3 free audits per IP per calendar month (UTC). Rate lookups and comparisons are free without an audit quota.
+
+## Add to Claude
+
+Settings → Connectors → Add custom connector
+
+Server URL: https://mcp.ipayx.ai/mcp
+
+## Pick your AI client
+
+Claude (Anthropic)ChatGPT (OpenAI)Grok (xAI)PerplexityDeepSeekQwen (Alibaba)MiniMaxMicrosoft Copilot StudioCursor / Windsurf / Zed / ContinueClinen8n / Zapier / Pipedream
+
+Desktop: claude_desktop_config.json — Web/Teams: Settings › Connectors › Add custom connector
+
+Claude (Anthropic) Copy
+
+```
+{
+  "mcpServers": {
+    "ipayx-fx-audit": {
+      "url": "https://mcp.ipayx.ai/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+
+```
+
+Restart your client after saving for the iPayX tools to appear.
+
+## Exposed tools
+
+`check_fx_mid_market_rate`
+
+Live mid-market rate, both directions + optional spread analysis.
+
+Public
+
+`audit_fx_transaction`
+
+Scores one FX transaction against the live mid-market reference rate.
+
+Public
+
+`compare_fx_sources`
+
+Benchmark a bank rate against independent institutional sources.
+
+Public
+
+`full_forensic_fx_report`
+
+Detailed FX report with score, reference-rate evidence, spread and estimated loss.
+
+Public
+
+## OpenAPI 3.1 Spec
+
+For non-MCP platforms (Zapier, n8n, Pipedream, Custom GPT, Microsoft Copilot).
+
+View spec View MCP manifest
+
+Read-only server. It never moves money.
+
+Reference rates come from public sources. This audit provides a comparative estimate and does not constitute financial advice.
+
+Privacy policy
+
+support@ipayx.ai
+
+iPayXProtocol
+
+Integrations API Docs Pricing Methodology Privacy Terms API Terms Contact (hello@ipayx.ai)
+
+Developers
+
+MCP Server Docs Microsoft Azure Foundry System Status REST API Reference
+
+iPayX Protocol is registered with FINTRAC as a Money Services Business (MSB C10001283) under the Proceeds of Crime (Money Laundering) and Terrorist Financing Act. iPayX is a financial technology platform — not a bank or financial institution. FX audit results are informational and do not constitute financial advice.
+
+© 2026 iPayX Protocol Inc.
+
+iPayX uses cookies to improve your experience.
+
+Accept allEssential only

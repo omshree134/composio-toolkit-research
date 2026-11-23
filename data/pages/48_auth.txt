@@ -1,0 +1,777 @@
+https://gumroad.com/api/
+
+API
+
+# API
+
+## Command line
+
+Prefer a terminal? The Gumroad CLI wraps every endpoint below and is built for humans and AI agents alike.
+
+Install with Homebrew
+
+```
+brew install antiwork/cli/gumroad
+```
+
+Or run the install script
+
+```
+curl -fsSL https://gumroad.com/install-cli.sh | bash
+```
+
+Each endpoint below shows the matching `gumroad` invocation next to its cURL example. Run `gumroad --help` for the full list of flags.
+
+The Gumroad OAuth API is based around REST. We return JSON for every request, including errors.
+
+To start using the API, you'll need to register your OAuth application. Note: The Verify License API endpoint does not require an OAuth application.
+
+After creating an application, you'll be given a unique application id and application secret.
+
+## Authentication
+
+On the application page, click Generate access token to get the token you will use with the API.
+
+## Scopes
+
+We've provided the following scopes that you may request when the user authorizes your application.
+
+account: full access to most API endpoints. Endpoints with a narrower security boundary, such as media, refuse an account-only token and require the specific scope noted on the endpoint. view_profile: read-only access to the user's public information and products. edit_profile: write access to the user's profile name and bio. edit_products: read/write access to the user's products and their variants, offer codes, custom fields, and files. edit_emails: read/write access to the user's audience emails and read access to the user's workflows. view_sales: read access to the user's products' sales information, including sales counts. This scope is also required in order to subscribe to the user's sales. view_payouts: read access to the user's payouts information. view_tax_data: read access to the user's tax forms (1099-K, 1099-MISC) and annual earnings summary. mark_sales_as_shipped: write access to mark the user's products' sales as shipped. edit_sales: write access to refund the user's products' sales, revoke or restore buyer access, and resend purchase receipts to customers. 
+
+## Resources
+
+Create an OAuth application - A getting started guide for creating an application with our API.
+
+omniauth-gumroad - (Ruby) an OmniAuth strategy for Gumroad OAuth.
+
+## More reading
+
+If you're interested in learning more about OAuth, here are some links that might be useful:
+
+## API Errors
+
+Gumroad uses HTTP status codes to indicate the status of a request. Here's a run down on likely response codes.
+
+200 OK everything worked as expected. 400 Bad Request you probably missed a required parameter. 401 Unauthorized you did not provide a valid access token. 402 Request Failed the parameters were valid but request failed. 404 Not Found the requested item doesn't exist. 429 Too Many Requests you exceeded the rate limit. Wait the number of seconds in the Retry-After header, then retry. 500, 502, 503, 504 Server Error something else went wrong on our end. 
+
+To help you further, we provide a JSON object that goes more in-depth about the problem that led to the failed request. Errors responses from the api will follow the following format.
+
+```
+{
+  "success": false,
+  "message": "The product could not be found."
+}
+```
+
+When present, the message will describe the particular problem and suggestions on what went wrong.
+
+Requests are rate limited per access token: 1500 requests per minute, and a request over that returns 429 with a Retry-After header giving the number of seconds to wait before retrying.
+
+## API Methods
+
+Gumroad's OAuth 2.0 API lets you see information about your products, as well as you can add, edit, and delete offer codes, variants, and custom fields. Finally, you can see a user's public information and subscribe to be notified of their sales.
+
+## Products
+
+/products
+
+Retrieve all of the existing products for the authenticated user.
+
+```
+https://api.gumroad.com/v2/products
+```
+
+Response fields
+
+success (boolean) — Whether the request succeeded
+
+products (array) — Array of product objects
+
+custom_permalink (string | null) — Custom URL slug for the product
+
+custom_receipt (string | null) — Deprecated legacy receipt text field. Receipt text saved in the product editor is returned in custom_receipt_text instead
+
+custom_receipt_text (string | null) — Message shown on the buyer's receipt
+
+custom_view_content_button_text (string | null) — Text on the receipt's button that opens the product
+
+custom_summary (string | null) — Custom summary shown to buyers
+
+custom_html (string | null) — Custom landing page HTML for the product
+
+custom_fields (array) — Combined list of the seller's global checkout custom fields and the product's own custom fields
+
+customizable_price (boolean | null) — Whether pay-what-you-want pricing is enabled
+
+description (string | null) — Product description
+
+deleted (boolean) — Whether the product has been deleted
+
+max_purchase_count (number | null) — Maximum number of purchases allowed
+
+name (string) — Product name
+
+preview_url (string | null) — URL of the product preview
+
+require_shipping (boolean) — Whether shipping info is required
+
+subscription_duration (string | null) — Subscription billing interval
+
+published (boolean) — Whether the product is published
+
+url (null) — Deprecated, always null
+
+id (string) — Unique identifier for the product
+
+price (number) — Price in cents
+
+purchasing_power_parity_prices (object) — Country-code-keyed prices adjusted for purchasing power parity (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+currency (string) — ISO currency code (e.g. "usd")
+
+taxonomy_id (number | null) — Numeric category ID
+
+category (string | null) — Full category path
+
+category_label (string | null) — Human-readable category label
+
+short_url (string) — Short Gumroad URL for the product
+
+thumbnail_url (string | null) — URL of the product thumbnail image
+
+covers (array) — Covers for the product, in display order
+
+id (string) — Unique identifier for the cover
+
+url (string) — Display URL (retina variant for non-GIF images; original URL for GIFs, videos, and oEmbed covers)
+
+original_url (string) — URL of the original uploaded asset
+
+thumbnail (string | null) — Thumbnail URL for oEmbed covers; null otherwise
+
+type (string) — One of "image", "video", "oembed", or "unsplash"
+
+filetype (string | null) — File extension; null when no file is attached
+
+width (number) — Display width in pixels
+
+height (number) — Display height in pixels
+
+native_width (number) — Intrinsic width of the source asset in pixels
+
+native_height (number) — Intrinsic height of the source asset in pixels
+
+main_cover_id (string | null) — ID of the first cover in display order; null when the product has no covers
+
+tags (array) — Tags associated with the product
+
+formatted_price (string) — Human-readable formatted price
+
+file_info (object) — Legacy single-file metadata; returns {} for products with 0 or 2+ files. For complete file state, fetch the product via GET /v2/products/:id and read the "files" array (not returned by GET /v2/products).
+
+bundle_products (array) — Items contained in a bundle product; empty for non-bundle products
+
+product_id (string) — External ID of the included product
+
+variant_id (string | null) — External ID of the selected variant, if any
+
+quantity (number) — Quantity of this item in the bundle
+
+position (number) — Order of this item within the bundle
+
+sales_count (number) — Total number of sales (available with the 'view_sales' or 'account' scope)
+
+sales_usd_cents (number) — Total revenue in USD cents (available with the 'view_sales' or 'account' scope)
+
+is_tiered_membership (boolean) — Whether this is a tiered membership product
+
+recurrences (array | null) — Available subscription durations (present when is_tiered_membership is true; otherwise null)
+
+is_preorder (boolean) — Whether the product is a preorder (present only for preorder products)
+
+is_in_preorder_state (boolean) — Whether the preorder has not yet been released (present only for preorder products)
+
+release_at (string) — Preorder release timestamp (present only for preorder products)
+
+custom_delivery_url (null) — Deprecated, always null (present only with the 'view_sales' or 'account' scope)
+
+variants (array) — Variant categories and their options
+
+title (string) — Variant category title (e.g. "Tier")
+
+options (array) — Options within this variant category
+
+name (string) — Option name
+
+price_difference (number | null) — Price difference in cents from the base price (0 for membership tiers, whose prices are set via recurrence_prices)
+
+purchasing_power_parity_prices (object | null) — PPP-adjusted prices for this option, computed from the base price plus price_difference; null for options whose price_difference is null (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+is_pay_what_you_want (boolean) — Whether this option is pay-what-you-want
+
+url (null) — Deprecated, always null
+
+recurrence_prices (object | null) — Prices per recurrence interval (present for membership products; otherwise null)
+
+price_cents (number) — Price in cents for this recurrence
+
+suggested_price_cents (number | null) — Suggested price in cents (may return a number if is_pay_what_you_want is true)
+
+purchasing_power_parity_prices (object) — PPP-adjusted prices for this recurrence (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+rich_content (array) — Per-variant rich content pages (omitted from GET /v2/products list responses)
+
+next_page_key (string) — Opaque cursor to pass as page_key to fetch the next page (present when more results follow)
+
+next_page_url (string) — Path-relative URL (with query string) for the next page of results (present when more results follow)
+
+cURL example
+
+```
+curl https://api.gumroad.com/v2/products \
+  -d "access_token=ACCESS_TOKEN" \
+  -X GET
+```
+
+Gumroad CLI
+
+```
+gumroad products list
+```
+
+Example response:
+
+```
+{
+  "success": true,
+  "products": [{
+    "custom_permalink": null,
+    "custom_receipt": null, # Deprecated, use custom_receipt_text
+    "custom_receipt_text": "Thanks for your order!",
+    "custom_view_content_button_text": "Open it",
+    "custom_summary": "You'll get one PSD file.",
+    "custom_fields": [],
+    "customizable_price": null,
+    "description": "I made this for fun.",
+    "deleted": false,
+    "max_purchase_count": null,
+    "name": "Pencil Icon PSD",
+    "preview_url": null,
+    "require_shipping": false,
+    "subscription_duration": null,
+    "published": true,
+    "url": null, # Deprecated, always null
+    "id": "A-m3CDDC5dlrSdKZp0RFhA==",
+    "price": 100,
+    "taxonomy_id": 123,
+    "category": "design/ui-and-web/figma",
+    "category_label": "Figma",
+    "purchasing_power_parity_prices": {
+      "US": 100,
+      "IN": 50,
+      "EC": 25
+    },
+    "currency": "usd",
+    "short_url": "https://sahil.gumroad.com/l/pencil",
+    "thumbnail_url": "https://public-files.gumroad.com/variants/72iaezqqthnj1350mdc618namqki/f2f9c6fc18a80b8bafa38f3562360c0e42507f1c0052dcb708593f7efa3bdab8",
+    "tags": ["pencil", "icon"],
+    "formatted_price": "$1",
+    "file_info": {},
+    "sales_count": 0, # available with the 'view_sales' or 'account' scope
+    "sales_usd_cents": 0, # available with the 'view_sales' or 'account' scope
+    "is_tiered_membership": true,
+    "recurrences": ["monthly"], # if is_tiered_membership is true, renders list of available subscription durations; otherwise null
+    "variants": [
+      {
+        "title": "Tier",
+        "options": [
+          {
+            "name": "First Tier",
+            "price_difference": 0, # 0 for tiered membership options; non-zero for non-membership options with a price bump
+            "purchasing_power_parity_prices": { # present when PPP is enabled for the seller and the product has not opted out; null when price_difference is null
+              "US": 200,
+              "IN": 100,
+              "EC": 50
+            },
+            "is_pay_what_you_want": false,
+            "recurrence_prices": { # present for membership products; otherwise null
+              "monthly": {
+                "price_cents": 300,
+                "suggested_price_cents": null, # may return number if is_pay_what_you_want is true
+                "purchasing_power_parity_prices": {
+                  "US": 400,
+                  "IN": 200,
+                  "EC": 100
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }, {...}, {...}]
+}
+```
+
+GET
+
+/products/:id
+
+Retrieve the details of a product.
+
+```
+https://api.gumroad.com/v2/products/:id
+```
+
+Response fields
+
+success (boolean) — Whether the request succeeded
+
+product (object) — The product object
+
+custom_permalink (string | null) — Custom URL slug for the product
+
+custom_receipt (string | null) — Deprecated legacy receipt text field. Receipt text saved in the product editor is returned in custom_receipt_text instead
+
+custom_receipt_text (string | null) — Message shown on the buyer's receipt
+
+custom_view_content_button_text (string | null) — Text on the receipt's button that opens the product
+
+custom_summary (string | null) — Custom summary shown to buyers
+
+custom_html (string | null) — Custom landing page HTML for the product
+
+custom_fields (array) — Combined list of the seller's global checkout custom fields and the product's own custom fields
+
+customizable_price (boolean | null) — Whether pay-what-you-want pricing is enabled
+
+description (string | null) — Product description
+
+deleted (boolean) — Whether the product has been deleted
+
+max_purchase_count (number | null) — Maximum number of purchases allowed
+
+name (string) — Product name
+
+preview_url (string | null) — URL of the product preview
+
+require_shipping (boolean) — Whether shipping info is required
+
+subscription_duration (string | null) — Subscription billing interval
+
+published (boolean) — Whether the product is published
+
+url (null) — Deprecated, always null
+
+id (string) — Unique identifier for the product
+
+price (number) — Price in cents
+
+purchasing_power_parity_prices (object) — Country-code-keyed prices adjusted for purchasing power parity (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+currency (string) — ISO currency code (e.g. "usd")
+
+taxonomy_id (number | null) — Numeric category ID
+
+category (string | null) — Full category path
+
+category_label (string | null) — Human-readable category label
+
+short_url (string) — Short Gumroad URL for the product
+
+thumbnail_url (string | null) — URL of the product thumbnail image
+
+covers (array) — Covers for the product, in display order
+
+id (string) — Unique identifier for the cover
+
+url (string) — Display URL (retina variant for non-GIF images; original URL for GIFs, videos, and oEmbed covers)
+
+original_url (string) — URL of the original uploaded asset
+
+thumbnail (string | null) — Thumbnail URL for oEmbed covers; null otherwise
+
+type (string) — One of "image", "video", "oembed", or "unsplash"
+
+filetype (string | null) — File extension; null when no file is attached
+
+width (number) — Display width in pixels
+
+height (number) — Display height in pixels
+
+native_width (number) — Intrinsic width of the source asset in pixels
+
+native_height (number) — Intrinsic height of the source asset in pixels
+
+main_cover_id (string | null) — ID of the first cover in display order; null when the product has no covers
+
+tags (array) — Tags associated with the product
+
+formatted_price (string) — Human-readable formatted price
+
+file_info (object) — Legacy single-file metadata; returns {} for products with 0 or 2+ files. For complete file state, fetch the product via GET /v2/products/:id and read the "files" array (not returned by GET /v2/products).
+
+bundle_products (array) — Items contained in a bundle product; empty for non-bundle products
+
+product_id (string) — External ID of the included product
+
+variant_id (string | null) — External ID of the selected variant, if any
+
+quantity (number) — Quantity of this item in the bundle
+
+position (number) — Order of this item within the bundle
+
+sales_count (number) — Total number of sales (available with the 'view_sales' or 'account' scope)
+
+sales_usd_cents (number) — Total revenue in USD cents (available with the 'view_sales' or 'account' scope)
+
+is_tiered_membership (boolean) — Whether this is a tiered membership product
+
+recurrences (array | null) — Available subscription durations (present when is_tiered_membership is true; otherwise null)
+
+is_preorder (boolean) — Whether the product is a preorder (present only for preorder products)
+
+is_in_preorder_state (boolean) — Whether the preorder has not yet been released (present only for preorder products)
+
+release_at (string) — Preorder release timestamp (present only for preorder products)
+
+custom_delivery_url (null) — Deprecated, always null (present only with the 'view_sales' or 'account' scope)
+
+refund_policy (object) — Product-level refund policy override state
+
+refund_period (string) — "inherit" when the product uses the account default; otherwise "none", "7", "14", "30", or "183"
+
+title (string | null) — Display title derived from the refund period; null when inherited
+
+fine_print (string | null) — Fine print of the product-level policy; null when inherited
+
+inherited (boolean) — Whether the product inherits the account-level refund policy
+
+rich_content (array) — Product-level rich content pages
+
+has_same_rich_content_for_all_variants (boolean) — Whether all variants share the product-level rich content
+
+files (array) — Files attached to the product. Files whose backing S3 object is missing are omitted from the response.
+
+id (string) — External ID of the file
+
+name (string | null) — Display name of the file
+
+size (number | null) — File size in bytes
+
+url (string) — Signed download URL for uploaded files; raw URL for external-link files (filetype: "link")
+
+filetype (string) — File extension (e.g. "pdf") or "link" for external URLs
+
+filegroup (string) — Group classification (e.g. "audio", "video", "document")
+
+stream_only (boolean) — True when downloads are disabled for this file and the buyer opens it in the player or in-browser reader instead
+
+variants (array) — Variant categories and their options
+
+title (string) — Variant category title (e.g. "Tier")
+
+options (array) — Options within this variant category
+
+name (string) — Option name
+
+price_difference (number | null) — Price difference in cents from the base price (0 for membership tiers, whose prices are set via recurrence_prices)
+
+purchasing_power_parity_prices (object | null) — PPP-adjusted prices for this option, computed from the base price plus price_difference; null for options whose price_difference is null (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+is_pay_what_you_want (boolean) — Whether this option is pay-what-you-want
+
+url (null) — Deprecated, always null
+
+recurrence_prices (object | null) — Prices per recurrence interval (present for membership products; otherwise null)
+
+price_cents (number) — Price in cents for this recurrence
+
+suggested_price_cents (number | null) — Suggested price in cents (may return a number if is_pay_what_you_want is true)
+
+purchasing_power_parity_prices (object) — PPP-adjusted prices for this recurrence (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+rich_content (array) — Per-variant rich content pages (omitted from GET /v2/products list responses)
+
+cURL example
+
+```
+curl https://api.gumroad.com/v2/products/A-m3CDDC5dlrSdKZp0RFhA== \
+  -d "access_token=ACCESS_TOKEN" \
+  -X GET
+```
+
+Gumroad CLI
+
+```
+gumroad products show A-m3CDDC5dlrSdKZp0RFhA==
+```
+
+Example response:
+
+```
+{
+  "success": true,
+  "product": {
+    "custom_permalink": null,
+    "custom_receipt": null, # Deprecated, use custom_receipt_text
+    "custom_receipt_text": "Thanks for your order!",
+    "custom_view_content_button_text": "Open it",
+    "custom_summary": "You'll get one PSD file.",
+    "custom_html": null,
+    "custom_fields": [],
+    "customizable_price": null,
+    "description": "I made this for fun.",
+    "deleted": false,
+    "max_purchase_count": null,
+    "name": "Pencil Icon PSD",
+    "preview_url": null,
+    "require_shipping": false,
+    "subscription_duration": null,
+    "published": true,
+    "url": null, # Deprecated, always null
+    "id": "A-m3CDDC5dlrSdKZp0RFhA==",
+    "price": 100,
+    "taxonomy_id": 123,
+    "category": "design/ui-and-web/figma",
+    "category_label": "Figma",
+    "purchasing_power_parity_prices": {
+      "US": 100,
+      "IN": 50,
+      "EC": 25
+    },
+    "currency": "usd",
+    "short_url": "https://sahil.gumroad.com/l/pencil",
+    "thumbnail_url": "https://public-files.gumroad.com/variants/72iaezqqthnj1350mdc618namqki/f2f9c6fc18a80b8bafa38f3562360c0e42507f1c0052dcb708593f7efa3bdab8",
+    "tags": ["pencil", "icon"],
+    "formatted_price": "$1",
+    "file_info": {},
+    "sales_count": 0, # available with the 'view_sales' or 'account' scope
+    "sales_usd_cents": 0, # available with the 'view_sales' or 'account' scope
+    "is_tiered_membership": true,
+    "recurrences": ["monthly"], # if is_tiered_membership is true, renders list of available subscription durations; otherwise null
+    "variants": [
+      {
+        "title": "Tier",
+        "options": [
+          {
+            "name": "First Tier",
+            "price_difference": 0, # 0 for tiered membership options; non-zero for non-membership options with a price bump
+            "purchasing_power_parity_prices": { # present when PPP is enabled for the seller and the product has not opted out; null when price_difference is null
+              "US": 200,
+              "IN": 100,
+              "EC": 50
+            },
+            "is_pay_what_you_want": false,
+            "recurrence_prices": { # present for membership products; otherwise null
+              "monthly": {
+                "price_cents": 300,
+                "suggested_price_cents": null, # may return number if is_pay_what_you_want is true
+                "purchasing_power_parity_prices": {
+                  "US": 400,
+                  "IN": 200,
+                  "EC": 100
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+POST
+
+/products
+
+Create a new product. The product is published immediately unless you pass `draft=true` or `published=false`. If publishing is blocked (for example, your email address is not confirmed or no payout method is set up), the product is saved as a draft and the response includes a `warning` explaining why; publish it later with `PUT /v2/products/:id/enable`. Requires the `edit_products` or `account` scope.
+
+```
+https://api.gumroad.com/v2/products
+```
+
+#### Parameters:
+
+draft (optional, true or false, default false) save as an unpublished draft instead of publishing
+
+published (optional, true or false, default true) false saves as an unpublished draft, same as draft=true
+
+native_type (optional, "digital" (default), "course", "ebook", "membership", "bundle", "coffee", "call", or "commission") cannot be changed later
+
+name (required)
+
+description (optional) HTML
+
+custom_permalink (optional)
+
+price (required) in the smallest currency unit (e.g. cents)
+
+price_currency_type (optional) ISO currency code; defaults to your account currency
+
+subscription_duration (optional, membership only, "monthly", "quarterly", "biannually", "yearly", or "every_two_years")
+
+customizable_price (optional, true or false) pay-what-you-want
+
+suggested_price_cents (optional)
+
+max_purchase_count (optional)
+
+category (optional) full category path from GET /v2/categories, e.g. "design/ui-and-web/figma"; cannot be sent with taxonomy_id
+
+taxonomy_id (optional) numeric category ID; alias for category, cannot be sent with category
+
+tags (optional) array of tag strings
+
+custom_summary (optional)
+
+refund_period (optional, "inherit", "none", "7", "14", "30", or "183") sets a product-level refund policy; "inherit" uses the account default. Only available when the account-level refund policy is not in effect; otherwise use PUT /v2/refund_policy
+
+refund_fine_print (optional) fine print for the product-level refund policy; requires refund_period unless the product already has one enabled, and cannot be combined with refund_period "inherit". Empty string clears it
+
+rich_content (optional) array of { id, title, description } pages; description is a ProseMirror doc
+
+files (optional) array of files to attach — see Attaching to a product
+
+Cover images and thumbnails are attached separately via `POST /v2/products/:id/covers` and `POST /v2/products/:id/thumbnail`.
+
+Response fields
+
+success (boolean) — Whether the request succeeded
+
+product (object) — The product object
+
+custom_permalink (string | null) — Custom URL slug for the product
+
+custom_receipt (string | null) — Deprecated legacy receipt text field. Receipt text saved in the product editor is returned in custom_receipt_text instead
+
+custom_receipt_text (string | null) — Message shown on the buyer's receipt
+
+custom_view_content_button_text (string | null) — Text on the receipt's button that opens the product
+
+custom_summary (string | null) — Custom summary shown to buyers
+
+custom_html (string | null) — Custom landing page HTML for the product
+
+custom_fields (array) — Combined list of the seller's global checkout custom fields and the product's own custom fields
+
+customizable_price (boolean | null) — Whether pay-what-you-want pricing is enabled
+
+description (string | null) — Product description
+
+deleted (boolean) — Whether the product has been deleted
+
+max_purchase_count (number | null) — Maximum number of purchases allowed
+
+name (string) — Product name
+
+preview_url (string | null) — URL of the product preview
+
+require_shipping (boolean) — Whether shipping info is required
+
+subscription_duration (string | null) — Subscription billing interval
+
+published (boolean) — Whether the product is published
+
+url (null) — Deprecated, always null
+
+id (string) — Unique identifier for the product
+
+price (number) — Price in cents
+
+purchasing_power_parity_prices (object) — Country-code-keyed prices adjusted for purchasing power parity (present when the seller has purchasing power parity enabled and the product has not opted out)
+
+currency (string) — ISO currency code (e.g. "usd")
+
+taxonomy_id (number | null) — Numeric category ID
+
+category (string | null) — Full category path
+
+category_label (string | null) — Human-readable category label
+
+short_url (string) — Short Gumroad URL for the product
+
+thumbnail_url (string | null) — URL of the product thumbnail image
+
+covers (array) — Covers for the product, in display order
+
+id (string) — Unique identifier for the cover
+
+url (string) — Display URL (retina variant for non-GIF images; original URL for GIFs, videos, and oEmbed covers)
+
+original_url (string) — URL of the original uploaded asset
+
+thumbnail (string | null) — Thumbnail URL for oEmbed covers; null otherwise
+
+type (string) — One of "image", "video", "oembed", or "unsplash"
+
+filetype (string | null) — File extension; null when no file is attached
+
+width (number) — Display width in pixels
+
+height (number) — Display height in pixels
+
+native_width (number) — Intrinsic width of the source asset in pixels
+
+native_height (number) — Intrinsic height of the source asset in pixels
+
+main_cover_id (string | null) — ID of the first cover in display order; null when the product has no covers
+
+tags (array) — Tags associated with the product
+
+formatted_price (string) — Human-readable formatted price
+
+file_info (object) — Legacy single-file metadata; returns {} for products with 0 or 2+ files. For complete file state, fetch the product via GET /v2/products/:id and read the "files" array (not returned by GET /v2/products).
+
+bundle_products (array) — Items contained in a bundle product; empty for non-bundle products
+
+product_id (string) — External ID of the included product
+
+variant_id (string | null) — External ID of the selected variant, if any
+
+quantity (number) — Quantity of this item in the bundle
+
+position (number) — Order of this item within the bundle
+
+sales_count (number) — Total number of sales (available with the 'view_sales' or 'account' scope)
+
+sales_usd_cents (number) — Total revenue in USD cents (available with the 'view_sales' or 'account' scope)
+
+is_tiered_membership (boolean) — Whether this is a tiered membership product
+
+recurrences (array | null) — Available subscription durations (present when is_tiered_membership is true; otherwise null)
+
+is_preorder (boolean) — Whether the product is a preorder (present only for preorder products)
+
+is_in_preorder_state (boolean) — Whether the preorder has not yet been released (present only for preorder products)
+
+release_at (string) — Preorder release timestamp (present only for preorder products)
+
+custom_delivery_url (null) — Deprecated, always null (present only with the 'view_sales' or 'account' scope)
+
+refund_policy (object) — Product-level refund policy override state
+
+refund_period (string) — "inherit" when the product uses the account default; otherwise "none", "7", "14", "30", or "183"
+
+title (string | null) — Display title derived from the refund period; null when inherited
+
+fine_print (string | null) — Fine print of the product-level policy; null when inherited
+
+inherited (boolean) — Whether the product inherits the account-level refund policy
+
+rich_content (array) — Product-level rich content pages
+
+has_same_rich_content_for_all_variants (boolean) — Whether all variants share the product-level rich content
+
+files (array) — Files attached to the product. Files whose backing S3 object is missing are omitted from the response.
+
+id (string) — External ID of the file
+
+name (string | null) — Display name of the file
+
+size (number | null) — File size in bytes
+
+url (string) — Signed download URL for uploaded files; raw URL for external-link files (filetype: "link")
+
+file

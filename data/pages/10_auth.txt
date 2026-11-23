@@ -1,0 +1,50 @@
+https://api.docs.dealcloud.com/docs/token
+
+Requesting an OAuth2 Bearer Token - DealCloud API Docs
+
+# Requesting an OAuth2 Bearer Token
+
+DealCloud uses the OAuth2 Client Credentials flow to generate a bearer token, which is then used in the HTTP Authentication header for API requests.
+
+How the OAuth2 Client Credentials Flow Works:
+
+1. The client application sends a POST request to the token endpoint, providing its `client_id`, `apiKey`, and the required `scope(s)`.
+2. The authorization server validates the credentials and scopes.
+3. If valid, the server responds with an `access_token` (bearer token), its type, and expiration time.
+4. The client includes this token in the `Authorization` header for subsequent API requests `Authorization: Bearer {{token}}`.
+5. Tokens expire after 900 seconds (15 minutes) and must be refreshed by repeating the flow.
+
+Security Best Practices
+
+- Avoid exposing your `apiKey` in client-side code or public repositories.
+- Only request the scopes necessary for your use case to minimize risk of interruptions.
+
+## Scopes
+
+When generating a token, use one or more scopes listed below, separated by a space. It is recommended to include only the scopes needed. If you receive a `403 Forbidden` response, the most likely cause is due to a missing scope or user group permissions.
+
+| Scope | Description |
+| --- | --- |
+| user_management | Required when accessing the User Management API endpoints (api/rest/v1/management) |
+| data | Required when accessing the Data or Schema API endpoints (api/rest/v4/data or api/rest/v4/schema). |
+| publish | Required when accessing the Publications API endpoints (api/rest/v1/publication). |
+| ri_import | Required when accessing the Relationship Intelligence Import API endpoints (api/rest/v1/ri/import). |
+| backup | Required when accessing the Site Backup API endpoints (api/rest/v4/backups). |
+
+- Scopes not included here but listed in swagger: provider_sync, api, data_provider, and exchange are either deprecated or specialized and are not required for any of the APIs documented here.
+
+## Examples
+
+### HTTP
+
+Request Response
+
+```
+POST {baseUrl}/api/rest/v1/oauth/token
+Content-Type: application/x-www-form-urlencoded
+ 
+scope=data user_management
+&grant_type=client_credentials
+&client_id=106
+&client_secret=1356GYNU
+```

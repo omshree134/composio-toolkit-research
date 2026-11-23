@@ -1,0 +1,25 @@
+https://api.docs.dealcloud.com/docs/apikeys
+
+Obtaining an API Key - DealCloud API Docs
+
+# Obtaining an API Key
+
+## User Groups and Permissions
+
+To enable API access, ensure the intended user is assigned to a user group with the appropriate permissions. Navigate to Admin > User Management, select the relevant user group, go to Capabilities > Site Areas, and enable "API". If you do not see the Admin section, contact your organization's admin or DealCloud Customer Success Manager (CSM) for assistance.
+
+Tip: User group permissions control which endpoints and data the user can access via the API. Review and assign permissions carefully to follow the principle of least privilege.
+
+## Obtaining an API Key
+
+Once user permissions are set, click the User icon at the top-right of your DealCloud screen and select Profile. Scroll down to the API Key section and click Enable. Then click Copy API Key to Clipboard to copy your API key for use in integrations or API requests.
+
+Security Best Practices:
+
+- Treat your API key like a password: do not share it or expose it in public code repositories.
+- Rotate your API key periodically and immediately if you suspect it has been compromised.
+- Disable API access for users who no longer require it.
+
+Troubleshooting:
+
+- If you cannot enable or copy your API key, verify your user group permissions and contact your admin or DealCloud support.

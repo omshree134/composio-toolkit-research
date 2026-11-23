@@ -1,0 +1,165 @@
+https://pumble.com/integrations
+
+Integrations - Pumble™
+
+# Pumble apps & integrations 
+
+ Explore a whole ecosystem of apps that integrate with Pumble to expand your collaboration even further. 
+
+ ![Connect apps](https://pumble.com/assets/images/redesign/integrations-hero-image@1024w.png) 
+
+## Featured Apps & Integrations
+
+#### Google Calendar 
+
+ Join Pumble meet from Calendar. 
+
+![Google Calendar](https://pumble.com/assets/images/redesign/calendar_image@2x.png)
+
+ Get project management alerts in Pumble. 
+
+![Plaky](https://pumble.com/assets/images/redesign/plaky_image@2x.png)
+
+#### Clockify 
+
+ Time tracking notifications in Pumble. 
+
+![Clockify](https://pumble.com/assets/images/redesign/clockify_image@2x.png)
+
+## All Apps & Integrations
+
+#### AI Assistant 
+
+ Get the answers to all your questions with the help of AI. 
+
+![AI Assistant](https://pumble.com/assets/images/redesign/assistant_image@2x.png)
+
+#### Calendly 
+
+ Book a Calendly meeting through Pumble. 
+
+![Calendly](https://pumble.com/assets/images/redesign/calendly_image@2x.png)
+
+#### Emailer 
+
+ Send emails to Pumble. 
+
+![Emailer](https://pumble.com/assets/images/redesign/email-image@2x.png)
+
+ Get notified about GitHub changes in Pumble. 
+
+#### GitLab 
+
+ Receive notifications from GitLab in Pumble. 
+
+![GitLab](https://pumble.com/assets/images/redesign/gitlab_image@2x.png)
+
+#### Gmail 
+
+ Send emails from Gmail to Pumble. 
+
+![Gmail](https://pumble.com/assets/images/redesign/gmail_image@2x.png)
+
+#### Google Drive 
+
+ View Google Drive files in Pumble. 
+
+![Google Drive](https://pumble.com/assets/images/redesign/drive_image@2x.png)
+
+#### Jira 
+
+ Get task updates from Jira right in Pumble. 
+
+![Jira](https://pumble.com/assets/images/redesign/jira_image@2x.png)
+
+ Create and run polls in Pumble. 
+
+![Polls](https://pumble.com/assets/images/redesign/polls_image@2x.png)
+
+ Automatically syndicate site content. 
+
+#### Trello 
+
+ Get task updates from Trello right in Pumble. 
+
+![Trello](https://pumble.com/assets/images/redesign/trello_image@2x.png)
+
+#### Zapier 
+
+ Connect Pumble to more than 3000 apps. 
+
+ Track and solve customer support tickets. 
+
+![Zendesk](https://pumble.com/assets/images/redesign/zendesk_image@2x.png)
+
+#### Zoom 
+
+ Join Zoom meetings directly from Pumble. 
+
+#### Billy the Birthday Bot 
+
+ Automate birthday and work anniversary celebrations. By Buddies HR. 
+
+![Billy the Birthday Bot](https://pumble.com/assets/images/redesign/bill-birthday-bot@2x.png)
+
+#### Claude connector 
+
+ Manage messages, search conversations, and handle everyday tasks with Claude. 
+
+![Claude connector](https://pumble.com/assets/images/redesign/claude-connector@2x.png)
+
+#### Figma (soon) 
+
+#### monday.com (soon) 
+
+ Get task updates from monday.com right in Pumble. 
+
+## Create Your Own Integrations
+
+### Custom Add-ons
+
+ Build custom apps that integrate your internal tools, processes and data, to work as only your company can. 
+
+ ![CAKE.com Marketplace](https://pumble.com/assets/images/redesign/api_image@2x.png) 
+
+## CAKE.com Apps & Integrations
+
+ Pumble provides integration with native Clockify and Plaky integrations, both of which are free and don’t count towards your subscription plan limits. 
+
+![CAKE.com Suite](https://pumble.com/assets/images/redesign/suite@2x.png)
+
+## Connect Teams and Tools
+
+### All in one place
+
+ With integrations keep work and information in one place, and Pumble will keep it all securely. 
+
+### Without costs
+
+ Connect the tools that you already use to get more from them every time you work with them in Pumble. 
+
+### Available everywhere
+
+ You can work with apps in channels, where they’re a seamless part of the conversation, across all your devices. 
+
+## Frequently Asked Questions
+
+##### What is a Pumble integration? 
+
+ Pumble integrations connect tools like Google Calendar, Emailer and Zapier to Pumble, to help supercharge your workflow. Integrations are built using Pumble API. 
+
+##### Can I create my own integrations? 
+
+ Yes you can. The Pumble API is publicly available for anyone to explore. You can view our documentation and get started. You can create internal integrations for private use, or build public integrations that are available to Pumble users. 
+
+##### How do Clockify and Plaky integrations work with my Pumble plan? 
+
+ Pumble offers native integrations with both Clockify and Plaky. These integrations are free to use and do not affect your Pumble subscription plan limits. For example, if you’re on the free plan, you can have up 3 apps and integrations in addition to the integrations with Clockify and Plaky. 
+
+##### Do integrations cost money to use? 
+
+ While Pumble does not charge a fee to use integrations, our partners may charge a fee for using their service. 
+
+##### Do I need to upgrade my plan to install integrations? 
+
+ You can access the API and install integrations on any Pumble subscription.

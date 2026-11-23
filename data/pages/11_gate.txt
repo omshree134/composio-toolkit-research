@@ -1,0 +1,28 @@
+https://developer.zendesk.com/documentation/api-basics/getting-started/getting-a-trial-or-sponsored-account-for-development/
+
+# Getting a trial or sponsored account for development
+
+You can try out the Zendesk platform with a free, 14-day trial account. If you're interested in becoming a Zendesk developer partner, you can convert your trial account into a sponsored Zendesk Support account.
+
+As part of becoming a Zendesk developer partner, Zendesk sponsors an instance for up to 5 agents that you can use for developing, demoing, and troubleshooting your app or integration.
+
+Unlike a trial account, a sponsored account does not expire after 14 days.
+
+By default, all Marketplace partners with a sponsored Support account receive the Suite Enterprise plan. A sponsored Sell account includes all features on the Sell Elite plan except the Firehouse, Sync, and Search APIs.
+
+Note: Zendesk will suspend any sponsored Support account used to provide actual support.
+
+## Getting a trial account
+
+- For a trial Support account, see https://www.zendesk.com/register/free-trial/
+- For a trial Sell account, see https://www.zendesk.com/register/?source=zendesk_sell#step-1
+
+## Requesting a sponsored test account
+
+A sponsored test account is reserved for developers creating applications for the Zendesk Marketplace. If you are interested in becoming a Zendesk Marketplace partner, you can convert your trial account into a sponsored Zendesk Support account. Customer developers or individual private app developers should use their own instances or sandboxes.
+
+1. If not already done, sign up for a free Zendesk Support trial at https://www.zendesk.com/register/free-trial/, or Sell trial at https://www.zendesk.com/register/?source=zendesk_sell#step-1.
+2. Add the " d3v-" prefix to your subdomain. See Renaming your subdomain for instructions.
+3. Fill out the Sponsored Account Request Form
+
+Zendesk will inform you when your trial account becomes a sponsored account.
